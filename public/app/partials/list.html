@@ -1,0 +1,65 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nachname</th>
+            <th>Vorname</th>
+            <th>Emailkennung</th>
+            <th>Rechte_ID</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="test in listController.test">
+            <td>{{test.NACHNAME}}</td>
+            <td>{{test.VORNAME}}</td>
+            <td>{{test.EMAILKENNUNG}}</td>
+            <td>{{test.RECHTE_ID}}</td>
+            <td>
+                <a ui-sref="form({id: test.ID})">
+                    Edit
+                </a>
+            </td>
+            <td>
+                <a ui-sref="delete({id: test.ID})">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<a ui-sref="form()">New</a>
+
+<!-- <table>
+    <thead>
+        <tr>
+            <th>Nachname</th>
+            <th>Vorname</th>
+            <th>Emailkennung</th>
+            <th>Rechte_ID</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="test in listController.test">
+            <td>{{test.NACHNAME}}</td>
+            <td>{{test.VORNAME}}</td>
+            <td>{{test.EMAILKENNUNG}}</td>
+            <td>{{test.RECHTE_ID}}</td>
+            <td>
+                <a ui-sref="form({id: test.ID})">
+                    Edit
+                </a>
+            </td>
+            <td>
+                <a ui-sref="delete({id: test.ID})">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<a ui-sref="form()">New</a> -->

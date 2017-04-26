@@ -1,0 +1,13 @@
+{
+  "name": "moviedb",
+  "version": "0.0.1",
+  "description": "Awesome movie database",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mysql": "^2.13.0",
+    "sqlite3": "^3.1.8"
+  }
+}
