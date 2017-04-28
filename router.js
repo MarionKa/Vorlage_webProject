@@ -8,7 +8,7 @@ module.exports = function(app) {
  //    app.get('/benutzer/:id', controller.fetch);
  //    app.put('/benutzer/:id', controller.update);
  //    app.delete('/benutzer/:id', controller.remove);
-//TEST
+//TEST 2
 
 
     app.get('/benutzer', cont_benutzer.ausgabeAlle);
