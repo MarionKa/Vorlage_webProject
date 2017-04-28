@@ -4,10 +4,10 @@ var cont_repo = require('./controller/cont_repo.js');
 var cont_art = require('./controller/cont_art.js');
 
 module.exports = function(app) {
-	app.get('/benutzer', controller.fetchAll);
-    app.get('/benutzer/:id', controller.fetch);
-    app.put('/benutzer/:id', controller.update);
-    app.delete('/benutzer/:id', controller.remove);
+	// app.get('/benutzer', controller.fetchAll);
+ //    app.get('/benutzer/:id', controller.fetch);
+ //    app.put('/benutzer/:id', controller.update);
+ //    app.delete('/benutzer/:id', controller.remove);
 
     app.get('/benutzer', cont_benutzer.ausgabeAlle);
     app.get('/benutzer/:id', cont_benutzer.ausgabeEin);
