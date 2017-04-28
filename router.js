@@ -11,6 +11,7 @@ module.exports = function(app) {
 //TEST 25
 
 
+
     app.get('/benutzer', cont_benutzer.ausgabeAlle);
     app.get('/benutzer/:id', cont_benutzer.ausgabeEin);
     app.post('/benutzer', cont_benutzer.eingabe);
