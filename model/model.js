@@ -1,12 +1,8 @@
 var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'repoweb',
-    multipleStatements: true
-});
+var dbconfig = require('../../database');
+var connection = mysql.createConnection(
+    dbconfig.connection
+);
 
 connection.connect(function(error){
     if(!!error){
