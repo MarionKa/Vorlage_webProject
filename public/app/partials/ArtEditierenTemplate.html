@@ -1,0 +1,113 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a id="brand" class="navbar-brand" href="#/reh">
+                <img alt="Brand" src="img/4.png">
+            </a>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div id="menu" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav" ng-controller="NavbarController">
+                <li ng-class="{ active: isActive('/professor')}"><a href="#/repoueber">Repositories</a></li>
+            </ul>
+            <ul class="nav navbar-nav" ng-controller="NavbarController">
+                <li ng-class="{ active: isActive('/professor')}"><a href="#/benutzerueber">Benutzer</a></li>
+            </ul>
+            <ul class="nav navbar-nav" ng-controller="NavbarController">
+                <li ng-class="{ active: isActive('/professor')}"><a href="#/artueber">Art</a></li>
+            </ul>
+            <button type="button" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>
+        </div>
+    </div>
+</nav>
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// NAVBAR ENDE ////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div class="row">
+    <h1 class="col-xs-12 page-header">
+        Ändern Sie hier den ausgewählten Datensatz
+    </h1>
+</div>
+
+<form name="studentForm">
+  <div class="row">
+   <div class="col-xs-12 form-group">
+    <label>Bezeichnung:</label>
+    <input class="form-control"
+    type="text"
+    ng-model="formController.art"
+    value=""/>
+</div>
+</div>  
+
+<div class="row">
+   <div class="col-xs-12 form-group">
+    <label>Ordnername:</label>
+    <input class="form-control"
+    type="text"
+    ng-model="formController.art"
+    value=""/>
+</div>
+</div>
+
+
+<!-- Knöpfe: -->
+<div class="line">
+   <div class="col-xs-6 form-group">
+    <label>Eintragen möglich:</label>
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked><span class="glyphicon glyphicon-play" aria-hidden="true"> </span>
+        </label>
+        <label class="btn btn-primary">
+            <input type="radio" name="options" id="option2" autocomplete="off"><span class="glyphicon glyphicon-off" aria-hidden="true"> </span> 
+        </label>
+    </div>
+</div>
+</div>
+</form>
+
+<a href="#/artueber">
+    <button type="button" class="btn btn-success" aria-label="Left Align">
+        Speichern
+        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
+    </button>
+</a>
+
+<a href="#/artueber">
+    <button type="button" class="btn btn-danger" aria-label="Left Align">
+        Abbrechen
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+    </button>
+</a>
+
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// NAVBAR UNTEN ///////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div id="menu" class="collapse navbar-collapse">
+            <nav aria-label="...">
+                <ul class="nav navbar-nav" ng-controller="NavbarController">
+                    <li>
+                        <ul class="pager">
+                            <li><a href="#/repoueber">Repositories</a></li>
+                            <li><a href="#/benutzerueber">Benutzer</a></li>
+                            <li><a href="#/artueber">Art</a></li>
+                            <li><a href="#/abmeldung">Abmelden</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</nav>
