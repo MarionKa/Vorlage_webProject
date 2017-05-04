@@ -12,9 +12,9 @@ connection.connect(function(error){
     }
 });
 
-function ausgabeAlle_m(){
+function fetchAll(){
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT * FROM ART', function(err, rows,  fields){
+        connection.query('', function(err, rows,  fields){
             if (err) {
                 reject(err);
             } else {
@@ -26,40 +26,25 @@ function ausgabeAlle_m(){
 }
 
 
-function ausgabeEin_m(id) {
+function fetch(id) {
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT * FROM ART WHERE id = ?', [id /*ID*/], function (err, rows, flieds) {
+        connection.query('SELECT * FROM art WHERE id = ?', [id], function (err, rows, flieds) {
             if (err) {
                 reject(err);
-                console.log('fetch(id)err ', rows );
+                console.log('ftech(id)err ', rows );
             } else {
-                console.log('fetch(id)rows ', rows );
+                console.log('ftech(id)rows ', rows );
                 resolve(rows);
             }
         });
     });
 }
-
-function ausgabeAktiv_m() {
-    return new Promise(function (resolve, reject) {
-        connection.query('SELECT * FROM ART WHERE id = 1', function (err, rows, flieds) {
-            if (err) {
-                reject(err);
-                console.log('fetch(id)err ', rows );
-            } else {
-                console.log('fetch(id)rows ', rows );
-                resolve(rows);
-            }
-        });
-    });
-}
-
 
 // //Neue Datensätze anlegen 
-function eingabe_m(data) {
-     console.log('im instert' +' ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME)
+function insert(data) {
+     console.log('im instert' +' ' + data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID)
     return new Promise(function (resolve, reject) {
-        connection.query('INSERT INTO ART (ID, BEZEICHNUNG, ORDNERNAME) select MAX(ID)+1, ?, ? from ART', [data.BEZEICHNUNG, data.ORDNERNAME], function (err) {
+        connection.query('INSERT INTO benutzer (ID, NACHNAME, VORNAME, EMAILKENNUNG, RECHTE_ID) SELECT MAX(ID)+1, ?, ?, ?, ? FROM benutzer', [data.NACHNAME, data.VORNAME, data.EMAILKENNUNG, data.RECHTE_ID], function (err) {
             if (err) {
                 reject(err);
             } else {
@@ -69,10 +54,10 @@ function eingabe_m(data) {
     });
 }
 
-function update_m(data, id) {
-    console.log('Kommt die ID? ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME + ' ' + id);
+function update(data, id) {
+    console.log('Kommt die ID? ' + data.NACHNAME +' '+ id);
     return new Promise(function (resolve, reject) {
-        connection.query('UPDATE ART SET BEZEICHNUNG = ?, ORDNERNAME = ? WHERE id = ?', [data.BEZEICHNUNG, data.ORDNERNAME, id /*ID*/], function (err) {
+        connection.query('UPDATE benutzer SET NACHNAME = ?, VORNAME = ?, EMAILKENNUNG = ?, RECHTE_ID = ? WHERE ID = ?', [data.NACHNAME, data.VORNAME, data.EMAILKENNUNG, data.RECHTE_ID, id], function (err) {
             if (err) {
                 reject(err);
             } else {
@@ -82,9 +67,9 @@ function update_m(data, id) {
     });
 }
 
-function loeschen_m(id) {
+function remove(id) {
     return new Promise(function (resolve, reject) {
-        connection.query('DELETE FROM ART WHERE id = ?', [ id /*ID*/], function (err) {
+        connection.query('DELETE FROM benutzer WHERE ID = ?', [id], function (err) {
             if (err) {
                 reject(err);
             } else {
@@ -95,11 +80,10 @@ function loeschen_m(id) {
 }
 
 module.exports = {
-    ausgabeAlle_m: ausgabeAlle_m,
-    ausgabeEin_m: ausgabeEin_m,
-    ausgabeAlle_m: ausgabeAktiv_m,
-    eingabe_m: eingabe_m,
-    update_m: update_m,
-    loeschen_m: loeschen_m
+    fetchAll:fetchAll,
+    fetch: fetch,
+    insert: insert,
+    update: update,
+    remove: remove
 };
 

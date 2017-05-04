@@ -77,7 +77,7 @@ function loeschen_m(id) {
                 reject(err);
             } else {
                 resolve();
-                console.log('Hier wird geloescht: benutzer');
+                console.log('Hier wird geloescht');
             }
         });
     });
