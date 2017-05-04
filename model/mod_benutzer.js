@@ -33,7 +33,7 @@ function ausgabeAlle_m(){
 //Ausgabe eines einzigen Benutzers auf Basis seiner ID
 function ausgabeEin_m(id){
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT b.ID, b.EMAILKENNUNG, b.VORNAME, b.NACHNAME, b.RECHTE_ID, r.BEZEICHNUNG as RECHTE FROM BENUTZER b JOIN RECHTE r ON (b.RECHTE_ID = r.ID) WHERE b.ID = ?', [1 /*ID*/], function(err, rows,  fields){
+        connection.query('SELECT b.ID, b.EMAILKENNUNG, b.VORNAME, b.NACHNAME, b.RECHTE_ID, r.BEZEICHNUNG as RECHTE FROM BENUTZER b JOIN RECHTE r ON (b.RECHTE_ID = r.ID) WHERE b.ID = ?', [id /*ID*/], function(err, rows,  fields){
             if (err) {
                 reject(err);
             } else {
@@ -81,7 +81,7 @@ function loeschen_m(id) {
                 reject(err);
             } else {
                 resolve();
-                console.log('Hier wird geloescht');
+                console.log('Hier wird geloescht: benutzer');
             }
         });
     });

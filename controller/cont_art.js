@@ -1,7 +1,7 @@
-var benutzer = require('../model/mod_art');
+var art = require('../model/mod_art');
 
-function ausgeben(req, res) {      //ausgeben
-    benutzer.ausgeben(req.params.id).then(function success(row) {
+function ausgabeAlle(req, res) {      
+    art.ausgabeAlle_m(req.params.id).then(function success(row) {
         res.send(row);
         console.log('fetch cont_art ',row);
     }, function failure(err) {
@@ -9,36 +9,53 @@ function ausgeben(req, res) {      //ausgeben
     })
 }
 
-function anlegen(req, res) {
-    console.log('cont_benutzer.anlegen '+ req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' '+ req.body.RECHTE_ID);
-    var benutzerData = {
-        NACHNAME: req.body.NACHNAME,
-        VORNAME: req.body.VORNAME,
-        EMAILKENNUNG: req.body.EMAILKENNUNG,
-        RECHTE_ID: req.body.RECHTE_ID
-    };
-    console.log(benutzerData);
+function ausgabeEin(req, res) {      //SELECT mit GET-Methode
+    art.ausgabeEin_m(req.params.id).then(function success(row) {
+        res.send(row);
+        console.log('fetch von Art ',row);
+    }, function failure(err) {
+        res.send(err);
+    })
+}
 
-    benutzer.insert(benutzerData).then(function(id) {
+//Alle aktiven Repo-Aten, d.h. REPO_STATUS_ID = 1, ausgeben
+function ausgabeAktiv(req, res) {      //SELECT mit GET-Methode
+    art.ausgabeAktiv_m(req.params.id).then(function success(row) {
+        res.send(row);
+        console.log('fetch von Art ',row);
+    }, function failure(err) {
+        res.send(err);
+    })
+}
+
+function eingabe(req, res) {
+    console.log('cont_art.eingabe '+ req.body.BEZEICHNUNG + ' '+ req.body.ORDNERNAME +' '+ req.body.EINTRAGEN_MGLS);
+    var artData = {
+        BEZEICHNUNG: req.body.BEZEICHNUNG,
+        ORDNERNAME: req.body.ORDNERNAME,
+        EINTRAGEN_MGL: req.body.EINTRAGEN_MGL
+    };
+    console.log(artData);
+
+    art.eingabe_m(artData).then(function(id) {
         res.send(JSON.stringify({id: id}));
     });
 }
 
 function update(req, res) {
-    console.log('update server'+ ' ' + req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' '+ req.body.RECHTE_ID);
-    var benutzerData = {
-        NACHNAME: req.body.NACHNAME,
-        VORNAME: req.body.VORNAME,
-        EMAILKENNUNG: req.body.EMAILKENNUNG,
-        RECHTE_ID: req.body.RECHTE_ID
+    console.log('update server'+ ' ' + req.body.BEZEICHNUNG + ' '+ req.body.ORDNERNAME +' '+ req.body.EINTRAGEN_MGL);
+    var artData = {
+        BEZEICHNUNG: req.body.BEZEICHNUNG,
+        ORDNERNAME: req.body.ORDNERNAME,
+        EINTRAGEN_MGL: req.body.EINTRAGEN_MGL
     };
 
-    benutzer.update(benutzerData, req.params.id).then(function() {
+    art.update_m(artData, req.params.id).then(function() {
         res.send(JSON.stringify(true));
     });
 }
 function loeschen(req, res) {
-    benutzer.remove(req.params.id).then(function() {
+    art.loeschen_m(req.params.id).then(function() {
         res.send(JSON.stringify(true));
     });
 }
@@ -46,8 +63,10 @@ function loeschen(req, res) {
 
 
 module.exports = {
-    anlegen:anlegen,
-    ausgeben:ausgeben,
+    ausgabeAlle: ausgabeAlle,
+    ausgabeEin: ausgabeEin,
+    ausgabeAktiv: ausgabeAktiv,
+    eingabe: eingabe,
     update:update,
     loeschen:loeschen
 };
