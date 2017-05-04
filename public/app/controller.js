@@ -15,6 +15,11 @@ function FormController ($state, $stateParams, dataFactory) {
     this.EMAILKENNUNG = '';
     this.RECHTE_ID = '';
 
+    // this.REPONAME = '';
+    // this.AUTHNAME = '';
+    // this.ART_ID = '';
+    // this.REPO_STATUS_ID = '';
+
         console.log('state FormController');
 
     if($stateParams.id) {
@@ -25,18 +30,30 @@ function FormController ($state, $stateParams, dataFactory) {
             this.VORNAME = test[0].VORNAME;
             this.EMAILKENNUNG = test[0].EMAILKENNUNG;
             this.RECHTE_ID = test[0].RECHTE_ID;
+            
+            // console.log('test im read ', test[0].REPONAME);
+            // this.REPONAME = test[0].REPONAME;
+            // this.AUTHNAME = test[0].AUTHNAME;
+            // this.ART_ID = test[0].ART_ID;
+            // this.REPO_STATUS_ID = '1';
         }.bind(this));
     }
 
     this.save = function () {
-        console.log('test1 '+ this.NACHNAME  +' '+ this.VORNAME +' ' + this.EMAILKENNUNG +' ' + this.RECHTE_ID);
+        console.log('test1 '+ this.REPONAME  +' '+ this.AUTHNAME +' ' + this.ART_ID);
 
         var data = {
-            NACHNAME: this.NACHNAME,
-            VORNAME: this.VORNAME,
-            EMAILKENNUNG: this.EMAILKENNUNG,
-            RECHTE_ID: this.RECHTE_ID,
+            NACHNAME: 'this.NACHNAME',
+            VORNAME: 'this.VORNAME',
+            EMAILKENNUNG: 'this.EMAILKENNUNG',
+            RECHTE_ID: 1,
             PASSWORT: 'test'
+
+            // REPONAME: maka,
+            // AUTHNAME: kaiserma,
+            // ART_ID: 1,
+            // REPO_STATUS_ID: '1'
+
         };
         if ($stateParams.id) {
             console.log('save update');
