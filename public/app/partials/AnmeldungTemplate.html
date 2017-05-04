@@ -1,0 +1,118 @@
+﻿<div class="row">
+    <h1 class="col-xs-12 page-header">
+        <large>Herzlich Willkommen beim Repositorymanagement!</large>
+    </h1>
+</div>
+
+<form name="Anmeldung">
+
+
+
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><h4>Zum Anmelden geben Sie Bitte Ihre Hochschul-E-Mail-Adresse und Ihr Passwort ein.</h4> </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label>E-Mail-Adresse:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="MustermannMa12345" aria-describedby="basic-addon2">
+                        <span class="input-group-addon" id="basic-addon2">@th-nuernberg.de</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label>Passwort:</label>
+                    <input class="form-control"
+                           type="password" placeholder="Ihr Passwort">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <p style="line-height: 150%">
+                        <a href="#/kennwort">Kennwort vergessen?</a> oder
+                        <a href="#/registrierung">Noch kein Konto?</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <a href="#/ueberpers">
+                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                            Anmelden!
+                            <span class="glyphicon glyphicon-log-in" aria-hidden="true"> </span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            <h4 style="line-height: 150%">Sie befinden sich auf der Seite des Repositorymanagements von <a href="http://www.th-nuernberg.de/seitenbaum/fakultaeten/elektrotechnik-feinwerktechnik-informationstechnik/personen/prof-dr-hofmann/prof-dr-oliver-hofmann/page.html">Prof. Dr. Hofmann</a>.</h4>
+            <p>
+                <a href=".../data/Hilfedoku.pdf" download="Hilfe.pdf">Download</a> des Hilfe-Dokuments. 
+                <a href=".../data/Hilfedoku.pdf" download>Hier</a> können Sie das Hilfe-Dokument herunterladen.
+            </p>
+        </div>
+    </div>
+
+
+
+
+</form>
+
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a id="brand" class="navbar-brand" href="#/reh">
+                <img alt="Brand" src="img/4.png">
+            </a>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div id="menu" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav" ng-controller="NavbarController">
+                <li ng-class="{ active: isActive('/anmeldung')}"><a href="#/anmeldung">Anmelden</a></li>
+                <li ng-class="{ active: isActive('/registrierung')}"><a href="#/registrierung">Registrieren</a></li>
+                <li ng-class="{ active: isActive('/passwort')}"><a href="#/kennwort">Passwort vergessen</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div id="menu" class="collapse navbar-collapse">
+            <nav aria-label="...">
+                <ul class="nav navbar-nav" ng-controller="NavbarController">
+                    <li>
+                        <ul class="pager">
+                            <li><a href="#/anmeldung">Anmeldung</a></li>
+                            <li><a href="#/registrierung">Registrierung</a></li>
+                            <li><a href="#/kennwort">Passwort vergessen</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</nav>
