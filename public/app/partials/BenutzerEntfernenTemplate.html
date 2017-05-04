@@ -1,0 +1,172 @@
+﻿<div class="row">
+<h1 class="col-xs-12 page-header">
+    <large>Herzlich Willkommen Prof. Dr. Hofmann!</large>
+</h1>
+
+</div>
+
+<form name="Uebersicht">
+<div class="row">
+    <div class="col-xs-12 form-group">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3>Überblick über alle Benutzer:
+                </h3>
+            </div>
+
+
+                    
+                    <scrollen>
+
+                        <!-- Repos für Vorlesungen -->
+                        <table class="table">
+                            <tr> <th>Name</th><th></th></tr>
+
+                <!-- <tr ng-repeat="student in listController.Studenten"> 
+                    <td>{{student.art}}</span></td> 
+                    <td>{{student.pfad}}</td> 
+                    <td>{{student.mitglieder}}</td> 
+                    <td>{{student.datum}}</td> 
+                    <td> <button type="button" class="btn btn-default" aria-label="Left Align">Safe/Edit</button></td>
+                    <td align="center"><input checked data-toggle="toggle" type="checkbox"></td>
+                    <td><button type="button" class="btn btn-danger" aria-label="Left Align">Löschen</button></td>
+                </tr> -->
+
+                <tr>
+                    <td>Kaiser Marion</td>
+                    <td> 
+                    <button type="button" class="btn btn-default" aria-label="Left Align">
+                        Löschen
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                    </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>John Michael</td>
+                    <td> 
+                    <button type="button" class="btn btn-default" aria-label="Left Align">
+                        Löschen
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                    </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Berndt Andreas</td>
+                    <td>
+                    <button type="button" class="btn btn-default" aria-label="Left Align">
+                        Löschen
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                    </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Kullmann Philipp</td>
+                    <td>
+                    <button type="button" class="btn btn-default" aria-label="Left Align">
+                        Löschen
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                    </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Hofmann Oliver</td>
+                    <td> 
+                    <button type="button" class="btn btn-default" aria-label="Left Align">
+                        Löschen
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                    </button>
+                    </td>
+                </tr>
+
+            </table>
+<a href="#/benutzerhinzu">
+                    <button type="button" class="btn btn-success" aria-label="Left Align">
+                        Benutzer hinzufügen!
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
+                    </button>
+                </a>
+                <a href="#/repoueber">
+<button type="button" class="btn btn-danger" aria-label="Left Align">
+    Abbrechen
+    <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+</button>
+</a>
+
+
+        </scrollen>
+    </div>
+</div>
+</div>
+
+
+
+</form>
+<!--<form>
+<div class="row">
+<div class="col-xs-6 form-group">
+    <a href="#/abmeldung">
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+            Abmelden!
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"> </span>
+        </button>
+    </a>
+</div>
+</div>
+</form>-->
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a id="brand" class="navbar-brand" href="#/reh">
+                <img alt="Brand" src="img/4.png">
+            </a>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div id="menu" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav" ng-controller="NavbarController">
+                <li ng-class="{ active: isActive('/professor')}"><a href="#/repoueber">Repositories</a></li>
+            </ul>
+            <ul class="nav navbar-nav" ng-controller="NavbarController">
+                <li ng-class="{ active: isActive('/professor')}"><a href="#/benutzerueber">Benutzer</a></li>
+            </ul>
+            <ul class="nav navbar-nav" ng-controller="NavbarController">
+                <li ng-class="{ active: isActive('/professor')}"><a href="#/artueber">Art</a></li>
+            </ul>
+            <button type="button" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>
+        </div>
+    </div>
+</nav>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div id="menu" class="collapse navbar-collapse">
+            <nav aria-label="...">
+                <ul class="nav navbar-nav" ng-controller="NavbarController">
+                    <li>
+                        <ul class="pager">
+                            <li><a href="#/repoueber">Repositories</a></li>
+                            <li><a href="#/benutzerueber">Benutzer</a></li>
+                            <li><a href="#/artueber">Art</a></li>
+                            <li><a href="#/abmeldung">Abmelden</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</nav>

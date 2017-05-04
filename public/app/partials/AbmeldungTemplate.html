@@ -1,0 +1,61 @@
+﻿<div class="row">
+    <h1 class="col-xs-12 page-header">
+        <large>Sie wurden erfolgreich abgemeldet!</large>
+    </h1>    
+</div>
+
+
+<form name="Abmeldung">
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            <h4 style="line-height: 150%">Klicken Sie <a href="#/anmeldung">hier</a> um sich erneut anzumelden.</h4>
+        </div>
+    </div>
+</form>
+
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a id="brand" class="navbar-brand" href="#/reh">
+                <img alt="Brand" src="img/4.png">
+            </a>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div id="menu" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav" ng-controller="NavbarController">
+                <li ng-class="{ active: isActive('/anmeldung')}"><a href="#/anmeldung">Anmelden</a></li>
+                <li ng-class="{ active: isActive('/registrierung')}"><a href="#/registrierung">Registrieren</a></li>
+                <li ng-class="{ active: isActive('/passwort')}"><a href="#/kennwort">Passwort vergessen</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div id="menu" class="collapse navbar-collapse">
+            <nav aria-label="...">
+                <ul class="nav navbar-nav" ng-controller="NavbarController">
+                    <li>
+                        <ul class="pager">
+                            <li><a href="#/anmeldung">Anmeldung</a></li>
+                            <li><a href="#/registrierung">Registrierung</a></li>
+                            <li><a href="#/kennwort">Passwort vergessen</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</nav>
