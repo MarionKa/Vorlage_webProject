@@ -1,6 +1,6 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var router = require('./router');
+var express     = require('express');
+var bodyParser  = require('body-parser');
+var router      = require('./router');
 var passport	= require('passport');
 var jwt         = require('jwt-simple');
 

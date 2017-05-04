@@ -27,4 +27,6 @@ module.exports = function(app) {
     app.post('/art/:id', cont_art.anlegen);
     app.put('/art/:id', cont_art.update);
     app.delete('/art/:id', cont_art.loeschen);
+
+    // app.post('/authenticate', cont_passport);
 };

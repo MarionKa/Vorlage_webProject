@@ -32,10 +32,10 @@ function FormController ($state, $stateParams, dataFactory) {
         console.log('test1 '+ this.NACHNAME  +' '+ this.VORNAME +' ' + this.EMAILKENNUNG +' ' + this.RECHTE_ID);
 
         var data = {
-            NACHNAME: this.NACHNAME,
-            VORNAME: this.VORNAME,
-            EMAILKENNUNG: this.EMAILKENNUNG,
-            RECHTE_ID: this.RECHTE_ID,
+            NACHNAME: 'this.NACHNAME',
+            VORNAME: 'this.VORNAME',
+            EMAILKENNUNG: 'this.EMAILKENNUNG',
+            RECHTE_ID: 1,
             PASSWORT: 'test'
         };
         if ($stateParams.id) {
