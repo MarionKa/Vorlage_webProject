@@ -1,51 +1,57 @@
-var benutzer = require('../model/mod_repo');
+var repo = require('../model/mod_repo');
 
-function ausgeben(req, res) {      
-    benutzer.ausgeben(req.params.id).then(function success(row) {
+function ausgabeEin(req, res) {      //SELECT mit GET-Methode
+    repo.ausgabeEin_m(req.params.id).then(function success(row) {
         res.send(row);
-        console.log('fetch cont_repo ',row);
+        console.log('fetch von Repo ',row);
     }, function failure(err) {
         res.send(err);
     })
 }
 
-function anlegen(req, res) {     //anlegen
-    console.log('bin etz aufm server'+ ' ' + req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' '+ req.body.RECHTE_ID);
-    var benutzerData = {
-        NACHNAME: req.body.NACHNAME,
-        VORNAME: req.body.VORNAME,
-        EMAILKENNUNG: req.body.EMAILKENNUNG,
-        RECHTE_ID: req.body.RECHTE_ID
-    };
-    console.log(benutzerData);
+function eingabe(req, res) {        //Persönliches Repository hinzufügen
+    console.log('cont_repo.eingabe '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
+    var repoData = {
+        REPONAME: req.body.REPONAME,
+        AUTHNAME: req.body.AUTHNAME,
+        GUELTIG_BIS: req.body.GUELTIG_BIS,
+        ART_ID: req.body.ART_ID,
+        REPO_STATUS_ID: req.body.REPO_STATUS_ID
 
-    benutzer.insert(benutzerData).then(function(id) {
+    };
+    console.log(repoData);
+
+    repo.eingabe_m(repoData).then(function(id) {
         res.send(JSON.stringify({id: id}));
     });
 }
 
-function update(req, res) {
-    console.log('update server'+ ' ' + req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' '+ req.body.RECHTE_ID);
-    var benutzerData = {
-        NACHNAME: req.body.NACHNAME,
-        VORNAME: req.body.VORNAME,
-        EMAILKENNUNG: req.body.EMAILKENNUNG,
-        RECHTE_ID: req.body.RECHTE_ID
+function update(req, res) {         //Update mit PUT-Methode
+    console.log('update server'+ ' ' + req.body.REPONAME + ' '+ req.body.AUTHNAME +' '+ req.body.GUELTIG_BIS);
+    var repoData = {                
+        REPONAME: req.body.REPONAME,
+        AUTHNAME: req.body.AUTHNAME,
+        GUELTIG_BIS: req.body.GUELTIG_BIS,
+        ART_ID: req.body.ART_ID
     };
 
-    benutzer.update(benutzerData, req.params.id).then(function() {
+    repo.update_m(repoData, req.params.id).then(function() {
         res.send(JSON.stringify(true));
     });
 }
+
+//Ein Repo und dessen Einträge in der Verbinden-Tabelle löschen
 function loeschen(req, res) {
-    benutzer.remove(req.params.id).then(function() {
-        res.send(JSON.stringify(true));
+    repo.loeschen_m(req.params.id).then(function() {
+        res.send(JSON.stringify(true)); //Konvertiert eine js-Wert in einen json-String
+        console.log('Wir wollen loeschen: repo');
     });
 }
 
 module.exports = {
-    ausgeben:ausgeben,
-    anlegen:anlegen,
+    ausgabeEin: ausgabeEin,
+    eingabe: eingabe,
     update: update,
-    loeschen:loeschen
+    loeschen: loeschen
+
 };
