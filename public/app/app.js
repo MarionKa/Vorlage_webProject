@@ -19,6 +19,13 @@ function configFn($stateProvider, $urlRouterProvider) {
             controller: 'FormController',
             controllerAs: 'formController'
         })
+        .state('delete', {
+            url: "/delete/:id",
+            controller: 'DeleteController'
+        })
+
+
+
         .state('abmeldung', {
             url: "/abmeldung",
             templateUrl: "app/partials/AbmeldungTemplate.html"
@@ -28,20 +35,26 @@ function configFn($stateProvider, $urlRouterProvider) {
             templateUrl: "app/partials/AnmeldungTemplate.html"
         })
         .state('artedit', {
-            url: "/artedit",
-            templateUrl: "app/partials/ArtEditierenTemplate.html"
+            url: "/artedit/:id",
+            templateUrl: "app/partials/ArtEditierenTemplate.html",            
+            controller: 'FormControllerArt', 
+            controllerAs: 'formControllerArt'
         })
         .state('artueber', {
             url: "/artueber",
-            templateUrl: "app/partials/ArtUebersichtTemplate.html"
+            templateUrl: "app/partials/ArtUebersichtTemplate.html",
+            controller: 'ListControllerArt', 
+            controllerAs: 'listControllerArt'
         })
         .state('beantragung', {
             url: "/beantragung",
             templateUrl: "app/partials/BeantragungTemplate.html"
         })
         .state('benutzeredit', {
-            url: "/benutzeredit",
-            templateUrl: "app/partials/BenutzerEinzelansichtTemplate.html"
+            url: "/benutzeredit/:id",
+            templateUrl: "app/partials/BenutzerEinzelansichtTemplate.html",
+            controller: 'FormControllerBenutzer', 
+            controllerAs: 'formControllerBenutzer'
         })
         .state('benutzerentf', {
             url: "/benutzerentf",
@@ -53,7 +66,9 @@ function configFn($stateProvider, $urlRouterProvider) {
         })
         .state('benutzerueber', {
             url: "/benutzerueber",
-            templateUrl: "app/partials/BenutzerUebersichtTemplate.html"
+            templateUrl: "app/partials/BenutzerUebersichtTemplate.html",
+            controller: 'ListControllerBenutzer', 
+            controllerAs: 'listControllerBenutzer'
         })
         .state('kennwort', {
             url: "/kennwort",
@@ -78,9 +93,6 @@ function configFn($stateProvider, $urlRouterProvider) {
         .state('ueberpers', {
             url: "/ueberpers",
             templateUrl: "app/partials/RepoPersUeTemplate.html"
-        })
-        .state('delete', {
-            url: "/delete/:id",
-            controller: 'DeleteController'
         });
+
 }
