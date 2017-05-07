@@ -18,7 +18,7 @@ function ausgabeAlle_m(){
             if (err) {
                 reject(err);
             } else {
-                // console.log(rows);
+                console.log('model Art',rows);
                 resolve(rows);
             }  
         });
@@ -33,7 +33,7 @@ function ausgabeEin_m(id) {
                 reject(err);
                 console.log('fetch(id)err ', rows );
             } else {
-                console.log('fetch(id)rows ', rows );
+                console.log('Aufgabe eine Art ', rows );
                 resolve(rows);
             }
         });
@@ -47,7 +47,7 @@ function ausgabeAktiv_m() {
                 reject(err);
                 console.log('fetch(id)err ', rows );
             } else {
-                console.log('fetch(id)rows ', rows );
+                console.log('Ausgabe aktiv ', rows );
                 resolve(rows);
             }
         });
