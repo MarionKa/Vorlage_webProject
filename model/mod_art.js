@@ -47,7 +47,7 @@ function ausgabeAktiv_m() {
                 reject(err);
                 console.log('fetch(id)err ', rows );
             } else {
-                console.log('Ausgabe aktiv ', rows );
+                console.log('Ausgabe aktiv falsch', rows );
                 resolve(rows);
             }
         });
@@ -97,7 +97,7 @@ function loeschen_m(id) {
 module.exports = {
     ausgabeAlle_m: ausgabeAlle_m,
     ausgabeEin_m: ausgabeEin_m,
-    ausgabeAlle_m: ausgabeAktiv_m,
+    ausgabeAktiv_m: ausgabeAktiv_m,
     eingabe_m: eingabe_m,
     update_m: update_m,
     loeschen_m: loeschen_m
