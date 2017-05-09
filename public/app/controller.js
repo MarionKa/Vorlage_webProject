@@ -43,9 +43,9 @@ function FormController ($state, $stateParams, dataFactory) {
         console.log('test1 '+ this.REPONAME  +' '+ this.AUTHNAME +' ' + this.ART_ID);
 
         var data = {
-            NACHNAME: 'this.NACHNAME',
-            VORNAME: 'this.VORNAME',
-            EMAILKENNUNG: 'this.EMAILKENNUNG',
+            NACHNAME: this.NACHNAME,
+            VORNAME: this.VORNAME,
+            EMAILKENNUNG: this.EMAILKENNUNG,
             RECHTE_ID: 1,
             PASSWORT: 'test'
 

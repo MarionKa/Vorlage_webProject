@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function(error){
     if(!!error){
-        console.log('Error DB, mod_repo');
+        console.log('Error DB, mod_repos');
     } else {
         console.log('Connection sucessfull, mod_repos!');
     }
