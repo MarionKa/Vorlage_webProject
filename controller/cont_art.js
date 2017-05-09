@@ -1,9 +1,9 @@
 var art = require('../model/mod_art');
 
-function ausgabeAlle(req, res) {      
+function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
     art.ausgabeAlle_m(req.params.id).then(function success(row) {
         res.send(row);
-        console.log('fetch cont_art ',row);
+        console.log('fetch alle art ',row);
     }, function failure(err) {
         res.send(err);
     })
@@ -12,13 +12,13 @@ function ausgabeAlle(req, res) {
 function ausgabeEin(req, res) {      //SELECT mit GET-Methode
     art.ausgabeEin_m(req.params.id).then(function success(row) {
         res.send(row);
-        console.log('fetch von Art ',row);
+        console.log('fetch eine Art ',row);
     }, function failure(err) {
         res.send(err);
     })
 }
 
-//Alle aktiven Repo-Aten, d.h. REPO_STATUS_ID = 1, ausgeben
+//Alle aktiven Repo-Arten, d.h. REPO_STATUS_ID = 1, ausgeben
 function ausgabeAktiv(req, res) {      //SELECT mit GET-Methode
     art.ausgabeAktiv_m(req.params.id).then(function success(row) {
         res.send(row);

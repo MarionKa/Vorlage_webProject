@@ -1,15 +1,15 @@
 angular.module('webTestDB')
-    .controller('ListController', ListController)
-    .controller('FormController', FormController)
-    .controller('DeleteController', DeleteController);
+    .controller('ListControllerBenutzer', ListControllerBenutzer)
+    .controller('FormControllerBenutzer', FormControllerBenutzer)
+    .controller('DeleteControllerBenutzer', DeleteControllerBenutzer);
 
-ListController.$inject = ['dataFactory'];
-function ListController (dataFactory) {
-    this.test = dataFactory.getAll();       //getAll() in model.js (client) festgelegt
+ListControllerBenutzer.$inject = ['dataFactoryBenutzer'];
+function ListControllerBenutzer (dataFactoryBenutzer) {
+    this.test = dataFactoryBenutzer.getAll();       //getAll() in model.js (client) festgelegt
 }
 
-FormController.$inject = ['$state', '$stateParams', 'dataFactory'];
-function FormController ($state, $stateParams, dataFactory) {
+FormControllerBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryBenutzer'];
+function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
     this.NACHNAME =  '';
     this.VORNAME = '';
     this.EMAILKENNUNG = '';
@@ -20,11 +20,11 @@ function FormController ($state, $stateParams, dataFactory) {
     // this.ART_ID = '';
     // this.REPO_STATUS_ID = '';
 
-        console.log('state FormController');
+        console.log('state FormControllerBenutzer');
 
     if($stateParams.id) {
         console.log('state2 ' + $stateParams.id);
-        dataFactory.read({id: $stateParams.id}).$promise.then(function(test) {
+        dataFactoryBenutzer.read({id: $stateParams.id}).$promise.then(function(test) {
             console.log('test im read ', test[0].RECHTE_ID );
             this.NACHNAME = test[0].NACHNAME;
             this.VORNAME = test[0].VORNAME;
@@ -58,18 +58,18 @@ function FormController ($state, $stateParams, dataFactory) {
         if ($stateParams.id) {
             console.log('save update');
             data.id = $stateParams.id;
-            dataFactory.update(data).$promise.then($state.go.bind($state, 'list'));
+            dataFactoryBenutzer.update(data).$promise.then($state.go.bind($state, 'benutzerueber'));
         } else {
             console.log('save create');
-            dataFactory.create(data).$promise.then($state.go.bind($state, 'list'));
+            dataFactoryBenutzer.create(data).$promise.then($state.go.bind($state, 'benutzerueber'));
         }
     }.bind(this);
 }
 
-DeleteController.$inject = ['$state', '$stateParams', 'dataFactory'];
-function DeleteController ($state, $stateParams, dataFactory) {
-    dataFactory.delete({id: $stateParams.id}).$promise.then(function() {
-        $state.go('list');
+DeleteControllerBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryBenutzer'];
+function DeleteControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
+    dataFactoryBenutzer.delete({id: $stateParams.id}).$promise.then(function() {
+        $state.go('benutzerueber');
     });
 }
 

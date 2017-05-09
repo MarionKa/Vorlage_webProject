@@ -3,60 +3,69 @@
         Ändern Sie hier den ausgewählten Datensatz
     </h1>
 </div>
+<!-- ////////////////////////////////////////////////////////////// -->
 
-<form name="studentForm">
-  <div class="row">
-   <div class="col-xs-12 form-group">
-    <label>Art</label>
-    <input class="form-control"
-    type="text"
-    ng-model="formController.art"
-    value=""/>
+
+<div class="row">
+ <div class="col-xs-12 form-group">
+    <label>Nachname</label>
+    <input type="text" ng-model="formControllerBenutzer.NACHNAME">
 </div>
 </div>
 
 <div class="row">
-   <div class="col-xs-12 form-group">
-    <label>Authname</label>
-    <input class="form-control"
-    type="text"
-    ng-model="formController.authname"
-    value=""/>
+ <div class="col-xs-12 form-group">
+    <label>Vorname</label>
+    <input type="text" ng-model="formControllerBenutzer.VORNAME">
 </div>
 </div>
 
 <div class="row">
-   <div class="col-xs-12 form-group">
-    <label>Pfad</label>
-    <input class="form-control"
-    type="text"
-    ng-model="formController.pfad"
-    value=""/>
+ <div class="col-xs-12 form-group">
+    <label>Emailkennung</label>
+    <input type="text" ng-model="formControllerBenutzer.EMAILKENNUNG">
 </div>
 </div>
 
 <div class="row">
-   <div class="col-xs-12 form-group">
-    <label>Zugriffsberechtigte</label>
-    <input class="form-control"
-    type="text"
-    ng-model="formController.zugriff"
-    value=""/>
+ <div class="col-xs-12 form-group">
+    <label>Recht_ID</label>
+    <input type="text" ng-model="formControllerBenutzer.RECHTE_ID">
 </div>
 </div>
 
-<div class="row">
-   <div class="col-xs-12 form-group">
-    <label>Gültigkeit</label>
-    <input class="form-control"
-    type="text"
-    ng-model="formController.gueltig"
-    value=""/>
-</div>
-</div>
 
+
+<a>
+    <button type="button" ng-click="formControllerBenutzer.save()" class="btn btn-success" aria-label="Left Align">
+        Speichern
+        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
+    </button>
+</a>
+
+<a href="#/benutzerueber">
+    <button type="button" class="btn btn-danger" aria-label="Left Align">
+        Abbrechen
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+    </button>
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- //////////////////////////////////////////////////////////// -->
+
+<!-- 
 <div class="line">
-   <div class="col-xs-6 form-group">
+ <div class="col-xs-6 form-group">
     <label>Aktiv:</label>
     <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary active">
@@ -70,7 +79,7 @@
 </div>
 
 <div class="line">
-   <div class="col-xs-6 form-group">
+ <div class="col-xs-6 form-group">
     <label>Gelöscht:</label>
     <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary active">
@@ -97,7 +106,7 @@
         <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
     </button>
 </a>
-
+ -->
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////

@@ -58,10 +58,12 @@ function FormController ($state, $stateParams, dataFactory) {
         if ($stateParams.id) {
             console.log('save update');
             data.id = $stateParams.id;
-            dataFactory.update(data).$promise.then($state.go.bind($state, 'list'));
+            dataFactory.update(data).$promise.then($state.go.bind($state, 'benutzerueber'));
+            //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         } else {
             console.log('save create');
-            dataFactory.create(data).$promise.then($state.go.bind($state, 'list'));
+            dataFactory.create(data).$promise.then($state.go.bind($state, 'benutzerueber'));
+            //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         }
     }.bind(this);
 }
@@ -69,7 +71,7 @@ function FormController ($state, $stateParams, dataFactory) {
 DeleteController.$inject = ['$state', '$stateParams', 'dataFactory'];
 function DeleteController ($state, $stateParams, dataFactory) {
     dataFactory.delete({id: $stateParams.id}).$promise.then(function() {
-        $state.go('list');
+        $state.go('benutzerueber');
     });
 }
 
