@@ -13,7 +13,7 @@ function ausgabeAlle(req, res) {
 function ausgabeEin(req, res) {      
     repos.ausgabeEin_m(req.params.id).then(function success(row) {
         res.send(row);
-        console.log('fetch von Repos ',row);
+        console.log('fetch einen Datensatz von Repos (cont)',row);
     }, function failure(err) {
         res.send(err);
     })
