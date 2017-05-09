@@ -4,26 +4,26 @@
     </h1>
 </div>
 
-<form name="studentForm">
-  <div class="row">
-   <div class="col-xs-12 form-group">
-    <label>Bezeichnung:</label>
-    <input class="form-control"
-    type="text"
-    ng-model="formController.art"
-    value=""/>
-</div>
-</div>  
-
 <div class="row">
-   <div class="col-xs-12 form-group">
-    <label>Ordnername:</label>
-    <input class="form-control"
-    type="text"
-    ng-model="formController.art"
-    value=""/>
+ <div class="col-xs-12 form-group">
+    <label>Bezeichnung</label>
+    <input type="text" ng-model="formControllerArt.BEZEICHNUNG">
 </div>
+</div> 
+<div class="row">
+ <div class="col-xs-12 form-group">
+    <label>Ordnername</label>
+    <input type="text" ng-model="formControllerArt.ORDNERNAME">
 </div>
+</div> 
+<div class="row">
+ <div class="col-xs-12 form-group">
+    <label>Eintragen möglich:</label>
+    <input type="text" ng-model="formControllerArt.EINTRAGEN_MGL">
+</div>
+</div> 
+
+
 
 
 <!-- Knöpfe: -->
