@@ -33,7 +33,7 @@ function ausgabeEin_m(id) {
                 reject(err);
                 console.log('fetch(id)err ', rows );
             } else {
-                console.log('Aufgabe eine Art ', rows );
+                console.log('Ausgabe eine Art ', rows );
                 resolve(rows);
             }
         });

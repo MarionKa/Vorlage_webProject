@@ -13,7 +13,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
     this.NACHNAME =  '';
     this.VORNAME = '';
     this.EMAILKENNUNG = '';
-    this.RECHTE_ID = '';
+    this.RECHTE = '';
 
     // this.REPONAME = '';
     // this.AUTHNAME = '';
@@ -29,7 +29,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
             this.NACHNAME = test[0].NACHNAME;
             this.VORNAME = test[0].VORNAME;
             this.EMAILKENNUNG = test[0].EMAILKENNUNG;
-            this.RECHTE_ID = test[0].RECHTE_ID;
+            this.RECHTE = test[0].RECHTE;
             
             // console.log('test im read ', test[0].REPONAME);
             // this.REPONAME = test[0].REPONAME;
@@ -46,7 +46,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
             NACHNAME: this.NACHNAME,
             VORNAME: this.VORNAME,
             EMAILKENNUNG: this.EMAILKENNUNG,
-            RECHTE_ID: 1,
+            RECHTE_ID: this.RECHTE_ID,
             PASSWORT: 'test'
 
             // REPONAME: maka,
