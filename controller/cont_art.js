@@ -67,6 +67,6 @@ module.exports = {
     ausgabeEin: ausgabeEin,
     ausgabeAktiv: ausgabeAktiv,
     eingabe: eingabe,
-    update: update,
-    loeschen: loeschen
+    update:update,
+    loeschen:loeschen
 };

@@ -33,7 +33,7 @@ function ausgabeEin_m(id){
             if (err) {
                 reject(err);
             } else {
-                 console.log('einen Datensatz editieren (mod)',rows);
+                 console.log('hier',rows);
                 resolve(rows);
             }  
         });

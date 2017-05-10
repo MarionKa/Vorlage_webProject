@@ -8,32 +8,44 @@
   <div class="row">
      <div class="col-xs-12 form-group">
         <label>Art</label>
-        <input type="text" ng-model="formControllerRepo.ART">
+        <input class="form-control"
+        type="text"
+        ng-model="formController.art"
+        value=""/>
     </div>
 </div>
 
 <div class="row">
  <div class="col-xs-12 form-group">
     <label>Authname</label>
-    <input type="text" ng-model="formControllerRepo.AUTHNAME">
- </div>
+    <input class="form-control"
+    type="text"
+    ng-model="formController.authname"
+    value=""/>
+</div>
 </div>
 
 <div class="row">
  <div class="col-xs-12 form-group">
     <label>Pfad</label>
-    <input type="text" ng-model="formControllerRepo.REPONAME">
- </div>
+    <input class="form-control"
+    type="text"
+    ng-model="formController.pfad"
+    value=""/>
+</div>
 </div>
 
 <div class="row">
  <div class="col-xs-12 form-group">
     <label>Zugriffsberechtigte</label>
-    <div> <input type="text" ng-model="formControllerRepo.BENUTZERNAMEN">
- </div>   
+    <div> <input class="form-control"
+    type="text"
+    ng-model="formController.zugriff"
+    value=""/>
+    </div>
+   
 </div>
 </div>
-
 <div class="row">
  <div class="col-xs-6 form-group">
      <label></label>
@@ -47,11 +59,16 @@
 </div>
 
 
+
+
 <div class="row">
  <div class="col-xs-12 form-group">
     <label>Gültigkeit</label>
-    <input type="text" ng-model="formControllerRepo.GUELTIG_BIS">
- </div>
+    <input class="form-control"
+    type="text"
+    ng-model="formController.gueltig"
+    value=""/>
+</div>
 </div>
 
 <div class="line">
