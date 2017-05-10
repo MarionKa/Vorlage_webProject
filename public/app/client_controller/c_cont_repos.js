@@ -1,38 +1,35 @@
 angular.module('webTestDB')
-    .controller('ListControllerRepos', ListControllerRepos)
-    .controller('FormControllerRepos', FormControllerRepos)
+    .controller('ListController', ListController)
+    .controller('FormController', FormController)
     .controller('DeleteController', DeleteController);
 
-ListControllerRepos.$inject = ['dataFactoryRepos'];
-function ListControllerRepos (dataFactoryRepos) {
-    this.test = dataFactoryRepos.getAll();       //getAll() in model.js (client) festgelegt
+ListController.$inject = ['dataFactory'];
+function ListController (dataFactory) {
+    this.test = dataFactory.getAll();       //getAll() in model.js (client) festgelegt
 }
 
-FormControllerRepos.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
-function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
-    this.ART =  '';
-    this.AUTHNAME = '';
-    this.REPONAME = '';
-    this.ALLE_BENUTZER = '';
-    this.GUELTIG_BIS = '';
+FormController.$inject = ['$state', '$stateParams', 'dataFactory'];
+function FormController ($state, $stateParams, dataFactory) {
+    this.NACHNAME =  '';
+    this.VORNAME = '';
+    this.EMAILKENNUNG = '';
+    this.RECHTE_ID = '';
 
     // this.REPONAME = '';
     // this.AUTHNAME = '';
     // this.ART_ID = '';
     // this.REPO_STATUS_ID = '';
 
-        console.log('state FormControllerRepos');
+        console.log('state FormController');
 
     if($stateParams.id) {
         console.log('state2 ' + $stateParams.id);
-        dataFactoryRepos.read({id: $stateParams.id}).$promise.then(function(test) {
+        dataFactory.read({id: $stateParams.id}).$promise.then(function(test) {
             console.log('test im read ', test[0].RECHTE_ID );
-            this.ART = test[0].ART;
-            this.AUTHNAME = test[0].AUTHNAME;
-            this.REPONAME = test[0].REPONAME;
-            this.ALLE_BENUTZER = test[0].ALLE_BENUTZER;
-            this.GUELTIG_BIS = test[0].GUELTIG_BIS;
-
+            this.NACHNAME = test[0].NACHNAME;
+            this.VORNAME = test[0].VORNAME;
+            this.EMAILKENNUNG = test[0].EMAILKENNUNG;
+            this.RECHTE_ID = test[0].RECHTE_ID;
             
             // console.log('test im read ', test[0].REPONAME);
             // this.REPONAME = test[0].REPONAME;
@@ -43,14 +40,14 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
     }
 
     this.save = function () {
-        console.log('test1 '+ this.ART_ID +' '+ this.AUTHNAME +' ' + this.REPONAME);
+        console.log('test1 '+ this.NACHNAME +' '+ this.VORNAME +' ' + this.EMAILKENNUNG);
 
         var data = {
-            ART_ID: this.ART_ID,
-            AUTHNAME: this.AUTHNAME,
-            REPONAME: this.REPONAME,
-            ALLE_BENUTZER: this.ALLE_BENUTZER,
-            GUELTIG_BIS: this.GUELTIG_BIS
+            NACHNAME: this.NACHNAME,
+            VORNAME: this.VORNAME,
+            EMAILKENNUNG: this.EMAILKENNUNG,
+            RECHTE_ID: 1,
+            PASSWORT: 'test'
 
             // REPONAME: maka,
             // AUTHNAME: kaiserma,
@@ -61,20 +58,20 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
         if ($stateParams.id) {
             console.log('save update');
             data.id = $stateParams.id;
-            dataFactoryRepos.update(data).$promise.then($state.go.bind($state, 'repoedit'));
+            dataFactory.update(data).$promise.then($state.go.bind($state, 'benutzerueber'));
             //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         } else {
             console.log('save create');
-            dataFactoryRepos.create(data).$promise.then($state.go.bind($state, 'repoedit'));
+            dataFactory.create(data).$promise.then($state.go.bind($state, 'benutzerueber'));
             //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         }
     }.bind(this);
 }
 
-DeleteController.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
-function DeleteController ($state, $stateParams, dataFactoryRepos) {
-    dataFactoryRepos.delete({id: $stateParams.id}).$promise.then(function() {
-        $state.go('repoedit');
+DeleteController.$inject = ['$state', '$stateParams', 'dataFactory'];
+function DeleteController ($state, $stateParams, dataFactory) {
+    dataFactory.delete({id: $stateParams.id}).$promise.then(function() {
+        $state.go('benutzerueber');
     });
 }
 

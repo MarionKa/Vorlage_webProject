@@ -37,6 +37,5 @@ module.exports = function(app) {
     //FÜR DEN PASSPORT
 
     app.post('/authenticate', cont_passwort.finden);
-    
     // app.get('/benutzer2', passport.authenticate('jwt', { session: false}), cont_benutzer.ausgabeAllePP);
 };
