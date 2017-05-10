@@ -84,11 +84,15 @@ function configFn($stateProvider, $urlRouterProvider) {
         })
         .state('repoedit', {
             url: "/repoedit",
-            templateUrl: "app/partials/RepoEditierenTemplate.html"
+            templateUrl: "app/partials/RepoEditierenTemplate.html",
+            controller: 'FormControllerRepo',
+            controllerAs: 'formControllerRepo'
         })
         .state('repoueber', {
             url: "/repoueber",
-            templateUrl: "app/partials/RepoUebersichtTemplate.html"
+            templateUrl: "app/partials/RepoUebersichtTemplate.html",
+            controller: 'ListControllerRepos',
+            controllerAs: 'listControllerRepos'
         })
         .state('ueberpers', {
             url: "/ueberpers",

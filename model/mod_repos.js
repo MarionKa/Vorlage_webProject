@@ -12,14 +12,15 @@ connection.connect(function(error){
     }
 });
 
+//Ausgabe aller Repositories auf Basis der Verbinden-Tabelle (hier keine Ausgabe der Repository-Tabelle)
 function ausgabeAlle_m(id) {
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, ? ,b.NACHNAME separator ?) as ALLE_BENUTZER, r.GUELTIG_BIS, a.BEZEICHNUNG as ART, rs.BEZEICHNUNG as REPO_STATUS FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN ART a ON (r.ART_ID = a.ID) JOIN REPO_STATUS rs ON (r.REPO_STATUS_ID = rs.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) group by v.REPOSITORY_ID',[' ', ' & '], function (err, rows, flieds) {
+        connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, ? ,b.NACHNAME separator ?) as ALLE_BENUTZER, r.GUELTIG_BIS, a.BEZEICHNUNG as ART, rs.BEZEICHNUNG as REPO_STATUS FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN ART a ON (r.ART_ID = a.ID) JOIN REPO_STATUS rs ON (r.REPO_STATUS_ID = rs.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) group by v.REPOSITORY_ID',[' ', ' & '], function (err, rows, fields) {
             if (err) {
                 reject(err);
                 console.log('fetch(id)err ', rows );
             } else {
-                console.log('fetch(id)rows ', rows );
+                console.log('fetch mod Repos ', rows );
                 resolve(rows);
             }
         });
