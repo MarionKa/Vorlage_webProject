@@ -15,7 +15,7 @@ connection.connect(function(error){
 });
 
 
-
+/// HIER ist des passwort mit drin 
 function finden_m(data) {
     console.log('finden_m: ' + data.EMAILKENNUNG);
     return new Promise(function (resolve, reject) {
@@ -42,7 +42,46 @@ function finden_m(data) {
 }
 
 
+
+function tokenCheck(headers) {
+    var token = getToken(req.headers);
+    if (token) {
+            var decoded = jwt.decode(token, 'dasIstEinGeheimnis');
+    connection.query('SELECT ID, EMAILKENNUNG, PASSWORT FROM BENUTZER WHERE EMAILKENNUNG = ?', [decoded.EMAILKENNUNG], function(err, rows,  fields) {
+        if (err) {return err}
+        if (!rows){
+                     //Authentication failed. User not found.
+                    return false;
+        }
+        else {  
+                return true; //Welcome in the member area
+        }
+    });
+     }else { return false  } //No token provided.
+}
+
+
+
+
+
+
+getToken = function (headers) {
+  if (headers && headers.authorization) {
+    var parted = headers.authorization.split(' ');
+    if (parted.length === 2) {
+      return parted[1];
+    } else {
+      return null;
+    }
+  } else {
+    return null;
+  }
+};
+
+
+
 module.exports = {
-    finden_m: finden_m
+    finden_m: finden_m,
+    tockenCheck: tockenCheck
 };
 
