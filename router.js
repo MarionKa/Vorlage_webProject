@@ -3,6 +3,7 @@ var cont_benutzer = require('./controller/cont_benutzer.js');
 var cont_repos = require('./controller/cont_repos.js');
 var cont_repo = require('./controller/cont_repo.js');
 var cont_art = require('./controller/cont_art.js');
+var cont_passwort = require('./controller/cont_passwort.js');
 
 module.exports = function(app) {
 	// app.get('/benutzer', controller.fetchAll);
@@ -33,5 +34,5 @@ module.exports = function(app) {
     app.put('/art/:id', cont_art.update);
     app.delete('/art/:id', cont_art.loeschen);
 
-    // app.post('/authenticate', cont_passport);
+    app.post('/authenticate', cont_passwort.finden);
 };
