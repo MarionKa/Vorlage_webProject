@@ -3,7 +3,7 @@ var repos = require('../model/mod_repos');
 function ausgabeAlle(req, res) {      
     repos.ausgabeAlle_m(req.params.id).then(function success(row) {
         res.send(row);
-        console.log('fetch cont_repos ',row);
+        console.log('fetch alle Repos ',row);
     }, function failure(err) {
         res.send(err);
     })
