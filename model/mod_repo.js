@@ -15,7 +15,7 @@ connection.connect(function(error){
 //Ausgabe eines Repository auf Basis seiner ID & der Benutzer des Repos
 function ausgabeEin_m(id){
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME,v.BENUTZER_ID, concat(b.VORNAME, ? ,b.NACHNAME) as BENUTZERNAMEN, r.GUELTIG_BIS, a.BEZEICHNUNG as ART, rs.BEZEICHNUNG as REPO_STATUS FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN ART a ON (r.ART_ID = a.ID) JOIN REPO_STATUS rs ON (r.REPO_STATUS_ID = rs.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) WHERE v.REPOSITORY_ID = ?',[ ' ', id /*REPO_ID*/], function(err, rows,  fields){
+        connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "&") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, r.ART_ID, r.REPO_STATUS_ID FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) WHERE v.REPOSITORY_ID = ? group by v.REPOSITORY_ID',[id /*REPO_ID*/], function(err, rows,  fields){
             if (err) {
                 reject(err);
             } else {
@@ -42,9 +42,9 @@ function eingabe_m(data, id) {
 
 //Aktualisierung eines Benutzer-Datensatztes
 function update_m(data, id) {
-    console.log('Kommt die ID? ' + data.NACHNAME +' '+ id);
+    console.log('Kommt die ID? ' + data.REPONAME +' '+ id);
     return new Promise(function (resolve, reject) {
-        connection.query('UPDATE REPOSITORY SET REPONAME = ?, AUTHNAME = ?, GUELTIG_BIS = STR_TO_DATE(?,"%d.%m.%Y"), ART_ID = ?, REPO_STATUS_ID = ? WHERE ID = ?', [data.REPONAME, data.AUTHNAME, date.GUELTIG_BIS/*GUELTIG_BIS*/, data.ART_ID /*ART_ID*/,  data.REPO_STATUS_ID /*REPO_STATUS_ID*/, id/*REPOSITORY_ID*/], function (err) {
+        connection.query('UPDATE REPOSITORY SET REPONAME = ?, AUTHNAME = ?, GUELTIG_BIS = STR_TO_DATE(?,"%d.%m.%Y"), ART_ID = ?, REPO_STATUS_ID = ? WHERE ID = ?', [data.REPONAME, data.AUTHNAME, data.GUELTIG_BIS/*GUELTIG_BIS*/, data.ART_ID /*ART_ID*/,  data.REPO_STATUS_ID /*REPO_STATUS_ID*/, id/*REPOSITORY_ID*/], function (err) {
             if (err) {
                 reject(err);
             } else {
