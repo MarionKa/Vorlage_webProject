@@ -20,7 +20,7 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
     if($stateParams.id) {
         console.log('state2 ' + $stateParams.id);
         dataFactoryArt.read({id: $stateParams.id}).$promise.then(function(test) {
-            console.log('test im read ', test[0].BEZEICHNUNG);
+            console.log('test im read ', test[0].EINTRAGEN_MGL );
             this.BEZEICHNUNG = test[0].BEZEICHNUNG;
             this.ORDNERNAME = test[0].ORDNERNAME;
             this.EINTRAGEN_MGL = test[0].EINTRAGEN_MGL;
@@ -34,7 +34,8 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
         var data = {
             BEZEICHNUNG: this.BEZEICHNUNG,
             ORDNERNAME: this.ORDNERNAME,
-            EINTRAGEN_MGL: this.EINTRAGEN_MGL
+            EINTRAGEN_MGL: this.EINTRAGEN_MGL,
+            PASSWORT: 'test'
 
         };
         if ($stateParams.id) {

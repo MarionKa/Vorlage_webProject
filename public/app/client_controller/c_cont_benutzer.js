@@ -13,7 +13,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
     this.NACHNAME =  '';
     this.VORNAME = '';
     this.EMAILKENNUNG = '';
-    this.RECHTE = '';
+    this.RECHTE_ID = '';
 
     // this.REPONAME = '';
     // this.AUTHNAME = '';
@@ -29,7 +29,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
             this.NACHNAME = test[0].NACHNAME;
             this.VORNAME = test[0].VORNAME;
             this.EMAILKENNUNG = test[0].EMAILKENNUNG;
-            this.RECHTE = test[0].RECHTE;
+            this.RECHTE_ID = test[0].RECHTE_ID;
             
             // console.log('test im read ', test[0].REPONAME);
             // this.REPONAME = test[0].REPONAME;
