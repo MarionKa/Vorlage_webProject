@@ -23,18 +23,23 @@ connection.connect(function(error){
 // HIER KANN MAN NOCH DES PW MIT VERGLEICHEN
 
 module.exports = function(passport) {
+              console.log('\n\n passport anfang\n \n\n ');
+
   var opts = {};
   opts.secretOrKey = 'dasIstEinGeheimnis';   /*= config.secret;*/
   passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+      console.log('\n\n passport use\n \n\n ');
+
     connection.query("SELECT ID, VORNAME, NACHNAME, EMAILKENNUNG, RECHTE_ID FROM benutzer  WHERE ID = ?",[jwt_payload.id],function(err, rows) {  /*User.findOne({id: jwt_payload.id}, */
           if (err) {
-              return done(err, false);
+            console.log('\n\n passport.js if err\n \n\n ');
+               done(err, false);
           }
-          // if (user) {
-          //     done(null, user);
           if (rows) {
+              console.log('\n\npassport.js if rows \n \n\n');
               done(null, rows);
           } else {
+            console.log('\n\n passport.js if else\n \n\n ');
               done(null, false);
           }
       });
