@@ -13,7 +13,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
     this.NACHNAME =  '';
     this.VORNAME = '';
     this.EMAILKENNUNG = '';
-    this.RECHTE_ID = '';
+    this.RECHTE = '';
 
     // this.REPONAME = '';
     // this.AUTHNAME = '';

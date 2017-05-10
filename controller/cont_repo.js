@@ -28,11 +28,12 @@ function eingabe(req, res) {        //Persönliches Repository hinzufügen
 
 function update(req, res) {         //Update mit PUT-Methode
     console.log('update server'+ ' ' + req.body.REPONAME + ' '+ req.body.AUTHNAME +' '+ req.body.GUELTIG_BIS);
-    var repoData = {                
+    var repoData = { 
         REPONAME: req.body.REPONAME,
         AUTHNAME: req.body.AUTHNAME,
         GUELTIG_BIS: req.body.GUELTIG_BIS,
-        ART_ID: req.body.ART_ID
+        ART_ID: req.body.ART_ID,
+        REPO_STATUS_ID: req.body.REPO_STATUS_ID
     };
 
     repo.update_m(repoData, req.params.id).then(function() {
