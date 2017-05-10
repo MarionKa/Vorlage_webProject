@@ -82,6 +82,6 @@ getToken = function (headers) {
 
 module.exports = {
     finden_m: finden_m,
-    tockenCheck: tockenCheck
+    tokenCheck: tokenCheck
 };
 
