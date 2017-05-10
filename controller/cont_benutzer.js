@@ -1,4 +1,5 @@
 var benutzer = require('../model/mod_benutzer');
+var pw = require('../model/mod_passwort');
 
 function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
     benutzer.ausgabeAlle_m(req.params.id).then(function success(row) {
@@ -8,6 +9,22 @@ function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
         res.send(err);
     })
 }
+
+
+
+function ausgabeAllePP(req, res) {      //SELECT mit GET-Methode
+    if(pw.tokenCheck){
+        benutzer.ausgabeAlle_m(req.params.id).then(function success(row) {
+            res.send(row);
+            console.log('fetch alle benutzer ',row);
+        }, function failure(err) {
+            res.send(err);
+        })
+    }   
+    else { res.send(err)}
+}
+
+
 
 function ausgabeEin(req, res) {      //SELECT mit GET-Methode
     benutzer.ausgabeEin_m(req.params.id).then(function success(row) {   //req-Objekt stellt params-Objekt zur verfügung, das Variablen enthält
