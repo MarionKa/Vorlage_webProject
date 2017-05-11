@@ -3,73 +3,33 @@
         Ändern Sie hier den ausgewählten Datensatz
     </h1>
 </div>
-<form name="ArtEditieren">
-
-<div class="panel panel-info">
-        <div class="panel-heading"><h4>Zum Ändern geben Sie Bitte die gewünschten Daten ein und clicken auf Speichern.</h4> </div>
-        <div class="panel-body">
-
-
-    <div class="row">
-       <div class="col-xs-12 form-group">
-        <label>Bezeichnung</label>
-        <input class="form-control" stype="text" ng-model="formControllerArt.BEZEICHNUNG">
-    </div>
-</div>     
 
 <div class="row">
-       <div class="col-xs-12 form-group">
-        <label>Ordnername</label>
-        <input class="form-control" stype="text" ng-model="formControllerArt.ORDNERNAME" disabled="">
-    </div>
-</div> 
-
- 
-<div class="row">
-   <div class="col-xs-12 form-group">
-    <label>Eintragen möglich:</label>    
-    <p>1: eintragen möglich </p>
-    <p>2: eintragen nicht möglich</p>
-    <input class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL">
+ <div class="col-xs-12 form-group">
+    <label>Bezeichnung</label>
+    <input type="text" ng-model="formControllerArt.BEZEICHNUNG">
 </div>
 </div> 
-
 <div class="row">
-   <div class="col-xs-12 form-group">
-    <label>Status:</label>    
-    <p>1: beantragt</p>
-    <p>2: aktiviert</p>
-    <p>3: deaktiviert</p>
-    <p>4: gelöscht</p>
-    <input class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL">
+ <div class="col-xs-12 form-group">
+    <label>Ordnername</label>
+    <input type="text" ng-model="formControllerArt.ORDNERNAME">
+</div>
+</div> 
+<div class="row">
+ <div class="col-xs-12 form-group">
+    <label>Eintragen möglich:</label>
+    <input type="text" ng-model="formControllerArt.EINTRAGEN_MGL">
 </div>
 </div> 
 
 
-<!-- <div class="row">
-   <div class="col-xs-12 form-group">
-<div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Status <span class="caret"></span>
-</button>
-<ul class="dropdown-menu">
-    <li><a href="#">beantragt</a></li>
-    <li><a href="#">aktiviert</a></li>
-    <li><a href="#">deaktiviert</a></li>
-    <li><a href="#">gelöscht</a></li>
-</ul>
-</div>
-</div>
-</div>  -->
+
 
 <!-- Knöpfe: -->
-<!-- <div class="line">
- <div class="col-xs-6 form-group">
+<div class="line">
+   <div class="col-xs-6 form-group">
     <label>Eintragen möglich:</label>
-    <p>1: </p>    
-    <p>1: </p>    
-    <p>1: </p>    
-    <p>1: </p>
     <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary active">
             <input type="radio" name="options" id="option1" autocomplete="off" checked><span class="glyphicon glyphicon-play" aria-hidden="true"> </span>
@@ -79,36 +39,43 @@
         </label>
     </div>
 </div>
-</div> -->
+</div>
+</form>
 
-
-
+<<<<<<< HEAD
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">beantragt</a></li>
+    <li><a href="#">aktiviert</a></li>
+    <li><a href="#">deaktiviert</a></li>
+    <li><a href="#">gelöscht</a></li>
+  </ul>
+</div>
 
 
 
 
 
 <a ui-sref="artueber({id: test.ID})">       <!-- oder doch mit href=... -->
-    <a href="#/artueber">
-        <button type="button" class="btn btn-success" aria-label="Left Align">
-            Speichern
-            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
-        </button>
-    </a>
+=======
+<a href="#/artueber">
+>>>>>>> refs/remotes/origin/master
+    <button type="button" class="btn btn-success" aria-label="Left Align">
+        Speichern
+        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
+    </button>
 </a>
-    <a href="#/artueber">
-        <button type="button" class="btn btn-danger" aria-label="Left Align">
-            Abbrechen
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
-        </button>
-    </a>
 
+<a href="#/artueber">
+    <button type="button" class="btn btn-danger" aria-label="Left Align">
+        Abbrechen
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+    </button>
+</a>
 
-
-</div>
-</div>
-
-</form>
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
