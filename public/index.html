@@ -1,5 +1,5 @@
-<!--<!DOCTYPE html>
-<html lang="en" ng-app="webTestDB">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -17,94 +17,14 @@
     <script src="app/client_controller/c_cont_repos.js"></script>
     <script src="app/model.js"></script>
     <script src="scripts/Datum.js"></script>
-    <script src="controllers/NavbarController.js"></script>
     <link rel="icon" href="img/reh.ico">
     <link rel="stylesheet" href="css/mobile.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
 
 </head>
-<body> <!--ng-controller="BodyController"> - ->
-
-    <!-- Datumsanzeige rechts oben - ->
-    <div class="container">
-        <div class="col-xs-12">
-            <span class="pull-right" ng-bind="date">Datum</span>
-        </div>
-    </div>
-
-    <div ng-include="'app/partials/NavbarTemplate.html'"></div>
-
-    <div class="container">
-        <div ng-view></div>
-    </div>
-
+<body ng-app="webTestDB"> <!--ng-controller="BodyController"> -->
     <div ui-view></div>
-
-
-</body>    
-</html>
-
-
-  -->
-
-
-
-
-
-<!-- /////////////////////////////////////////////// -->
-
-<!DOCTYPE html>
-<html lang="en" ng-app="webTestDB">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>WebTestDB</title>
-    <meta charset="utf-8" />
-    <link rel="icon" href="img/reh.ico">
-    <link rel="stylesheet" href="css/mobile.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-
-    <script src="lib/es6-shim.min.js"></script>
-    <script src="lib/jquery-1.12.0.min.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-ui-router.js"></script>
-    <script src="lib/angular.js"></script>
-
-    <script src="lib/angular-resource.js"></script>
-    <script src="lib/angular-route.min.js"></script>
-    <script src="lib/ui-bootstrap-1.2.1.min.js"></script>
-    <script src="app/model.js"></script>
-    <script src="app/app.js"></script>
-    <script src="app/controller.js"></script>
-
-    <script src="app/client_controller/c_cont_art.js"></script>
-    <script src="app/client_controller/c_cont_benutzer.js"></script>
-    <script src="app/client_controller/c_cont_repo.js"></script>
-    <script src="app/client_controller/c_cont_repos.js"></script>
-
-    <script src="scripts/Datum.js"></script>
-    <script src="scripts/Student.js"></script>
-    <!-- <script src="controllers/BodyController.js"></script> -->
-    <script src="controllers/NavbarController.js"></script>
-<!--     <script src="services/RepoService.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-    
-</head>
-
-<body> <!-- ng-controller="BodyController"> -->
 
     <!-- Datumsanzeige rechts oben -->
     <div class="container">
@@ -112,16 +32,13 @@
             <span class="pull-right" ng-bind="date">Datum</span>
         </div>
     </div>
-
-    <div ng-include="'app/partials/NavbarTemplate.html'"></div>
+    <!-- <div ng-include="'app/partials/NavbarTemplate.html'"></div> -->
 
     <div class="container">
         <div ng-view></div>
     </div>
 
-    <div ui-view></div>
 
-    <!--Einbinden der Dateien-->
 
- --></body>
+</body>    
 </html>

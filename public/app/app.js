@@ -1,4 +1,4 @@
-var webTestDB = angular.module('webTestDB', ['ui.router', 'ngResource'])
+angular.module('webTestDB', ['ui.router', 'ngResource'])
 .config(configFn);
 
 configFn.$inject = ['$stateProvider', '$urlRouterProvider'];
