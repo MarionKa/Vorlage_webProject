@@ -41,5 +41,6 @@ module.exports = function(app) {
     app.post('/authenticate', cont_passwort.finden);
     app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),function(req, res){
         res.json("Success! You can not see this without a token");
-});
+    });
+
 };

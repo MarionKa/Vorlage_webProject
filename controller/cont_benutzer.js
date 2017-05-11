@@ -16,10 +16,10 @@ function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
 
 
 function ausgabeAllePP(req, res) {      //SELECT mit GET-Methode
-    console.log('im cont_benutzer');
+    console.log('im cont_benutzer', req.headers);
     passport.authenticate('jwt', { session: false}), function (req, res) {
           console.log('nach passport');  
-        if(pw.tokenCheck){
+        if(pw.tokenCheck(headers)){
             benutzer.ausgabeAlle_m(req.params.id).then(function success(row) {
                 res.send(row);
                 console.log('fetch alle benutzer ',row);
