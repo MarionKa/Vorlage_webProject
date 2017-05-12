@@ -1,33 +1,54 @@
 <div class="row">
     <h1 class="col-xs-12 page-header">
-        Ändern Sie hier den ausgewählten Datensatz
-    </h1>
+        Art Editiermodus:    
+        </h1>
 </div>
+<form name="Arteditieren">
 
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Bezeichnung</label>
-    <input type="text" ng-model="formControllerArt.BEZEICHNUNG">
-</div>
-</div> 
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Ordnername</label>
-    <input type="text" ng-model="formControllerArt.ORDNERNAME">
-</div>
-</div> 
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Eintragen möglich:</label>
-    <input type="text" ng-model="formControllerArt.EINTRAGEN_MGL">
-</div>
-</div> 
+    <div class="panel panel-info">
+        <div class="panel-heading"><h4>Ändern Sie hier den ausgewählten Datensatz Repositoryart</h4> </div>
+        <div class="panel-body">
+            <div class="row">
+               <div class="col-xs-12 form-group">
+                <label>Bezeichnung</label>
+                <input class="form-control"
+                type="text"
+                ng-model="formControllerArt.BEZEICHNUNG">
+            </div>
+        </div>
+
+        <div class="row">
+           <div class="col-xs-12 form-group">
+            <label>Ordnername</label>
+            <input class="form-control"
+            type="text"
+            ng-model="formControllerArt.ORDNERNAME">
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            <label>Eintragen möglich:</label>
+            <div class="input-group">
+                <input class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL" readonly="">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ändern <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Eintragen möglich</a></li>
+                        <li><a href="#">Eintragen nicht möglich</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
 
-<!-- Knöpfe: -->
-<div class="line">
+    <!-- Knöpfe: -->
+<!-- <div class="line">
    <div class="col-xs-6 form-group">
     <label>Eintragen möglich:</label>
     <div class="btn-group" data-toggle="buttons">
@@ -39,47 +60,39 @@
         </label>
     </div>
 </div>
-</div>
-</form>
+</div> -->
 
-<<<<<<< HEAD
-<div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">beantragt</a></li>
-    <li><a href="#">aktiviert</a></li>
-    <li><a href="#">deaktiviert</a></li>
-    <li><a href="#">gelöscht</a></li>
-  </ul>
-</div>
+
+
+
+
 
 
 
 
 
 <a ui-sref="artueber({id: test.ID})">       <!-- oder doch mit href=... -->
-=======
-<a href="#/artueber">
->>>>>>> refs/remotes/origin/master
-    <button type="button" class="btn btn-success" aria-label="Left Align">
-        Speichern
-        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
-    </button>
-</a>
+    <a href="#/artueber">
+        <button type="button" class="btn btn-success" aria-label="Left Align">
+            Speichern
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
+        </button>
+    </a>
 
-<a href="#/artueber">
-    <button type="button" class="btn btn-danger" aria-label="Left Align">
-        Abbrechen
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
-    </button>
-</a>
+    <a href="#/artueber">
+        <button type="button" class="btn btn-danger" aria-label="Left Align">
+            Abbrechen
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+        </button>
+    </a>
+</div>
+</div>
+</form>
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <a id="brand" class="navbar-brand" href="#/reh">
@@ -127,4 +140,4 @@
             </nav>
         </div>
     </div>
-</nav>
+</nav> -->

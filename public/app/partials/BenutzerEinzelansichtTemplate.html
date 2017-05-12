@@ -1,38 +1,49 @@
-d<div class="row">
+
+<div class="row">
     <h1 class="col-xs-12 page-header">
-        Ändern Sie hier den ausgewählten Datensatz
+        Benutzer editieren:
     </h1>
 </div>
-<!-- ////////////////////////////////////////////////////////////// -->
+<form name="Benutzereditieren">
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><h4>Ändern Sie hier den ausgewählten Datensatz Benutzer</h4> </div>
+        <div class="panel-body">
 
 
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Nachname</label>
-    <input type="text" ng-model="formControllerBenutzer.NACHNAME">
-</div>
-</div>
-
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Vorname</label>
-    <input type="text" ng-model="formControllerBenutzer.VORNAME">
-</div>
-</div>
-
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Emailkennung</label>
-    <input type="text" ng-model="formControllerBenutzer.EMAILKENNUNG">
+<form name="studentForm">
+  <div class="row">
+   <div class="col-xs-12 form-group">
+    <label>Nachname:</label>
+    <input class="form-control" type="text" ng-model="formControllerBenutzer.NACHNAME">
 </div>
 </div>
 
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Recht_ID</label>
-    <input type="text" ng-model="formControllerBenutzer.RECHTE_ID">
+
+<form name="studentForm">
+  <div class="row">
+   <div class="col-xs-12 form-group">
+    <label>Vorname:</label>
+    <input class="form-control" type="text" ng-model="formControllerBenutzer.VORNAME">
 </div>
 </div>
+
+<form name="studentForm">
+  <div class="row">
+   <div class="col-xs-12 form-group">
+    <label>Emailkennung:</label>
+    <input class="form-control" type="text" ng-model="formControllerBenutzer.EMAILKENNUNG">
+</div>
+</div>
+
+<form name="studentForm">
+  <div class="row">
+   <div class="col-xs-12 form-group">
+    <label>Rechte:</label>
+    <input class="form-control" type="text" ng-model="formControllerBenutzer.RECHTE_ID">
+</div>
+</div>
+
 
 
 
@@ -50,6 +61,10 @@ d<div class="row">
     </button>
 </a>
 
+
+</div>
+</div>
+</form>
 
 
 
@@ -111,7 +126,7 @@ d<div class="row">
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <a id="brand" class="navbar-brand" href="#/reh">
@@ -159,4 +174,4 @@ d<div class="row">
             </nav>
         </div>
     </div>
-</nav>
+</nav> -->
