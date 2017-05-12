@@ -1,69 +1,91 @@
 <div class="row">
     <h1 class="col-xs-12 page-header">
-        Ändern Sie hier den ausgewählten Datensatz
+        Repository editieren:
     </h1>
 </div>
+<form name="Repositoryeditieren">
 
-<form name="studentForm">
-  <div class="row">
-     <div class="col-xs-12 form-group">
-        <label>Art</label>
-        <input class="form-control"
-        type="text"
-        ng-model="formControllerRepo.ART_ID">
+    <div class="panel panel-info">
+        <div class="panel-heading"><h4>Ändern Sie hier den ausgewählten Datensatz Repository</h4> </div>
+        <div class="panel-body">
+            <div class="row">
+             <div class="col-xs-12 form-group">
+                <label>Art</label>
+                <input class="form-control" type="text" ng-model="formControllerRepo.ART_ID">
+            </div>
+        </div>
+
+        <div class="row">
+         <div class="col-xs-12 form-group">
+            <label>Authname</label>
+            <input class="form-control" type="text" ng-model="formControllerRepo.AUTHNAME">
+        </div>
     </div>
-</div>
 
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Authname</label>
-    <input class="form-control"
-    type="text"
-    ng-model="formControllerRepo.AUTHNAME">
-</div>
-</div>
-
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Repositoryname</label>
-    <input class="form-control"
-    type="text"
-    ng-model="formControllerRepo.REPONAME">
-</div>
+    <div class="row">
+     <div class="col-xs-12 form-group">
+        <label>Repositoryname</label>
+        <input class="form-control" type="text" ng-model="formControllerRepo.REPONAME">
+    </div>
 </div>
 
 <div class="row">
  <div class="col-xs-12 form-group">
     <label>Zugriffsberechtigte</label>
-    <div> <input class="form-control"
-    type="text"
-    ng-model="formControllerRepo.ALLE_BENUTZER">
-    </div>
-   
+    <div> <input class="form-control" type="text" ng-model="formControllerRepo.ALLE_BENUTZER"
+        readonly="">
+    </div> 
 </div>
 </div>
 
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Status</label>
-    <div> <input class="form-control"
-    type="text"
-    ng-model="formControllerRepo.REPO_STATUS_ID">
-    </div>
-   
-</div>
-</div>
-<div class="row">
+<div class="line">
  <div class="col-xs-6 form-group">
      <label></label>
-    <a href="#/benutzerentf">
+     <a href="#/benutzerentf">
         <button type="button" class="btn btn-primary" aria-label="Left Align">
-            Benutzer bearbeiten!
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
+            Benutzer löschen!
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
         </button>
     </a> 
 </div>
 </div>
+
+<div class="line">
+ <div class="col-xs-6 form-group">
+  <label></label>
+
+  <a href="#/benutzerhinzu">
+    <button type="button" class="btn btn-success" aria-label="Left Align">
+        Benutzer hinzufügen!
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
+    </button>
+</a>
+</div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-xs-6 form-group">
+        <label>Status</label>
+        <div class="input-group">
+            <input class="form-control" type="text" ng-model="formControllerRepo.REPO_STATUS_ID" readonly="">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ändern <span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#">beantragt</a></li>
+                    <li><a href="#">aktiviert</a></li>
+                    <li><a href="#">deaktiviert</a></li>
+                    <li><a href="#">gelöscht</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 
@@ -77,34 +99,8 @@
 </div>
 </div>
 
-<div class="line">
- <div class="col-xs-6 form-group">
-    <label>Aktiv:</label>
-    <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked><span class="glyphicon glyphicon-play" aria-hidden="true"> </span>
-        </label>
-        <label class="btn btn-primary">
-            <input type="radio" name="options" id="option2" autocomplete="off"><span class="glyphicon glyphicon-pause" aria-hidden="true"> </span> 
-        </label>
-    </div>
-</div>
-</div>
 
-<div class="line">
- <div class="col-xs-6 form-group">
-    <label>Gelöscht:</label>
-    <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked><span class="glyphicon glyphicon-off" aria-hidden="true"> </span>
-        </label>
-        <label class="btn btn-primary">
-            <input type="radio" name="options" id="option2" autocomplete="off"><span class="glyphicon glyphicon-trash" aria-hidden="true"> </span> 
-        </label>
-    </div>
-</div>
-</div>
-</form>
+
 
 <a>
     <button type="button" ng-click="formControllerRepo.save()" class="btn btn-success" aria-label="Left Align">
@@ -121,6 +117,9 @@
 </a>
 
 
+</div>
+</div>
+</form>
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
