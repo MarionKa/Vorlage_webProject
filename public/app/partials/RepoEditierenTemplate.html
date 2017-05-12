@@ -10,8 +10,7 @@
         <label>Art</label>
         <input class="form-control"
         type="text"
-        ng-model="formController.art"
-        value=""/>
+        ng-model="formControllerRepo.ART_ID">
     </div>
 </div>
 
@@ -20,18 +19,16 @@
     <label>Authname</label>
     <input class="form-control"
     type="text"
-    ng-model="formController.authname"
-    value=""/>
+    ng-model="formControllerRepo.AUTHNAME">
 </div>
 </div>
 
 <div class="row">
  <div class="col-xs-12 form-group">
-    <label>Pfad</label>
+    <label>Repositoryname</label>
     <input class="form-control"
     type="text"
-    ng-model="formController.pfad"
-    value=""/>
+    ng-model="formControllerRepo.REPONAME">
 </div>
 </div>
 
@@ -40,8 +37,18 @@
     <label>Zugriffsberechtigte</label>
     <div> <input class="form-control"
     type="text"
-    ng-model="formController.zugriff"
-    value=""/>
+    ng-model="formControllerRepo.ALLE_BENUTZER">
+    </div>
+   
+</div>
+</div>
+
+<div class="row">
+ <div class="col-xs-12 form-group">
+    <label>Status</label>
+    <div> <input class="form-control"
+    type="text"
+    ng-model="formControllerRepo.REPO_STATUS_ID">
     </div>
    
 </div>
@@ -66,8 +73,7 @@
     <label>Gültigkeit</label>
     <input class="form-control"
     type="text"
-    ng-model="formController.gueltig"
-    value=""/>
+    ng-model="formControllerRepo.GUELTIG_BIS">
 </div>
 </div>
 
@@ -100,8 +106,8 @@
 </div>
 </form>
 
-<a href="#/repoueber">
-    <button type="button" class="btn btn-success" aria-label="Left Align">
+<a>
+    <button type="button" ng-click="formControllerRepo.save()" class="btn btn-success" aria-label="Left Align">
         Speichern
         <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
     </button>

@@ -5,6 +5,8 @@ var cont_repo = require('./controller/cont_repo.js');
 var cont_art = require('./controller/cont_art.js');
 var cont_passwort = require('./controller/cont_passwort.js');
 
+var passport    = require('passport');
+
 module.exports = function(app) {
 	// app.get('/benutzer', controller.fetchAll);
  //    app.get('/benutzer/:id', controller.fetch);
@@ -37,5 +39,7 @@ module.exports = function(app) {
     //FÜR DEN PASSPORT
 
     app.post('/authenticate', cont_passwort.finden);
-    // app.get('/benutzer2', passport.authenticate('jwt', { session: false}), cont_benutzer.ausgabeAllePP);
+    app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),function(req, res){
+        res.json("Success! You can not see this without a token");
+});
 };
