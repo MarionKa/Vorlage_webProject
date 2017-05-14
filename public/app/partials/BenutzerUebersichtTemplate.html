@@ -35,6 +35,34 @@
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
                                 </button>
                             </a></td>
+                            <td>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                                    Löschen
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                                </button>
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Repositories aus DB löschen</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                Möchten sie den User {{test.NACHNAME}} {{test.VORNAME}} endgültig aus der Datenbank löschen?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a ui-sref="delete({id: test.ID})">
+                                                <button type="button"  class="btn btn-danger" aria-label="Left Align">
+                                                        Löschen
+                                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                                                    </button>
+                                                </a>                                                
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Zurück</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -44,14 +72,14 @@
 </form>
 <!--<form>
 <div class="row">
-    <div class="col-xs-6 form-group">
-        <a href="#/abmeldung">
-            <button type="button" class="btn btn-default" aria-label="Left Align">
-                Abmelden!
-                <span class="glyphicon glyphicon-log-out" aria-hidden="true"> </span>
-            </button>
-        </a>
-    </div>
+<div class="col-xs-6 form-group">
+    <a href="#/abmeldung">
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+            Abmelden!
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"> </span>
+        </button>
+    </a>
+</div>
 </div>
 </form>-->
 
@@ -60,51 +88,51 @@
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a id="brand" class="navbar-brand" href="#/reh">
-                <img alt="Brand" src="img/4.png">
-            </a>
+<div class="container">
+    <div class="navbar-header">
+        <a id="brand" class="navbar-brand" href="#/reh">
+            <img alt="Brand" src="img/4.png">
+        </a>
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-
-        <div id="menu" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav" ng-controller="NavbarController">
-                <li ng-class="{ active: isActive('/professor')}"><a href="#/repoueber">Repositories</a></li>
-            </ul>
-            <ul class="nav navbar-nav" ng-controller="NavbarController">
-                <li ng-class="{ active: isActive('/professor')}"><a href="#/benutzerueber">Benutzer</a></li>
-            </ul>
-            <ul class="nav navbar-nav" ng-controller="NavbarController">
-                <li ng-class="{ active: isActive('/professor')}"><a href="#/artueber">Art</a></li>
-            </ul>
-            <button type="button" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>
-        </div>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
     </div>
+
+    <div id="menu" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav" ng-controller="NavbarController">
+            <li ng-class="{ active: isActive('/professor')}"><a href="#/repoueber">Repositories</a></li>
+        </ul>
+        <ul class="nav navbar-nav" ng-controller="NavbarController">
+            <li ng-class="{ active: isActive('/professor')}"><a href="#/benutzerueber">Benutzer</a></li>
+        </ul>
+        <ul class="nav navbar-nav" ng-controller="NavbarController">
+            <li ng-class="{ active: isActive('/professor')}"><a href="#/artueber">Art</a></li>
+        </ul>
+        <button type="button" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>
+    </div>
+</div>
 </nav>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div id="menu" class="collapse navbar-collapse">
-            <nav aria-label="...">
-                <ul class="nav navbar-nav" ng-controller="NavbarController">
-                    <li>
-                        <ul class="pager">
-                            <li><a href="#/repoueber">Repositories</a></li>
-                            <li><a href="#/benutzerueber">Benutzer</a></li>
-                            <li><a href="#/artueber">Art</a></li>
-                            <li><a href="#/abmeldung">Abmelden</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+<div class="container">
+    <div id="menu" class="collapse navbar-collapse">
+        <nav aria-label="...">
+            <ul class="nav navbar-nav" ng-controller="NavbarController">
+                <li>
+                    <ul class="pager">
+                        <li><a href="#/repoueber">Repositories</a></li>
+                        <li><a href="#/benutzerueber">Benutzer</a></li>
+                        <li><a href="#/artueber">Art</a></li>
+                        <li><a href="#/abmeldung">Abmelden</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </div>
+</div>
 </nav> -->
