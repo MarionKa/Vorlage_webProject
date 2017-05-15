@@ -1,5 +1,8 @@
 var benutzer = require('../model/mod_benutzer');
 var pw = require('../model/mod_passwort');
+var passport    = require('passport');
+var jwt         = require('jwt-simple');
+var bodyParser  = require('body-parser');
 
 function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
     benutzer.ausgabeAlle_m(req.params.id).then(function success(row) {
@@ -13,15 +16,21 @@ function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
 
 
 function ausgabeAllePP(req, res) {      //SELECT mit GET-Methode
-    if(pw.tokenCheck){
-        benutzer.ausgabeAlle_m(req.params.id).then(function success(row) {
-            res.send(row);
-            console.log('fetch alle benutzer ',row);
-        }, function failure(err) {
-            res.send(err);
-        })
-    }   
-    else { res.send(err)}
+    console.log('im cont_benutzer');
+    passport.authenticate('jwt', { session: false}), function (req, res) {
+          console.log('nach passport');  
+        if(pw.tokenCheck){
+            benutzer.ausgabeAlle_m(req.params.id).then(function success(row) {
+                res.send(row);
+                console.log('fetch alle benutzer ',row);
+            }, function failure(err) {
+                res.send(err);
+            })
+        }   
+        else { console.log('token nicht ok');
+         res.send(err)
+        }
+    }
 }
 
 
@@ -73,8 +82,9 @@ function loeschen(req, res) {           //DELETE mit DELETE-Methode
     });
 }
 
-module.exports = {          // vielleicht doch mit _m??
+module.exports = {
     ausgabeAlle: ausgabeAlle,
+    ausgabeAllePP: ausgabeAllePP,
     ausgabeEin: ausgabeEin,
     eingabe: eingabe,
     update: update,

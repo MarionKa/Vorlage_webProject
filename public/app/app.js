@@ -1,4 +1,4 @@
-angular.module('webTestDB', ['ui.router', 'ngResource'])
+var webTestDB = angular.module('webTestDB', ['ui.router', 'ngResource'])
 .config(configFn);
 
 configFn.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -83,7 +83,7 @@ function configFn($stateProvider, $urlRouterProvider) {
             templateUrl: "app/partials/ErklaerungTemplate.html"
         })
         .state('repoedit', {
-            url: "/repoedit/:id",
+            url: "/repoedit",
             templateUrl: "app/partials/RepoEditierenTemplate.html",
             controller: 'FormControllerRepo',
             controllerAs: 'formControllerRepo'

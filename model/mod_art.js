@@ -14,7 +14,7 @@ connection.connect(function(error){
 
 function ausgabeAlle_m(){
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT * FROM ART', function(err, rows,  fields){
+        connection.query('SELECT * FROM ART', function(err, rows, fields){
             if (err) {
                 reject(err);
             } else {
@@ -28,7 +28,7 @@ function ausgabeAlle_m(){
 
 function ausgabeEin_m(id) {
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT * FROM ART WHERE id = ?', [id /*ID*/], function (err, rows, flieds) {
+        connection.query('SELECT * FROM ART WHERE id = ?', [id /*ID*/], function (err, rows, fields) {
             if (err) {
                 reject(err);
                 console.log('fetch(id)err ', rows );
@@ -42,7 +42,7 @@ function ausgabeEin_m(id) {
 
 function ausgabeAktiv_m() {
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT * FROM ART WHERE id = 1', function (err, rows, flieds) {
+        connection.query('SELECT * FROM ART WHERE id = 1', function (err, rows, fields) {
             if (err) {
                 reject(err);
                 console.log('fetch(id)err ', rows );
