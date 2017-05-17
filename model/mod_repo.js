@@ -1,3 +1,4 @@
+
 var mysql = require('mysql');
 var dbconfig = require('../../database');
 var connection = mysql.createConnection(
@@ -25,6 +26,19 @@ function ausgabeEin_m(id){
         });
     });
 }
+
+// function ausgabeStatus_m(id){
+//     return new Promise(function (resolve, reject) {
+//         connection.query('SELECT * FROM repo_status', function(err, rows,  fields){
+//             if (err) {
+//                 reject(err);
+//             } else {
+//                  console.log('repo status model: ',rows);
+//                 resolve(rows);
+//             }  
+//         });
+//     });
+// }
 
 function eingabe_m(data, id) {
      console.log('Eingabe model: ' + data.BENUTZER_ID + ' ' + data.REPOSITORY_ID/*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)

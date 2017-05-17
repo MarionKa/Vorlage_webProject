@@ -74,15 +74,21 @@
                     </div>
                 </div>
 
+<script>
+    $('.status option[value=3]').attr('selected','selected');
+</script>
+
                 <div class="line">
                     <div class="col-xs-6 form-group">
                       <label for="sel1">Neuer Status:</label>
-                      <select ng-model="formControllerRepo.REPO_STATUS_ID_NEU" class="form-control" id="sel1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
+                      <div class="status">
+                      <select ng-model="formControllerRepo.REPO_STATUS_ID_NEU" ng-show="formControllerRepo.REPO_STATUS_ID" class="form-control" id="sel1">
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
                     </select>
+                    </div>
                 </div>
             </div>
         </div>
