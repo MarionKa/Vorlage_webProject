@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-            <div class="row">
+<!--             <div class="row">
                 <div class="col-xs-6 form-group">
                     <label>Status</label>
                     <div class="input-group">
@@ -73,7 +73,7 @@
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ändern <span class="caret"></span></button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">beantragt</a></li>
+                                <li><a href="#"></a></li>
                                 <li><a href="#">aktiviert</a></li>
                                 <li><a href="#">deaktiviert</a></li>
                                 <li><a href="#">gelöscht</a></li>
@@ -81,32 +81,62 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="row">
-                <div class="col-xs-12 form-group">
-                    <label>Gültigkeit</label>
-                    <input class="form-control"
-                    type="text"
-                    ng-model="formControllerRepo.GUELTIG_BIS">
+                <div class="col-xs-6 form-group">
+                <form>
+                    <div class="form-group">
+                      <label for="sel1">Status:</label>
+                      <select class="form-control" id="sel1">
+                        <option>beantragt</option>
+                        <option>aktiviert</option>
+                        <option>deaktiviert</option>
+                        <option>gelöscht</option>
+                    </select>
                 </div>
-            </div>
-
-            <a>
-                <button type="button" ng-click="formControllerRepo.save()" class="btn btn-success" aria-label="Left Align">
-                    Speichern
-                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
-                </button>
-            </a>
-
-            <a href="#/repoueber">
-                <button type="button" class="btn btn-danger" aria-label="Left Align">
-                    Abbrechen
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
-                </button>
-            </a>
+            </form>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            <label>Gültigkeit</label>
+            <input class="form-control"
+            type="text"
+            ng-model="formControllerRepo.GUELTIG_BIS">
+        </div>
+    </div>
+
+    <a>
+        <button type="button" ng-click="formControllerRepo.save()" class="btn btn-success" aria-label="Left Align">
+            Speichern
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
+        </button>
+    </a>
+
+    <a href="#/repoueber">
+        <button type="button" class="btn btn-danger" aria-label="Left Align">
+            Abbrechen
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+        </button>
+    </a>
+</div>
+</div>
 </form>
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
