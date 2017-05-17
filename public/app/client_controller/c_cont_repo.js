@@ -51,7 +51,7 @@ function FormControllerRepo ($state, $stateParams, dataFactoryRepo) {
             AUTHNAME: this.AUTHNAME,
             REPONAME: this.REPONAME,
             GUELTIG_BIS: this.GUELTIG_BIS,
-            REPO_STATUS_ID: this.REPO_STATUS_ID
+            REPO_STATUS_ID: this.REPO_STATUS_ID_NEU
 
             // REPONAME: maka,
             // AUTHNAME: kaiserma,
