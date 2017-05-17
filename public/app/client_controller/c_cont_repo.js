@@ -17,7 +17,6 @@ function FormControllerRepo ($state, $stateParams, dataFactoryRepo) {
     this.GUELTIG_BIS = '';
     this.REPO_STATUS_ID = '';
 
-
     // this.REPONAME = '';
     // this.AUTHNAME = '';
     // this.ART_ID = '';
@@ -29,7 +28,7 @@ function FormControllerRepo ($state, $stateParams, dataFactoryRepo) {
         console.log('state2 ' + $stateParams.id);
         dataFactoryRepo.read({id: $stateParams.id}).$promise.then(function(test) {
             console.log('test im read ', test[0].ART_ID);
-            this.ART_ID = test[0].ART_ID;
+           this.ART_ID = test[0].ART_ID;
             this.AUTHNAME = test[0].AUTHNAME;
             this.REPONAME = test[0].REPONAME;
             this.ALLE_BENUTZER = test[0].ALLE_BENUTZER;

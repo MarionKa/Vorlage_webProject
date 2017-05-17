@@ -9,14 +9,6 @@ function ausgabeEin(req, res) {      //SELECT mit GET-Methode
     })
 }
 
-// function ausgabeStatus(req, res) {
-//     repo.ausgabeStatus_m(req.params.id).then(function success(row) {
-//         console.log('fetch von repo status', row);
-//     }, function failure(err) {
-//         res.send(err);
-//     })
-// }
-
 function eingabe(req, res) {        //Persönliches Repository hinzufügen
     console.log('cont_repo.eingabe '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
     var repoData = {

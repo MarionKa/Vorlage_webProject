@@ -28,7 +28,6 @@ module.exports = function(app) {
     app.post('/repo', cont_repo.eingabe);		//repo-beantragen
     app.put('/repo/:id', cont_repo.update);	//repo-editieren mit id speichern in repo-editieren
     app.delete('/repo/:id', cont_repo.loeschen); //repo-übersicht Funktion2 - löschen
-    // app.get('/repo', cont_repo.ausgabeStatus);
 
     app.get('/art', cont_art.ausgabeAlle);
     app.get('/art/:id', cont_art.ausgabeEin);
