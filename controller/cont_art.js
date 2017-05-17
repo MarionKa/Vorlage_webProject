@@ -54,6 +54,7 @@ function update(req, res) {
         res.send(JSON.stringify(true));
     });
 }
+
 function loeschen(req, res) {
     art.loeschen_m(req.params.id).then(function() {
         res.send(JSON.stringify(true));
@@ -67,6 +68,6 @@ module.exports = {
     ausgabeEin: ausgabeEin,
     ausgabeAktiv: ausgabeAktiv,
     eingabe: eingabe,
-    update:update,
-    loeschen:loeschen
+    update: update,
+    loeschen: loeschen
 };
