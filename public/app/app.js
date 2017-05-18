@@ -43,6 +43,12 @@ function configFn($stateProvider, $urlRouterProvider) {
             controller: 'FormControllerArt', 
             controllerAs: 'formControllerArt'
         })
+        .state('arthinzu', {
+            url: "/arthinzu",
+            templateUrl: "app/partials/ArtHinzufügenTemplate.html",            
+            controller: 'FormControllerArt', 
+            controllerAs: 'formControllerArt'
+        })
         .state('artueber', {
             url: "/artueber",
             templateUrl: "app/partials/ArtUebersichtTemplate.html",
