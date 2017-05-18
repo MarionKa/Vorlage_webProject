@@ -26,21 +26,44 @@
 
 
 
-    <div class="row">
-        <div class="col-xs-12 form-group">
-            <label>Eintragen möglich:</label>
-            <div class="input-group">
-                <input class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL" readonly="">
-                <div class="input-group-btn">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ändern <span class="caret"></span></button>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#">Eintragen möglich</a></li>
-                        <li><a href="#">Eintragen nicht möglich</a></li>
-                    </ul>
+
+
+            <div class="row">
+                <div class="line">
+                    <div class="col-xs-3 form-group">
+                        <label>Eintragen möglich Alter Status:</label>
+                        <div> <input class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL" readonly="">
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="line">
+                    <div class="col-xs-3 form-group">
+                        <form action="#">
+                            <label for="sel1">Eintragen möglich Neuer Status:</label>
+                            <select ng-model="formControllerArt.EINTRAGEN_MGL" class="form-control" id="sel1" name="ID" id="ID" value="">
+                            <option>0</option>
+                            <option>1</option>
+                            </select>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
