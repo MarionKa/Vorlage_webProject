@@ -31,7 +31,8 @@
             </div>
 
 
-
+    <div class="panel panel-info">
+        <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label>Zugriffsberechtigte</label>
@@ -40,8 +41,9 @@
                 </div>
             </div>
 
+            <div class="row">
             <div class="line">
-                <div class="col-xs-6 form-group">
+                <div class="col-xs-2 form-group">
                     <label></label>
                     <a href="#/benutzerentf">
                         <button type="button" class="btn btn-primary" aria-label="Left Align">
@@ -53,23 +55,27 @@
             </div>
 
             <div class="line">
-                <div class="col-xs-6 form-group">
+                <div class="col-xs-2 form-group">
                     <label></label>
 
                     <a href="#/benutzerhinzu">
                         <button type="button" class="btn btn-success" aria-label="Left Align">
                             Benutzer hinzufügen!
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
                     </a>
                 </div>
             </div>
+            </div>
+                            </div>
+                </div>
+
 
             <div class="row">
 <<<<<<< HEAD
                 <div class="line">
-                    <div class="col-xs-6 form-group">
-                        <label>Letzter Status</label>
+                    <div class="col-xs-2 form-group">
+                        <label>Letzter Status:</label>
                         <div> <input class="form-control" type="text" ng-model="formControllerRepo.REPO_STATUS_ID" readonly="">
                         </div> 
                     </div>
@@ -93,15 +99,23 @@
                 </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> refs/remotes/origin/master
                 <div class="line">
-                    <div class="col-xs-6 form-group">
+                    <div class="col-xs-4 form-group">
+                      <form action="#">
                       <label for="sel1">Neuer Status:</label>
-                      <select ng-model="formControllerRepo.REPO_STATUS_ID_NEU" class="form-control" id="sel1">
+                      <select ng-model="formControllerRepo.REPO_STATUS_ID_NEU" class="form-control" id="sel1" name="ID" id="ID" value="">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
                     </select>
+<<<<<<< HEAD
 =======
 
 
@@ -112,6 +126,9 @@
                     type="text"
                     ng-model="formControllerRepo.GUELTIG_BIS">
 >>>>>>> parent of 75e3334... nur blödsinn
+=======
+                    </form>
+>>>>>>> refs/remotes/origin/master
                 </div>
             </div>
         </div>
@@ -140,6 +157,56 @@
         </a>
     </div>
 </div>
+
+
+
+
+
+
+
+<!--     <script>
+        var elem = document.getElementById('regButton');
+        elem.addEventListener('click', checkFormular);
+
+        //Überprüfung der Formularfeldeingaben: 
+        function checkFormular(){
+            if (document.RegFormular.ID.value == ""){
+                alert("Bitte geben Sie die korrekte E-Mail-Adresse an!");
+                document.RegFormular.focus(); //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+        
+        else 
+            alert("Ihre Registrierung wurde beantragt. Sie erhalten in kürze eine E-Mail mit Ihren Zugangsdaten.");
+        }
+    </script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </form>
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
