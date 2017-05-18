@@ -72,7 +72,7 @@ function eingabe_m(data) {
 function update_m(data, id) {
     console.log('Kommt die ID? ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME + ' ' + id);
     return new Promise(function (resolve, reject) {
-        connection.query('UPDATE ART SET BEZEICHNUNG = ?, ORDNERNAME = ? WHERE id = ?', [data.BEZEICHNUNG, data.ORDNERNAME, id /*ID*/], function (err) {
+        connection.query('UPDATE ART SET BEZEICHNUNG = ?, ORDNERNAME = ?, EINTRAGEN_MGL = ? WHERE id = ?', [data.BEZEICHNUNG, data.ORDNERNAME, data.EINTRAGEN_MGL, id /*ID*/], function (err) {
             if (err) {
                 reject(err);
             } else {
