@@ -46,7 +46,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
             NACHNAME: this.NACHNAME,
             VORNAME: this.VORNAME,
             EMAILKENNUNG: this.EMAILKENNUNG,
-            RECHTE_ID: this.RECHTE_ID_NEU,
+            RECHTE_ID: this.RECHTE_ID,
             PASSWORT: 'test'
 
             // REPONAME: maka,

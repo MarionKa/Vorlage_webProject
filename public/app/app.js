@@ -24,7 +24,10 @@ function configFn($stateProvider, $urlRouterProvider) {
             controller: 'DeleteController'
         })
 
-
+        .state('deleteBenutzer', {
+            url: "/delete/:id",
+            controller: 'DeleteControllerBenutzer'
+        })
 
         .state('abmeldung', {
             url: "/abmeldung",
