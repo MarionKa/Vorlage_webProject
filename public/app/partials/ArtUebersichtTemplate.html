@@ -15,7 +15,7 @@
                 </div>
                 <div class="panel-body">
                     <table class="table table-hover">
-                        <tr> <th>Bezeichnung</th><th>Ordnername</th> <th>Eintragen</th>  <th></th></tr>
+                        <tr> <th>Bezeichnung</th><th>Ordnername</th> <th>Eintragen</th>  <th></th> <th></th></tr>
 
                         <tr ng-repeat="test in listControllerArt.test">
                             <td>{{test.BEZEICHNUNG}}</td>
@@ -30,7 +30,7 @@
                                 </a>
                             </td>
                             <td> 
-                                <a ui-sref="delete({id: test.ID})">
+                                <a ui-sref="deleteArt({id: test.ID})">
                                     <button type="button" class="btn btn-default" aria-label="Left Align">
                                         Löschen
                                         <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
