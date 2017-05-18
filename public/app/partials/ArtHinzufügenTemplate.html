@@ -1,47 +1,65 @@
 <div class="row">
-    <h1 class="col-xs-12 page-header"> Benutzer hinzufügen:</h1>
+    <h1 class="col-xs-12 page-header">
+        Art hinzugüfen:    
+    </h1>
 </div>
+<form name="Arthinzufuegen">
 
-<div class="panel panel-info">
-    <div class="panel-heading"><h4>Bitte geben Sie heir den Namen ein, der eine Zugriffsberechtigung erhalten soll:</h4> </div>
-    <div class="panel-body">
-
-        <form name="studentForm">
+    <div class="panel panel-info">
+        <div class="panel-heading"><h4>Fügen Sie hier einen neuen Datensatz Repositoryart hinzu.</h4> </div>
+        <div class="panel-body">
             <div class="row">
-                <div class="col-xs-12 form-group">
-                    <label>Name:</label>
-                    <input class="form-control"
-                    type="text"
-                    ng-model="formController.art"
-                    value=""/>
+             <div class="col-xs-12 form-group">
+                <label>Bezeichnung</label>
+                <input class="form-control"
+                type="text"
+                ng-model="formControllerArt.BEZEICHNUNG">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 form-group">
+                <label>Ordnername</label>
+                <input class="form-control"
+                type="text"
+                ng-model="formControllerArt.ORDNERNAME">
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 form-group">
+                <label>Eintragen möglich:</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL" readonly="">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ändern <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="#">Eintragen möglich</a></li>
+                            <li><a href="#">Eintragen nicht möglich</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </div>
 
-<!-- Fehlerbehebung: hier muss auf das vorherige Template (repoedit) mit der richtigen ID rückgeleitet werden.-->
-            <!-- <a href="#/repoedit/1"> -->
-            <a ui-sref="repoedit({id: test.ID})"> 
-                <button type="button" class="btn btn-success" aria-label="Left Align">
-                    Hinzufügen
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
-                </button>
-            </a>
-            
-<!-- Fehlerbehebung: hier muss auf das vorherige Template (repoedit) mit der richtigen ID rückgeleitet werden.-->
-            <a href="#/repoedit/1"> 
-                <button type="button" class="btn btn-danger" aria-label="Left Align">
-                    Abbrechen
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
-                </button>
-            </a>
-        </form>  
-    </div>
+<a>
+    <button type="button" ng-click="formControllerArt.save()" class="btn btn-success" aria-label="Left Align">
+        Speichern
+        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
+    </button>
+</a>
+
+<a href="#/artueber">
+    <button type="button" class="btn btn-danger" aria-label="Left Align">
+        Abbrechen
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+    </button>
+</a>
 </div>
-
-
-
-
-
-
+</div>
+</form>
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
