@@ -27,10 +27,13 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
     if($stateParams.id) {
         console.log('state2 ' + $stateParams.id);
         dataFactoryRepos.read({id: $stateParams.id}).$promise.then(function(test) {
-            console.log('test im read ', test[0].RECHTE_ID );
+            console.log('test im read ', test[0].RECHTE_ID, 'Vorname: ', test[0].VORNAME, 'Nachname: ', test[0].NACHNAME, 'Vorname: ', test[1].VORNAME, 'Nachname: ', test[1].NACHNAME );
             this.ART_ID = test[0].ART_ID;
             this.AUTHNAME = test[0].AUTHNAME;
             this.REPONAME = test[0].REPONAME;
+            this.VORNAME = test[0].VORNAME;
+            this.NACHNAME = test[0].NACHNAME;
+
             this.ALLE_BENUTZER = test[0].ALLE_BENUTZER;
             this.GUELTIG_BIS = test[0].GUELTIG_BIS;
             this.REPO_STATUS = test[0].REPO_STATUS;
