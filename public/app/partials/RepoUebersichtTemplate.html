@@ -43,7 +43,18 @@
                     </button>
 
 
-                    <!-- Button trigger modal -->
+
+
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-danger" aria-label="Left Align" onclick="generieren()">
+                            Repositories aus DB löschen
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                        </button> 
+                    </div>
+                   
+
+
+
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                         Repositories aus DB löschen
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
@@ -56,7 +67,7 @@
                                     <h4 class="modal-title" id="myModalLabel">Repositories aus DB löschen</h4>
                                 </div>
                                 <div class="modal-body">
-                                    Möchten sie alle Repositories, die unter dem Status "gelöscht" in der Datenbank eingetragen endgültig aus der Datenbank löschen?
+                                    Möchten sie alle Repositories, mit dem Status "gelöscht" endgültig aus der Datenbank löschen?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
@@ -65,6 +76,9 @@
                             </div>
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
         </div>
