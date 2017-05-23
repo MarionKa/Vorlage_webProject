@@ -40,3 +40,33 @@
 </nav>-->
 
 
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a id="brand" class="navbar-brand" href="#/reh">
+                <img alt="Brand" src="img/4.png">
+            </a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+            <div id="menu" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav" ng-controller="NavbarController">
+                <li ng-class="{ active: isActive('/repoueber')}"><a href="#/repoueber">Repositories</a></li>
+                <li ng-class="{ active: isActive('/benutzerueber')}"><a href="#/benutzerueber">Benutzer</a></li>
+                <li ng-class="{ active: isActive('/artueber')}"><a href="#/artueber">Art</a></li>
+
+                <li ng-class="{ active: isActive('/anmeldung')}"><a href="#/anmeldung">Anmelden</a></li>
+                <li ng-class="{ active: isActive('/registrierung')}"><a href="#/registrierung">Registrieren</a></li>
+                <li ng-class="{ active: isActive('/kennwort')}"><a href="#/kennwort">Passwort vergessen</a></li>
+
+                <li ng-class="{ active: isActive('/ueberpers')}"><a href="#/ueberpers">Persönlicher Bereich</a></li>
+                <li ng-class="{ active: isActive('/beantragung')}"><a href="#/beantragung">Repository beantragen</a></li>
+            </ul>
+            <button type="button" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>
+        </div>
+    </div>
+</nav>

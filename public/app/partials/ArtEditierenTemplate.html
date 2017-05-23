@@ -1,33 +1,59 @@
 <div class="row">
     <h1 class="col-xs-12 page-header">
-        Ändern Sie hier den ausgewählten Datensatz
-    </h1>
+        Art Editiermodus:    
+        </h1>
 </div>
+<form name="Arteditieren">
 
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Bezeichnung</label>
-    <input type="text" ng-model="formControllerArt.BEZEICHNUNG">
-</div>
-</div> 
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Ordnername</label>
-    <input type="text" ng-model="formControllerArt.ORDNERNAME">
-</div>
-</div> 
-<div class="row">
- <div class="col-xs-12 form-group">
-    <label>Eintragen möglich:</label>
-    <input type="text" ng-model="formControllerArt.EINTRAGEN_MGL">
-</div>
-</div> 
+    <div class="panel panel-info">
+        <div class="panel-heading"><h4>Ändern Sie hier den ausgewählten Datensatz Repositoryart</h4> </div>
+        <div class="panel-body">
+            <div class="row">
+               <div class="col-xs-12 form-group">
+                <label>Bezeichnung</label>
+                <input class="form-control"
+                type="text"
+                ng-model="formControllerArt.BEZEICHNUNG">
+            </div>
+        </div>
+
+        <div class="row">
+           <div class="col-xs-12 form-group">
+            <label>Ordnername</label>
+            <input class="form-control" type="text" ng-model="formControllerArt.ORDNERNAME" readonly="">
+        </div>
+    </div>
 
 
 
 
-<!-- Knöpfe: -->
-<div class="line">
+
+            <div class="row">
+                <div class="line">
+                    <div class="col-xs-3 form-group">
+                        <label>Eintragen möglich Alter Status:</label>
+                        <div> <input class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL" readonly="">
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="line">
+                    <div class="col-xs-3 form-group">
+                        <form action="#">
+                            <label for="sel1">Eintragen möglich Neuer Status:</label>
+                            <select ng-model="formControllerArt.EINTRAGEN_MGL_NEU" class="form-control" id="sel1" name="ID" id="ID" value="">
+                            <option>0</option>
+                            <option>1</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+    <!-- Knöpfe: -->
+<!-- <div class="line">
    <div class="col-xs-6 form-group">
     <label>Eintragen möglich:</label>
     <div class="btn-group" data-toggle="buttons">
@@ -39,27 +65,31 @@
         </label>
     </div>
 </div>
+</div> -->
+
+
+      <!-- oder doch mit href=... -->
+    <a>
+        <button type="button" ng-click="formControllerArt.save()" class="btn btn-success" aria-label="Left Align">
+            Speichern
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
+        </button>
+    </a>
+
+    <a href="#/artueber">
+        <button type="button" class="btn btn-danger" aria-label="Left Align">
+            Abbrechen
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+        </button>
+    </a>
+</div>
 </div>
 </form>
-
-<a href="#/artueber">
-    <button type="button" class="btn btn-success" aria-label="Left Align">
-        Speichern
-        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
-    </button>
-</a>
-
-<a href="#/artueber">
-    <button type="button" class="btn btn-danger" aria-label="Left Align">
-        Abbrechen
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
-    </button>
-</a>
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <a id="brand" class="navbar-brand" href="#/reh">
@@ -107,4 +137,4 @@
             </nav>
         </div>
     </div>
-</nav>
+</nav> -->

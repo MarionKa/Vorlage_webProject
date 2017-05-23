@@ -1,106 +1,59 @@
 ﻿<div class="row">
-<h1 class="col-xs-12 page-header">
-    <large>Herzlich Willkommen Prof. Dr. Hofmann!</large>
-</h1>
+    <h1 class="col-xs-12 page-header">
+        <large>Herzlich Willkommen Prof. Dr. Hofmann!</large>
+    </h1>
 
 </div>
 
 <form name="Uebersicht">
-<div class="row">
-    <div class="col-xs-12 form-group">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3>Überblick über alle Benutzer:
-                </h3>
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3>Überblick über alle Benutzer:
+                    </h3>
+                </div>
+
+
+                    <!-- Repos für Vorlesungen -->
+                    <table class="table">
+                        <tr> <th>Name</th><th></th></tr>
+
+
+                        <tr ng-repeat="test in listControllerBenutzer.test">
+                            <td>{{test.EMAILKENNUNG}}</td>
+                            <td><a ui-sref="deleteBenutzer({id: test.ID})">
+                                <button type="button"  class="btn btn-default" aria-label="Left Align">
+                                    Löschen
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                                </button>
+                            </a></td>
+                        </tr>
+
+
+<!-- 
+                        <tr>
+                            <td>Kaiser Marion</td>
+                            <td> 
+                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                    Löschen
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                                </button>
+                            </td>
+                        </tr> -->
+
+                    </table>
+
+                    <a href="#/repoedit">
+                        <button type="button" class="btn btn-danger" aria-label="Left Align">
+                            Abbrechen
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+                        </button>
+                    </a>
+
             </div>
-
-
-                    
-                    <scrollen>
-
-                        <!-- Repos für Vorlesungen -->
-                        <table class="table">
-                            <tr> <th>Name</th><th></th></tr>
-
-                <!-- <tr ng-repeat="student in listController.Studenten"> 
-                    <td>{{student.art}}</span></td> 
-                    <td>{{student.pfad}}</td> 
-                    <td>{{student.mitglieder}}</td> 
-                    <td>{{student.datum}}</td> 
-                    <td> <button type="button" class="btn btn-default" aria-label="Left Align">Safe/Edit</button></td>
-                    <td align="center"><input checked data-toggle="toggle" type="checkbox"></td>
-                    <td><button type="button" class="btn btn-danger" aria-label="Left Align">Löschen</button></td>
-                </tr> -->
-
-                <tr>
-                    <td>Kaiser Marion</td>
-                    <td> 
-                    <button type="button" class="btn btn-default" aria-label="Left Align">
-                        Löschen
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                    </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>John Michael</td>
-                    <td> 
-                    <button type="button" class="btn btn-default" aria-label="Left Align">
-                        Löschen
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                    </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Berndt Andreas</td>
-                    <td>
-                    <button type="button" class="btn btn-default" aria-label="Left Align">
-                        Löschen
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                    </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Kullmann Philipp</td>
-                    <td>
-                    <button type="button" class="btn btn-default" aria-label="Left Align">
-                        Löschen
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                    </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Hofmann Oliver</td>
-                    <td> 
-                    <button type="button" class="btn btn-default" aria-label="Left Align">
-                        Löschen
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                    </button>
-                    </td>
-                </tr>
-
-            </table>
-<a href="#/benutzerhinzu">
-                    <button type="button" class="btn btn-success" aria-label="Left Align">
-                        Benutzer hinzufügen!
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
-                    </button>
-                </a>
-                <a href="#/repoueber">
-<button type="button" class="btn btn-danger" aria-label="Left Align">
-    Abbrechen
-    <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
-</button>
-</a>
-
-
-        </scrollen>
+        </div>
     </div>
-</div>
-</div>
 
 
 
@@ -121,7 +74,7 @@
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <a id="brand" class="navbar-brand" href="#/reh">
@@ -169,4 +122,4 @@
             </nav>
         </div>
     </div>
-</nav>
+</nav> -->

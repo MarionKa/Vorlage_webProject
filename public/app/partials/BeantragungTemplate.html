@@ -35,6 +35,44 @@
                 </div>
             </div>
 
+<!-- Hier muss das Dropdown Menü angepasst werden und die jeweils gewählte Option angezeigt werden!!! -->
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <label>gewähltes Repository:</label>
+                    <div class="input-group">
+                        <input class="form-control" type="text" ng-model="ControllerArt.test" readonly="">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ändern <span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="#" ng-repeat="test in ControllerArt.test">Eintragen möglich</a></li>
+                                <li><a href="#">{{test.ART}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--  -->
+
+
+<!-- 
+http://stackoverflow.com/questions/30048605/angularjs-ng-model-in-a-select
+
+<div ng-app ng-controller="myCtrl">
+    <select class="form-control" ng-change="unitChanged()" ng-model="data.unit">
+         <option ng-repeat="item in units" ng-value="item.id">{{item.label}}</option>
+    </select>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
 
             <div class="row">
                 <div class="col-xs-6 form-group">
@@ -63,7 +101,7 @@
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <a id="brand" class="navbar-brand" href="#/reh">
@@ -104,4 +142,4 @@
             </nav>
         </div>
     </div>
-</nav>
+</nav> -->
