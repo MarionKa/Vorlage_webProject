@@ -16,21 +16,21 @@ function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
 
 
 function ausgabeAllePP(req, res) {      //SELECT mit GET-Methode
-    console.log('im cont_benutzer');
-    passport.authenticate('jwt', { session: false}), function (req, res) {
-          console.log('nach passport');  
-        if(pw.tokenCheck){
+    console.log('im cont_benutzer'); 
+    var test = pw.adminCheck(req.headers);
+
+    console.log('test = '+ test);
+        if( test){
             benutzer.ausgabeAlle_m(req.params.id).then(function success(row) {
                 res.send(row);
-                console.log('fetch alle benutzer ',row);
+                console.log('ausgabeAllePP ',row);
             }, function failure(err) {
                 res.send(err);
             })
         }   
-        else { console.log('token nicht ok');
-         res.send(err)
+        else { console.log('keine Berechtigung');
+         res.send('keine Berechtigung')
         }
-    }
 }
 
 
