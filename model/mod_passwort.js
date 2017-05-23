@@ -43,22 +43,24 @@ function finden_m(data) {
 
 
 
-function tokenCheck(headers) {
-    var token = getToken(req.headers);
+adminCheck = function (headers) {
+    var token = getToken(headers);
     if (token) {
             var decoded = jwt.decode(token, 'dasIstEinGeheimnis');
-    connection.query('SELECT ID, EMAILKENNUNG, PASSWORT FROM BENUTZER WHERE EMAILKENNUNG = ?', [decoded.EMAILKENNUNG], function(err, rows,  fields) {
-        if (err) {return err}
-        if (!rows){
+                console.log('anfang');
+    connection.query('SELECT ID, EMAILKENNUNG, PASSWORT, RECHTE_ID FROM BENUTZER WHERE EMAILKENNUNG = ? AND RECHTE_ID = ?', [decoded[0].EMAILKENNUNG, 2 ], function(err, rows,  fields) {
+        console.log('ergebnis:', rows);
+        if (err) {return 'err';}
+        if (rows[0]){ console.log(' alles gut ');
                      //Authentication failed. User not found.
-                    return false;
+                    return true;
         }
-        else {  
-                return true; //Welcome in the member area
+        else {  console.log('falsche RECHTE_ID '); 
+                return false; //Welcome in the member area
         }
     });
-     }else { return false  } //No token provided.
-}
+     }else { console.log(' ohne token '); return false;  } //No token provided.
+};
 
 
 
@@ -82,6 +84,6 @@ getToken = function (headers) {
 
 module.exports = {
     finden_m: finden_m,
-    tokenCheck: tokenCheck
+    adminCheck: adminCheck
 };
 
