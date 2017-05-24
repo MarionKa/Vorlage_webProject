@@ -55,6 +55,7 @@ function eingabe_m(data) {
     });
 }
 
+// Benutzer aus Repository löschen
 function loeschen_m(idB, idR) {
     return new Promise(function (resolve, reject) {
         connection.query('DELETE FROM VERBINDEN WHERE BENUTZER_ID = ? AND REPOSITORY_ID = ? ', [ idB /*Benutzer*/, idR /*REPO*/], function (err) {

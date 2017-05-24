@@ -14,13 +14,9 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
     this.VORNAME = '';
     this.EMAILKENNUNG = '';
     this.RECHTE = '';
+    this.ID ='';
 
-    // this.REPONAME = '';
-    // this.AUTHNAME = '';
-    // this.ART_ID = '';
-    // this.REPO_STATUS_ID = '';
-
-        console.log('state FormControllerBenutzer');
+    console.log('state FormControllerBenutzer');
 
     if($stateParams.id) {
         console.log('state2 ' + $stateParams.id);
@@ -30,6 +26,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
             this.VORNAME = test[0].VORNAME;
             this.EMAILKENNUNG = test[0].EMAILKENNUNG;
             this.RECHTE_ID = test[0].RECHTE_ID;
+            this.ID = test[0].ID;
             
             // console.log('test im read ', test[0].REPONAME);
             // this.REPONAME = test[0].REPONAME;
@@ -47,6 +44,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
             VORNAME: this.VORNAME,
             EMAILKENNUNG: this.EMAILKENNUNG,
             RECHTE_ID: this.RECHTE_ID,
+            ID: this.ID,
             PASSWORT: 'test'
 
             // REPONAME: maka,

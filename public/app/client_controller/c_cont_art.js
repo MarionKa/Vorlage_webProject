@@ -13,6 +13,7 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
     this.BEZEICHNUNG =  '';
     this.ORDNERNAME = '';
     this.EINTRAGEN_MGL = '';
+    this.ID = '';
 
 
         console.log('state FormControllerArt');
@@ -24,6 +25,7 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
             this.BEZEICHNUNG = test[0].BEZEICHNUNG;
             this.ORDNERNAME = test[0].ORDNERNAME;
             this.EINTRAGEN_MGL = test[0].EINTRAGEN_MGL;
+            this.ID = test[0].ID;
 
         }.bind(this));
     }
@@ -35,6 +37,7 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
             BEZEICHNUNG: this.BEZEICHNUNG,
             ORDNERNAME: this.ORDNERNAME,
             EINTRAGEN_MGL: this.EINTRAGEN_MGL_NEU,
+            ID: this.ID,
             PASSWORT: 'test'
 
         };
