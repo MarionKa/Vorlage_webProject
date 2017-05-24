@@ -2,7 +2,8 @@ angular.module('webTestDB')
     .controller('ListControllerRepo', ListControllerRepo)
     .controller('ListControllerRepoBenutzer', ListControllerRepoBenutzer)
     .controller('FormControllerRepo', FormControllerRepo)
-    .controller('DeleteControllerRepo', DeleteControllerRepo);
+    .controller('DeleteControllerRepo', DeleteControllerRepo)
+    .controller('DeleteControllerRepoBenutzer', DeleteControllerRepoBenutzer)
 
 ListControllerRepo.$inject = ['dataFactoryRepo'];
 function ListControllerRepo (dataFactoryRepo) {
@@ -93,3 +94,15 @@ function DeleteControllerRepo ($state, $stateParams, dataFactoryRepo) {
     });
 }
 
+DeleteControllerRepoBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryRepoBenutzer'];
+function DeleteControllerRepoBenutzer ($state, $stateParams, dataFactoryRepoBenutzer) {
+    console.log('c_cont_repo loeschen vor data: ' + this.REPOSITORY_ID + ' ' + $stateParams.id);
+        var data = {
+            ID_REPO: this.ID
+        };
+    console.log('c_cont_repo loeschen: ' + data.ID_REPO);
+    dataFactoryRepoBenutzer.delete(data, {id: $stateParams.id}).$promise.then(function() {
+        
+        $state.go('repoueber');//benutzerentf({id: this.ID})
+    });
+}

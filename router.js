@@ -30,7 +30,7 @@ module.exports = function(app) {
     app.delete('/repo/:id', cont_repo.loeschen); //repo-übersicht Funktion2 - löschen
 
     app.get('/repoBenutzer/:id', cont_repo.benutzerDesRepos);
- //   app.delete('/repoBenutzer/:id', cont_repo.loeschenBenRep);      // in cont_repo noch nicht vorhanden!!!
+    app.delete('/repoBenutzer/:id', cont_repos.loeschen);      // in cont_repo noch nicht vorhanden!!!
 
     app.get('/art', cont_art.ausgabeAlle);
     app.get('/art/:id', cont_art.ausgabeEin);

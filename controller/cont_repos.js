@@ -32,11 +32,12 @@ function eingabe(req, res) {        //Mitglied zu Repository hinzufügen
     });
 }
 
-//Ein Repository löschen
+//Einen Benutzer aus Repo entfernen
 function loeschen(req, res) {
-    repos.loeschen_m(req.params.id).then(function() {
+    console.log('datenbody ', req.body);
+    repos.loeschen_m(req.params.id,req.body.ID_REPO).then(function() {       
         res.send(JSON.stringify(true));
-        console.log('Wir wollen loeschen: repos');
+        console.log('Einen Benutzer entfernen');
     });
 }
 

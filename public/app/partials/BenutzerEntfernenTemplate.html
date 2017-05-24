@@ -20,7 +20,10 @@
                         <tr> <th>Vorname</th><th>Nachname</th> <th>E-Mail</th>  <th></th><th></th></tr>
 
                         <tr ng-repeat="test in ListControllerRepoBenutzer.test" > 
+                            <td>{{test.VORNAME}}</td>
+                            <td>{{test.NACHNAME}}</td>
                             <td>{{test.EMAILKENNUNG}}</td>
+                            <td>{{test.REPOSITORY_ID}}</td>
                             <td><a ui-sref="deleteRepoBenutzer({id: test.ID})">
                                 <button type="button"  class="btn btn-default" aria-label="Left Align">
                                     Löschen
