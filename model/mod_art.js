@@ -31,7 +31,7 @@ function ausgabeEin_m(id) {
         connection.query('SELECT * FROM ART WHERE id = ?', [id /*ID*/], function (err, rows, fields) {
             if (err) {
                 reject(err);
-                console.log('fetch(id)err ', rows );
+                console.log('ausgabeEin_m(id)err ', rows );
             } else {
                 console.log('Aufgabe eine Art ', rows );
                 resolve(rows);
