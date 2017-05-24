@@ -29,10 +29,13 @@ module.exports = function(app) {
     app.put('/repo/:id', cont_repo.update);	//repo-editieren mit id speichern in repo-editieren
     app.delete('/repo/:id', cont_repo.loeschen); //repo-übersicht Funktion2 - löschen
 
+    app.get('/repoBenutzer/:id', cont_repo.benutzerDesRepos);
+ //   app.delete('/repoBenutzer/:id', cont_repo.loeschenBenRep);      // in cont_repo noch nicht vorhanden!!!
+
     app.get('/art', cont_art.ausgabeAlle);
     app.get('/art/:id', cont_art.ausgabeEin);
 // zwei gleiche aufrufe:
-    app.get('/art', cont_art.ausgabeAktiv);  //Ausgabe aktiv geschaltener Repos (REPO_STATUS_ID = 1)
+    app.get('/artAktiv', cont_art.ausgabeAktiv);  //Ausgabe aktiv geschaltener Repos (REPO_STATUS_ID = 1)
     app.post('/art/:id', cont_art.eingabe);
     app.put('/art/:id', cont_art.update);
     app.delete('/art/:id', cont_art.loeschen);
@@ -40,7 +43,26 @@ module.exports = function(app) {
     //FÜR DEN PASSPORT
 
     app.post('/authenticate', cont_passwort.finden);
-    app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),function(req, res){
-        res.json("Success! You can not see this without a token");
-});
+    app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAllePP);
+
 };
+
+
+
+
+//
+// function benutzerDesRepos(id){
+//     return new Promise(function (resolve, reject) {
+//         connection.query('SELECT v.REPOSITORY_ID , b.ID, b.VORNAME,b.NACHNAME, b.EMAILKENNUNG  FROM VERBINDEN v JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) WHERE v.REPOSITORY_ID = ?', [id /*ID_REPO*/], function(err, rows,  fields){
+//             if (err) {
+//                 reject(err);
+//             } else {
+//                  console.log('hier',rows);
+//                 resolve(rows);
+//             }  
+//         });
+//     });
+// }
+
+
+
