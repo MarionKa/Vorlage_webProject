@@ -78,8 +78,8 @@ function configFn($stateProvider, $urlRouterProvider) {
     .state('benutzerentf', {
         url: "/benutzerentf/:id",
         templateUrl: "app/partials/BenutzerEntfernenTemplate.html",
-        controller: 'FormControllerRepo', 
-        controllerAs: 'formControllerRepo'
+        controller: 'ListControllerRepoBenutzer', 
+        controllerAs: 'ListControllerRepoBenutzer'
     })
     .state('benutzerhinzu', {
         url: "/benutzerhinzu",

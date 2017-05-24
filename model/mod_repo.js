@@ -19,7 +19,20 @@ function ausgabeEin_m(id){
             if (err) {
                 reject(err);
             } else {
-                 console.log('hier',rows);
+                 console.log('ausgabeEin_m',rows);
+                resolve(rows);
+            }  
+        });
+    });
+}
+
+function benutzerDesRepos_m(id){
+    return new Promise(function (resolve, reject) {
+        connection.query('SELECT v.REPOSITORY_ID , b.ID, b.VORNAME,b.NACHNAME, b.EMAILKENNUNG  FROM VERBINDEN v JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) WHERE v.REPOSITORY_ID = ?', [id /*ID_REPO*/], function(err, rows,  fields){
+            if (err) {
+                reject(err);
+            } else {
+                 console.log('benutzerDesRepos_m',rows);
                 resolve(rows);
             }  
         });
@@ -71,6 +84,7 @@ module.exports = {
     ausgabeEin_m: ausgabeEin_m,
     eingabe_m: eingabe_m,
     update_m: update_m,
-    loeschen_m: loeschen_m
+    loeschen_m: loeschen_m,
+    benutzerDesRepos_m: benutzerDesRepos_m
 };
 
