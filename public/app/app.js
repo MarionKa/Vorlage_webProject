@@ -34,6 +34,11 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'DeleteControllerArt'
     })
 
+    .state('deleteRepos', {
+        url: "/delete/:id",
+        controller: 'DeleteControllerRepos'
+    })
+
     .state('abmeldung', {
         url: "/abmeldung",
         templateUrl: "app/partials/AbmeldungTemplate.html"
@@ -71,8 +76,10 @@ function configFn($stateProvider, $urlRouterProvider) {
         controllerAs: 'formControllerBenutzer'
     })
     .state('benutzerentf', {
-        url: "/benutzerentf",
-        templateUrl: "app/partials/BenutzerEntfernenTemplate.html"
+        url: "/benutzerentf/:id",
+        templateUrl: "app/partials/BenutzerEntfernenTemplate.html",
+        controller: 'ListControllerRepoBenutzer', 
+        controllerAs: 'ListControllerRepoBenutzer'
     })
     .state('benutzerhinzu', {
         url: "/benutzerhinzu",

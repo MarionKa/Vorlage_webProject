@@ -17,12 +17,11 @@
 
                     <!-- Repos für Vorlesungen -->
                     <table class="table">
-                        <tr> <th>Name</th><th></th></tr>
+                        <tr> <th>Vorname</th><th>Nachname</th> <th>E-Mail</th>  <th></th><th></th></tr>
 
-
-                        <tr ng-repeat="test in listControllerBenutzer.test">
+                        <tr ng-repeat="test in ListControllerRepoBenutzer.test" > 
                             <td>{{test.EMAILKENNUNG}}</td>
-                            <td><a ui-sref="deleteBenutzer({id: test.ID})">
+                            <td><a ui-sref="deleteRepoBenutzer({id: test.ID})">
                                 <button type="button"  class="btn btn-default" aria-label="Left Align">
                                     Löschen
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>

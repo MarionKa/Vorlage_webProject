@@ -9,6 +9,15 @@ function ausgabeEin(req, res) {      //SELECT mit GET-Methode
     })
 }
 
+function benutzerDesRepos(req, res) {      //SELECT mit GET-Methode
+    repo.benutzerDesRepos_m(req.params.id).then(function success(row) {
+        res.send(row);
+        console.log('benutzerDesRepos ',row);
+    }, function failure(err) {
+        res.send(err);
+    })
+}
+
 function eingabe(req, res) {        //Persönliches Repository hinzufügen
     console.log('cont_repo.eingabe '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
     var repoData = {
@@ -53,6 +62,7 @@ module.exports = {
     ausgabeEin: ausgabeEin,
     eingabe: eingabe,
     update: update,
-    loeschen: loeschen
+    loeschen: loeschen,
+    benutzerDesRepos: benutzerDesRepos
 
 };
