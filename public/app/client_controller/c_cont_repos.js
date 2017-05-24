@@ -1,7 +1,7 @@
 angular.module('webTestDB')
     .controller('ListControllerRepos', ListControllerRepos)
     .controller('FormControllerRepos', FormControllerRepos)
-    .controller('DeleteController', DeleteController);
+    .controller('DeleteControllerRepos', DeleteControllerRepos);
 
 ListControllerRepos.$inject = ['dataFactoryRepos'];
 function ListControllerRepos (dataFactoryRepos) {
@@ -16,6 +16,7 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
     this.ALLE_BENUTZER = '';
     this.GUELTIG_BIS = '';
     this.REPO_STATUS = '';
+    this.ID = '';
 
     // this.REPONAME = '';
     // this.AUTHNAME = '';
@@ -34,6 +35,7 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
             this.ALLE_BENUTZER = test[0].ALLE_BENUTZER;
             this.GUELTIG_BIS = test[0].GUELTIG_BIS;
             this.REPO_STATUS = test[0].REPO_STATUS;
+            this.ID = test[0].ID;
 
             // console.log('test im read ', test[0].REPONAME);
             // this.REPONAME = test[0].REPONAME;
@@ -50,9 +52,10 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
             ART_ID: this.ART_ID,
             AUTHNAME: this.AUTHNAME,
             REPONAME: this.REPONAME,
-            ALLE_BENUTZER: this.ALLE_BENUTZER,
+            ALLE_BENUTZER: this.ALLE_BENUTZER,  // Zugriffsberechtigte
             GUELTIG_BIS: this.GUELTIG_BIS,
-            REPO_STATUS: this.REPO_STATUS
+            REPO_STATUS: this.REPO_STATUS,
+            ID: this.ID
 
             // REPONAME: maka,
             // AUTHNAME: kaiserma,
@@ -73,8 +76,8 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
     }.bind(this);
 }
 
-DeleteController.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
-function DeleteController ($state, $stateParams, dataFactoryRepos) {
+DeleteControllerRepos.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
+function DeleteControllerRepos ($state, $stateParams, dataFactoryRepos) {
     dataFactoryRepos.delete({id: $stateParams.id}).$promise.then(function() {
         $state.go('repoueber');
     });

@@ -36,6 +36,37 @@
                     <div class="row">
                         <div class="col-xs-12 form-group">
                             <label>Zugriffsberechtigte</label>
+
+
+<!--                             <div class="row">
+                                <div class="col-xs-12 form-group">
+
+                                    <table class="table table-hover">
+                                        <tr> <th>Name</th> <th>E-Mail</th> <th></th><th></th></tr>
+
+                                        <tr>    <!-- Darstellung der Zugriffsberechtigten, aber wie???  
+                                            <td>{{test.Vorname}}</td>
+                                            <td>{{test.}}</td>
+
+                                            <td><a ui-sref="deleteBenutzer({id: test.ID})">
+                                                <button type="button"  class="btn btn-default" aria-label="Left Align">
+                                                    Löschen
+                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                                                </button>
+                                            </a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div> -->
+
+<!--                             <script language="javascript" type="text/javascript"> 
+                                var id_repo_ue = 1;
+                            </script> -->
+
+
+
+
+
                             <div> <input class="form-control" type="text" ng-model="formControllerRepo.ALLE_BENUTZER" readonly="">
                             </div> 
                         </div>
@@ -45,7 +76,7 @@
 
                         <div class="line">
                             <div class="col-xs-2 form-group">
-                                <a href="#/benutzerentf">
+                                <a ui-sref="benutzerentf({id: $stateParams})">
                                     <button type="button" class="btn btn-primary" aria-label="Left Align">
                                         Benutzer löschen!
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
@@ -71,18 +102,27 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <label>Gültigkeit</label>
+                    <input class="form-control"
+                    type="text"
+                    ng-model="formControllerRepo.GUELTIG_BIS">
+                </div>
+            </div>
+
 
             <div class="row">
                 <div class="line">
                     <div class="col-xs-2 form-group">
-                        <label>Letzter Status:</label>
+                        <label>Aktueller Status:</label>
                         <div> <input class="form-control" type="text" ng-model="formControllerRepo.REPO_STATUS_ID" readonly="">
                         </div> 
                     </div>
                 </div>
 
                 <div class="line">
-                    <div class="col-xs-4 form-group">
+                    <div class="col-xs-2 form-group">
                         <form action="#">
                             <label for="sel1">Neuer Status:</label>
                             <select ng-model="formControllerRepo.REPO_STATUS_ID_NEU" class="form-control" id="sel1" name="ID" id="ID" value="">
@@ -94,16 +134,23 @@
                         </form>
                     </div>
                 </div>
+
             </div>
 
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    <label>Gültigkeit</label>
-                    <input class="form-control"
-                    type="text"
-                    ng-model="formControllerRepo.GUELTIG_BIS">
+                <div class="row">
+                    <div class="col-xs-2 form-group">
+                        <label>Status:</label>
+                        <p> 1: beantragt</p>
+                        <p> 2: aktiviert</p>
+                        <p> 3: deaktiviert</p>
+                        <p> 4: gelöscht</p>
+                    </div>
                 </div>
-            </div>
+            
+
+
+
+
 
             <a>
                 <button type="button" ng-click="formControllerRepo.save()" class="btn btn-success" aria-label="Left Align">
