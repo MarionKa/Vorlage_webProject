@@ -67,6 +67,8 @@ function update_m(data, id) {
     });
 }
 
+
+//ganzes Repo löschen
 function loeschen_m(idB, idR) {
     return new Promise(function (resolve, reject) {
         connection.query('DELETE FROM VERBINDEN WHERE REPOSITORY_ID = ?; DELETE FROM REPOSITORY WHERE id = ?', [  id /*ID*/ , id /*ID --Die gleiche--*/], function (err) {

@@ -25,18 +25,23 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
 
     .state('deleteBenutzer', {
-        url: "/delete/:id",
+        url: "/deleteBenutzer/:id",
         controller: 'DeleteControllerBenutzer'
     })
 
     .state('deleteArt', {
-        url: "/delete/:id",
+        url: "/deleteArt/:id",
         controller: 'DeleteControllerArt'
     })
 
     .state('deleteRepos', {
-        url: "/delete/:id",
+        url: "/deleteRepos/:id",
         controller: 'DeleteControllerRepos'
+    })
+
+    .state('deleteRepoBenutzer', {
+        url: "/deleteRepoBenutzer/:id",
+        controller: 'DeleteControllerRepoBenutzer'
     })
 
     .state('abmeldung', {
