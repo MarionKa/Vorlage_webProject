@@ -43,7 +43,7 @@ function finden_m(data) {
 
 
 
-adminCheck = function (headers) {
+adminCheck = function (headers,callback) {
     var token = getToken(headers);
     if (token) {
             var decoded = jwt.decode(token, 'dasIstEinGeheimnis');

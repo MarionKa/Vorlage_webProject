@@ -42,3 +42,23 @@ module.exports = function(app) {
     app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAllePP);
 
 };
+
+
+
+
+//
+// function benutzerDesRepos(id){
+//     return new Promise(function (resolve, reject) {
+//         connection.query('SELECT v.REPOSITORY_ID , b.ID, b.VORNAME,b.NACHNAME, b.EMAILKENNUNG  FROM VERBINDEN v JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) WHERE v.REPOSITORY_ID = ?', [id /*ID_REPO*/], function(err, rows,  fields){
+//             if (err) {
+//                 reject(err);
+//             } else {
+//                  console.log('hier',rows);
+//                 resolve(rows);
+//             }  
+//         });
+//     });
+// }
+
+
+
