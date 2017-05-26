@@ -17,21 +17,20 @@ function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
 
 function ausgabeAllePP(req, res) {      //SELECT mit GET-Methode
     console.log('im cont_benutzer'); 
-    var test = pw.adminCheck(req.headers);
+    pw.adminCheck(req.headers).then(function success(){
 
-    console.log('test = '+ test);
-        if( test){
             benutzer.ausgabeAlle_m(req.params.id).then(function success(row) {
                 res.send(row);
                 console.log('ausgabeAllePP ',row);
             }, function failure(err) {
                 res.send(err);
             })
-        }   
-        else { console.log('keine Berechtigung');
+        },   
+        function failure() { console.log('keine Berechtigung');
          res.send('keine Berechtigung')
-        }
+        })
 }
+
 
 
 
