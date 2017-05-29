@@ -43,24 +43,25 @@ function finden_m(data) {
 
 
 
-adminCheck = function (headers,callback) {
+adminCheck = function (headers) {
+    return new Promise(function(resolve,reject){
     var token = getToken(headers);
     if (token) {
             var decoded = jwt.decode(token, 'dasIstEinGeheimnis');
                 console.log('anfang');
-    connection.query('SELECT ID, EMAILKENNUNG, PASSWORT, RECHTE_ID FROM BENUTZER WHERE EMAILKENNUNG = ? AND RECHTE_ID = ?', [decoded[0].EMAILKENNUNG, 2 ], function(err, rows,  fields) {
+    connection.query('SELECT ID, EMAILKENNUNG, PASSWORT, RECHTE_ID FROM BENUTZER WHERE EMAILKENNUNG = ? AND RECHTE_ID = ?', [decoded[0].EMAILKENNUNG, 1 ], function(err, rows,  fields) {
         console.log('ergebnis:', rows);
-        if (err) {return 'err';}
+        if (err) {reject();}
         if (rows[0]){ console.log(' alles gut ');
                      //Authentication failed. User not found.
-                    return true;
+                    resolve() ;
         }
         else {  console.log('falsche RECHTE_ID '); 
-                return false; //Welcome in the member area
+                reject() ; //Welcome in the member area
         }
     });
-     }else { console.log(' ohne token '); return false;  } //No token provided.
-};
+     }else { console.log(' ohne token '); reject();  } //No token provided.
+})};
 
 
 
