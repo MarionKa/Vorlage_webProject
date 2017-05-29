@@ -37,8 +37,8 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
             BEZEICHNUNG: this.BEZEICHNUNG,
             ORDNERNAME: this.ORDNERNAME,
             EINTRAGEN_MGL: this.EINTRAGEN_MGL_NEU,
-            ID: this.ID,
-            PASSWORT: 'test'
+            // ID: this.ID,
+            // PASSWORT: 'test'
 
         };
         if ($stateParams.id) {

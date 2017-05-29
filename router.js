@@ -36,7 +36,7 @@ module.exports = function(app) {
     app.get('/art/:id', cont_art.ausgabeEin);
 // zwei gleiche aufrufe:
     app.get('/artAktiv', cont_art.ausgabeAktiv);  //Ausgabe aktiv geschaltener Repos (REPO_STATUS_ID = 1)
-    app.post('/art/:id', cont_art.eingabe);
+    app.post('/art', cont_art.eingabe);
     app.put('/art/:id', cont_art.update);
     app.delete('/art/:id', cont_art.loeschen);
 
