@@ -59,7 +59,7 @@ function ausgabeAktiv_m() {
 function eingabe_m(data) {
      console.log('im instert' +' ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME)
     return new Promise(function (resolve, reject) {
-        connection.query('INSERT INTO ART (ID, BEZEICHNUNG, ORDNERNAME) select MAX(ID)+1, ?, ? from ART', [data.BEZEICHNUNG, data.ORDNERNAME], function (err) {
+        connection.query('INSERT INTO ART (ID, BEZEICHNUNG, ORDNERNAME, EINTRAGEN_MGL) select MAX(ID)+1, ?, ?, ? from ART', [data.BEZEICHNUNG, data.ORDNERNAME, data.EINTRAGEN_MGL], function (err) {
             if (err) {
                 reject(err);
             } else {
