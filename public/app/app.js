@@ -50,7 +50,8 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
     .state('anmeldung', {
         url: "/anmeldung",
-        templateUrl: "app/partials/AnmeldungTemplate.html"
+        templateUrl: "app/partials/AnmeldungTemplate.html",
+        controller: 'LoginCtrl'
     })
     .state('artedit', {
         url: "/artedit/:id",
@@ -126,3 +127,15 @@ function configFn($stateProvider, $urlRouterProvider) {
     });
 
 }
+
+webTestDB.run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
+  $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
+    if (!AuthService.isAuthenticated()) {
+      console.log(next.name);
+      if (next.name !== 'reh' && next.name !== 'anmeldung') {
+        event.preventDefault();
+        $state.go('anmeldung');
+      }
+    }
+  });
+});
