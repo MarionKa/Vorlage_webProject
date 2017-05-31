@@ -56,8 +56,11 @@ function update(req, res) {
 }
 
 function loeschen(req, res) {
-    art.loeschen_m(req.params.id).then(function() {
-        res.send(JSON.stringify(true));
+    art.loeschen_m(req.params.id).then(function success(row) {
+        res.send(row);
+        console.log('loeschen: ',row.meldung);
+    }, function failure(err) {
+        res.send(err);
     });
 }
 

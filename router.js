@@ -28,6 +28,7 @@ module.exports = function(app) {
     app.post('/repo', cont_repo.eingabe);		//repo-beantragen
     app.put('/repo/:id', cont_repo.update);	//repo-editieren mit id speichern in repo-editieren
     app.delete('/repo/:id', cont_repo.loeschen); //repo-übersicht Funktion2 - löschen
+    app.get('/repostatus', cont_repo.repostatus); //Dropdown für Repostatus
 
     app.get('/repoBenutzer/:id', cont_repo.benutzerDesRepos);
     app.delete('/repoBenutzer/:id', cont_repos.loeschen);      // in cont_repo noch nicht vorhanden!!!
