@@ -5,7 +5,7 @@ angular.module('webTestDB')
 
 ListControllerArt.$inject = ['dataFactoryArt'];
 function ListControllerArt (dataFactoryArt) {
-    this.test = dataFactoryArt.getAll();       //getAll() in model.js (client) festgelegt
+    this.daten = dataFactoryArt.getAll();       //getAll() in model.js (client) festgelegt
 }
 
 FormControllerArt.$inject = ['$state', '$stateParams', 'dataFactoryArt'];
@@ -20,25 +20,25 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
 
     if($stateParams.id) {
         console.log('state2 ' + $stateParams.id);
-        dataFactoryArt.read({id: $stateParams.id}).$promise.then(function(test) {
-            console.log('test im read ', test[0].EINTRAGEN_MGL );
-            this.BEZEICHNUNG = test[0].BEZEICHNUNG;
-            this.ORDNERNAME = test[0].ORDNERNAME;
-            this.EINTRAGEN_MGL = test[0].EINTRAGEN_MGL;
-            this.ID = test[0].ID;
+        dataFactoryArt.read({id: $stateParams.id}).$promise.then(function(daten) {
+            console.log('daten im read ', daten[0].EINTRAGEN_MGL );
+            this.BEZEICHNUNG = daten[0].BEZEICHNUNG;
+            this.ORDNERNAME = daten[0].ORDNERNAME;
+            this.EINTRAGEN_MGL = daten[0].EINTRAGEN_MGL;
+            this.ID = daten[0].ID;
 
         }.bind(this));
     }
 
     this.save = function () {
-        console.log('test1 '+ this.BEZEICHNUNG +' '+ this.ORDNERNAME +' ' + this.EINTRAGEN_MGL);
+        console.log('daten1 '+ this.BEZEICHNUNG +' '+ this.ORDNERNAME +' ' + this.EINTRAGEN_MGL);
 
         var data = {
             BEZEICHNUNG: this.BEZEICHNUNG,
             ORDNERNAME: this.ORDNERNAME,
             EINTRAGEN_MGL: this.EINTRAGEN_MGL_NEU,
             // ID: this.ID,
-            // PASSWORT: 'test'
+            // PASSWORT: 'daten'
 
         };
         if ($stateParams.id) {
@@ -54,7 +54,8 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
 
 DeleteControllerArt.$inject = ['$state', '$stateParams', 'dataFactoryArt'];
 function DeleteControllerArt ($state, $stateParams, dataFactoryArt) {
-    dataFactoryArt.delete({id: $stateParams.id}).$promise.then(function() {
+    dataFactoryArt.delete({id: $stateParams.id}).$promise.then(function(nachricht) {
+        console.log(nachricht.meldung);
         $state.go('artueber');
     });
 }
