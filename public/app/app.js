@@ -4,26 +4,9 @@ var webTestDB = angular.module('webTestDB', ['ui.router', 'ngResource'])
 configFn.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 function configFn($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/list");
+    $urlRouterProvider.otherwise("/anmeldung");
 
     $stateProvider
-    .state('list', {
-        url: "/list",
-        templateUrl: "app/partials/list.html",
-        controller: 'ListController', 
-        controllerAs: 'listController'
-    })
-    .state('form', {
-        url: "/form/:id",
-        templateUrl: "app/partials/form.html",
-        controller: 'FormController',
-        controllerAs: 'formController'
-    })
-    .state('delete', {
-        url: "/delete/:id",
-        controller: 'DeleteController'
-    })
-
     .state('deleteBenutzer', {
         url: "/deleteBenutzer/:id",
         controller: 'DeleteControllerBenutzer'
@@ -131,8 +114,8 @@ function configFn($stateProvider, $urlRouterProvider) {
 webTestDB.run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
   $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
     if (!AuthService.isAuthenticated()) {
-      console.log(next.name);
-      if (next.name !== 'reh' && next.name !== 'anmeldung') {
+      console.log(next.name + ' ohne Token');
+      if (next.name !== 'reh' && next.name !== 'anmeldung' && next.name !== 'abmeldung' && next.name !== 'registrierung' && next.name !== 'kennwort') {
         event.preventDefault();
         $state.go('anmeldung');
       }

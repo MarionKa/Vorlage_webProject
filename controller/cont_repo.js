@@ -9,6 +9,16 @@ function ausgabeEin(req, res) {      //SELECT mit GET-Methode
     })
 }
 
+function repostatus(req, res) {      
+    repo.repostatus_m().then(function success(row) {
+        res.send(row);
+        console.log('alle RepoStatuse',row);
+    }, function failure(err) {
+        res.send(err);
+    })
+}
+
+
 function benutzerDesRepos(req, res) {      //SELECT mit GET-Methode
     repo.benutzerDesRepos_m(req.params.id).then(function success(row) {
         res.send(row);
@@ -63,6 +73,7 @@ module.exports = {
     eingabe: eingabe,
     update: update,
     loeschen: loeschen,
-    benutzerDesRepos: benutzerDesRepos
+    benutzerDesRepos: benutzerDesRepos,
+    repostatus: repostatus
 
 };
