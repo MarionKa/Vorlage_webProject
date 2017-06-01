@@ -28,15 +28,16 @@ module.exports = function(app) {
     app.post('/repo', cont_repo.eingabe);		//repo-beantragen
     app.put('/repo/:id', cont_repo.update);	//repo-editieren mit id speichern in repo-editieren
     app.delete('/repo/:id', cont_repo.loeschen); //repo-übersicht Funktion2 - löschen
+    app.get('/repostatus', cont_repo.repostatus); //Dropdown für Repostatus
 
     app.get('/repoBenutzer/:id', cont_repo.benutzerDesRepos);
- //   app.delete('/repoBenutzer/:id', cont_repo.loeschenBenRep);      // in cont_repo noch nicht vorhanden!!!
+    app.delete('/repoBenutzer/:id', cont_repos.loeschen);      // in cont_repo noch nicht vorhanden!!!
 
     app.get('/art', cont_art.ausgabeAlle);
     app.get('/art/:id', cont_art.ausgabeEin);
 // zwei gleiche aufrufe:
     app.get('/artAktiv', cont_art.ausgabeAktiv);  //Ausgabe aktiv geschaltener Repos (REPO_STATUS_ID = 1)
-    app.post('/art/:id', cont_art.eingabe);
+    app.post('/art', cont_art.eingabe);
     app.put('/art/:id', cont_art.update);
     app.delete('/art/:id', cont_art.loeschen);
 

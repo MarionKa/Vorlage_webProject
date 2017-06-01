@@ -1,11 +1,12 @@
+
 angular.module('webTestDB')
-.factory('dataFactory', dataFactory);
+.factory('dataFactoryBenutzer', dataFactoryBenutzer);
 
-dataFactory.$inject = ['$resource'];
+dataFactoryBenutzer.$inject = ['$resource'];
 
-function dataFactory($resource) {
+function dataFactoryBenutzer($resource) {
     return $resource(
-        '/benutzer/:id',    //Zum testen hier ändern; Schnittstelle Client-Server
+        '/benutzer/:id',    //Alles zum Benutzer
         {id: '@id'},
         {
             getAll: {method: 'GET', isArray: true},
@@ -18,24 +19,17 @@ function dataFactory($resource) {
 }
 
 
-/////////// Für unsere Webapp ////////////////////
-
-
 angular.module('webTestDB')
-.factory('dataFactoryBenutzer', dataFactoryBenutzer);
+.factory('dataFactoryRepostatus', dataFactoryRepostatus);
 
-dataFactoryBenutzer.$inject = ['$resource'];
+dataFactoryRepostatus.$inject = ['$resource'];
 
-function dataFactoryBenutzer($resource) {
+function dataFactoryRepostatus($resource) {
     return $resource(
-        '/benutzer/:id',    //Zum testen hier ändern; Schnittstelle Client-Server
+        '/repostatus:id', //ALLE Status möglichkeiten
         {id: '@id'},
         {
-            getAll: {method: 'GET', isArray: true},
-            create: {method: 'POST'},
-            read: {method: 'GET', isArray: true},
-            update: {method: 'PUT'},
-            delete: {method: 'DELETE'}
+            getAll: {method: 'GET', isArray: true}
         }
     );
 }
@@ -48,7 +42,7 @@ dataFactoryRepos.$inject = ['$resource'];
 
 function dataFactoryRepos($resource) {
     return $resource(
-        '/repos/:id',    //Zum testen hier ändern; Schnittstelle Client-Server
+        '/repos/:id',    //Mehrere Repository
         {id: '@id'},
         {
             getAll: {method: 'GET', isArray: true},
@@ -69,7 +63,7 @@ dataFactoryRepo.$inject = ['$resource'];
 
 function dataFactoryRepo($resource) {
     return $resource(
-        '/repo/:id',    //Zum testen hier ändern; Schnittstelle Client-Server
+        '/repo/:id',    //Ein Repository
         {id: '@id'},
         {
             getAll: {method: 'GET', isArray: true},
@@ -88,13 +82,13 @@ dataFactoryRepoBenutzer.$inject = ['$resource'];
 
 function dataFactoryRepoBenutzer($resource) {
     return $resource(
-        '/repoBenutzer/:id',    //Zum testen hier ändern; Schnittstelle Client-Server
+        '/repoBenutzer/:id',    //Nutzer eines Repositorys
         {id: '@id'},
         {
             getAll: {method: 'GET', isArray: true},
-            create: {method: 'POST'},
-            read: {method: 'GET', isArray: true},
-            update: {method: 'PUT'},
+            // create: {method: 'POST'},
+            // read: {method: 'GET', isArray: true},
+            // update: {method: 'PUT'},
             delete: {method: 'DELETE'}
         }
     );
@@ -108,7 +102,7 @@ dataFactoryArt.$inject = ['$resource'];
 
 function dataFactoryArt($resource) {
     return $resource(
-        '/art/:id',    //Zum testen hier ändern; Schnittstelle Client-Server
+        '/art/:id',    //Arten- / Typen- Auswahl für Repositorys
         {id: '@id'},
         {
             getAll: {method: 'GET', isArray: true},
@@ -127,7 +121,7 @@ dataFactoryArtAktiv.$inject = ['$resource'];
 
 function dataFactoryArtAktiv($resource) {
     return $resource(
-        '/artAktiv/:id',    //Zum testen hier ändern; Schnittstelle Client-Server
+        '/artAktiv/:id',    //Aktive Arten
         {id: '@id'},
         {
             getAll: {method: 'GET', isArray: true},

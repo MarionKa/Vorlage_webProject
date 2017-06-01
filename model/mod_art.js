@@ -59,7 +59,7 @@ function ausgabeAktiv_m() {
 function eingabe_m(data) {
      console.log('im instert' +' ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME)
     return new Promise(function (resolve, reject) {
-        connection.query('INSERT INTO ART (ID, BEZEICHNUNG, ORDNERNAME) select MAX(ID)+1, ?, ? from ART', [data.BEZEICHNUNG, data.ORDNERNAME], function (err) {
+        connection.query('INSERT INTO ART (ID, BEZEICHNUNG, ORDNERNAME, EINTRAGEN_MGL) select MAX(ID)+1, ?, ?, ? from ART', [data.BEZEICHNUNG, data.ORDNERNAME, data.EINTRAGEN_MGL], function (err) {
             if (err) {
                 reject(err);
             } else {
@@ -84,11 +84,23 @@ function update_m(data, id) {
 
 function loeschen_m(id) {
     return new Promise(function (resolve, reject) {
-        connection.query('DELETE FROM ART WHERE id = ?', [ id /*ID*/], function (err) {
-            if (err) {
-                reject(err);
-            } else {
-                resolve();
+        connection.query('SELECT * FROM repository WHERE ART_ID = 2', [ id ], function(err, rows, fields) {
+            if(rows[0].ART_ID == id ) {
+                var data = {
+                    meldung: 'löschen nicht möglich'
+                    };
+                resolve(data);
+                //console.log('Ordner kann nicht gelöscht werden: ', data.meldung);
+
+            }else {
+                console.log('Rows are empty, yeah',rows);
+                connection.query('DELETE FROM ART WHERE id = ?', [ id /*ID*/], function (err) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve();
+                    }
+                });
             }
         });
     });

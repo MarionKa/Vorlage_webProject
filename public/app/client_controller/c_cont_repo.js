@@ -2,7 +2,8 @@ angular.module('webTestDB')
     .controller('ListControllerRepo', ListControllerRepo)
     .controller('ListControllerRepoBenutzer', ListControllerRepoBenutzer)
     .controller('FormControllerRepo', FormControllerRepo)
-    .controller('DeleteControllerRepo', DeleteControllerRepo);
+    .controller('DeleteControllerRepo', DeleteControllerRepo)
+    .controller('DeleteControllerRepoBenutzer', DeleteControllerRepoBenutzer)
 
 ListControllerRepo.$inject = ['dataFactoryRepo'];
 function ListControllerRepo (dataFactoryRepo) {
@@ -14,63 +15,56 @@ function ListControllerRepoBenutzer ($state, $stateParams,dataFactoryRepoBenutze
     this.test = dataFactoryRepoBenutzer.getAll({id: $stateParams.id});       //getAll() in model.js (client) festgelegt
 }
 
-FormControllerRepo.$inject = ['$state', '$stateParams', 'dataFactoryRepo'];
-function FormControllerRepo ($state, $stateParams, dataFactoryRepo) {
+FormControllerRepo.$inject = ['$state', '$stateParams', 'dataFactoryRepo','dataFactoryRepostatus'];
+function FormControllerRepo ($state, $stateParams, dataFactoryRepo,dataFactoryRepostatus) {
+        this.repostatus = dataFactoryRepostatus.getAll(); //Daten für Repostatus Combobox
     this.ART_ID = '';
     this.AUTHNAME = '';
     this.REPONAME = '';
     this.ALLE_BENUTZER = '';
     this.GUELTIG_BIS = '';
-    this.REPO_STATUS_ID = '';
+    this.REPO_STATUS_ID = '1';
     this.ID = '';
 console.log('einstieg: ' + this.AUTHNAME)
-    // this.REPONAME = '';
-    // this.AUTHNAME = '';
-    // this.ART_ID = '';
-    // this.REPO_STATUS_ID = '';
 
-        console.log('Aktueller state: FormControllerRepo');
 
-//var testing;
+
+
+
+
+
 
     if($stateParams.id) {
-        console.log('SHOW stateParams.id: ' + $stateParams.id);
-        dataFactoryRepo.read({id: $stateParams.id}).$promise.then(function(test) {
-            console.log('stateParams IN FKT ', test[0].ID);
-            this.ART_ID = test[0].ART_ID;
-            this.AUTHNAME = test[0].AUTHNAME;
-            this.REPONAME = test[0].REPONAME;
-            this.ALLE_BENUTZER = test[0].ALLE_BENUTZER;
-            this.GUELTIG_BIS = test[0].GUELTIG_BIS;
-            this.REPO_STATUS_ID = test[0].REPO_STATUS_ID;
-            this.ID = test[0].ID;
+        // console.log('SHOW stateParams.id: ' + $stateParams.id);
 
-            //testing = test;
-            // console.log('test im read ', test[0].REPONAME);
-            // this.REPONAME = test[0].REPONAME;
-            // this.AUTHNAME = test[0].AUTHNAME;
-            // this.ART_ID = test[0].ART_ID;
-            // this.REPO_STATUS_ID = '1';
+        dataFactoryRepo.read({id: $stateParams.id}).$promise.then(function(daten) {
+            console.log('stateParams IN FKT '+ daten[0].ID);
+            console.log('Format', typeof daten[0].REPO_STATUS_ID)
+            this.ART_ID = daten[0].ART_ID;
+            this.AUTHNAME = daten[0].AUTHNAME;
+            this.REPONAME = daten[0].REPONAME;
+            this.ALLE_BENUTZER = daten[0].ALLE_BENUTZER;
+            this.GUELTIG_BIS = daten[0].GUELTIG_BIS;
+            this.REPO_STATUS_ID = daten[0].REPO_STATUS_ID.toString();  //toString() is nötig für ng-reapeat und die Combobox / Dropdown
+
+            this.ID = daten[0].ID;
+
         }.bind(this));
-        console.log('AUSGABE IN FKT: ', this.ART_ID);
+        // console.log('AUSGABE IN FKT: ', this.ART_ID);
     }
-         console.log('AUSGABE NACH FKT: ', this.ART_ID);
+         // console.log('AUSGABE NACH FKT: ', this.ART_ID);
 
     this.save = function () {
-        console.log('save repo: '+ this.AUTHNAME +' '+ this.REPONAME +' ' + this.BENUTZERNAMEN);
+        console.log('save repo: '+ this.AUTHNAME +' '+ this.REPONAME );
 
         var data = {
             ART_ID: this.ART_ID,
             AUTHNAME: this.AUTHNAME,
             REPONAME: this.REPONAME,
             GUELTIG_BIS: this.GUELTIG_BIS,
-            REPO_STATUS_ID: this.REPO_STATUS_ID_NEU,
+            REPO_STATUS_ID: this.REPO_STATUS_ID,
             ID: this.ID
 
-            // REPONAME: maka,
-            // AUTHNAME: kaiserma,
-            // ART_ID: 1,
-            // REPO_STATUS_ID: '1'
 
         };
         if ($stateParams.id) {
@@ -93,3 +87,15 @@ function DeleteControllerRepo ($state, $stateParams, dataFactoryRepo) {
     });
 }
 
+DeleteControllerRepoBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryRepoBenutzer'];
+function DeleteControllerRepoBenutzer ($state, $stateParams, dataFactoryRepoBenutzer) {
+    console.log('c_cont_repo loeschen vor data: ' + this.REPOSITORY_ID + ' ' + $stateParams.id);
+        var data = {
+            ID_REPO: this.ID
+        };
+    console.log('c_cont_repo loeschen: ' + data.ID_REPO);
+    dataFactoryRepoBenutzer.delete(data, {id: $stateParams.id}).$promise.then(function() {
+        
+        $state.go('repoueber');//benutzerentf({id: this.ID})
+    });
+}

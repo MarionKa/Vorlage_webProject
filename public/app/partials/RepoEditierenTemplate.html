@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label>Art</label>
-                    <input class="form-control" type="text" ng-model="formControllerRepo.ART_ID">
+                    <input class="form-control" type="text" ng-model="formControllerRepo.ART_ID" readonly="">
                 </div>
             </div>
 
@@ -112,45 +112,23 @@
             </div>
 
 
-            <div class="row">
-                <div class="line">
-                    <div class="col-xs-2 form-group">
-                        <label>Aktueller Status:</label>
-                        <div> <input class="form-control" type="text" ng-model="formControllerRepo.REPO_STATUS_ID" readonly="">
-                        </div> 
-                    </div>
-                </div>
-
                 <div class="line">
                     <div class="col-xs-2 form-group">
                         <form action="#">
-                            <label for="sel1">Neuer Status:</label>
-                            <select ng-model="formControllerRepo.REPO_STATUS_ID_NEU" class="form-control" id="sel1" name="ID" id="ID" value="">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
+                            <label for="REPO_STATUS_ID2">Status:</label>
+                            <select name="REPO_STATUS_ID2" id="REPO_STATUS_ID2" class="form-control" ng-model="formControllerRepo.REPO_STATUS_ID">
+
+
+                             <option ng-repeat="option in formControllerRepo.repostatus" value="{{option.ID}}">{{option.BEZEICHNUNG}}</option>
                             </select>
                         </form>
                     </div>
                 </div>
 
+
             </div>
 
-                <div class="row">
-                    <div class="col-xs-2 form-group">
-                        <label>Status:</label>
-                        <p> 1: beantragt</p>
-                        <p> 2: aktiviert</p>
-                        <p> 3: deaktiviert</p>
-                        <p> 4: gelöscht</p>
-                    </div>
-                </div>
             
-
-
-
-
 
             <a>
                 <button type="button" ng-click="formControllerRepo.save()" class="btn btn-success" aria-label="Left Align">
