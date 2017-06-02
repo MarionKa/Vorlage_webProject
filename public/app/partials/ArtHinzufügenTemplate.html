@@ -28,10 +28,10 @@
 
 
 
-        <div class="row">
+<!--         <div class="row">
             <div class="col-xs-12 form-group">
                 <label>Beantragen möglich:</label>
-                <div class="input-group">
+                <div class="input-group"> -->
 <!--                     <input class="form-control" type="txt" ng-model="formControllerArt.EINTRAGEN_MGL" readonly=""> -->
 <!--                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ändern <span class="caret"></span></button>
@@ -44,7 +44,7 @@
                       </div> -->
 
 <!-- Eine weitere Möglichkeit ein Dropdown zu gestalten: -->
-                      <select class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL" readonly="">
+                      <select class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL" convert-to-number  readonly="">
                         <ul class="dropdown-menu dropdown-menu-right">
                             <option value="0">möglich</option>
                             <option value="1">nicht möglich</option>
@@ -54,6 +54,7 @@
                   </div>
               </div>
           </div>
+
 
           <a>
             <button type="button" ng-click="formControllerArt.save()" class="btn btn-success" aria-label="Left Align">

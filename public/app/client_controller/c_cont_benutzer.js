@@ -5,7 +5,7 @@ angular.module('webTestDB')
 
 ListControllerBenutzer.$inject = ['dataFactoryBenutzer'];
 function ListControllerBenutzer (dataFactoryBenutzer) {
-    this.test = dataFactoryBenutzer.getAll();       //getAll() in model.js (client) festgelegt
+    this.daten = dataFactoryBenutzer.getAll();       //getAll() in model.js (client) festgelegt
 }
 
 FormControllerBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryBenutzer'];
@@ -20,24 +20,24 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
 
     if($stateParams.id) {
         console.log('state2 ' + $stateParams.id);
-        dataFactoryBenutzer.read({id: $stateParams.id}).$promise.then(function(test) {
-            console.log('test im read ', test[0].RECHTE_ID );
-            this.NACHNAME = test[0].NACHNAME;
-            this.VORNAME = test[0].VORNAME;
-            this.EMAILKENNUNG = test[0].EMAILKENNUNG;
-            this.RECHTE_ID = test[0].RECHTE_ID;
-            this.ID = test[0].ID;
+        dataFactoryBenutzer.read({id: $stateParams.id}).$promise.then(function(daten) {
+            console.log('daten im read ', daten[0].RECHTE_ID );
+            this.NACHNAME = daten[0].NACHNAME;
+            this.VORNAME = daten[0].VORNAME;
+            this.EMAILKENNUNG = daten[0].EMAILKENNUNG;
+            this.RECHTE_ID = daten[0].RECHTE_ID;
+            this.ID = daten[0].ID;
             
-            // console.log('test im read ', test[0].REPONAME);
-            // this.REPONAME = test[0].REPONAME;
-            // this.AUTHNAME = test[0].AUTHNAME;
-            // this.ART_ID = test[0].ART_ID;
+            // console.log('daten im read ', daten[0].REPONAME);
+            // this.REPONAME = daten[0].REPONAME;
+            // this.AUTHNAME = daten[0].AUTHNAME;
+            // this.ART_ID = daten[0].ART_ID;
             // this.REPO_STATUS_ID = '1';
         }.bind(this));
     }
 
     this.save = function () {
-        console.log('test1 '+ this.NACHNAME +' '+ this.VORNAME +' ' + this.EMAILKENNUNG);
+        console.log('daten1 '+ this.NACHNAME +' '+ this.VORNAME +' ' + this.EMAILKENNUNG);
 
         var data = {
             NACHNAME: this.NACHNAME,
