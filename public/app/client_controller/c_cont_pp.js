@@ -7,6 +7,7 @@ angular.module('webTestDB')
   };
  
   $scope.login = function() {
+    console.log('login bis hier')
     AuthService.login($scope.user).then(function(msg) {
       $state.go('benutzerueber');
     }/*, function(errMsg) {
