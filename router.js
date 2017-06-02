@@ -41,7 +41,7 @@ module.exports = function(app) {
     app.put('/art/:id', cont_art.update);
     app.delete('/art/:id', cont_art.loeschen);
 
-    //FÜR DEN PASSPORT
+    //FÜR DEN PASSPORT!
 
     app.post('/authenticate', cont_passwort.finden);
     app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAllePP);
