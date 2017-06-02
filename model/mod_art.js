@@ -42,12 +42,12 @@ function ausgabeEin_m(id) {
 
 function ausgabeAktiv_m() {
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT * FROM ART WHERE id = 1', function (err, rows, fields) {
+        connection.query('SELECT * FROM ART WHERE EINTRAGEN_MGL = 1', function (err, rows, fields) {
             if (err) {
                 reject(err);
                 console.log('fetch(id)err ', rows );
             } else {
-                console.log('Ausgabe aktiv falsch', rows );
+                console.log('Ausgabe aktiv werte', rows );
                 resolve(rows);
             }
         });

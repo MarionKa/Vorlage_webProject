@@ -10,63 +10,26 @@
         <div class="panel-body">
 
             <div class="row">
-                <div class="col-xs-12 form-group">
-                    <label>Repositoryname</label>
-                    <input class="form-control" type="text" ng-model="formControllerRepo.REPONAME" readonly="">
+                <div class="line">
+                    <div class="col-xs-6 form-group">
+                        <label>Repositoryname</label>
+                        <input class="form-control" type="text" ng-model="formControllerRepo.REPONAME" readonly="">
+                    </div>
+                </div>
+
+                <div class="line">
+                    <div class="col-xs-6 form-group">
+                        <label>Art</label>
+                        <input class="form-control" type="text" ng-model="formControllerRepo.ART" readonly="">
+                    </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    <label>Art</label>
-                    <input class="form-control" type="text" ng-model="formControllerRepo.ART_ID" readonly="">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    <label>Authname</label>
-                    <input class="form-control" type="text" ng-model="formControllerRepo.AUTHNAME">
-                </div>
-            </div>
-
 
             <div class="panel panel-info">
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12 form-group">
                             <label>Zugriffsberechtigte</label>
-
-
-<!--                             <div class="row">
-                                <div class="col-xs-12 form-group">
-
-                                    <table class="table table-hover">
-                                        <tr> <th>Name</th> <th>E-Mail</th> <th></th><th></th></tr>
-
-                                        <tr>    <!-- Darstellung der Zugriffsberechtigten, aber wie???  
-                                            <td>{{test.Vorname}}</td>
-                                            <td>{{test.}}</td>
-
-                                            <td><a ui-sref="deleteBenutzer({id: test.ID})">
-                                                <button type="button"  class="btn btn-default" aria-label="Left Align">
-                                                    Löschen
-                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                                                </button>
-                                            </a></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div> -->
-
-<!--                             <script language="javascript" type="text/javascript"> 
-                                var id_repo_ue = 1;
-                            </script> -->
-
-
-
-
-
                             <div> <input class="form-control" type="text" ng-model="formControllerRepo.ALLE_BENUTZER" readonly="">
                             </div> 
                         </div>
@@ -95,40 +58,39 @@
                                 </a>
                             </div>
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    <label>Gültigkeit</label>
-                    <input class="form-control"
-                    type="text"
-                    ng-model="formControllerRepo.GUELTIG_BIS">
+            <div class="row">            
+                <div class="line">
+                    <div class="col-xs-4 form-group">
+                        <label>Authname</label>
+                        <input class="form-control" type="text" ng-model="formControllerRepo.AUTHNAME">
+                    </div>
                 </div>
-            </div>
+
+                <div class="line">
+                    <div class="col-xs-4 form-group">
+                        <label>Gültigkeit</label>
+                        <input class="form-control"
+                        type="text"
+                        ng-model="formControllerRepo.GUELTIG_BIS">
+                    </div>
+                </div>
 
 
                 <div class="line">
-                    <div class="col-xs-2 form-group">
+                    <div class="col-xs-4 form-group">
                         <form action="#">
                             <label for="REPO_STATUS_ID2">Status:</label>
                             <select name="REPO_STATUS_ID2" id="REPO_STATUS_ID2" class="form-control" ng-model="formControllerRepo.REPO_STATUS_ID">
-
-
-                             <option ng-repeat="option in formControllerRepo.repostatus" value="{{option.ID}}">{{option.BEZEICHNUNG}}</option>
+                                <option ng-repeat="option in formControllerRepo.repostatus" value="{{option.ID}}">{{option.BEZEICHNUNG}}</option>
                             </select>
                         </form>
                     </div>
                 </div>
-
-
             </div>
-
-            
 
             <a>
                 <button type="button" ng-click="formControllerRepo.save()" class="btn btn-success" aria-label="Left Align">
@@ -144,7 +106,9 @@
                 </button>
             </a>
         </div>
+
     </div>
+</div>
 
 
 

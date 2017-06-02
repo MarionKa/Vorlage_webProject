@@ -51,7 +51,21 @@
                     </div>
                 </div>
             </div>
-<!--  -->
+
+
+
+                <div class="row">
+                    <div class="col-xs-2 form-group">
+                        <form action="#">
+                            <label for="ART_ID">Art:</label>
+                            <select name="ART_ID" id="ART_ID" class="form-control" 
+                            ng-model="formControllerRepobeantragen.ART_ID">
+                             <option ng-repeat="option in formControllerRepobeantragen.aktivearten" value="{{option.ID}}">{{option.BEZEICHNUNG}}</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+<!-- dataFactoryArtAktiv; FormControllerRepobeantragen -->
 
 
 <!-- 
