@@ -13,22 +13,22 @@
                     <input class="form-control"
                     type="text"
                     placeholder="MustermannMa12345"
-                    ng-model="formController.art"
+                    ng-model="FormControllerRepoBenutzer.EMAILKENNUNG"
                     value=""/>
                 </div>
             </div>
 
 <!-- Fehlerbehebung: hier muss auf das vorherige Template (repoedit) mit der richtigen ID rückgeleitet werden.-->
             <!-- <a href="#/repoedit/1"> -->
-            <a ui-sref="repoedit({id: test.ID})"> 
-                <button type="button" class="btn btn-success" aria-label="Left Align">
+            <a> 
+                <button type="button" ng-click="FormControllerRepoBenutzer.save()" class="btn btn-success" aria-label="Left Align">
                     Hinzufügen
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
                 </button>
             </a>
             
 <!-- Fehlerbehebung: hier muss auf das vorherige Template (repoedit) mit der richtigen ID rückgeleitet werden.-->
-            <a href="#/repoedit/1"> 
+            <a ui-sref="repoedit"> 
                 <button type="button" class="btn btn-danger" aria-label="Left Align">
                     Abbrechen
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
