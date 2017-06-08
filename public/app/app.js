@@ -70,11 +70,12 @@ function configFn($stateProvider, $urlRouterProvider) {
         url: "/benutzerentf/:id",
         templateUrl: "app/partials/BenutzerEntfernenTemplate.html",
         controller: 'ListControllerRepoBenutzer', 
-        controllerAs: 'ListControllerRepoBenutzer'
+        controllerAs: 'listControllerRepoBenutzer'
     })
     .state('benutzerhinzu', {
-        url: "/benutzerhinzu",
-        templateUrl: "app/partials/BenutzerHinzufügenTemplate.html"
+        url: "/benutzerhinzu/:id",
+        templateUrl: "app/partials/BenutzerHinzufügenTemplate.html",
+        controller: 'FormControllerRepoBenutzer'
     })
     .state('benutzerueber', {
         url: "/benutzerueber",

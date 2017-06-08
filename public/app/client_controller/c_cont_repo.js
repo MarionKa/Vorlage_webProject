@@ -8,12 +8,12 @@ angular.module('webTestDB')
 
 ListControllerRepo.$inject = ['dataFactoryRepo'];
 function ListControllerRepo (dataFactoryRepo) {
-    this.test = dataFactoryRepo.getAll();       //getAll() in model.js (client) festgelegt
+    this.daten = dataFactoryRepo.getAll();       //getAll() in model.js (client) festgelegt
 }
 
 ListControllerRepoBenutzer.$inject = ['$state', '$stateParams','dataFactoryRepoBenutzer'];
 function ListControllerRepoBenutzer ($state, $stateParams,dataFactoryRepoBenutzer) {
-    this.test = dataFactoryRepoBenutzer.getAll({id: $stateParams.id});       //getAll() in model.js (client) festgelegt
+    this.daten = dataFactoryRepoBenutzer.getAll({id: $stateParams.id});       //getAll() in model.js (client) festgelegt
 }
 
 
