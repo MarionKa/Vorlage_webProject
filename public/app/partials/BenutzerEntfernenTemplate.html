@@ -24,7 +24,7 @@
                             <td>{{test.NACHNAME}}</td>
                             <td>{{test.EMAILKENNUNG}}</td>
                             <td>{{test.REPOSITORY_ID}}</td>
-                            <td><a ui-sref="deleteRepoBenutzer({id: test.ID})">
+                            <td><a ui-sref="deleteRepoBenutzer({id: test.ID, REPOSITORY_ID: test.REPOSITORY_ID })">
                                 <button type="button"  class="btn btn-default" aria-label="Left Align">
                                     Löschen
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
