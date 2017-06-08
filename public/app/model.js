@@ -6,7 +6,7 @@ dataFactoryBenutzer.$inject = ['$resource'];
 
 function dataFactoryBenutzer($resource) {
     return $resource(
-        '/benutzer2/:id',    //Alles zum Benutzer
+        '/benutzer/:id',    //Alles zum Benutzer
         {id: '@id'},
         {
             getAll: {method: 'GET', isArray: true},
