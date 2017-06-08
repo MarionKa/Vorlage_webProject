@@ -1,6 +1,7 @@
 angular.module('webTestDB')
     .controller('ListControllerRepo', ListControllerRepo)
     .controller('ListControllerRepoBenutzer', ListControllerRepoBenutzer)
+    .controller('FormControllerRepobeantragen', FormControllerRepobeantragen)
     .controller('FormControllerRepo', FormControllerRepo)
     .controller('DeleteControllerRepo', DeleteControllerRepo)
     .controller('DeleteControllerRepoBenutzer', DeleteControllerRepoBenutzer)
@@ -15,10 +16,38 @@ function ListControllerRepoBenutzer ($state, $stateParams,dataFactoryRepoBenutze
     this.test = dataFactoryRepoBenutzer.getAll({id: $stateParams.id});       //getAll() in model.js (client) festgelegt
 }
 
+
+FormControllerRepobeantragen.$inject = ['$state', '$stateParams', 'dataFactoryArtAktiv'];
+function FormControllerRepobeantragen ($state, $stateParams, dataFactoryArtAktiv) {
+    console.log('in FormControllerRepobeantragen')
+    this.aktivearten = dataFactoryArtAktiv.getAll(); //Daten für Repostatus Combobox
+    console.log(this.aktivearten)
+    this.ART_ID = '';
+
+    this.save = function () {
+        console.log('save repo: '+ this.AUTHNAME +' '+ this.REPONAME );
+
+        var data = {
+            ART_ID: this.ART_ID
+
+        };
+        if ($stateParams.id) {
+            console.log('save update');
+            data.id = $stateParams.id;
+            FormControllerRepobeantragen.update(data).$promise.then($state.go.bind($state, 'ueberpers'));
+            //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
+        } else {
+            console.log('save create');
+            FormControllerRepobeantragen.create(data).$promise.then($state.go.bind($state, 'ueberpers'));
+            //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
+        }
+    }.bind(this);
+}
+
 FormControllerRepo.$inject = ['$state', '$stateParams', 'dataFactoryRepo','dataFactoryRepostatus'];
 function FormControllerRepo ($state, $stateParams, dataFactoryRepo,dataFactoryRepostatus) {
         this.repostatus = dataFactoryRepostatus.getAll(); //Daten für Repostatus Combobox
-    this.ART_ID = '';
+    this.ART = '';
     this.AUTHNAME = '';
     this.REPONAME = '';
     this.ALLE_BENUTZER = '';
@@ -27,19 +56,13 @@ function FormControllerRepo ($state, $stateParams, dataFactoryRepo,dataFactoryRe
     this.ID = '';
 console.log('einstieg: ' + this.AUTHNAME)
 
-
-
-
-
-
-
-
     if($stateParams.id) {
         // console.log('SHOW stateParams.id: ' + $stateParams.id);
 
         dataFactoryRepo.read({id: $stateParams.id}).$promise.then(function(daten) {
             console.log('stateParams IN FKT '+ daten[0].ID);
             console.log('Format', typeof daten[0].REPO_STATUS_ID)
+            this.ART = daten[0].ART;
             this.ART_ID = daten[0].ART_ID;
             this.AUTHNAME = daten[0].AUTHNAME;
             this.REPONAME = daten[0].REPONAME;

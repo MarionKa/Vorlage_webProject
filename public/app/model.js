@@ -124,11 +124,11 @@ function dataFactoryArtAktiv($resource) {
         '/artAktiv/:id',    //Aktive Arten
         {id: '@id'},
         {
-            getAll: {method: 'GET', isArray: true},
-            create: {method: 'POST'},
-            read: {method: 'GET', isArray: true},
-            update: {method: 'PUT'},
-            delete: {method: 'DELETE'}
+            getAll: {method: 'GET', isArray: true}
+            // create: {method: 'POST'},
+            // read: {method: 'GET', isArray: true},
+            // update: {method: 'PUT'},
+            // delete: {method: 'DELETE'}
         }
     );
 }

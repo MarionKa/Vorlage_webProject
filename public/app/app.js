@@ -56,7 +56,9 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
     .state('beantragung', {
         url: "/beantragung",
-        templateUrl: "app/partials/BeantragungTemplate.html"
+        templateUrl: "app/partials/BeantragungTemplate.html",
+        controller: 'FormControllerRepobeantragen',
+        controllerAs: 'formControllerRepobeantragen' 
     })
     .state('benutzeredit', {
         url: "/benutzeredit/:id",
