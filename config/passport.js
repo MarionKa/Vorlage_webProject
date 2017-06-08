@@ -23,7 +23,7 @@ connection.connect(function(error){
 // HIER KANN MAN NOCH DES PW MIT VERGLEICHEN
 
 module.exports = function(passport) {
-              console.log('\n\n passport anfang\n \n\n ');
+              // console.log('\n\n passport anfang\n \n\n ');
 
   var opts = {};
   opts.secretOrKey = 'dasIstEinGeheimnis';   /*= config.secret;*/

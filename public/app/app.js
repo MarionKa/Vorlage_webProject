@@ -23,7 +23,7 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
 
     .state('deleteRepoBenutzer', {
-        url: "/deleteRepoBenutzer/:id",
+        url: "/deleteRepoBenutzer/:id  /:REPOSITORY_ID",
         controller: 'DeleteControllerRepoBenutzer'
     })
 

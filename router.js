@@ -28,7 +28,7 @@ module.exports = function(app) {
     app.get('/repostatus', passport.authenticate('jwt', { session: false}),cont_repo.repostatus); //Dropdown für Repostatus
 
     app.get('/repoBenutzer/:id', passport.authenticate('jwt', { session: false}),cont_repo.benutzerDesRepos);
-    app.delete('/repoBenutzer/:id', passport.authenticate('jwt', { session: false}),cont_repos.loeschen);      // in cont_repo noch nicht vorhanden!!!
+    app.delete('/repoBenutzer/:id/:ID_REPO', passport.authenticate('jwt', { session: false}),cont_repos.loeschen);      // in cont_repo noch nicht vorhanden!!!
 
     app.get('/art', passport.authenticate('jwt', { session: false}),cont_art.ausgabeAlle);
     app.get('/art/:id', passport.authenticate('jwt', { session: false}),cont_art.ausgabeEin);
@@ -40,7 +40,7 @@ module.exports = function(app) {
     //FÜR DEN PASSPORT!
 
     app.post('/authenticate', cont_passwort.finden);
-    app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAllePP);
+    app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAlle);
 
 };
 
