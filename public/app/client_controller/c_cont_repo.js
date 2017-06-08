@@ -54,13 +54,13 @@ function FormControllerRepo ($state, $stateParams, dataFactoryRepo,dataFactoryRe
     this.GUELTIG_BIS = '';
     this.REPO_STATUS_ID = '1';
     this.ID = '';
-console.log('einstieg: ' + this.AUTHNAME)
+console.log('einstieg: ' + this.REPO_STATUS_ID)
 
     if($stateParams.id) {
         // console.log('SHOW stateParams.id: ' + $stateParams.id);
 
         dataFactoryRepo.read({id: $stateParams.id}).$promise.then(function(daten) {
-            console.log('stateParams IN FKT '+ daten[0].ID);
+            console.log('stateParams IN FCT '+ daten[0].ID);
             console.log('Format', typeof daten[0].REPO_STATUS_ID)
             this.ART = daten[0].ART;
             this.ART_ID = daten[0].ART_ID;
