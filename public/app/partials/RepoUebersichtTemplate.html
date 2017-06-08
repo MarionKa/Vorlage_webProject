@@ -16,7 +16,6 @@
                 <div class="panel-body">
                     <table class="table table-hover">
                         <tr> <th>Art</th><th>Authname</th> <th>Pfad</th> <th>Zugriffsberechtigte</th> <th>Gültigkeit</th>  <th>Zustand</th> <th></th></tr>
-
                         <tr ng-repeat="daten in listControllerRepos.daten">
                             <td>{{daten.ART}}</td>
                             <td>{{daten.AUTHNAME}}</td>
@@ -25,8 +24,6 @@
                             <td>{{daten.GUELTIG_BIS}}</td>
                             <td>{{daten.REPO_STATUS}}</td>
                             <td> 
-
-
                                 <a ui-sref="repoedit({id: daten.ID})">
                                     <button type="button" class="btn btn-primary" aria-label="Left Align">
                                         Editieren
@@ -35,18 +32,14 @@
                                 </a>
                             </td>
                         </tr>
-
                     </table>
-
 
                     <button type="button" class="btn btn-success" aria-label="Left Align" onclick="generieren()">
                         Skripte generieren
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"> </span>
                     </button>
 
-
-<!-- Lieber Philipp, nenn doch "Repositories aus DB löschen" bitte "gelöschte Repositories aus DB entfernen" und ich glaub ein Button langt ;-) , DANKE Michi -->
-
+<!-- Lieber Michael, dieser Button ist der simplere der beiden. Wenn das mit dem modal (anderer button) nicht funktionieren sollte, musst du diesen nehmen. -->
                     <div class="pull-right">
                         <button type="button" class="btn btn-danger" aria-label="Left Align" onclick="generieren()">
                             Repositories aus DB löschen
@@ -54,8 +47,7 @@
                         </button> 
                     </div>
 
-
-
+<!-- Lieber Michael, hier unten ist der coole Button, bei dem noch nachgefragt wird, ob du dir sicher bist die daten zu löschen ;-) Gruß Philipp -->
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                         Repositories aus DB löschen
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
@@ -77,26 +69,12 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
         </div>
     </div>
 </form>
-<!--<form>
-<div class="row">
-    <div class="col-xs-6 form-group">
-        <a href="#/abmeldung">
-            <button type="button" class="btn btn-default" aria-label="Left Align">
-                Abmelden!
-                <span class="glyphicon glyphicon-log-out" aria-hidden="true"> </span>
-            </button>
-        </a>
-    </div>
-</div>
-</form>-->
+
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
