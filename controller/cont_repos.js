@@ -1,5 +1,7 @@
 
 var repos = require('../model/mod_repos');
+var pw = require('../model/mod_passwort');
+
 
 function ausgabeAlle(req, res) {      
     repos.ausgabeAlle_m(req.params.id).then(function success(row) {
@@ -35,8 +37,8 @@ function eingabe(req, res) {        //Mitglied zu Repository hinzufügen
 
 //Einen Benutzer aus Repo entfernen
 function loeschen(req, res) {
-    console.log('datenbody ', req.body);
-    repos.loeschen_m(req.params.id,req.body.ID_REPO).then(function() {       
+    console.log('datenbody ', req.params.ID_REPO);
+    repos.loeschen_m(req.params.id,req.params.ID_REPO).then(function() {       
         res.send(JSON.stringify(true));
         console.log('Einen Benutzer entfernen');
     });
