@@ -1,6 +1,7 @@
 
-angular.module('webTestDB')
-.factory('dataFactoryBenutzer', dataFactoryBenutzer);
+var webDB = angular.module('webTestDB')
+
+webDB.factory('dataFactoryBenutzer', dataFactoryBenutzer);
 
 dataFactoryBenutzer.$inject = ['$resource'];
 
@@ -19,8 +20,7 @@ function dataFactoryBenutzer($resource) {
 }
 
 
-angular.module('webTestDB')
-.factory('dataFactoryRepostatus', dataFactoryRepostatus);
+webDB.factory('dataFactoryRepostatus', dataFactoryRepostatus);
 
 dataFactoryRepostatus.$inject = ['$resource'];
 
@@ -35,8 +35,7 @@ function dataFactoryRepostatus($resource) {
 }
 
 
-angular.module('webTestDB')
-.factory('dataFactoryRepos', dataFactoryRepos);
+webDB.factory('dataFactoryRepos', dataFactoryRepos);
 
 dataFactoryRepos.$inject = ['$resource'];
 
@@ -56,8 +55,7 @@ function dataFactoryRepos($resource) {
 
 
 
-angular.module('webTestDB')
-.factory('dataFactoryRepo', dataFactoryRepo);
+webDB.factory('dataFactoryRepo', dataFactoryRepo);
 
 dataFactoryRepo.$inject = ['$resource'];
 
@@ -76,8 +74,7 @@ function dataFactoryRepo($resource) {
 }
 
 // Neu angelegt. ALLE Repositories für EINEN Benutzer
-angular.module('webTestDB')
-.factory('dataFactoryRepoUser', dataFactoryRepoUser);
+webDB.factory('dataFactoryRepoUser', dataFactoryRepoUser);
 
 dataFactoryRepoUser.$inject = ['$resource'];
 
@@ -95,9 +92,7 @@ function dataFactoryRepoUser($resource) {
     );
 }
 
-angular.module('webTestDB')
-.factory('dataFactoryRepoBenutzer', dataFactoryRepoBenutzer);
-
+webDB.factory('dataFactoryRepoBenutzer', dataFactoryRepoBenutzer);
 dataFactoryRepoBenutzer.$inject = ['$resource'];
 
 function dataFactoryRepoBenutzer($resource) {
@@ -115,8 +110,7 @@ function dataFactoryRepoBenutzer($resource) {
 }
 
 
-angular.module('webTestDB')
-.factory('dataFactoryArt', dataFactoryArt);
+webDB.factory('dataFactoryArt', dataFactoryArt);
 
 dataFactoryArt.$inject = ['$resource'];
 
@@ -134,8 +128,7 @@ function dataFactoryArt($resource) {
     );
 }
 
-angular.module('webTestDB')
-.factory('dataFactoryArtAktiv', dataFactoryArtAktiv);
+webDB.factory('dataFactoryArtAktiv', dataFactoryArtAktiv);
 
 dataFactoryArtAktiv.$inject = ['$resource'];
 

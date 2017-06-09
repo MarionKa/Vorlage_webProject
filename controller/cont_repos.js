@@ -19,8 +19,8 @@ function ausgabeAlle(req, res) {
 }
 
 //Alle Repos eines Benutzers ausgeben
-function ausgabeEin(req, res) {      
-    repos.ausgabeEin_m(req.params.id).then(function success(row) {
+function ausgabePersoenlich(req, res) {      
+    repos.ausgabePersoenlich_m(req.params.id).then(function success(row) {
         res.send(row);
         console.log('fetch von Repos ',row);
     }, function failure(err) {
@@ -64,7 +64,7 @@ function loeschen(req, res) {
 
 module.exports = {
     ausgabeAlle: ausgabeAlle,
-    ausgabeEin: ausgabeEin,
+    ausgabePersoenlich: ausgabePersoenlich,
     eingabe: eingabe,
     loeschen: loeschen
 
