@@ -26,7 +26,7 @@ function finden_m(data) {
             if (!rows){
                 resolve({success: false, msg: 'Authentication failed. User not found.'});
             } else {
-                console.log('PW vergleich'+ data.PASSWORT + ' ? '+rows[0].PASSWORT );
+                console.log('PW vergleich '+ data.PASSWORT + ' ? '+rows[0].PASSWORT );
                 if(data.PASSWORT == rows[0].PASSWORT){
                     // if user is found and password is right create a token
                     var token = jwt.encode(rows, 'dasIstEinGeheimnis');  // config.secret
