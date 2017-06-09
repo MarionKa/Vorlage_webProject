@@ -20,7 +20,7 @@ function ausgabeAlle(req, res) {
 
 //Alle Repos eines Benutzers ausgeben
 function ausgabePersoenlich(req, res) {      
-    repos.ausgabePersoenlich_m(req.params.id).then(function success(row) {
+    repos.ausgabePersoenlich_m(pw.getTokenID(req.headers)).then(function success(row) {
         res.send(row);
         console.log('fetch von Repos ',row);
     }, function failure(err) {
