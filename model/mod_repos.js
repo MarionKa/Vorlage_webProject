@@ -15,11 +15,8 @@ connection.connect(function(error){
 
 function ausgabeAlle_m(id) {
     return new Promise(function (resolve, reject) {
-<<<<<<< HEAD
         connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator " & ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%Y.%m.%d") AS GUELTIG_BIS, a.BEZEICHNUNG as ART, rs.BEZEICHNUNG as REPO_STATUS FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN ART a ON (r.ART_ID = a.ID) JOIN REPO_STATUS rs ON (r.REPO_STATUS_ID = rs.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) group by v.REPOSITORY_ID', function (err, rows, fields) {
-=======
-        connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, a.BEZEICHNUNG as ART, rs.BEZEICHNUNG as REPO_STATUS FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN ART a ON (r.ART_ID = a.ID) JOIN REPO_STATUS rs ON (r.REPO_STATUS_ID = rs.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) group by v.REPOSITORY_ID', function (err, rows, fields) {
->>>>>>> refs/remotes/origin/master
+
             if (err) {
                 reject(err);
                 console.log('ausgabeAlle_m(id)err ', rows );
@@ -33,11 +30,8 @@ function ausgabeAlle_m(id) {
 
 function ausgabeEin_m(id){
     return new Promise(function (resolve, reject) {
-<<<<<<< HEAD
         connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator " & ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%Y.%m.%d") AS GUELTIG_BIS, a.BEZEICHNUNG as ART, rs.BEZEICHNUNG as REPO_STATUS FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN ART a ON (r.ART_ID = a.ID) JOIN REPO_STATUS rs ON (r.REPO_STATUS_ID = rs.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) WHERE v.BENUTZER_ID = ? group by v.REPOSITORY_ID ',[id/*BENUTZER_ID*/], function(err, rows,  fields){
-=======
-        connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, a.BEZEICHNUNG as ART, rs.BEZEICHNUNG as REPO_STATUS FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN ART a ON (r.ART_ID = a.ID) JOIN REPO_STATUS rs ON (r.REPO_STATUS_ID = rs.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) WHERE v.BENUTZER_ID = ? group by v.REPOSITORY_ID ',[id/*BENUTZER_ID*/], function(err, rows,  fields){
->>>>>>> refs/remotes/origin/master
+
             if (err) {
                 reject(err);
             } else {
