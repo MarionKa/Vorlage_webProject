@@ -25,7 +25,7 @@ dataFactoryRepostatus.$inject = ['$resource'];
 
 function dataFactoryRepostatus($resource) {
     return $resource(
-        '/repostatus:id', //ALLE Status möglichkeiten
+        '/repostatus/:id', //ALLE Status möglichkeiten; Schrägstrich hinzugefügt.
         {id: '@id'},
         {
             getAll: {method: 'GET', isArray: true}
@@ -72,7 +72,32 @@ function dataFactoryRepo($resource) {
     );
 }
 
+<<<<<<< HEAD
 webDB.factory('dataFactoryRepoBenutzer', dataFactoryRepoBenutzer);
+=======
+// Neu angelegt. ALLE Repositories für EINEN Benutzer
+angular.module('webTestDB')
+.factory('dataFactoryRepoUser', dataFactoryRepoUser);
+
+dataFactoryRepoUser.$inject = ['$resource'];
+
+function dataFactoryRepoUser($resource) {
+    return $resource(
+        '/repo/:id',    //Ein Repository
+        {id: '@id'},
+        {
+            getAll: {method: 'GET', isArray: true},
+            create: {method: 'POST'},
+            read: {method: 'GET', isArray: true},
+            update: {method: 'PUT'},
+            delete: {method: 'DELETE'}
+        }
+    );
+}
+
+angular.module('webTestDB')
+.factory('dataFactoryRepoBenutzer', dataFactoryRepoBenutzer);
+>>>>>>> refs/remotes/origin/master
 
 dataFactoryRepoBenutzer.$inject = ['$resource'];
 

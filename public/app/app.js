@@ -101,6 +101,12 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'FormControllerRepo',
         controllerAs: 'formControllerRepo'
     })
+    .state('repoerstellen', {
+        url: "/repoerstellen",
+        templateUrl: "app/partials/RepoHinzufügenTemplate.html",
+        controller: 'FormControllerRepo',
+        controllerAs: 'formControllerRepo'
+    })
     .state('repoueber', {
         url: "/repoueber",
         templateUrl: "app/partials/RepoUebersichtTemplate.html",
@@ -108,8 +114,11 @@ function configFn($stateProvider, $urlRouterProvider) {
         controllerAs: 'listControllerRepos'
     })
     .state('ueberpers', {
-        url: "/ueberpers",
-        templateUrl: "app/partials/RepoPersUeTemplate.html"
+        url: "/ueberpers/:id",
+        templateUrl: "app/partials/RepoPersUeTemplate.html",
+        controller: 'ListControllerReposUser',
+        controllerAs: 'listControllerReposUser'
+        
     });
 
 }
