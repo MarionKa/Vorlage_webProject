@@ -9,7 +9,6 @@ function ListControllerRepos (dataFactoryRepos) {
     this.daten = dataFactoryRepos.getAll();       //getAll() in model.js (client) festgelegt
 }
 
-<<<<<<< HEAD
 ListControllerReposUser.$inject = ['dataFactoryRepoUser'];
 function ListControllerReposUser (dataFactoryRepoUser) {
     this.daten = dataFactoryRepoUser.getAll({id: $stateParams.id});      //getAll() in model.js (client) festgelegt
@@ -25,11 +24,6 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
     this.REPO_STATUS = '';
     this.ID = '';
 
-    // this.REPONAME = '';
-    // this.AUTHNAME = '';
-    // this.ART_ID = '';
-    // this.REPO_STATUS_ID = '';
-
         console.log('state FormControllerRepos');
 
     if($stateParams.id) {
@@ -44,19 +38,14 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
             this.REPO_STATUS = daten[0].REPO_STATUS;
             this.ID = daten[0].ID;
 
-            // console.log('daten im read ', daten[0].REPONAME);
-            // this.REPONAME = daten[0].REPONAME;
-            // this.AUTHNAME = daten[0].AUTHNAME;
-            // this.ART_ID = daten[0].ART_ID;
-            // this.REPO_STATUS_ID = '1';
         }.bind(this));
     }
-=======
+}
+
 FormControllerRepoBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
 function FormControllerRepoBenutzer ($state, $stateParams, dataFactoryRepos) {
         console.log('save dd');
         this.EMAILKENNUNG =  '';
->>>>>>> refs/remotes/origin/master
 
     this.save = function () {
         console.log('save funktion')

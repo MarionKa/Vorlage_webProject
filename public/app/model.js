@@ -1,6 +1,7 @@
 
 var webDB = angular.module('webTestDB')
-.factory('dataFactoryBenutzer', dataFactoryBenutzer);
+
+webDB.factory('dataFactoryBenutzer', dataFactoryBenutzer);
 
 dataFactoryBenutzer.$inject = ['$resource'];
 
@@ -72,12 +73,8 @@ function dataFactoryRepo($resource) {
     );
 }
 
-<<<<<<< HEAD
-webDB.factory('dataFactoryRepoBenutzer', dataFactoryRepoBenutzer);
-=======
 // Neu angelegt. ALLE Repositories für EINEN Benutzer
-angular.module('webTestDB')
-.factory('dataFactoryRepoUser', dataFactoryRepoUser);
+webDB.factory('dataFactoryRepoUser', dataFactoryRepoUser);
 
 dataFactoryRepoUser.$inject = ['$resource'];
 
@@ -95,10 +92,7 @@ function dataFactoryRepoUser($resource) {
     );
 }
 
-angular.module('webTestDB')
-.factory('dataFactoryRepoBenutzer', dataFactoryRepoBenutzer);
->>>>>>> refs/remotes/origin/master
-
+webDB.factory('dataFactoryRepoBenutzer', dataFactoryRepoBenutzer);
 dataFactoryRepoBenutzer.$inject = ['$resource'];
 
 function dataFactoryRepoBenutzer($resource) {

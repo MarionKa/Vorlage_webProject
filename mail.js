@@ -1,16 +1,17 @@
 /* eslint no-console: 0 */
-var dbconfig = require('../../database');
-var connection = mysql.createConnection(
-    dbconfig.connection
-);
+// var dbconfig = require('../database');
+// var connection = mysql.createConnection(
+//     dbconfig.connection
+    
+// );
 
-connection.connect(function(error){
-    if(!!error){
-        console.log('Error DB, mod_benutzer');
-    } else {
-        console.log('Connection sucessfull, mod_benutzer!');
-    }
-});
+// connection.connect(function(error){
+//     if(!!error){
+//         console.log('Error DB, mod_benutzer');
+//     } else {
+//         console.log('Connection sucessfull, mod_benutzer!');
+//     }
+// });
 
 
     'use strict';
