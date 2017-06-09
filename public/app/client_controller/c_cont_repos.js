@@ -1,11 +1,7 @@
 angular.module('webTestDB')
     .controller('ListControllerRepos', ListControllerRepos)
-<<<<<<< HEAD
     .controller('ListControllerReposUser', ListControllerReposUser)
-    .controller('FormControllerRepos', FormControllerRepos)
-=======
     .controller('FormControllerRepoBenutzer', FormControllerRepoBenutzer)
->>>>>>> refs/remotes/origin/master
     .controller('DeleteControllerRepos', DeleteControllerRepos);
 
 ListControllerRepos.$inject = ['dataFactoryRepos'];
