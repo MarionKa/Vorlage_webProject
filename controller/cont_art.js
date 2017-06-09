@@ -1,21 +1,33 @@
 var art = require('../model/mod_art');
+var pw = require('../model/mod_passwort');
+
 
 function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
-    art.ausgabeAlle_m(req.params.id).then(function success(row) {
-        res.send(row);
-        console.log('fetch alle art ',row);
-    }, function failure(err) {
-        res.send(err);
-    })
+    pw.adminCheck(req.headers).then(function success(){
+        art.ausgabeAlle_m(req.params.id).then(function success(row) {
+            res.send(row);
+            console.log('fetch alle art ',row);
+        }, function failure(err) {
+            res.send(err);
+        })
+    },   
+    function failure() { console.log('keine Berechtigung');
+    res.send('keine Berechtigung')
+})
 }
 
 function ausgabeEin(req, res) {      //SELECT mit GET-Methode
-    art.ausgabeEin_m(req.params.id).then(function success(row) {
-        res.send(row);
-        console.log('fetch eine Art ',row);
-    }, function failure(err) {
-        res.send(err);
-    })
+    pw.adminCheck(req.headers).then(function success(){
+        art.ausgabeEin_m(req.params.id).then(function success(row) {
+            res.send(row);
+            console.log('fetch eine Art ',row);
+        }, function failure(err) {
+            res.send(err);
+        })
+    },   
+    function failure() { console.log('keine Berechtigung');
+    res.send('keine Berechtigung')
+})
 }
 
 //Alle aktiven Repo-Arten, d.h. REPO_STATUS_ID = 1, ausgeben
@@ -29,39 +41,57 @@ function ausgabeAktiv(req, res) {      //SELECT mit GET-Methode
 }
 
 function eingabe(req, res) {
-    console.log('cont_art.eingabe '+ req.body.BEZEICHNUNG + ' '+ req.body.ORDNERNAME +' '+ req.body.EINTRAGEN_MGLS);
-    var artData = {
-        BEZEICHNUNG: req.body.BEZEICHNUNG,
-        ORDNERNAME: req.body.ORDNERNAME,
-        EINTRAGEN_MGL: req.body.EINTRAGEN_MGL
-    };
-    console.log(artData);
+    pw.adminCheck(req.headers).then(function success(){   
+        console.log('cont_art.eingabe '+ req.body.BEZEICHNUNG + ' '+ req.body.ORDNERNAME +' '+ req.body.EINTRAGEN_MGLS);
+        var artData = {
+            BEZEICHNUNG: req.body.BEZEICHNUNG,
+            ORDNERNAME: req.body.ORDNERNAME,
+            EINTRAGEN_MGL: req.body.EINTRAGEN_MGL
+        };
+        console.log(artData);
 
-    art.eingabe_m(artData).then(function(id) {
-        res.send(JSON.stringify({id: id}));
-    });
+        art.eingabe_m(artData).then(function(id) {
+            res.send(JSON.stringify({id: id}));
+        });
+    },   
+    function failure() { console.log('keine Berechtigung');
+    res.send('keine Berechtigung')
+})        
 }
 
 function update(req, res) {
-    console.log('update server'+ ' ' + req.body.BEZEICHNUNG + ' '+ req.body.ORDNERNAME +' '+ req.body.EINTRAGEN_MGL);
-    var artData = {
-        BEZEICHNUNG: req.body.BEZEICHNUNG,
-        ORDNERNAME: req.body.ORDNERNAME,
-        EINTRAGEN_MGL: req.body.EINTRAGEN_MGL
-    };
+    pw.adminCheck(req.headers).then(function success(){
 
-    art.update_m(artData, req.params.id).then(function() {
-        res.send(JSON.stringify(true));
-    });
+        console.log('update server'+ ' ' + req.body.BEZEICHNUNG + ' '+ req.body.ORDNERNAME +' '+ req.body.EINTRAGEN_MGL);
+        var artData = {
+            BEZEICHNUNG: req.body.BEZEICHNUNG,
+            ORDNERNAME: req.body.ORDNERNAME,
+            EINTRAGEN_MGL: req.body.EINTRAGEN_MGL
+        };
+
+        art.update_m(artData, req.params.id).then(function() {
+            res.send(JSON.stringify(true));
+        });
+    },   
+    function failure() { console.log('keine Berechtigung');
+    res.send('keine Berechtigung')
+})
 }
 
 function loeschen(req, res) {
-    art.loeschen_m(req.params.id).then(function success(row) {
-        res.send(row);
-        console.log('loeschen: ',row.meldung);
-    }, function failure(err) {
-        res.send(err);
-    });
+    pw.adminCheck(req.headers).then(function success(){
+
+        art.loeschen_m(req.params.id).then(function success(row) {
+            res.send(row);
+            console.log('loeschen: ',row.meldung);
+        }, function failure(err) {
+            res.send(err);
+        });
+    },   
+    function failure() { console.log('keine Berechtigung');
+    res.send('keine Berechtigung')
+})
+
 }
 
 

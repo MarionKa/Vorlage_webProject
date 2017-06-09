@@ -45,12 +45,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
             EMAILKENNUNG: this.EMAILKENNUNG,
             RECHTE_ID: this.RECHTE_ID,
             ID: this.ID,
-            PASSWORT: 'test'
-
-            // REPONAME: maka,
-            // AUTHNAME: kaiserma,
-            // ART_ID: 1,
-            // REPO_STATUS_ID: '1'
+            PASSWORT: this.PASSWORT
 
         };
         if ($stateParams.id) {

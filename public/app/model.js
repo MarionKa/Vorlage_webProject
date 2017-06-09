@@ -102,7 +102,7 @@ dataFactoryRepoBenutzer.$inject = ['$resource'];
 
 function dataFactoryRepoBenutzer($resource) {
     return $resource(
-        '/repoBenutzer/:id',    //Nutzer eines Repositorys
+        '/repoBenutzer/:id/:ID_REPO',    //Nutzer eines Repositorys
         {id: '@id'},
         {
             getAll: {method: 'GET', isArray: true},
