@@ -65,6 +65,9 @@ adminCheck = function (headers) {
 
 
 getTokenID = function (headers) {
+    var token = getToken(headers);
+    var decoded = jwt.decode(token, 'dasIstEinGeheimnis');
+    return decoded[0].ID;
 
     
 }
@@ -88,6 +91,7 @@ getToken = function (headers) {
 
 module.exports = {
     finden_m: finden_m,
-    adminCheck: adminCheck
+    adminCheck: adminCheck,
+    getTokenID: getTokenID
 };
 
