@@ -20,7 +20,7 @@ module.exports = function(app) {
     app.delete('/benutzer/:id', cont_benutzer.loeschen);
     
     app.get('/repos', cont_repos.ausgabeAlle);   //einzelansicht repo-editieren mit id
-    app.get('/repos/:id', cont_repos.ausgabeEin);
+    app.get('/repos/:id', cont_repos.ausgabeEin); // für ALLE Repositorys EINES Benutzers
     app.post('/repos', cont_repos.eingabe);
     app.delete('/repos/:id', cont_repos.loeschen);
 

@@ -1,26 +1,32 @@
 <div class="row">
     <h1 class="col-xs-12 page-header">
-        Repository editieren:
+        Repository hinzufügen:
     </h1>
 </div>
 <form name="Repositoryeditieren">
 
     <div class="panel panel-info">
-        <div class="panel-heading"><h4>Ändern Sie hier den ausgewählten Datensatz Repository</h4> </div>
+        <div class="panel-heading"><h4>Erstellen Sie hier den Datensatz zu einem neuen Repository</h4> </div>
         <div class="panel-body">
 
             <div class="row">
                 <div class="line">
                     <div class="col-xs-6 form-group">
                         <label>Repositoryname</label>
-                        <input class="form-control" type="text" ng-model="formControllerRepo.REPONAME" readonly="">
+                        <input class="form-control" 
+                        type="text" 
+                        ng-model="formControllerRepo.REPONAME"
+                        placeholder="Bitte legen Sie hier den Repositoryname fest.">
                     </div>
                 </div>
 
                 <div class="line">
                     <div class="col-xs-6 form-group">
                         <label>Art</label>
-                        <input class="form-control" type="text" ng-model="formControllerRepo.ART" readonly="">
+                        <input class="form-control" 
+                        type="text" 
+                        ng-model="formControllerRepo.ART"
+                        placeholder="Bitte beachten Sie, dass sie erst die Art erstellen müssen, bevor Sie diese eintragen.">
                     </div>
                 </div>
             </div>
@@ -36,17 +42,6 @@
                     </div>
 
                     <div class="row">
-                        <div class="line">
-                            <div class="col-xs-2 form-group">
-                                <a ui-sref="benutzerentf({id: formControllerRepo.ID})">
-                                    <button type="button" class="btn btn-primary" aria-label="Left Align">
-                                        Benutzer löschen!
-                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
-                                    </button>
-                                </a> 
-                            </div>
-                        </div>
-
                         <div class="line">
                             <div class="col-xs-2 form-group">
                                 <a href="#/benutzerhinzu">
@@ -65,7 +60,10 @@
                 <div class="line">
                     <div class="col-xs-4 form-group">
                         <label>Authname</label>
-                        <input class="form-control" type="text" ng-model="formControllerRepo.AUTHNAME">
+                        <input class="form-control" 
+                        type="text" 
+                        ng-model="formControllerRepo.AUTHNAME"
+                        placeholder="Bitte Authname hier eintragen.">
                     </div>
                 </div>
 
@@ -74,7 +72,8 @@
                         <label>Gültigkeit</label>
                         <input class="form-control"
                         type="text"
-                        ng-model="formControllerRepo.GUELTIG_BIS">
+                        ng-model="formControllerRepo.GUELTIG_BIS"
+                        placeholder="TT.MM.JJJJ">
                     </div>
                 </div>
 

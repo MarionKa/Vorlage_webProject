@@ -1,11 +1,17 @@
 angular.module('webTestDB')
     .controller('ListControllerRepos', ListControllerRepos)
+    .controller('ListControllerReposUser', ListControllerReposUser)
     .controller('FormControllerRepos', FormControllerRepos)
     .controller('DeleteControllerRepos', DeleteControllerRepos);
 
 ListControllerRepos.$inject = ['dataFactoryRepos'];
 function ListControllerRepos (dataFactoryRepos) {
     this.daten = dataFactoryRepos.getAll();       //getAll() in model.js (client) festgelegt
+}
+
+ListControllerReposUser.$inject = ['dataFactoryRepoUser'];
+function ListControllerReposUser (dataFactoryRepoUser) {
+    this.daten = dataFactoryRepoUser.getAll({id: $stateParams.id});      //getAll() in model.js (client) festgelegt
 }
 
 FormControllerRepos.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];

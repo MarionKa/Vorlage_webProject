@@ -54,10 +54,10 @@ let message = {
     subject: 'VERSUCH für Repomanagement TH Nürnberg Medinf Efi', //
 
     // plaintext body
-    text: 'Diese Mail wurde via Javascript über eine gefakte Hochschuladresse geschickt, direkt aus dem Docker Container.',
+    text: 's dem Docker Container.',
 
     // HTML body
-    html: '<p><b>Diese</b> Mail wurde per Javascript mit einer gefakten Hochschuladresse geschickt, direkt aus einem Docker Container.</p>',
+    // html: '<p><b>Diese</b> Mail wurde per Javascript mit einer gefakten Hochschuladresse geschickt, direkt aus einem Docker Container.</p>',
 
 };
 
