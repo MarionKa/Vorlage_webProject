@@ -1,6 +1,6 @@
 angular.module('webTestDB')
     .controller('ListControllerRepos', ListControllerRepos)
-    .controller('ListControllerReposUser', ListControllerReposUser)
+    .controller('ListControllerReposUser', ListControllerReposUser) 
     .controller('FormControllerRepoBenutzer', FormControllerRepoBenutzer)
     .controller('DeleteControllerRepos', DeleteControllerRepos);
 
