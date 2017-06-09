@@ -67,9 +67,7 @@ adminCheck = function (headers) {
 getTokenID = function (headers) {
     var token = getToken(headers);
     var decoded = jwt.decode(token, 'dasIstEinGeheimnis');
-    return decoded[0].ID;
-
-    
+    return decoded[0].ID;    
 }
 
 
