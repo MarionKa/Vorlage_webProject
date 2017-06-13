@@ -12,7 +12,7 @@ function ListControllerRepo (dataFactoryRepo) {
 }
 
 ListControllerRepoBenutzer.$inject = ['$state', '$stateParams','dataFactoryRepoBenutzer'];
-function ListControllerRepoBenutzer ($state, $stateParams,dataFactoryRepoBenutzer) {
+function ListControllerRepoBenutzer ($state, $stateParams, dataFactoryRepoBenutzer) {
     this.daten = dataFactoryRepoBenutzer.getAll({id: $stateParams.id});       //getAll() in model.js (client) festgelegt
 }
 
