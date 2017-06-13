@@ -1,13 +1,13 @@
 angular.module('webTestDB')
     .controller('ListControllerRepos', ListControllerRepos)
-    .controller('ListControllerReposUser', ListControllerReposUser)
-    .controller('FormControllerRepoBenutzer', FormControllerRepoBenutzer)
+    .controller('FormControllerRepos', FormControllerRepos)
     .controller('DeleteControllerRepos', DeleteControllerRepos);
 
 ListControllerRepos.$inject = ['dataFactoryRepos'];
 function ListControllerRepos (dataFactoryRepos) {
     this.daten = dataFactoryRepos.getAll();       //getAll() in model.js (client) festgelegt
 }
+
 
 ListControllerReposUser.$inject = ['dataFactoryRepoUser'];
 function ListControllerReposUser (dataFactoryRepoUser) {
@@ -24,6 +24,11 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
     this.REPO_STATUS = '';
     this.ID = '';
 
+    // this.REPONAME = '';
+    // this.AUTHNAME = '';
+    // this.ART_ID = '';
+    // this.REPO_STATUS_ID = '';
+
         console.log('state FormControllerRepos');
 
     if($stateParams.id) {
@@ -38,27 +43,41 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
             this.REPO_STATUS = daten[0].REPO_STATUS;
             this.ID = daten[0].ID;
 
+            // console.log('daten im read ', daten[0].REPONAME);
+            // this.REPONAME = daten[0].REPONAME;
+            // this.AUTHNAME = daten[0].AUTHNAME;
+            // this.ART_ID = daten[0].ART_ID;
+            // this.REPO_STATUS_ID = '1';
         }.bind(this));
     }
-}
-
-FormControllerRepoBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
-function FormControllerRepoBenutzer ($state, $stateParams, dataFactoryRepos) {
-        console.log('save dd');
-        this.EMAILKENNUNG =  '';
 
     this.save = function () {
-        console.log('save funktion')
+        console.log('daten1 '+ this.ART_ID +' '+ this.AUTHNAME +' ' + this.REPONAME);
+
         var data = {
-            EMAILKENNUNG: this.EMAILKENNUNG,
-            REPOSITORY_ID: $stateParams.id
+            EMAILKENNUNG: this.EMAILKENNUNG
+
+            // ART_ID: this.ART_ID,
+            // AUTHNAME: this.AUTHNAME,
+            // REPONAME: this.REPONAME,
+            // ALLE_BENUTZER: this.ALLE_BENUTZER,  // Zugriffsberechtigte
+            // GUELTIG_BIS: this.GUELTIG_BIS,
+            // REPO_STATUS: this.REPO_STATUS,
+            // ID: this.ID
 
 
         };
-            console.log('save create' + $stateParams.id);
-            dataFactoryRepos.create(data).$promise.then($state.go.bind($state, 'repoueber({id: $stateParams.id})'));
+        if ($stateParams.id) {
+            console.log('save update');
+            data.id = $stateParams.id;
+            dataFactoryRepos.update(data).$promise.then($state.go.bind($state, 'repoueber'));
             //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
-        }.bind(this);
+        } else {
+            console.log('save create');
+            dataFactoryRepos.create(data).$promise.then($state.go.bind($state, 'repoueber'));
+            //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
+        }
+    }.bind(this);
 }
 
 DeleteControllerRepos.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];

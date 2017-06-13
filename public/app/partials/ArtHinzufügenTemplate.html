@@ -9,7 +9,9 @@
         <div class="panel-heading"><h4>Fügen Sie hier einen neuen Datensatz Repositoryart hinzu.</h4> </div>
         <div class="panel-body">
             <div class="row">
+
              <div class="col-xs-4 form-group">
+
                 <label>Bezeichnung</label>
                 <input class="form-control"
                 type="text"
@@ -18,13 +20,14 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-4 form-group">
-                <label>Ordnername</label>
+            <div class="col-xs-12 form-group">
+                <label>Ordnename</label>
                 <input class="form-control"
                 type="text"
                 ng-model="formControllerArt.ORDNERNAME">
             </div>
         </div>
+
 
         <div class="row">
             <div class="col-xs-4 form-group">
@@ -39,11 +42,35 @@
             </div>
         </div>
 
+<!--         <div class="row">
+            <div class="col-xs-12 form-group">
+                <label>Beantragen möglich:</label>
+                <div class="input-group"> -->
+<!--                     <input class="form-control" type="txt" ng-model="formControllerArt.EINTRAGEN_MGL" readonly=""> -->
+<!--                     <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ändern <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="#">Eintragen möglich</a></li>
+                            <li><a href="#">Eintragen nicht 
+                                möglich</a></li>
+
+                          </ul>
+                      </div> -->
+
+<!-- Eine weitere Möglichkeit ein Dropdown zu gestalten: -->
+                      <select class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL" convert-to-number  readonly="">
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <option value="0">möglich</option>
+                            <option value="1">nicht möglich</option>
+                        </ul>                    
+                      </select>
+
+                  </div>
+              </div>
+          </div>
 
 
-
-
-        <a>
+          <a>
             <button type="button" ng-click="formControllerArt.save()" class="btn btn-success" aria-label="Left Align">
                 Speichern
                 <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
@@ -57,7 +84,6 @@
             </button>
         </a>
     </div>
-</div>
 </div>
 </form>
 
