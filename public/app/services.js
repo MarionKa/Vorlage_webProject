@@ -4,7 +4,6 @@ angular.module('webTestDB')
  
 .service('AuthService', function($q, $http, API_ENDPOINT) {
   var LOCAL_TOKEN_KEY = 'WebAppToken';
-  var LOCAL_RECHT     =  'WebAppRecht'
   var isAuthenticated = false;
   var authToken;
  
@@ -15,9 +14,8 @@ angular.module('webTestDB')
     }
   }
  
-  function storeUserCredentials(token, recht) {
+  function storeUserCredentials(token) {
     window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
-    window.localStorage.setItem(LOCAL_RECHT, recht);
     useCredentials(token);
   }
  
@@ -34,8 +32,6 @@ angular.module('webTestDB')
     isAuthenticated = false;
     $http.defaults.headers.common.Authorization = undefined;
     window.localStorage.removeItem(LOCAL_TOKEN_KEY);
-    window.localStorage.removeItem(LOCAL_RECHT);
-
   }
  
   var register = function(user) {
@@ -55,7 +51,7 @@ angular.module('webTestDB')
     return $q(function(resolve, reject) {
       $http.post(API_ENDPOINT.url + 'authenticate', user).then(function(result) {
         if (result.data.success) {
-          storeUserCredentials(result.data.token, result.data.recht);
+          storeUserCredentials(result.data.token);
           resolve(result.data.msg);
         } else {
           reject(result.data.msg);
