@@ -28,9 +28,8 @@ function ausgabePersoenlich(req, res) {
     })
 }
 
-function eingabe(req, res) {        //Mitglied zu Repository hinzufügen
+function hinzufügenMitglied(req, res) {        //Mitglied zu Repository hinzufügen
     pw.adminCheck(req.headers).then(function success(){
-
         console.log('cont_repos.anlegen '+ req.body.EMAILKENNUNG + ' ' + req.body.REPOSITORY_ID /*+ req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' '+ req.body.RECHTE_ID*/);
         var reposData = {
             EMAILKENNUNG: req.body.EMAILKENNUNG,
@@ -38,8 +37,8 @@ function eingabe(req, res) {        //Mitglied zu Repository hinzufügen
         };
         console.log(reposData);
 
-        repos.eingabe_m(reposData).then(function(id) {
-            res.send(JSON.stringify({Nachricht: id}));
+        repos.hinzufügenMitglied_m(reposData).then(function(id) {
+            res.send(JSON.stringify({id: id}));
         });
     },   
     function failure() { console.log('keine Berechtigung');
@@ -65,7 +64,7 @@ function loeschen(req, res) {
 module.exports = {
     ausgabeAlle: ausgabeAlle,
     ausgabePersoenlich: ausgabePersoenlich,
-    eingabe: eingabe,
+    hinzufügenMitglied: hinzufügenMitglied,
     loeschen: loeschen
 
 };
