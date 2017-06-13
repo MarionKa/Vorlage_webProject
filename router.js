@@ -11,7 +11,6 @@ var passport    = require('passport');
 
 module.exports = function(app) {
 
-
     app.get('/benutzer', passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAlle);
     app.get('/benutzer/:id', passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeEin);
     app.post('/benutzer', cont_benutzer.eingabe);
