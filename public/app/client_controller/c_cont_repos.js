@@ -11,7 +11,7 @@ function ListControllerRepos (dataFactoryRepos) {
 
 ListControllerReposUser.$inject = ['dataFactoryRepoUser'];
 function ListControllerReposUser (dataFactoryRepoUser) {
-    this.daten = dataFactoryRepoUser.getAll({id: $stateParams.id});      //getAll() in model.js (client) festgelegt
+    this.daten = dataFactoryRepoUser.getAll();      //getAll() in model.js (client) festgelegt
 }
 
 FormControllerRepos.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
