@@ -89,7 +89,9 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
     .state('registrierung', {
         url: "/registrierung",
-        templateUrl: "app/partials/RegistrierungTemplate.html"
+        templateUrl: "app/partials/RegistrierungTemplate.html",
+        controller: 'FormControllerBenutzer',
+        controllerAs: 'formControllerBenutzer'
     })
     .state('reh', {
         url: "/reh",
@@ -114,7 +116,7 @@ function configFn($stateProvider, $urlRouterProvider) {
         controllerAs: 'listControllerRepos'
     })
     .state('ueberpers', {
-        url: "/ueberpers/:id",
+        url: "/ueberpers",
         templateUrl: "app/partials/RepoPersUeTemplate.html",
         controller: 'ListControllerReposUser',
         controllerAs: 'listControllerReposUser'
