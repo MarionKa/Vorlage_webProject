@@ -8,6 +8,7 @@
     <div class="panel panel-info">
         <div class="panel-heading"><h4>Zum Anmelden geben Sie Bitte Ihre Hochschul-E-Mail-Adresse und Ihr Passwort ein.</h4> </div>
         <div class="panel-body">
+        <form name="ANMELDEMASKE" ng-submit="login()">
 
             <div class="row">
                 <div class="col-xs-6 form-group">
@@ -23,9 +24,12 @@
                 <div class="col-xs-6 form-group">
                     <label>Passwort:</label>
                     <input class="form-control"
-                           type="password" ng-model="user.PASSWORT" placeholder="Ihr Passwort">
+                           type="password" 
+                           ng-model="user.PASSWORT" 
+                           placeholder="Ihr Passwort">
                 </div>
             </div>
+            </form>
 
 
             <div class="row">
@@ -53,9 +57,15 @@
 
     <div class="row">
         <div class="col-xs-12 form-group">
-            <h4 style="line-height: 150%">Sie befinden sich auf der Seite des Repositorymanagements von <a href="http://www.th-nuernberg.de/seitenbaum/fakultaeten/elektrotechnik-feinwerktechnik-informationstechnik/personen/prof-dr-hofmann/prof-dr-oliver-hofmann/page.html">Prof. Dr. Hofmann</a>.</h4>
+            <h4 style="line-height: 150%">Sie befinden sich auf der Seite des Repositorymanagements von <a href="https://www.th-nuernberg.de/person/hofmann-oliver/">Prof. Dr. Hofmann</a>.</h4>
             <p>
-                <a href=".../data/Hilfedoku.pdf" download="Hilfe.pdf">Download</a> des Hilfe-Dokuments. 
+
+
+
+
+
+
+            <a href=".../data/Hilfedoku.pdf" download>Download</a> des Hilfe-Dokuments. 
             </p>
         </div>
     </div>
