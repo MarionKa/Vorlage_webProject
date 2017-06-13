@@ -9,7 +9,12 @@ angular.module('webTestDB')
   $scope.login = function() {
     console.log('login bis hier')
     AuthService.login($scope.user).then(function(msg) {
-      $state.go('benutzerueber');
+      var recht = AuthService.loadUserRecht();
+      console.log('recht ='+ recht)
+      if (recht == 2)
+        $state.go('ueberpers')
+      if (recht == 1)
+        $state.go('repoueber');
     }/*, function(errMsg) {
       var alertPopup = $ionicPopup.alert({
         title: 'Login failed!',

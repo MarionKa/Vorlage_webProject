@@ -14,6 +14,11 @@ angular.module('webTestDB')
       useCredentials(token);
     }
   }
+
+  var loadUserRecht = function () {
+    var recht = window.localStorage.getItem(LOCAL_RECHT);
+    return recht;
+  }
  
   function storeUserCredentials(token, recht) {
     window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
@@ -74,6 +79,7 @@ angular.module('webTestDB')
     login: login,
     register: register,
     logout: logout,
+    loadUserRecht: loadUserRecht,
     isAuthenticated: function() {return isAuthenticated;},
   };
 })
