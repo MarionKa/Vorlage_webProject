@@ -23,23 +23,9 @@
                 <div class="panel-heading">
                     <h3>Überblick über Ihre Repositorys:</h3>
                 </div>
-                <table class="table table-hover">
+<!--                 <table class="table table-hover">
                     <tr> <th>Repository</th> <th>Authname</th> <th>Pfad</th> <th>Mitglieder</th> <th>Gültigkeit bis</th> </tr>
-
-<!-- //////////////////////////////////////////////////////////////////
-//////////////////////// AUS BUCH ANFANG //////////////////////////////
-/////////////////////////////////////////////////////////////////// --> 
-
-                    <!-- <tr ng-repeat="student in listController.Studenten"> 
-                        <td>{{student.art}}</span></td> 
-                        <td>{{student.authname}}</span></td> 
-                        <td>{{student.pfad}}</td> 
-                        <td>{{student.mitglieder}}</td> 
-                        <td>{{student.datum}}</td> </tr> -->
-
-<!-- //////////////////////////////////////////////////////////////////
-///////////////////////// AUS BUCH ENDE ///////////////////////////////
-/////////////////////////////////////////////////////////////////// -->                        
+                      
 
                         <tr> <td>Projektarbeit</td> 
                             <td></td> 
@@ -47,7 +33,56 @@
                             <td>Mustermann, Musterfrau, Hofmann</td> 
                             <td>SoSe 18</td>
                         </tr>
-                </table>
+
+                </table> -->
+
+                                    <table class="table table-hover">
+                        <tr> 
+                            <th>Art
+                                <div class="btn-group btn-xs" role="group">
+                                    <button ng-click="sortieren = '+ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
+                                    <button ng-click="sortieren = '-ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
+                                </div>
+
+                            </th>
+                            <th>Authname
+                                <div class="btn-group btn-xs" role="group">
+                                    <button ng-click="sortieren = '+AUTHNAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
+                                    <button ng-click="sortieren = '-AUTHNAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
+                                </div>
+                            </th> 
+                            <th>Pfad
+                            <div class="btn-group btn-xs" role="group">
+                                    <button ng-click="sortieren = '+REPONAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
+                                    <button ng-click="sortieren = '-REPONAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
+                                </div>
+                            </th> 
+                            <th>Zugriffsberechtigte
+                            <div class="btn-group btn-xs" role="group">
+                                    <button ng-click="sortieren = '+ALLE_BENUTZER'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
+                                    <button ng-click="sortieren = '-ALLE_BENUTZER'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
+                                </div>
+                            </th> 
+                            <th>Gültigkeit
+                            </th>  
+                            <th>Zustand
+                            <div class="btn-group btn-xs" role="group">
+                                    <button ng-click="sortieren = '+REPO_STATUS'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
+                                    <button ng-click="sortieren = '-REPO_STATUS'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
+                                </div>
+                            </th> 
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="daten in listControllerReposUser.daten | orderBy:sortieren">
+                            <td>{{daten.ART}}</td>
+                            <td>{{daten.AUTHNAME}}</td>
+                            <td>kommtNoch/{{daten.REPONAME}}</td>
+                            <td>{{daten.ALLE_BENUTZER}}</td>
+                            <td>{{daten.GUELTIG_BIS}}</td>
+                            <td>{{daten.REPO_STATUS}}</td>
+                        </tr>
+                    </table>
+
             </div>
         </div>
     </div>

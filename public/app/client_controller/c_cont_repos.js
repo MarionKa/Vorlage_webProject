@@ -8,6 +8,12 @@ function ListControllerRepos (dataFactoryRepos) {
     this.daten = dataFactoryRepos.getAll();       //getAll() in model.js (client) festgelegt
 }
 
+
+ListControllerReposUser.$inject = ['dataFactoryRepoUser'];
+function ListControllerReposUser (dataFactoryRepoUser) {
+    this.daten = dataFactoryRepoUser.getAll();      //getAll() in model.js (client) festgelegt
+}
+
 FormControllerRepos.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
 function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
     this.ART_ID =  '';

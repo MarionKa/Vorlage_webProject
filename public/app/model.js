@@ -75,8 +75,25 @@ function dataFactoryRepo($resource) {
     );
 }
 
-angular.module('webTestDB')
-.factory('dataFactoryRepoBenutzer', dataFactoryRepoBenutzer);
+
+// Neu angelegt. ALLE Repositories für EINEN Benutzer
+webDB.factory('dataFactoryRepoUser', dataFactoryRepoUser);
+
+dataFactoryRepoUser.$inject = ['$resource'];
+
+function dataFactoryRepoUser($resource) {
+    return $resource(
+        '/meineRepos/:id',    //Ein Repository
+        {id: '@id'},
+        {
+            getAll: {method: 'GET', isArray: true}
+            // create: {method: 'POST'},
+            // read: {method: 'GET', isArray: true},
+            // update: {method: 'PUT'},
+            // delete: {method: 'DELETE'}
+        }
+    );
+}
 
 dataFactoryRepoBenutzer.$inject = ['$resource'];
 

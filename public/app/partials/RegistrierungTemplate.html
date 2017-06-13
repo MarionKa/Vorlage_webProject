@@ -15,14 +15,14 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label style="line-height: 150%">Vorname:</label>
-                    <input class="form-control" type="text" placeholder="Vorname" name="Vorname" id="Vorname" value="">
+                    <input class="form-control" type="text" placeholder="Vorname" name="Vorname" id="Vorname" value="" ng-model="formControllerBenutzer.VORNAME">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label style="line-height: 150%">Nachname:</label>
-                    <input class="form-control" type="text" placeholder="Nachname" name="Nachname" id="Nachname" value="">
+                    <input class="form-control" type="text" placeholder="Nachname" name="Nachname" id="Nachname" value="" ng-model="formControllerBenutzer.NACHNAME">
                 </div>
             </div>
 
@@ -39,7 +39,8 @@
                         aria-describedby="basic-addon2"
                         name="Mail" 
                         id="Mail" 
-                        value="">
+                        value=""
+                        ng-model="formControllerBenutzer.EMAILKENNUNG">
                         <span class="input-group-addon" id="basic-addon2">@th-nuernberg.de</span>
                     </div>
                 </div>
@@ -49,10 +50,30 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <label style="line-height: 150%">Passwort:</label>
+                    <input class="form-control" type="text" placeholder="Passwort" name="Passwort" id="Passwort" value="">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <label style="line-height: 150%">Passwort wiederholen:</label>
+                    <input class="form-control" 
+                    type="text" 
+                    placeholder="Passwort" 
+                    name="Passwort1" 
+                    id="Passwort1" 
+                    value=""
+                    ng-model="formControllerBenutzer.PASSWORT">
+                </div>
+            </div>
+
 
             <div class="row">
                 <div class="col-xs-6 form-group">
-                    <button type="button" class="btn btn-default" name="regButton" id="regButton">Registrieren</button>
+                    <button type="button" class="btn btn-default" name="regButton" id="regButton" ng-click="formControllerBenutzer.save()">Registrieren</button>
                 </div>
             </div>
         </div>
@@ -79,9 +100,24 @@
                 document.RegFormular.Mail.focus(); //Positionierung auf fehlerhafte Formularfeldeingabe
                 return false;
             }
-            if (document.RegFormular.Mail.value.indexOf("@") == -1){
+            if (document.RegFormular.Mail.value.indexOf("@") != -1){
                 alert("Bitte geben Sie die korrekte E-Mail-Adresse an!");
                 document.RegFormular.focus(); //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+            if (document.RegFormular.Passwort.value == ""){
+                alert("Bitte geben Sie ein Passwort ein!");
+                document.RegFormular.Passwort.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+            if (document.RegFormular.Passwort1.value == ""){
+                alert("Bitte geben Sie ein Passwort ein!");
+                document.RegFormular.Passwort1.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+            if (document.RegFormular.Passwort1.value != document.RegFormular.Passwort.value){
+                alert("Die Passwörter stimmen nicht überein!");
+                document.RegFormular.Passwort1.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
                 return false;
             }
         
