@@ -70,11 +70,12 @@ function configFn($stateProvider, $urlRouterProvider) {
         url: "/benutzerentf/:id",
         templateUrl: "app/partials/BenutzerEntfernenTemplate.html",
         controller: 'ListControllerRepoBenutzer', 
-        controllerAs: 'ListControllerRepoBenutzer'
+        controllerAs: 'listControllerRepoBenutzer'
     })
     .state('benutzerhinzu', {
-        url: "/benutzerhinzu",
-        templateUrl: "app/partials/BenutzerHinzufügenTemplate.html"
+        url: "/benutzerhinzu/:id",
+        templateUrl: "app/partials/BenutzerHinzufügenTemplate.html",
+        controller: 'FormControllerRepoBenutzer'
     })
     .state('benutzerueber', {
         url: "/benutzerueber",
@@ -102,6 +103,12 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'FormControllerRepo',
         controllerAs: 'formControllerRepo'
     })
+    .state('repoerstellen', {
+        url: "/repoerstellen",
+        templateUrl: "app/partials/RepoHinzufügenTemplate.html",
+        controller: 'FormControllerRepo',
+        controllerAs: 'formControllerRepo'
+    })
     .state('repoueber', {
         url: "/repoueber",
         templateUrl: "app/partials/RepoUebersichtTemplate.html",
@@ -110,11 +117,10 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
     .state('ueberpers', {
         url: "/ueberpers",
-
         templateUrl: "app/partials/RepoPersUeTemplate.html",
         controller: 'ListControllerReposUser',
         controllerAs: 'listControllerReposUser'
-
+        
     });
 
 }

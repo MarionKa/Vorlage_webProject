@@ -30,7 +30,7 @@ module.exports = function(passport) {
   passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
       console.log('\n\n passport use\n \n\n ');
 
-    connection.query("SELECT ID, VORNAME, NACHNAME, EMAILKENNUNG, RECHTE_ID FROM benutzer  WHERE ID = ?",[jwt_payload.id],function(err, rows) {  /*User.findOne({id: jwt_payload.id}, */
+    connection.query("SELECT ID, VORNAME, NACHNAME, EMAILKENNUNG, RECHTE_ID FROM BENUTZER  WHERE ID = ?",[jwt_payload[0].ID],function(err, rows) {  /*User.findOne({id: jwt_payload.id}, */
           if (err) {
             console.log('\n\n passport.js if err\n \n\n ');
                done(err, false);
