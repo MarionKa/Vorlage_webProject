@@ -112,11 +112,11 @@ function DeleteControllerRepo ($state, $stateParams, dataFactoryRepo) {
 
 DeleteControllerRepoBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryRepoBenutzer'];
 function DeleteControllerRepoBenutzer ($state, $stateParams, dataFactoryRepoBenutzer) {
-    console.log('c_cont_repo loeschen vor data: ' + $stateParams.REPOSITORY_ID + ' ' + $stateParams.id);
+    console.log('c_cont_repository loeschen vor data: ' + $stateParams.REPOSITORY_ID + ' ' + $stateParams.id);
         var data = {
             ID_REPO: $stateParams.REPOSITORY_ID
         };
-    console.log('c_cont_repo loeschen: ' + data.ID_REPO);
+    console.log('c_cont_repository loeschen: ' + data.ID_REPO);
     dataFactoryRepoBenutzer.delete({ID_REPO: $stateParams.REPOSITORY_ID, id: $stateParams.id}).$promise.then(function() {
         
         $state.go('repoueber');//benutzerentf({id: this.ID})
