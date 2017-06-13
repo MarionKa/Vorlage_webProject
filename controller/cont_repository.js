@@ -1,4 +1,4 @@
-var repo = require('../model/mod_repo');
+var repo = require('../model/mod_repository');
 var pw = require('../model/mod_passwort');
 
 
