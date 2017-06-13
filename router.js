@@ -1,14 +1,15 @@
 //var controller = require('./controller/controller.js');
 var cont_benutzer = require('./controller/cont_benutzer.js');
 var cont_repos = require('./controller/cont_repos.js');
-var cont_repo = require('./controller/cont_repo.js');
+var cont_repository = require('./controller/cont_repository.js');
 var cont_art = require('./controller/cont_art.js');
 var cont_passwort = require('./controller/cont_passwort.js');
+
+var mail = require('./mail');
 
 var passport    = require('passport');
 
 module.exports = function(app) {
-
 
     app.get('/benutzer', passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAlle);
     app.get('/benutzer/:id', passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeEin);
@@ -17,21 +18,19 @@ module.exports = function(app) {
     app.delete('/benutzer/:id', passport.authenticate('jwt', { session: false}),cont_benutzer.loeschen);
     
     app.get('/repos', passport.authenticate('jwt', { session: false}),cont_repos.ausgabeAlle);   //einzelansicht repo-editieren mit id
-
     app.get('/meineRepos', passport.authenticate('jwt', { session: false}),cont_repos.ausgabePersoenlich);  //repos eines benutzers ?
 
     app.post('/repos', passport.authenticate('jwt', { session: false}),cont_repos.eingabe); //BENUTZTER mit Email einem REPO (ID) Hinzufügen
-
     app.delete('/repos/:id', passport.authenticate('jwt', { session: false}),cont_repos.loeschen);
 
-    app.get('/repo/:id',passport.authenticate('jwt', { session: false}), cont_repo.ausgabeEin);
-    app.post('/repo', passport.authenticate('jwt', { session: false}),cont_repo.eingabe);		//repo-beantragen
-    app.put('/repo/:id', passport.authenticate('jwt', { session: false}),cont_repo.update);	//repo-editieren mit id speichern in repo-editieren
-    app.delete('/repo/:id', passport.authenticate('jwt', { session: false}),cont_repo.loeschen); //repo-übersicht Funktion2 - löschen
-    app.get('/repostatus', passport.authenticate('jwt', { session: false}),cont_repo.repostatus); //Dropdown für Repostatus
+    app.get('/repo/:id',passport.authenticate('jwt', { session: false}), cont_repository.ausgabeEin);
+    app.post('/repo', passport.authenticate('jwt', { session: false}),cont_repository.eingabe);		//repo-beantragen
+    app.put('/repo/:id', passport.authenticate('jwt', { session: false}),cont_repository.update);	//repo-editieren mit id speichern in repo-editieren
+    app.delete('/repo/:id', passport.authenticate('jwt', { session: false}),cont_repository.loeschen); //repo-übersicht Funktion2 - löschen
+    app.get('/repostatus', passport.authenticate('jwt', { session: false}),cont_repository.repostatus); //Dropdown für Repostatus
 
-    app.get('/repoBenutzer/:id', passport.authenticate('jwt', { session: false}),cont_repo.benutzerDesRepos);
-    app.delete('/repoBenutzer/:id/:ID_REPO', passport.authenticate('jwt', { session: false}),cont_repos.loeschen);      // in cont_repo noch nicht vorhanden!!!
+    app.get('/repoBenutzer/:id', passport.authenticate('jwt', { session: false}),cont_repository.benutzerDesRepos);
+    app.delete('/repoBenutzer/:id/:ID_REPO', passport.authenticate('jwt', { session: false}),cont_repos.loeschen);      // in cont_repos noch nicht vorhanden!!!
 
     app.get('/art', passport.authenticate('jwt', { session: false}),cont_art.ausgabeAlle);
     app.get('/art/:id', passport.authenticate('jwt', { session: false}),cont_art.ausgabeEin);
@@ -43,7 +42,9 @@ module.exports = function(app) {
     //FÜR DEN PASSPORT!
 
     app.post('/authenticate', cont_passwort.finden);
-    app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAlle);
+    // app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAlle);
+    app.post('/testmail', mail.emailTest);
+
 
 };
 

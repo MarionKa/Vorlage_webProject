@@ -1,65 +1,48 @@
 <div class="row">
-    <h1 class="col-xs-12 page-header">
-        Art hinzugüfen:    
-    </h1>
+    <h1 class="col-xs-12 page-header"> Benutzer hinzufügen:</h1>
 </div>
-<form name="Arthinzufuegen">
 
-    <div class="panel panel-info">
-        <div class="panel-heading"><h4>Fügen Sie hier einen neuen Datensatz Repositoryart hinzu.</h4> </div>
-        <div class="panel-body">
+<div class="panel panel-info">
+    <div class="panel-heading"><h4>Bitte geben Sie hier den Namen ein, der eine Zugriffsberechtigung erhalten soll:</h4> </div>
+    <div class="panel-body">
+
+        <form name="studentForm">
             <div class="row">
-             <div class="col-xs-4 form-group">
-                <label>Bezeichnung</label>
-                <input class="form-control"
-                type="text"
-                ng-model="formControllerArt.BEZEICHNUNG">
+                <div class="col-xs-12 form-group">
+                    <label>Name:</label>
+                    <input class="form-control"
+                    type="text"
+                    placeholder="MustermannMa12345"
+                    ng-model="FormControllerRepoBenutzer.EMAILKENNUNG"
+                    value=""/>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-xs-4 form-group">
-                <label>Ordnername</label>
-                <input class="form-control"
-                type="text"
-                ng-model="formControllerArt.ORDNERNAME">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-4 form-group">
-                <label for="sel1">Eintragen möglich Neuer Status:</label>
-
-                <select class="form-control" type="text" ng-model="formControllerArt.EINTRAGEN_MGL" convert-to-number>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <option value="0">möglich</option>
-                        <option value="1">nicht möglich</option>
-                    </ul>                    
-                </select>
-            </div>
-        </div>
-
-
-
-
-
-        <a>
-            <button type="button" ng-click="formControllerArt.save()" class="btn btn-success" aria-label="Left Align">
-                Speichern
-                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
-            </button>
-        </a>
-
-        <a href="#/artueber">
-            <button type="button" class="btn btn-danger" aria-label="Left Align">
-                Abbrechen
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
-            </button>
-        </a>
+<!-- Fehlerbehebung: hier muss auf das vorherige Template (repoedit) mit der richtigen ID rückgeleitet werden.-->
+            <!-- <a href="#/repoedit/1"> -->
+            <a> 
+                <button type="button" ng-click="FormControllerRepoBenutzer.save()" class="btn btn-success" aria-label="Left Align">
+                    Hinzufügen
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
+                </button>
+            </a>
+            
+<!-- Fehlerbehebung: hier muss auf das vorherige Template (repoedit) mit der richtigen ID rückgeleitet werden.-->
+            <a ui-sref="repoedit"> 
+                <button type="button" class="btn btn-danger" aria-label="Left Align">
+                    Abbrechen
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+                </button>
+            </a>
+        </form>  
     </div>
 </div>
-</div>
-</form>
+
+
+
+
+
+
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
