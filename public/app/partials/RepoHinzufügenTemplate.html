@@ -20,39 +20,35 @@
                     </div>
                 </div>
 
+
+
                 <div class="line">
-                    <div class="col-xs-6 form-group">
-                        <label>Art</label>
-                        <input class="form-control" 
-                        type="text" 
-                        ng-model="formControllerRepo.ART"
-                        placeholder="Bitte beachten Sie, dass sie erst die Art erstellen müssen, bevor Sie diese eintragen.">
+                    <div class="col-xs-4 form-group">
+                        <form action="#">
+                            <label for="ART_ID">Art:</label>
+                            <select name="ART_ID" id="ART_ID" class="form-control" ng-model="formControllerRepo.ART_ID">
+                                <option ng-repeat="option in formControllerRepo.repoart" value="{{option.ID}}">{{option.BEZEICHNUNG}}</option>
+                            </select>
+                        </form>
                     </div>
                 </div>
-            </div>
+                </div>
+
 
             <div class="panel panel-info">
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12 form-group">
                             <label>Zugriffsberechtigte</label>
-                            <div> <input class="form-control" type="text" ng-model="formControllerRepo.ALLE_BENUTZER" readonly="">
+                            <div> <input class="form-control" 
+                            type="text" 
+                            ng-model="formControllerRepo.ALLE_BENUTZER" 
+                            readonly="">
                             </div> 
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="line">
-                            <div class="col-xs-2 form-group">
-                                <a href="#/benutzerhinzu">
-                                    <button type="button" class="btn btn-success" aria-label="Left Align">
-                                        Benutzer hinzufügen!
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <p>Bitte legen Sie das Repository erst an und fügen dann per "Editieren" weitere Benutzer hinzu.</p>
                 </div>
             </div>
 

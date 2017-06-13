@@ -53,9 +53,9 @@ function benutzerDesRepos_m(id){
 }
 
 function eingabe_m(data, id) {
-     console.log('Eingabe model: ' + data.BENUTZER_ID + ' ' + data.REPOSITORY_ID/*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)
+     console.log('Eingabe model eingabe_m: ' + data.BENUTZER_ID /*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)
     return new Promise(function (resolve, reject) {
-        connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(ID)+1, ?, ?, DATE_ADD( sysdate(), INTERVAL ? month), ?, ? from REPOSITORY; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [data.REPONAME, data.AUTHNAME, 6/*dauer Gültigkeit in Monaten*/ , data.ART_ID /*ART_ID*/, data.REPO_STATUS_ID /*STATUS_ID*/, id /*Benutzer ID*/], function (err) {
+        connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(ID)+1, ?, ?, DATE_ADD( sysdate(), INTERVAL ? month), ?, ? from REPOSITORY; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [data.REPONAME, data.AUTHNAME, 6/*dauer Gültigkeit in Monaten*/ , data.ART_ID /*ART_ID*/, 1 /*STATUS_ID*/, data.BENUTZER_ID /*Benutzer ID*/], function (err) {
             if (err) {
                 reject(err);
             } else {
