@@ -40,7 +40,7 @@
 
     <script>
         function beantragen() {
-            alert("Ihr Repository wurde beantragt. Prof. Dr. Hofmann wurde darüber informiert und gibt das Repository in kürze frei.");
+            alert("Ihr Repository wurde beantragt.");
         }
     </script>
 
@@ -65,7 +65,7 @@
         </div>
             <div id="menu" class="collapse navbar-collapse">
             <ul class="nav navbar-nav" ng-controller="NavbarController">
-                <li ng-class="{ active: isActive('/ueberpers/1')}"><a href="#/ueberpers">Persönlicher Bereich</a></li>
+                <li ng-class="{ active: isActive('/ueberpers')}"><a href="#/ueberpers">Persönlicher Bereich</a></li>
                 <li ng-class="{ active: isActive('/beantragung')}"><a href="#/beantragung">Repository beantragen</a></li>
             </ul>
             <button type="button" ng-click="logout()" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>
