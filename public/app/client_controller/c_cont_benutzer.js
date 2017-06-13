@@ -25,14 +25,9 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
             this.NACHNAME = daten[0].NACHNAME;
             this.VORNAME = daten[0].VORNAME;
             this.EMAILKENNUNG = daten[0].EMAILKENNUNG;
-            this.RECHTE_ID = daten[0].RECHTE_ID;
+            this.RECHTE_ID = daten[0].RECHTE_ID.toString();
             this.ID = daten[0].ID;
             
-            // console.log('daten im read ', daten[0].REPONAME);
-            // this.REPONAME = daten[0].REPONAME;
-            // this.AUTHNAME = daten[0].AUTHNAME;
-            // this.ART_ID = daten[0].ART_ID;
-            // this.REPO_STATUS_ID = '1';
         }.bind(this));
     }
 

@@ -37,7 +37,7 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
         var data = {
             BEZEICHNUNG: this.BEZEICHNUNG,
             ORDNERNAME: this.ORDNERNAME,
-            EINTRAGEN_MGL: this.EINTRAGEN_MGL,
+            EINTRAGEN_MGL: this.EINTRAGEN_MGL
             // ID: this.ID,
             // PASSWORT: 'daten'
 

@@ -1,6 +1,20 @@
 /* eslint no-console: 0 */
+// var dbconfig = require('../database');
+// var connection = mysql.createConnection(
+//     dbconfig.connection
+    
+// );
 
-'use strict';
+// connection.connect(function(error){
+//     if(!!error){
+//         console.log('Error DB, mod_benutzer');
+//     } else {
+//         console.log('Connection sucessfull, mod_benutzer!');
+//     }
+// });
+
+
+    'use strict';
 
 const nodemailer = require('./lib/nodemailer');
 
@@ -42,13 +56,14 @@ let transporter = nodemailer.createTransport({
     }
 });
 */
+function emailTest(req, res) {
 
 console.log('SMTP Configured');
 // Message object:
 let message = {
 
     // Comma separated list of recipients
-    to: 'Andreas Berndt <abbademeister@gmail.com>',
+    to: 'cmj@live.de',
 
     // Subject of the message
     subject: 'VERSUCH für Repomanagement TH Nürnberg Medinf Efi', //
@@ -71,5 +86,11 @@ transporter.sendMail(message, (error, info) => {
     }
     console.log('Message sent successfully!');
     console.log('Server responded with "%s"', info.response);
-    transporter.close();
+    // transporter.close();
+    res.send('Message sent successfully!');
 });
+}
+
+module.exports = {
+    emailTest: emailTest
+};
