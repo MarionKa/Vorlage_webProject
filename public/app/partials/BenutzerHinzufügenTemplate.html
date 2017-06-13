@@ -19,9 +19,9 @@
             </div>
 
 <!-- Fehlerbehebung: hier muss auf das vorherige Template (repoedit) mit der richtigen ID rückgeleitet werden.-->
-            <!-- <a href="#/repoedit/1"> -->
-            <a ui-sref="repoedit({id: test.ID})"> 
-                <button type="button" class="btn btn-success" aria-label="Left Align">
+           
+            <a > <!-- Benutzer hinzufügen, Benutzer_ID und Repo_ID erfoderlich -->
+                <button type="button" ng-click="formControllerRepoBenutzer.save()" class="btn btn-success" aria-label="Left Align">
                     Hinzufügen
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
                 </button>

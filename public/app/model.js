@@ -86,7 +86,7 @@ function dataFactoryRepoBenutzer($resource) {
         {id: '@id'},
         {
             getAll: {method: 'GET', isArray: true},
-            // create: {method: 'POST'},
+            //create: {method: 'POST'},
             // read: {method: 'GET', isArray: true},
             // update: {method: 'PUT'},
             delete: {method: 'DELETE'}

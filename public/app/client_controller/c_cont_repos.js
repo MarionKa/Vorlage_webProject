@@ -49,18 +49,16 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
         console.log('daten1 '+ this.ART_ID +' '+ this.AUTHNAME +' ' + this.REPONAME);
 
         var data = {
-            ART_ID: this.ART_ID,
-            AUTHNAME: this.AUTHNAME,
-            REPONAME: this.REPONAME,
-            ALLE_BENUTZER: this.ALLE_BENUTZER,  // Zugriffsberechtigte
-            GUELTIG_BIS: this.GUELTIG_BIS,
-            REPO_STATUS: this.REPO_STATUS,
-            ID: this.ID
+            EMAILKENNUNG: this.EMAILKENNUNG
 
-            // REPONAME: maka,
-            // AUTHNAME: kaiserma,
-            // ART_ID: 1,
-            // REPO_STATUS_ID: '1'
+            // ART_ID: this.ART_ID,
+            // AUTHNAME: this.AUTHNAME,
+            // REPONAME: this.REPONAME,
+            // ALLE_BENUTZER: this.ALLE_BENUTZER,  // Zugriffsberechtigte
+            // GUELTIG_BIS: this.GUELTIG_BIS,
+            // REPO_STATUS: this.REPO_STATUS,
+            // ID: this.ID
+
 
         };
         if ($stateParams.id) {
