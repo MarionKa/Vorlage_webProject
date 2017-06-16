@@ -20,7 +20,7 @@ module.exports = function(app) {
     app.get('/repos', passport.authenticate('jwt', { session: false}),cont_repos.ausgabeAlle);   //einzelansicht repo-editieren mit id
     app.get('/meineRepos', passport.authenticate('jwt', { session: false}),cont_repos.ausgabePersoenlich);  //repos eines benutzers ?
 
-    app.post('/repos', passport.authenticate('jwt', { session: false}),cont_repos.eingabe); //BENUTZTER mit Email einem REPO (ID) Hinzufügen
+    app.post('/repos', passport.authenticate('jwt', { session: false}),cont_repos.hinzufügenMitglied); //BENUTZTER mit Email einem REPO (ID) Hinzufügen
     app.delete('/repos/:id', passport.authenticate('jwt', { session: false}),cont_repos.loeschen);
 
     app.get('/repo/:id',passport.authenticate('jwt', { session: false}), cont_repository.ausgabeEin);

@@ -44,11 +44,12 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
 
 FormControllerRepoBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
 function FormControllerRepoBenutzer ($state, $stateParams, dataFactoryRepos) {
-        console.log('save dd');
         this.EMAILKENNUNG =  '';
 
+        console.log('state repoBen: ' + $stateParams.id);
+
     this.save = function () {
-        console.log('save funktion')
+        console.log('save repoBen')
         var data = {
             EMAILKENNUNG: this.EMAILKENNUNG,
             REPOSITORY_ID: $stateParams.id
