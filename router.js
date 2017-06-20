@@ -5,7 +5,7 @@ var cont_repository = require('./controller/cont_repository.js');
 var cont_art = require('./controller/cont_art.js');
 var cont_passwort = require('./controller/cont_passwort.js');
 
-var mail = require('./mail');
+var mail = require('./model/mod_mail');
 
 var passport    = require('passport');
 
@@ -43,7 +43,7 @@ module.exports = function(app) {
 
     app.post('/authenticate', cont_passwort.finden);
     // app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAlle);
-    app.post('/testmail', mail.emailTest);
+    app.post('/testmail/:id', mail.emailRepoAktiv);
 
 
 };
