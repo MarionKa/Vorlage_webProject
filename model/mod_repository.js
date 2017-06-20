@@ -79,10 +79,10 @@ function benutzerDesRepos_m(id){
     });
 }
 
-function eingabe_m(data, id) {
+function erstellenAlsUser_m(data) {
      console.log('Eingabe model eingabe_m: ' + data.BENUTZER_ID /*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)
     return new Promise(function (resolve, reject) {
-        connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(ID)+1, ?, ?, DATE_ADD( sysdate(), INTERVAL ? month), ?, ? from REPOSITORY; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [data.REPONAME, data.AUTHNAME, 6/*dauer Gültigkeit in Monaten*/ , data.ART_ID /*ART_ID*/, 1 /*STATUS_ID*/, data.BENUTZER_ID /*Benutzer ID*/], function (err) {
+        connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(R.ID)+1, B. EMAILKENNUNG, concat(B.VORNAME," ",B.NACHNAME), DATE_ADD( sysdate(), INTERVAL ? month), ?, ? from REPOSITORY R, BENUTZER B WHERE B.ID =?; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [ 6/*dauer Gültigkeit in Monaten*/ , data.ART_ID /*ART_ID*/, 1 /*STATUS_ID*/, data.BENUTZER_ID /*Benutzer ID*/, data.BENUTZER_ID /*Benutzer ID*/], function (err) {
             if (err) {
                 reject(err);
             } else {
@@ -92,6 +92,23 @@ function eingabe_m(data, id) {
         });
     });
 }
+
+
+function erstellenAlsAdmin_m(data) {
+     console.log('Eingabe model eingabe_m: ' + data.BENUTZER_ID /*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)
+    return new Promise(function (resolve, reject) {
+        connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(ID)+1, ?, ?, ?, ?, ? from REPOSITORY; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [data.REPONAME, data.AUTHNAME, data.GUELTIG_BIS, data.ART_ID /*ART_ID*/, data.REPO_STATUS_ID, data.BENUTZER_ID /*Benutzer ID*/], function (err) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(this.lastID);
+                console.log('data in db');
+            }
+        });
+    });
+}
+
+
 
 //Aktualisierung eines Benutzer-Datensatztes
 function update_m(data, id) {
@@ -124,7 +141,7 @@ function loeschen_m(idB, idR) {
 
 module.exports = {
     ausgabeEin_m: ausgabeEin_m,
-    eingabe_m: eingabe_m,
+    erstellenAlsUser_m: erstellenAlsUser_m,
     update_m: update_m,
     loeschen_m: loeschen_m,
     benutzerDesRepos_m: benutzerDesRepos_m,
