@@ -22,7 +22,6 @@
                         </form>
                     </div>
                 </div>
-                <p>Sie beantragen ein Repository mit der Art <i><b>{{formControllerRepobeantragen.ART_ID}}</b> </i>durch das Anklicken des Buttons:</p>
 
             <div class="row">
                 <div class="col-xs-6 form-group">
@@ -40,7 +39,7 @@
 
     <script>
         function beantragen() {
-            alert("Ihr Repository wurde beantragt. Prof. Dr. Hofmann wurde darüber informiert und gibt das Repository in kürze frei.");
+            alert("Ihr Repository wurde beantragt.");
         }
     </script>
 
@@ -50,13 +49,12 @@
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <a id="brand" class="navbar-brand" href="#/reh">
                 <img alt="Brand" src="img/4.png">
             </a>
-
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -64,31 +62,12 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-
-        <div id="menu" class="collapse navbar-collapse">
+            <div id="menu" class="collapse navbar-collapse">
             <ul class="nav navbar-nav" ng-controller="NavbarController">
-                <li ng-class="{ active: isActive('/student')}"><a href="#/ueberpers">Persönlicher Bereich</a></li>
+                <li ng-class="{ active: isActive('/ueberpers')}"><a href="#/ueberpers">Persönlicher Bereich</a></li>
                 <li ng-class="{ active: isActive('/beantragung')}"><a href="#/beantragung">Repository beantragen</a></li>
             </ul>
-            <button type="button" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>
+            <button type="button" ng-click="logout()" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>
         </div>
     </div>
 </nav>
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div id="menu" class="collapse navbar-collapse">
-            <nav aria-label="...">
-                <ul class="nav navbar-nav" ng-controller="NavbarController">
-                    <li>
-                        <ul class="pager">
-                            <li><a href="#/ueberpers">Persönlicher Bereich</a></li>
-                            <li><a href="#/beantragung">Repository beantragen</a></li>
-                            <li><a href="#/abmeldung">Abmelden</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</nav> -->

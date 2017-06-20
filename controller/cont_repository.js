@@ -53,7 +53,8 @@ function eingabe(req, res) {        //Persönliches Repository hinzufügen
             AUTHNAME: req.body.AUTHNAME,
             GUELTIG_BIS: req.body.GUELTIG_BIS,
             ART_ID: req.body.ART_ID,
-        REPO_STATUS_ID: 1 // Für Beantragt
+            BENUTZER_ID: 1,
+            REPO_STATUS_ID: 1 // Für Beantragt
 
     };
     console.log(repoData);

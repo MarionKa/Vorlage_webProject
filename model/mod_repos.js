@@ -42,7 +42,7 @@ function ausgabePersoenlich_m(id){
     });
 }
 
-function eingabe_m(data) {
+function hinzufügenMitglied_m(data) {
  console.log('Eingabe model: ' + data.EMAILKENNUNG + ' ' + data.REPOSITORY_ID)
  return new Promise(function (resolve, reject) {
     connection.query('SELECT ID FROM BENUTZER WHERE EMAILKENNUNG = ? ', [ data.EMAILKENNUNG], function (err, rows) {
@@ -90,7 +90,7 @@ function loeschen_m(idB, idR) {
 module.exports = {
     ausgabeAlle_m: ausgabeAlle_m,
     ausgabePersoenlich_m: ausgabePersoenlich_m,
-    eingabe_m: eingabe_m,
+    hinzufügenMitglied_m: hinzufügenMitglied_m,
     loeschen_m: loeschen_m
 };
 

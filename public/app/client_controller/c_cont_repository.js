@@ -12,7 +12,7 @@ function ListControllerRepo (dataFactoryRepo) {
 }
 
 ListControllerRepoBenutzer.$inject = ['$state', '$stateParams','dataFactoryRepoBenutzer'];
-function ListControllerRepoBenutzer ($state, $stateParams,dataFactoryRepoBenutzer) {
+function ListControllerRepoBenutzer ($state, $stateParams, dataFactoryRepoBenutzer) {
     this.daten = dataFactoryRepoBenutzer.getAll({id: $stateParams.id});       //getAll() in model.js (client) festgelegt
 }
 
@@ -44,9 +44,10 @@ function FormControllerRepobeantragen ($state, $stateParams, dataFactoryArtAktiv
     }.bind(this);
 }
 
-FormControllerRepo.$inject = ['$state', '$stateParams', 'dataFactoryRepo','dataFactoryRepostatus'];
-function FormControllerRepo ($state, $stateParams, dataFactoryRepo,dataFactoryRepostatus) {
+FormControllerRepo.$inject = ['$state', '$stateParams', 'dataFactoryArt', 'dataFactoryRepo','dataFactoryRepostatus'];
+function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRepo, dataFactoryRepostatus) {
         this.repostatus = dataFactoryRepostatus.getAll(); //Daten für Repostatus Combobox
+        this.repoart = dataFactoryArt.getAll(); //Daten für Repostatus Combobox
     this.ART = '';
     this.AUTHNAME = '';
     this.REPONAME = '';
@@ -85,7 +86,7 @@ console.log('einstieg: ' + this.REPO_STATUS_ID)
             AUTHNAME: this.AUTHNAME,
             REPONAME: this.REPONAME,
             GUELTIG_BIS: this.GUELTIG_BIS,
-            REPO_STATUS_ID: this.REPO_STATUS_ID,
+            // REPO_STATUS_ID: this.REPO_STATUS_ID,   //weg da immer 1
             ID: this.ID
 
 
@@ -96,7 +97,7 @@ console.log('einstieg: ' + this.REPO_STATUS_ID)
             dataFactoryRepo.update(data).$promise.then($state.go.bind($state, 'repoueber'));
             //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         } else {
-            console.log('save create');
+            console.log('save create',data);
             dataFactoryRepo.create(data).$promise.then($state.go.bind($state, 'repoueber'));
             //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         }
@@ -112,11 +113,11 @@ function DeleteControllerRepo ($state, $stateParams, dataFactoryRepo) {
 
 DeleteControllerRepoBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryRepoBenutzer'];
 function DeleteControllerRepoBenutzer ($state, $stateParams, dataFactoryRepoBenutzer) {
-    console.log('c_cont_repo loeschen vor data: ' + $stateParams.REPOSITORY_ID + ' ' + $stateParams.id);
+    console.log('c_cont_repository loeschen vor data: ' + $stateParams.REPOSITORY_ID + ' ' + $stateParams.id);
         var data = {
             ID_REPO: $stateParams.REPOSITORY_ID
         };
-    console.log('c_cont_repo loeschen: ' + data.ID_REPO);
+    console.log('c_cont_repository loeschen: ' + data.ID_REPO);
     dataFactoryRepoBenutzer.delete({ID_REPO: $stateParams.REPOSITORY_ID, id: $stateParams.id}).$promise.then(function() {
         
         $state.go('repoueber');//benutzerentf({id: this.ID})
