@@ -92,6 +92,7 @@ function dataFactoryRepoUser($resource) {
     );
 }
 
+// Für alle Nutzer aus einem Repository (Benötigt für Benutzer entfernen)
 webDB.factory('dataFactoryRepoBenutzer', dataFactoryRepoBenutzer);
 dataFactoryRepoBenutzer.$inject = ['$resource'];
 
@@ -124,6 +125,25 @@ function dataFactoryArt($resource) {
             read: {method: 'GET', isArray: true},
             update: {method: 'PUT'},
             delete: {method: 'DELETE'}
+        }
+    );
+}
+
+// Zur Erstellung eines neuen Repositories ('repoerstellen')
+webDB.factory('dataFactoryRepoBeantragen', dataFactoryRepoBeantragen);
+
+dataFactoryRepoBeantragen.$inject = ['$resource'];
+
+function dataFactoryRepoBeantragen($resource) {
+    return $resource(
+        '/repoErstellen',
+        {id: '@id'},
+        {
+            // getAll: {method: 'GET', isArray: true},
+            create: {method: 'POST'}//,
+            // read: {method: 'GET', isArray: true},
+            // update: {method: 'PUT'},
+            // delete: {method: 'DELETE'}
         }
     );
 }

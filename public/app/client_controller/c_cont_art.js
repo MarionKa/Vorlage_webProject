@@ -1,10 +1,14 @@
 angular.module('webTestDB')
-    .controller('ListControllerArt', ListControllerArt)
-    .controller('FormControllerArt', FormControllerArt)
-    .controller('DeleteControllerArt', DeleteControllerArt);
+.controller('ListControllerArt', ListControllerArt)
+.controller('FormControllerArt', FormControllerArt)
+.controller('DeleteControllerArt', DeleteControllerArt);
 
-ListControllerArt.$inject = ['dataFactoryArt'];
-function ListControllerArt (dataFactoryArt) {
+
+
+ListControllerArt.$inject = ['dataFactoryArt', 'AuthService'];
+function ListControllerArt (dataFactoryArt, AuthService) {
+    var name = AuthService.loadUserName();
+    document.getElementById("gruss").innerHTML = name;
     this.daten = dataFactoryArt.getAll();       //getAll() in model.js (client) festgelegt
 }
 
@@ -16,7 +20,7 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
     this.ID = '';
 
 
-        console.log('state FormControllerArt');
+    console.log('state FormControllerArt');
 
     if($stateParams.id) {
         console.log('state2 ' + $stateParams.id);
