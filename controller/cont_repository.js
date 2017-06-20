@@ -49,7 +49,7 @@ function erstellenAlsUser(req, res) {        //Persönliches Repository hinzufü
         console.log('cont_repo.erstellenUser '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
         var repoData = {
             ART_ID: req.body.ART_ID,
-            BENUTZER_ID: pw.getTokenID,
+            BENUTZER_ID: pw.getTokenID(req.headers),
             REPO_STATUS_ID: 1 // Für Beantragt
 
     };
@@ -68,13 +68,13 @@ function erstellenAlsAdmin(req, res) {        //Persönliches Repository hinzuf�
             AUTHNAME: req.body.AUTHNAME,
             GUELTIG_BIS: req.body.GUELTIG_BIS,
             ART_ID: req.body.ART_ID,
-            BENUTZER_ID: pw.getTokenID,
-            REPO_STATUS_ID: REPO_STATUS_ID
+            BENUTZER_ID: pw.getTokenID(req.headers),
+            REPO_STATUS_ID: req.body.REPO_STATUS_ID
 
     };
     console.log(repoData);
 
-    repo.eingabe_m(repoData).then(function(id) {
+    repo.erstellenAlsAdmin_m(repoData).then(function(id) {
         res.send(JSON.stringify({id: id}));
     });
 },   
