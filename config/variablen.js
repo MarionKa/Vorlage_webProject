@@ -1,6 +1,6 @@
-// config/database.js
+// config/variablen.js
 module.exports = {
     'git': {
-        'Pfadanfang': '..med/inf/steht in config..'
+        'Pfadanfang': '..med/inf/steht in config../'
     },
 };

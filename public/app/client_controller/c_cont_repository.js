@@ -88,8 +88,8 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
                 AUTHNAME: this.AUTHNAME,
                 REPONAME: this.REPONAME,
                 GUELTIG_BIS: this.GUELTIG_BIS,
-            // REPO_STATUS_ID: this.REPO_STATUS_ID,   //weg da immer 1
-            ID: this.ID
+                REPO_STATUS_ID: this.REPO_STATUS_ID,  
+                ID: this.ID
 
         };
         if ($stateParams.id) {
