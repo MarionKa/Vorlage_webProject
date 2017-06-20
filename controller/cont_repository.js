@@ -45,16 +45,31 @@ function benutzerDesRepos(req, res) {      //SELECT mit GET-Methode
 })
 }
 
-function eingabe(req, res) {        //Persönliches Repository hinzufügen
+function erstellenAlsUser(req, res) {        //Persönliches Repository hinzufügen
+        console.log('cont_repo.erstellenUser '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
+        var repoData = {
+            ART_ID: req.body.ART_ID,
+            BENUTZER_ID: pw.getTokenID,
+            REPO_STATUS_ID: 1 // Für Beantragt
+
+    };
+    console.log(repoData);
+
+    repo.erstellenAlsUser_m(repoData).then(function(id) {
+        res.send(JSON.stringify({id: id}));
+    });  
+}
+
+function erstellenAlsAdmin(req, res) {        //Persönliches Repository hinzufügen
     pw.adminCheck(req.headers).then(function success(){
-        console.log('cont_repo.eingabe '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
+        console.log('cont_repo.erstellenAdmin '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
         var repoData = {
             REPONAME: req.body.REPONAME,
             AUTHNAME: req.body.AUTHNAME,
             GUELTIG_BIS: req.body.GUELTIG_BIS,
             ART_ID: req.body.ART_ID,
-            BENUTZER_ID: 1,
-            REPO_STATUS_ID: 1 // Für Beantragt
+            BENUTZER_ID: pw.getTokenID,
+            REPO_STATUS_ID: REPO_STATUS_ID
 
     };
     console.log(repoData);
@@ -103,7 +118,8 @@ function loeschen(req, res) {
 
 module.exports = {
     ausgabeEin: ausgabeEin,
-    eingabe: eingabe,
+    erstellenAlsUser: erstellenAlsUser,
+    erstellenAlsAdmin: erstellenAlsAdmin,
     update: update,
     loeschen: loeschen,
     benutzerDesRepos: benutzerDesRepos,
