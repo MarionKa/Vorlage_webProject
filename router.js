@@ -24,7 +24,9 @@ module.exports = function(app) {
     app.delete('/repos/:id', passport.authenticate('jwt', { session: false}),cont_repos.loeschen);
 
     app.get('/repo/:id',passport.authenticate('jwt', { session: false}), cont_repository.ausgabeEin);
-    app.post('/repo', passport.authenticate('jwt', { session: false}),cont_repository.eingabe);		//repo-beantragen
+    app.post('/repo', passport.authenticate('jwt', { session: false}),cont_repository.erstellenAlsAdmin);		//repo-beantragen
+    app.post('/repoErstellen', passport.authenticate('jwt', { session: false}),cont_repository.erstellenAlsUser);      //repo-beantragen
+
     app.put('/repo/:id', passport.authenticate('jwt', { session: false}),cont_repository.update);	//repo-editieren mit id speichern in repo-editieren
     app.delete('/repo/:id', passport.authenticate('jwt', { session: false}),cont_repository.loeschen); //repo-übersicht Funktion2 - löschen
     app.get('/repostatus', passport.authenticate('jwt', { session: false}),cont_repository.repostatus); //Dropdown für Repostatus

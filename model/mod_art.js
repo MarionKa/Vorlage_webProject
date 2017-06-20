@@ -1,4 +1,5 @@
 var mysql = require('mysql');
+var variablen = require('../config/variablen')
 var dbconfig = require('../../database');
 var connection = mysql.createConnection(
     dbconfig.connection
@@ -18,7 +19,7 @@ function ausgabeAlle_m(){
             if (err) {
                 reject(err);
             } else {
-                console.log('model Art',rows);
+                console.log('ART.ausgabeAlle_m ',rows);
                 resolve(rows);
             }  
         });
@@ -31,9 +32,8 @@ function ausgabeEin_m(id) {
         connection.query('SELECT * FROM ART WHERE id = ?', [id /*ID*/], function (err, rows, fields) {
             if (err) {
                 reject(err);
-                console.log('ausgabeEin_m(id)err ', rows );
             } else {
-                console.log('Aufgabe eine Art ', rows );
+                console.log('ART.ausgabeEin_m', rows );
                 resolve(rows);
             }
         });
@@ -45,9 +45,8 @@ function ausgabeAktiv_m() {
         connection.query('SELECT * FROM ART WHERE EINTRAGEN_MGL = 1', function (err, rows, fields) {
             if (err) {
                 reject(err);
-                console.log('fetch(id)err ', rows );
             } else {
-                console.log('Ausgabe aktiv werte', rows );
+                console.log('ART.ausgabeAktiv_m', rows );
                 resolve(rows);
             }
         });
