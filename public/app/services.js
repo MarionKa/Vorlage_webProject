@@ -4,7 +4,8 @@ angular.module('webTestDB')
  
 .service('AuthService', function($q, $http, API_ENDPOINT) {
   var LOCAL_TOKEN_KEY = 'WebAppToken';
-  var LOCAL_RECHT     =  'WebAppRecht'
+  var LOCAL_RECHT     = 'WebAppRecht';
+  var LOCAL_NAME      = 'WebAppName';
   var isAuthenticated = false;
   var authToken;
  
@@ -19,10 +20,17 @@ angular.module('webTestDB')
     var recht = window.localStorage.getItem(LOCAL_RECHT);
     return recht;
   }
+
+  var loadUserName = function () {
+    var name = window.localStorage.getItem(LOCAL_NAME);
+    return name;
+  }
  
-  function storeUserCredentials(token, recht) {
+  function storeUserCredentials(token, recht, name) {
     window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
     window.localStorage.setItem(LOCAL_RECHT, recht);
+    window.localStorage.setItem(LOCAL_NAME, name);
+
     useCredentials(token);
   }
  
@@ -40,27 +48,28 @@ angular.module('webTestDB')
     $http.defaults.headers.common.Authorization = undefined;
     window.localStorage.removeItem(LOCAL_TOKEN_KEY);
     window.localStorage.removeItem(LOCAL_RECHT);
+    window.localStorage.removeItem(LOCAL_NAME);
 
   }
  
-  var register = function(user) {
-    return $q(function(resolve, reject) {
-      $http.post(API_ENDPOINT.url + 'signup', user).then(function(result) {
-        if (result.data.success) {
-          resolve(result.data.msg);
-        } else {
-          reject(result.data.msg);
-        }
-      });
-    });
-  };
+  // var register = function(user) {
+  //   return $q(function(resolve, reject) {
+  //     $http.post(API_ENDPOINT.url + 'signup', user).then(function(result) {
+  //       if (result.data.success) {
+  //         resolve(result.data.msg);
+  //       } else {
+  //         reject(result.data.msg);
+  //       }
+  //     });
+  //   });
+  // };
  
   var login = function(user) {
     console.log('services.js LOGIN', user)
     return $q(function(resolve, reject) {
       $http.post(API_ENDPOINT.url + 'authenticate', user).then(function(result) {
         if (result.data.success) {
-          storeUserCredentials(result.data.token, result.data.recht);
+          storeUserCredentials(result.data.token, result.data.recht, result.data.name);
           resolve(result.data.msg);
         } else {
           reject(result.data.msg);
@@ -77,9 +86,10 @@ angular.module('webTestDB')
  
   return {
     login: login,
-    register: register,
+    // register: register,
     logout: logout,
     loadUserRecht: loadUserRecht,
+    loadUserName: loadUserName,
     isAuthenticated: function() {return isAuthenticated;},
   };
 })
