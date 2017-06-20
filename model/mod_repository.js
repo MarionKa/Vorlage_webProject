@@ -142,6 +142,7 @@ function loeschen_m(idB, idR) {
 module.exports = {
     ausgabeEin_m: ausgabeEin_m,
     erstellenAlsUser_m: erstellenAlsUser_m,
+    erstellenAlsAdmin_m,erstellenAlsAdmin_m,
     update_m: update_m,
     loeschen_m: loeschen_m,
     benutzerDesRepos_m: benutzerDesRepos_m,
