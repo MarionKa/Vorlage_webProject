@@ -12,7 +12,7 @@ connection.connect(function(error){
     }
 });
 
-//Ausgabe eines Repository auf Basis seiner ID & der Benutzer des Repos
+//Ausgabe eines Repository auf Basis seiner ID 
 function ausgabeEin_m(id){
     return new Promise(function (resolve, reject) {
         connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, r.ART_ID, a.BEZEICHNUNG as ART, r.REPO_STATUS_ID FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) JOIN ART a ON (r.ART_ID = a.ID) WHERE v.REPOSITORY_ID = ? group by v.REPOSITORY_ID',[id /*REPO_ID*/], function(err, rows,  fields){
@@ -20,6 +20,33 @@ function ausgabeEin_m(id){
                 reject(err);
             } else {
                  console.log('ausgabeEin_m',rows);
+                resolve(rows);
+            }  
+        });
+    });
+}
+
+//Ausgabe eines Repository auf Basis seiner ID 
+function ausgabeEin_m(id){
+    return new Promise(function (resolve, reject) {
+        connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, r.ART_ID, a.BEZEICHNUNG as ART, r.REPO_STATUS_ID FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) JOIN ART a ON (r.ART_ID = a.ID) WHERE v.REPOSITORY_ID = ? group by v.REPOSITORY_ID',[id /*REPO_ID*/], function(err, rows,  fields){
+            if (err) {
+                reject(err);
+            } else {
+                 console.log('ausgabeEin_m',rows);
+                resolve(rows);
+            }  
+        });
+    });
+}
+
+function emailDaten(id) {
+    return new Promise(function (resolve, reject) {
+        connection.query('SELECT r.ID, concat(a.ORDNERNAME,"/", r.REPONAME) as PFADENDE, group_concat(b.EMAILKENNUNG, "" ,"@th-nuernberg.de" separator "; ") as ALLE_BENUTZER FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) JOIN ART a ON (r.ART_ID = a.ID) WHERE v.REPOSITORY_ID = ? group by v.REPOSITORY_ID ',[id /*REPO_ID*/], function(err, rows,  fields){
+            if (err) {
+                reject(err);
+            } else {
+                 console.log('emailDaten',rows);
                 resolve(rows);
             }  
         });
