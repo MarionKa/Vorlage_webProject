@@ -3,8 +3,10 @@ angular.module('webTestDB')
     .controller('FormControllerBenutzer', FormControllerBenutzer)
     .controller('DeleteControllerBenutzer', DeleteControllerBenutzer);
 
-ListControllerBenutzer.$inject = ['dataFactoryBenutzer'];
-function ListControllerBenutzer (dataFactoryBenutzer) {
+ListControllerBenutzer.$inject = ['dataFactoryBenutzer', 'AuthService'];
+function ListControllerBenutzer (dataFactoryBenutzer, AuthService) {
+    var name = AuthService.loadUserName();
+    document.getElementById("gruss").innerHTML = name;
     this.daten = dataFactoryBenutzer.getAll();       //getAll() in model.js (client) festgelegt
 }
 
