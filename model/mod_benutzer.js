@@ -44,7 +44,7 @@ function ausgabeEin_m(id){
 function eingabe_m(data) {
      console.log('Eingabe model: ' + data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID)
     return new Promise(function (resolve, reject) {
-        connection.query('INSERT INTO BENUTZER (ID, EMAILKENNUNG, PASSWORT, VORNAME, NACHNAME, RECHTE_ID) select MAX(ID)+1, ?, ?, ?, ?, ? from BENUTZER', [data.EMAILKENNUNG, data.PASSWORT, data.VORNAME, data.NACHNAME, data.RECHTE_ID/*Hier wird im cont ne 2 gesetzt*/], function (err) {
+        connection.query('INSERT INTO BENUTZER (ID, EMAILKENNUNG, PASSWORT, VORNAME, NACHNAME, RECHTE_ID) select MAX(ID)+1, LOWER(?), ?, ?, ?, ? from BENUTZER', [data.EMAILKENNUNG, data.PASSWORT, data.VORNAME, data.NACHNAME, data.RECHTE_ID/*Hier wird im cont ne 2 gesetzt*/], function (err) {
             if (err) {
                 reject(err);
             } else {
@@ -59,7 +59,7 @@ function eingabe_m(data) {
 function update_m(data, id) {
     console.log('Kommt die ID? ' + data.NACHNAME +' '+ id);
     return new Promise(function (resolve, reject) {
-        connection.query('UPDATE BENUTZER SET EMAILKENNUNG = ? , VORNAME = ?, NACHNAME = ? , RECHTE_ID = ? WHERE id = ?', [data.EMAILKENNUNG, data.VORNAME, data.NACHNAME, data.RECHTE_ID, id], function (err) {
+        connection.query('UPDATE BENUTZER SET EMAILKENNUNG = LOWER(?) , VORNAME = ?, NACHNAME = ? , RECHTE_ID = ? WHERE id = ?', [data.EMAILKENNUNG, data.VORNAME, data.NACHNAME, data.RECHTE_ID, id], function (err) {
             if (err) {
                 reject(err);
             } else {
