@@ -19,7 +19,7 @@ function ausgabeEin_m(id){
             if (err) {
                 reject(err);
             } else {
-                 console.log('ausgabeEin_m',rows);
+                 console.log('ausgabeEin_m repo',rows);
                 resolve(rows);
             }  
         });

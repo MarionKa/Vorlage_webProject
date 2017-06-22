@@ -37,7 +37,7 @@ module.exports = function(app) {
     app.get('/art', passport.authenticate('jwt', { session: false}),cont_art.ausgabeAlle);
     app.get('/art/:id', passport.authenticate('jwt', { session: false}),cont_art.ausgabeEin);
     app.get('/artAktiv', passport.authenticate('jwt', { session: false}),cont_art.ausgabeAktiv);  //Ausgabe aktiv geschaltener Repos (REPO_STATUS_ID = 1)
-    app.post('/art', passport.authenticate('jwt', { session: false}),cont_art.eingabe);
+    app.post('/art', passport.authenticate('jwt', { session: false}),cont_art.eingabe); //Neue Art hinzufügen
     app.put('/art/:id', passport.authenticate('jwt', { session: false}),cont_art.update);
     app.delete('/art/:id', passport.authenticate('jwt', { session: false}),cont_art.loeschen);
 
