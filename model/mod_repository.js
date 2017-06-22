@@ -15,7 +15,9 @@ connection.connect(function(error){
 //Ausgabe eines Repository auf Basis seiner ID 
 function ausgabeEin_m(id){
     return new Promise(function (resolve, reject) {
+
         connection.query('SELECT r.ID as REPOSITORY_ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, r.ART_ID, a.BEZEICHNUNG as ART, r.REPO_STATUS_ID FROM REPOSITORY r LEFT JOIN VERBINDEN v ON (r.ID = v.REPOSITORY_ID) LEFT JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) JOIN ART a ON (r.ART_ID = a.ID) WHERE r.ID = ? group by r.ID',[id /*REPO_ID*/], function(err, rows,  fields){
+
             if (err) {
                 reject(err);
             } else {
