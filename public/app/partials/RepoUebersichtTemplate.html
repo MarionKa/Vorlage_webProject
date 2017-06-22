@@ -2,7 +2,6 @@
     <h1 class="col-xs-12 page-header">
         <large>Herzlich Willkommen</large> <large id="gruss"></large><large>!</large>
     </h1>
-
 </div>
 
 <form name="Uebersicht">
@@ -16,26 +15,26 @@
                 <div class="panel-body">
                     <table class="table table-hover">
                         <tr> 
-                            <th>Art
+                            <th>Art <br/>
                                 <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                                 </div>
 
                             </th>
-                            <th>Authname
+                            <th>Authname <br/>
                                 <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+AUTHNAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-AUTHNAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                                 </div>
                             </th> 
-                            <th>Pfad
+                            <th>Pfad <br/>
                             <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+REPONAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-REPONAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                                 </div>
                             </th> 
-                            <th>Zugriffsberechtigte
+                            <th>Zugriffsberechtigte <br/>
                             <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+ALLE_BENUTZER'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-ALLE_BENUTZER'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
@@ -43,7 +42,7 @@
                             </th> 
                             <th>Gültigkeit
                             </th>  
-                            <th>Zustand
+                            <th>Zustand <br/>
                             <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+REPO_STATUS'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-REPO_STATUS'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
@@ -54,7 +53,7 @@
                         <tr ng-repeat="daten in listControllerRepos.daten | orderBy:sortieren">
                             <td>{{daten.ART}}</td>
                             <td>{{daten.AUTHNAME}}</td>
-                            <td>{{daten.REPONAME}}</td>
+                            <td nowrap> {{daten.REPONAME}}</td>
                             <td>{{daten.ALLE_BENUTZER}}</td>
                             <td>{{daten.GUELTIG_BIS}}</td>
                             <td>{{daten.REPO_STATUS}}</td>

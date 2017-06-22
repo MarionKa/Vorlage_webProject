@@ -1,8 +1,7 @@
 ﻿<div class="row">
     <h1 class="col-xs-12 page-header">
-        <large>Herzlich Willkommen Prof. Dr. Hofmann!</large>
+        <large>Benutzer löschen:</large>
     </h1>
-
 </div>
 
 <form name="Uebersicht">
@@ -13,17 +12,15 @@
                     <h3>Überblick über alle Benutzer:
                     </h3>
                 </div>
-
-
+                <div class="panel-body">
                     <!-- Repos für Vorlesungen -->
-                    <table class="table">
+                    <table class="table table-hover">
                         <tr> <th>Vorname</th><th>Nachname</th> <th>E-Mail</th>  <th></th><th></th></tr>
 
                         <tr ng-repeat="daten in listControllerRepoBenutzer.daten" > 
                             <td>{{daten.VORNAME}}</td>
                             <td>{{daten.NACHNAME}}</td>
                             <td>{{daten.EMAILKENNUNG}}</td>
-                            <td>{{daten.REPOSITORY_ID}}</td>
                             <td><a ui-sref="deleteRepoBenutzer({id: daten.ID, REPOSITORY_ID: daten.REPOSITORY_ID })">
 
                                 <button type="button"  class="btn btn-default" aria-label="Left Align">
@@ -32,27 +29,15 @@
                                 </button>
                             </a></td>
                         </tr>
-
-
-<!-- 
-                        <tr>
-                            <td>Kaiser Marion</td>
-                            <td> 
-                                <button type="button" class="btn btn-default" aria-label="Left Align">
-                                    Löschen
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                                </button>
-                            </td>
-                        </tr> -->
-
                     </table>
 
-                    <a href="#/repoueber">
-                        <button type="button" class="btn btn-danger" aria-label="Left Align">
-                            Abbrechen
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
-                        </button>
-                    </a>
+                        <a href="#/repoueber">
+                            <button type="button" class="btn btn-danger" aria-label="Left Align">
+                                Abbrechen
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
+                            </button>
+                        </a>
+                        </div>
 
             </div>
         </div>
@@ -75,7 +60,7 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-            <div id="menu" class="collapse navbar-collapse">
+        <div id="menu" class="collapse navbar-collapse">
             <ul class="nav navbar-nav" ng-controller="NavbarController">
                 <li ng-class="{ active: isActive('/repoueber')}"><a href="#/repoueber">Repositories</a></li>
                 <li ng-class="{ active: isActive('/benutzerueber')}"><a href="#/benutzerueber">Benutzer</a></li>
