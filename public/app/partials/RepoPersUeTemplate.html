@@ -1,9 +1,6 @@
 <div class="row">
     <h1 class="col-xs-12 page-header">
-        <large>Herzlich Willkommen 
-            <span id="student-vorname">Vornamen</span>
-            <span id="student-nachname">Nachname</span>
-            !
+        <large>Herzlich Willkommen</large> <large id="gruss"></large><large>!</large>
         </large>
     </h1>
 </div>
@@ -75,7 +72,7 @@
                         <tr ng-repeat="daten in listControllerReposUser.daten | orderBy:sortieren">
                             <td>{{daten.ART}}</td>
                             <td>{{daten.AUTHNAME}}</td>
-                            <td>kommtNoch/{{daten.REPONAME}}</td>
+                            <td>{{daten.REPONAME}}</td>
                             <td>{{daten.ALLE_BENUTZER}}</td>
                             <td>{{daten.GUELTIG_BIS}}</td>
                             <td>{{daten.REPO_STATUS}}</td>

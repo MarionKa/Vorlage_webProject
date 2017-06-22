@@ -12,7 +12,7 @@ connection.connect(function(error){
     }
 });
 
-//Ausgabe eines Repository auf Basis seiner ID & der Benutzer des Repos
+//Ausgabe eines Repository auf Basis seiner ID 
 function ausgabeEin_m(id){
     return new Promise(function (resolve, reject) {
         connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, r.ART_ID, a.BEZEICHNUNG as ART, r.REPO_STATUS_ID FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) JOIN ART a ON (r.ART_ID = a.ID) WHERE v.REPOSITORY_ID = ? group by v.REPOSITORY_ID',[id /*REPO_ID*/], function(err, rows,  fields){
@@ -20,6 +20,33 @@ function ausgabeEin_m(id){
                 reject(err);
             } else {
                  console.log('ausgabeEin_m',rows);
+                resolve(rows);
+            }  
+        });
+    });
+}
+
+//Ausgabe eines Repository auf Basis seiner ID 
+function ausgabeEin_m(id){
+    return new Promise(function (resolve, reject) {
+        connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, r.ART_ID, a.BEZEICHNUNG as ART, r.REPO_STATUS_ID FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) JOIN ART a ON (r.ART_ID = a.ID) WHERE v.REPOSITORY_ID = ? group by v.REPOSITORY_ID',[id /*REPO_ID*/], function(err, rows,  fields){
+            if (err) {
+                reject(err);
+            } else {
+                 console.log('ausgabeEin_m',rows);
+                resolve(rows);
+            }  
+        });
+    });
+}
+
+function emailDaten(id) {
+    return new Promise(function (resolve, reject) {
+        connection.query('SELECT r.ID, concat(a.ORDNERNAME,"/", r.REPONAME) as PFADENDE, group_concat(b.EMAILKENNUNG, "" ,"@th-nuernberg.de" separator "; ") as ALLE_BENUTZER FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) JOIN ART a ON (r.ART_ID = a.ID) WHERE v.REPOSITORY_ID = ? group by v.REPOSITORY_ID ',[id /*REPO_ID*/], function(err, rows,  fields){
+            if (err) {
+                reject(err);
+            } else {
+                 console.log('emailDaten',rows);
                 resolve(rows);
             }  
         });
@@ -52,10 +79,10 @@ function benutzerDesRepos_m(id){
     });
 }
 
-function eingabe_m(data, id) {
-     console.log('Eingabe model: ' + data.BENUTZER_ID + ' ' + data.REPOSITORY_ID/*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)
+function erstellenAlsUser_m(data) {
+     console.log('Eingabe model eingabe_m: ' + data.BENUTZER_ID /*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)
     return new Promise(function (resolve, reject) {
-        connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(ID)+1, ?, ?, DATE_ADD( sysdate(), INTERVAL ? month), ?, ? from REPOSITORY; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [data.REPONAME, data.AUTHNAME, 6/*dauer Gültigkeit in Monaten*/ , data.ART_ID /*ART_ID*/, data.REPO_STATUS_ID /*STATUS_ID*/, id /*Benutzer ID*/], function (err) {
+        connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(R.ID)+1, B. EMAILKENNUNG, concat(B.VORNAME," ",B.NACHNAME), DATE_ADD( sysdate(), INTERVAL ? month), ?, ? from REPOSITORY R, BENUTZER B WHERE B.ID =?; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [ 6/*dauer Gültigkeit in Monaten*/ , data.ART_ID /*ART_ID*/, 1 /*STATUS_ID*/, data.BENUTZER_ID /*Benutzer ID*/, data.BENUTZER_ID /*Benutzer ID*/], function (err) {
             if (err) {
                 reject(err);
             } else {
@@ -65,6 +92,23 @@ function eingabe_m(data, id) {
         });
     });
 }
+
+
+function erstellenAlsAdmin_m(data) {
+     console.log('Eingabe model eingabe_m: ' + data.BENUTZER_ID /*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)
+    return new Promise(function (resolve, reject) {
+        connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(ID)+1, ?, ?, ?, ?, ? from REPOSITORY; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [data.REPONAME, data.AUTHNAME, data.GUELTIG_BIS, data.ART_ID /*ART_ID*/, data.REPO_STATUS_ID, data.BENUTZER_ID /*Benutzer ID*/], function (err) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(this.lastID);
+                console.log('data in db');
+            }
+        });
+    });
+}
+
+
 
 //Aktualisierung eines Benutzer-Datensatztes
 function update_m(data, id) {
@@ -97,7 +141,8 @@ function loeschen_m(idB, idR) {
 
 module.exports = {
     ausgabeEin_m: ausgabeEin_m,
-    eingabe_m: eingabe_m,
+    erstellenAlsUser_m: erstellenAlsUser_m,
+    erstellenAlsAdmin_m,erstellenAlsAdmin_m,
     update_m: update_m,
     loeschen_m: loeschen_m,
     benutzerDesRepos_m: benutzerDesRepos_m,

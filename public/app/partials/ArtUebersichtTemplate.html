@@ -1,6 +1,6 @@
 ﻿<div class="row">
     <h1 class="col-xs-12 page-header">
-        <large>Herzlich Willkommen Prof. Dr. Hofmann!</large>
+        <large>Herzlich Willkommen</large> <large id="gruss"></large><large>!</large>
     </h1>
 
 </div>
@@ -39,7 +39,11 @@
                         <tr ng-repeat="daten in listControllerArt.daten | orderBy:sortieren">
                             <td>{{daten.BEZEICHNUNG}}</td>
                             <td>{{daten.ORDNERNAME}}</td>
-                            <td>{{daten.EINTRAGEN_MGL}}</td>
+                            <td id="eintrag">
+                            <div ng-if="daten.EINTRAGEN_MGL=='0'"> nicht möglich </div>
+                            <div ng-if="daten.EINTRAGEN_MGL=='1'"> möglich </div>
+
+                            </td>
                             <td> 
                                 <a ui-sref="artedit({id: daten.ID})"> 
                                     <button type="button" class="btn btn-primary" aria-label="Left Align">

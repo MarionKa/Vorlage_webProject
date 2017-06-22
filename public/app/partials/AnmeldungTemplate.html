@@ -8,28 +8,29 @@
     <div class="panel panel-info">
         <div class="panel-heading"><h4>Zum Anmelden geben Sie Bitte Ihre Hochschul-E-Mail-Adresse und Ihr Passwort ein.</h4> </div>
         <div class="panel-body">
-        <form name="ANMELDEMASKE" ng-submit="login()">
 
-            <div class="row">
-                <div class="col-xs-6 form-group">
-                    <label>E-Mail-Adresse:</label>
-                    <div class="input-group">
-                        <input type="text" ng-model="user.EMAILKENNUNG" class="form-control" placeholder="MustermannMa12345" aria-describedby="basic-addon2">
-                        <span class="input-group-addon" id="basic-addon2">@th-nuernberg.de</span>
+
+                <div class="row">
+                    <div class="col-xs-6 form-group">
+                        <label>E-Mail-Adresse:</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="user.EMAILKENNUNG" class="form-control" placeholder="MustermannMa12345" aria-describedby="basic-addon2">
+                            <span class="input-group-addon" id="basic-addon2">@th-nuernberg.de</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-6 form-group">
-                    <label>Passwort:</label>
-                    <input class="form-control"
-                           type="password" 
-                           ng-model="user.PASSWORT" 
-                           placeholder="Ihr Passwort">
+                <div class="row">
+                    <div class="col-xs-6 form-group">
+                        <label>Passwort:</label>
+                        <input class="form-control"
+                        name="Passwort"
+                        id="Passwort"
+                        type="password"
+                        ng-model="user.PASSWORT" 
+                        placeholder="Ihr Passwort">
+                    </div>
                 </div>
-            </div>
-            </form>
+
 
 
             <div class="row">
@@ -43,12 +44,10 @@
 
             <div class="row">
                 <div class="col-xs-6 form-group">
-<!--                     <a href="#/ueberpers">
- -->                        <button type="button" ng-click="login()" class="btn btn-default" aria-label="Left Align">
-                            Anmelden!
-                            <span class="glyphicon glyphicon-log-in" aria-hidden="true"> </span>
-                        </button>
-                    </a>
+                    <button type="submit" id="anmelden" ng-click="login()" class="btn btn-default" aria-label="Left Align">
+                        Anmelden!
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"> </span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -60,12 +59,7 @@
             <h4 style="line-height: 150%">Sie befinden sich auf der Seite des Repositorymanagements von <a href="https://www.th-nuernberg.de/person/hofmann-oliver/">Prof. Dr. Hofmann</a>.</h4>
             <p>
 
-
-
-
-
-
-            <a href=".../data/Hilfedoku.pdf" download>Download</a> des Hilfe-Dokuments. 
+                <p><a href="app/partials/Hilfe.pdf" download="Hilfe">Hier</a> können Sie das Hilfedokument herunterladen.</p>
             </p>
         </div>
     </div>
@@ -92,7 +86,7 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-            <div id="menu" class="collapse navbar-collapse">
+        <div id="menu" class="collapse navbar-collapse">
             <ul class="nav navbar-nav" ng-controller="NavbarController">
                 <li ng-class="{ active: isActive('/anmeldung')}"><a href="#/anmeldung">Anmelden</a></li>
                 <li ng-class="{ active: isActive('/registrierung')}"><a href="#/registrierung">Registrieren</a></li>
