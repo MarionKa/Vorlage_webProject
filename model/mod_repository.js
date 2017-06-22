@@ -15,21 +15,7 @@ connection.connect(function(error){
 //Ausgabe eines Repository auf Basis seiner ID 
 function ausgabeEin_m(id){
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, r.ART_ID, a.BEZEICHNUNG as ART, r.REPO_STATUS_ID FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) JOIN ART a ON (r.ART_ID = a.ID) WHERE v.REPOSITORY_ID = ? group by v.REPOSITORY_ID',[id /*REPO_ID*/], function(err, rows,  fields){
-            if (err) {
-                reject(err);
-            } else {
-                 console.log('ausgabeEin_m',rows);
-                resolve(rows);
-            }  
-        });
-    });
-}
-
-//Ausgabe eines Repository auf Basis seiner ID 
-function ausgabeEin_m(id){
-    return new Promise(function (resolve, reject) {
-        connection.query('SELECT r.ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, r.ART_ID, a.BEZEICHNUNG as ART, r.REPO_STATUS_ID FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) JOIN ART a ON (r.ART_ID = a.ID) WHERE v.REPOSITORY_ID = ? group by v.REPOSITORY_ID',[id /*REPO_ID*/], function(err, rows,  fields){
+        connection.query('SELECT r.ID as REPOSITORY_ID, r.REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, r.ART_ID, a.BEZEICHNUNG as ART, r.REPO_STATUS_ID FROM REPOSITORY r LEFT JOIN VERBINDEN v ON (r.ID = v.REPOSITORY_ID) LEFT JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) JOIN ART a ON (r.ART_ID = a.ID) WHERE r.ID = ? group by r.ID',[id /*REPO_ID*/], function(err, rows,  fields){
             if (err) {
                 reject(err);
             } else {
@@ -139,6 +125,29 @@ function loeschen_m(idB, idR) {
     });
 }
 
+
+
+doppeltCheck = function (artId, benutzerId) {
+    return new Promise(function(resolve,reject){
+    connection.query('SELECT v.BENUTZER_ID , r.ART_ID FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) WHERE BENUTZER_ID = ? AND ART_ID = ?', [benutzerId, artId ], function(err, rows,  fields) {
+        console.log('ergebnis:', rows);
+        if (err) {reject();}
+        if (rows[0]){ console.log(' da steht schon was');
+                    reject() ;
+        }
+        else {  console.log('bis jetzt nix '); 
+                 resolve() ;
+        }
+    });
+     
+})};
+
+
+
+
+
+
+
 module.exports = {
     ausgabeEin_m: ausgabeEin_m,
     erstellenAlsUser_m: erstellenAlsUser_m,
@@ -146,6 +155,7 @@ module.exports = {
     update_m: update_m,
     loeschen_m: loeschen_m,
     benutzerDesRepos_m: benutzerDesRepos_m,
-    repostatus_m: repostatus_m
+    repostatus_m: repostatus_m,
+    doppeltCheck: doppeltCheck
 };
 
