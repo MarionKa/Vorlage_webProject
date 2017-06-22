@@ -15,8 +15,6 @@
     padding: 10px;
     color: white;
     background-color: black;
-    /*color: steelblue;
-    background-color: saddlebrown;*/
 }
 
 @media screen and (max-width: 500px){
@@ -25,20 +23,13 @@
     }
 }
 
-h2	small	{	color:	lightgray;
-				font-size:	small;	
-		}
+h2  small   {   
+                color:  lightgray;
+                font-size:  small;  
+        }
 
 .img-center {
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
-}
-
-scrollen{
-  overflow-x: scroll;
-  overflow-y: scroll;
-  height: 600px;
-  width: 100%;
-  position: absolute;
 }
