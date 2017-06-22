@@ -17,9 +17,9 @@ connection.connect(function(error){
 
 /// HIER ist des passwort mit drin 
 function finden_m(data) {
-    console.log('finden_m: ' + data.EMAILKENNUNG);
+    console.log('finden_m: ' + data.EMAILKENNUNG.toLowerCase());
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT ID, EMAILKENNUNG,CONCAT (VORNAME," ",NACHNAME)as NAME, PASSWORT, RECHTE_ID FROM BENUTZER WHERE EMAILKENNUNG = ?', [data.EMAILKENNUNG], function(err, rows,  fields) {
+        connection.query('SELECT ID, EMAILKENNUNG,CONCAT (VORNAME," ",NACHNAME)as NAME, PASSWORT, RECHTE_ID FROM BENUTZER WHERE EMAILKENNUNG = ?', [data.EMAILKENNUNG.toLowerCase()], function(err, rows,  fields) {
             if (err) {
                 reject(err)
             }
