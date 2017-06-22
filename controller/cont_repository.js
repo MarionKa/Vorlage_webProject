@@ -46,18 +46,26 @@ function benutzerDesRepos(req, res) {      //SELECT mit GET-Methode
 }
 
 function erstellenAlsUser(req, res) {        //Persönliches Repository hinzufügen
+    var artId =req.body.ART_ID;
+    var benutzerId =pw.getTokenID(req.headers);
+    console.log('\n\n\n\n\n\n\n\n\n\n'+ artId +' benutzerId'+ benutzerId +'\n\n\n\n\n\n\n\n\n\n')
+    repo.doppeltCheck(artId,benutzerId).then(function success(){
         console.log('cont_repo.erstellenUser '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
         var repoData = {
-            ART_ID: req.body.ART_ID,
-            BENUTZER_ID: pw.getTokenID(req.headers),
+            ART_ID: artId,
+            BENUTZER_ID: benutzerId,
             REPO_STATUS_ID: 1 // Für Beantragt
 
-    };
-    console.log(repoData);
+        };
+        console.log(repoData);
 
-    repo.erstellenAlsUser_m(repoData).then(function(id) {
-        res.send(JSON.stringify({id: id}));
-    });  
+        repo.erstellenAlsUser_m(repoData).then(function(id) {
+            res.send(JSON.stringify({id: id}));
+        }); 
+    },   
+    function failure() { console.log('gibts schon');
+    res.send('gibts schon')
+}) 
 }
 
 function erstellenAlsAdmin(req, res) {        //Persönliches Repository hinzufügen
@@ -71,15 +79,15 @@ function erstellenAlsAdmin(req, res) {        //Persönliches Repository hinzuf�
             BENUTZER_ID: pw.getTokenID(req.headers),
             REPO_STATUS_ID: req.body.REPO_STATUS_ID
 
-    };
-    console.log(repoData);
+        };
+        console.log(repoData);
 
-    repo.erstellenAlsAdmin_m(repoData).then(function(id) {
-        res.send(JSON.stringify({id: id}));
-    });
-},   
-function failure() { console.log('keine Berechtigung');
-res.send('keine Berechtigung')
+        repo.erstellenAlsAdmin_m(repoData).then(function(id) {
+            res.send(JSON.stringify({id: id}));
+        });
+    },   
+    function failure() { console.log('keine Berechtigung');
+    res.send('keine Berechtigung')
 })
 }
 
