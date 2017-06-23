@@ -114,9 +114,9 @@ function update_m(data, id) {
 
 
 //ganzes Repo löschen
-function loeschen_m(idB, idR) {
+function loeschen_m() {
     return new Promise(function (resolve, reject) {
-        connection.query('DELETE FROM VERBINDEN WHERE REPOSITORY_ID = ?; DELETE FROM REPOSITORY WHERE id = ?', [  id /*ID*/ , id /*ID --Die gleiche--*/], function (err) {
+        connection.query('DELETE FROM VERBINDEN WHERE REPOSITORY_ID IN (SELECT ID FROM REPOSITORY WHERE REPO_STATUS_ID = 4); Delete FROM REPOSITORY WHERE REPO_STATUS_ID = 4', function (err) {
             if (err) {
                 reject(err);
             } else {
