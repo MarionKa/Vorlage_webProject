@@ -40,8 +40,10 @@ function ausgabeEin_m(id){
     });
 }
 
+
+
 // create: POST
-function eingabe_m(data) {
+function anlegen_m(data) {
      console.log('Eingabe model: ' + data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID)
     return new Promise(function (resolve, reject) {
         connection.query('INSERT INTO BENUTZER (ID, EMAILKENNUNG, PASSWORT, VORNAME, NACHNAME, RECHTE_ID) select MAX(ID)+1, LOWER(?), ?, ?, ?, ? from BENUTZER', [data.EMAILKENNUNG, data.PASSWORT, data.VORNAME, data.NACHNAME, data.RECHTE_ID/*Hier wird im cont ne 2 gesetzt*/], function (err) {
@@ -83,12 +85,30 @@ function loeschen_m(id) {
     });
 }
 
+
+doppeltCheck = function ( emailkennung) {
+    return new Promise(function(resolve,reject){
+    connection.query('SELECT ID FROM BENUTZER WHERE EMAILKENNUNG = LOWER(?) ', [emailkennung ], function(err, rows,  fields) {
+        console.log('ergebnis doppeltCheck:', rows);
+        if (err) {reject();}
+        if (rows[0]){ console.log(' da steht schon was');
+                    reject() ;
+        }
+        else {  console.log('bis jetzt nix '); 
+                 resolve() ;
+        }
+    });
+     
+})};
+
+
 module.exports = {
     ausgabeAlle_m: ausgabeAlle_m,
     ausgabeEin_m: ausgabeEin_m,
-    eingabe_m: eingabe_m,
+    anlegen_m: anlegen_m,
     update_m: update_m,
-    loeschen_m: loeschen_m
+    loeschen_m: loeschen_m,
+    doppeltCheck: doppeltCheck
 };
 
 

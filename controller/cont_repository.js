@@ -101,7 +101,7 @@ function update(req, res) {         //Update mit PUT-Methode
             ART_ID: req.body.ART_ID,
             REPO_STATUS_ID: req.body.REPO_STATUS_ID
         };
-
+        
         repo.update_m(repoData, req.params.id).then(function() {
             res.send(JSON.stringify(true));
         });
@@ -114,7 +114,7 @@ function update(req, res) {         //Update mit PUT-Methode
 //Ein Repo und dessen Einträge in der Verbinden-Tabelle löschen
 function loeschen(req, res) {
     pw.adminCheck(req.headers).then(function success(){
-        repo.loeschen_m(req.params.id).then(function() {
+        repo.loeschen_m().then(function() {
         res.send(JSON.stringify(true)); //Konvertiert eine js-Wert in einen json-String
         console.log('Wir wollen loeschen: repo');
     });

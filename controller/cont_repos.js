@@ -47,11 +47,11 @@ function hinzufügenMitglied(req, res) {        //Mitglied zu Repository hinzuf�
 }
 
 //Einen Benutzer aus Repo entfernen
-function loeschen(req, res) {
+function benutzerentfernen(req, res) {
     pw.adminCheck(req.headers).then(function success(){
 
         console.log('datenbody ', req.params.ID_REPO);
-        repos.loeschen_m(req.params.id,req.params.ID_REPO).then(function() {       
+        repos.benutzerentfernen_m(req.params.id,req.params.ID_REPO).then(function() {       
             res.send(JSON.stringify(true));
             console.log('Einen Benutzer entfernen');
         });
@@ -65,6 +65,6 @@ module.exports = {
     ausgabeAlle: ausgabeAlle,
     ausgabePersoenlich: ausgabePersoenlich,
     hinzufügenMitglied: hinzufügenMitglied,
-    loeschen: loeschen
+    benutzerentfernen: benutzerentfernen
 
 };

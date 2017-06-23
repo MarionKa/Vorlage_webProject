@@ -75,7 +75,7 @@ function hinzufügenMitglied_m(data) {
 }
 
 // Benutzer aus Repository löschen
-function loeschen_m(idB, idR) {
+function benutzerentfernen_m(idB, idR) {
     return new Promise(function (resolve, reject) {
         console.log('Wir löschen VERBINDEN eintrag '+ idB + idR);
         connection.query('DELETE FROM VERBINDEN WHERE BENUTZER_ID = ? AND REPOSITORY_ID = ? ', [ idB /*Benutzer*/, idR /*REPO*/], function (err) {
@@ -93,6 +93,6 @@ module.exports = {
     ausgabeAlle_m: ausgabeAlle_m,
     ausgabePersoenlich_m: ausgabePersoenlich_m,
     hinzufügenMitglied_m: hinzufügenMitglied_m,
-    loeschen_m: loeschen_m
+    benutzerentfernen_m: benutzerentfernen_m
 };
 
