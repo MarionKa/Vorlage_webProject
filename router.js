@@ -45,7 +45,8 @@ module.exports = function(app) {
 
     app.post('/authenticate', cont_passwort.finden);
     // app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAlle);
-    app.post('/testmail/:id', mail.emailRepoAktiv);
+    // app.post('/testmail/:id', mail.emailRepoAktiv);
+    app.post('/pwmail/:kennung', mail.emailPasswort);
 
 
 };
