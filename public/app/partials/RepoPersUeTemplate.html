@@ -4,6 +4,9 @@
         </large>
     </h1>
 </div>
+<div ng-show="name == 'user'" class="row">
+<h3>Test</h3>
+</div>
 
 <form name="Registrierung">
     <div class="row">
@@ -18,36 +21,36 @@
                 <div class="panel-heading">
                     <h3>Überblick über Ihre Repositorys:</h3>
                 </div>
-                                    <table class="table table-hover">
+                    <table class="table table-hover">
                         <tr> 
-                            <th>Art <br/>
+                            <th>Art: <br/>
                                 <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                                 </div>
 
                             </th>
-                            <th>Authname <br/>
+                            <th>Authname: <br/>
                                 <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+AUTHNAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-AUTHNAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                                 </div>
                             </th> 
-                            <th>Pfad <br/>
+                            <th>Pfad: <br/>
                             <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+REPONAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-REPONAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                                 </div>
                             </th> 
-                            <th>Zugriffsberechtigte <br/>
+                            <th>Zugriffsberechtigte: <br/>
                             <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+ALLE_BENUTZER'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-ALLE_BENUTZER'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                                 </div>
                             </th> 
-                            <th>Gültigkeit
+                            <th>Gültigkeit:
                             </th>  
-                            <th>Zustand <br/>
+                            <th>Zustand: <br/>
                             <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+REPO_STATUS'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-REPO_STATUS'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
@@ -99,7 +102,7 @@
         </div>
             <div id="menu" class="collapse navbar-collapse">
             <ul class="nav navbar-nav" ng-controller="NavbarController">
-                <li ng-class="{ active: isActive('/ueberpers/1')}"><a href="#/ueberpers">Persönlicher Bereich</a></li>
+                <li ng-class="{ active: isActive('/ueberpers')}"><a href="#/ueberpers">Persönlicher Bereich</a></li>
                 <li ng-class="{ active: isActive('/beantragung')}"><a href="#/beantragung">Repository beantragen</a></li>
             </ul>
             <button type="button" ng-click="logout()" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>

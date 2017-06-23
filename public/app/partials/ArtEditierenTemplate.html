@@ -4,13 +4,12 @@
     </h1>
 </div>
 <form name="Arteditieren">
-
     <div class="panel panel-info">
         <div class="panel-heading"><h4>Ändern Sie hier den ausgewählten Datensatz Repositoryart</h4> </div>
         <div class="panel-body">
             <div class="row">
-             <div class="col-xs-12 form-group">
-                <label>Bezeichnung</label>
+               <div class="col-xs-12 form-group">
+                <label>Bezeichnung:</label>
                 <input class="form-control"
                 type="text"
                 ng-model="formControllerArt.BEZEICHNUNG">
@@ -18,8 +17,8 @@
         </div>
 
         <div class="row">
-         <div class="col-xs-12 form-group">
-            <label>Ordnername</label>
+           <div class="col-xs-12 form-group">
+            <label>Ordnername:</label>
             <input class="form-control" type="text" ng-model="formControllerArt.ORDNERNAME" readonly="">
         </div>
     </div>
@@ -36,22 +35,18 @@
         </div>
     </div>
 
+    <a>
+        <button type="button" ng-click="formControllerArt.save()" class="btn btn-success" aria-label="Left Align">
+            Speichern
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
+        </button>
+    </a>
 
-
-
-<a>
-    <button type="button" ng-click="formControllerArt.save()" class="btn btn-success" aria-label="Left Align">
-        Speichern
-        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
-    </button>
-</a>
-
-<a href="#/artueber">
-    <button type="button" class="btn btn-danger" aria-label="Left Align">
-        Abbrechen
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
-    </button>
-</a>
+    <a href="#/artueber">
+        <button type="button" class="btn btn-danger" aria-label="Left Align">
+            Abbrechen
+        </button>
+    </a>
 </div>
 </div>
 </form>
@@ -72,7 +67,7 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-            <div id="menu" class="collapse navbar-collapse">
+        <div id="menu" class="collapse navbar-collapse">
             <ul class="nav navbar-nav" ng-controller="NavbarController">
                 <li ng-class="{ active: isActive('/repoueber')}"><a href="#/repoueber">Repositories</a></li>
                 <li ng-class="{ active: isActive('/benutzerueber')}"><a href="#/benutzerueber">Benutzer</a></li>
