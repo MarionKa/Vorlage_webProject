@@ -49,6 +49,7 @@ function FormControllerRepos ($state, $stateParams, dataFactoryRepos) {
 FormControllerRepoBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
 function FormControllerRepoBenutzer ($state, $stateParams, dataFactoryRepos) {
         this.EMAILKENNUNG = '';
+        this.id = $stateParams.id;
 
         console.log('state repoBen: ' + $stateParams.id);
 
@@ -61,7 +62,7 @@ function FormControllerRepoBenutzer ($state, $stateParams, dataFactoryRepos) {
 
         };
             console.log('save create' + $stateParams.id);
-            dataFactoryRepos.create(data).$promise.then($state.go.bind($state, 'repoueber({id: $stateParams.id})'));
+            dataFactoryRepos.create(data).$promise.then($state.go('repoedit', {id: $stateParams.id}));
             //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         }.bind(this);
 }
@@ -69,7 +70,7 @@ function FormControllerRepoBenutzer ($state, $stateParams, dataFactoryRepos) {
 DeleteControllerRepos.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
 function DeleteControllerRepos ($state, $stateParams, dataFactoryRepos) {
     dataFactoryRepos.delete({id: $stateParams.id}).$promise.then(function() {
-        $state.go('repoueber');
+        $state.go('repoedit', {id: $stateParams.id});
     });
 }
 
