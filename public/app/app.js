@@ -23,7 +23,7 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
 
     .state('deleteRepoBenutzer', {
-        url: "/deleteRepoBenutzer/:id  /:REPOSITORY_ID",
+        url: "/deleteRepoBenutzer/:id/:REPOSITORY_ID",
         controller: 'DeleteControllerRepoBenutzer'
     })
 
@@ -60,7 +60,7 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'FormControllerRepobeantragen',
         controllerAs: 'formControllerRepobeantragen' 
     })
-    .state('benutzeredit/:id', {  //Hier was geändert
+    .state('benutzeredit/:id', {
         url: "/benutzeredit/:id",
         templateUrl: "app/partials/BenutzerEinzelansichtTemplate.html",
         controller: 'FormControllerBenutzer', 
@@ -121,7 +121,6 @@ function configFn($stateProvider, $urlRouterProvider) {
         templateUrl: "app/partials/RepoPersUeTemplate.html",
         controller: 'ListControllerReposUser',
         controllerAs: 'listControllerReposUser'
-        
     });
 
 }
