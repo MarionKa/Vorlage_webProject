@@ -101,6 +101,21 @@ doppeltCheck = function ( emailkennung) {
      
 })};
 
+benutzerDaten = function( emailkennung){
+return new Promise(function(resolve,reject){
+    console.log ( emailkennung)
+    connection.query('SELECT EMAILKENNUNG, PASSWORT FROM BENUTZER WHERE EMAILKENNUNG = LOWER(?) ', [emailkennung ], function(err, rows,  fields) {
+        console.log('ergebnis benutzerDaten:', rows[0].PASSWORT);
+        if (err) {reject();}
+        if (rows[0]){ console.log(' benutzer Daten vorhanden');
+                    resolve(rows) ;
+        }
+        else {  console.log(' kein benutzer gefunden '); 
+                 reject() ;
+        }
+    });
+     
+})};
 
 module.exports = {
     ausgabeAlle_m: ausgabeAlle_m,
@@ -108,7 +123,8 @@ module.exports = {
     anlegen_m: anlegen_m,
     update_m: update_m,
     loeschen_m: loeschen_m,
-    doppeltCheck: doppeltCheck
+    doppeltCheck: doppeltCheck,
+    benutzerDaten: benutzerDaten
 };
 
 
