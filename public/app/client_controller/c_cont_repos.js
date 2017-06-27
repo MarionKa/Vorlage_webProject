@@ -11,7 +11,7 @@ function ListControllerRepos ($state, dataFactoryRepos, dataFactoryRepo, dataFac
     this.daten = dataFactoryRepos.getAll();       //getAll() in model.js (client) festgelegt
 
     this.generieren = function(){
-            dataFactoryOrga.update().$promise.then($state.go.bind($state, 'repoueber'));
+            dataFactoryOrga.update().$promise.then($state.go.bind($state, 'repoueber',{}, {reload: true}));
     }
 
     this.loeschen = function(){
