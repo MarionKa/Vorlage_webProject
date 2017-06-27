@@ -129,6 +129,24 @@ function dataFactoryArt($resource) {
     );
 }
 
+webDB.factory('dataFactoryOrga', dataFactoryOrga);
+
+dataFactoryOrga.$inject = ['$resource'];
+
+function dataFactoryOrga($resource) {
+    return $resource(
+        '/art/:id',    //Arten- / Typen- Auswahl für Repositorys
+        {id: '@id'},
+        {
+            create: {method: 'POST'},
+            update: {method: 'PUT'}
+            // read: {method: 'GET', isArray: true},
+            // getAll: {method: 'GET', isArray: true},
+            // delete: {method: 'DELETE'}
+        }
+    );
+}
+
 // Zur Erstellung eines neuen Repositories ('repoerstellen')
 webDB.factory('dataFactoryRepoBeantragen', dataFactoryRepoBeantragen);
 

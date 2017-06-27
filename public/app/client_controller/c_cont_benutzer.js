@@ -3,6 +3,15 @@ angular.module('webTestDB')
     .controller('FormControllerBenutzer', FormControllerBenutzer)
     .controller('DeleteControllerBenutzer', DeleteControllerBenutzer);
 
+FormControllerPwVergessen.$inject = ['$state','dataFactoryOrga'];
+function FormControllerPwVergessen($state, dataFactoryOrga){
+    this.senden = function(){
+        console.log()
+            EMAILKENNUNG: this.EMAILKENNUNG
+            dataFactoryBenutzer.update(data).$promise.then($state.go.bind($state, 'anmeldung'));
+    } 
+}
+
 ListControllerBenutzer.$inject = ['dataFactoryBenutzer', 'AuthService'];
 function ListControllerBenutzer (dataFactoryBenutzer, AuthService) {
     var name = AuthService.loadUserName();
