@@ -28,33 +28,28 @@ function alleBenutzer(callback) {
 
 function generieren(req, res) {
     console.log('generieren')
-    var streamMyFile = fs.createWriteStream("Dokumente/myFile.txt");
+    var streamBenutzerUeber = fs.createWriteStream("Dokumente/BenutzerUeber.txt");
 
-    streamMyFile.once('open', function(fd) {
+    streamBenutzerUeber.once('open', function(fd) {
 
-        // alleBenutzer (function(err,data){
-        //     if (err) {
-        //     // error handling code goes here
-        //     console.log("ERROR : ",err);            
-        // } else {            
-        //     // code to execute on data retrieval
-        //     console.log("result from db is : ",data); 
-        //     var text = 'test';
-        //     console.log('daten ', data);
-            
-            // streamMyFile.write( 'My first 2 \r\n' + data[0].NACHNAME);
-            streamMyFile.write("\r\n  My second v\n");
-            streamMyFile.write("My second row");
-            streamMyFile.end();
+        alleBenutzer (function(err,dataBenutzer){
+            if (err) {
+            // error handling code goes here
+            console.log("ERROR : ",err);            
+        } else {   
+            for (i = 0; i < dataBenutzer.length; i++) { 
+                streamBenutzerUeber.write( dataBenutzer[i].EMAILKENNUNG +' '+ dataBenutzer[i].PASSWORT +'\r\n' );
+            }
+            streamBenutzerUeber.end();
 
-        // }    
+        }    
 
-    // });
     });
-        res.send('Ende generieren');
+    });
+    res.send('Ende generieren');
 
 };
 
-    module.exports = {
-        generieren: generieren
-    };
+module.exports = {
+    generieren: generieren
+};
