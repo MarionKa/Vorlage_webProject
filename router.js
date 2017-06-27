@@ -6,6 +6,7 @@ var cont_art = require('./controller/cont_art.js');
 var cont_passwort = require('./controller/cont_passwort.js');
 
 var mail = require('./model/mod_mail');
+// var skripte = require('./model/mod_skripte');
 
 var passport    = require('passport');
 
@@ -47,6 +48,7 @@ module.exports = function(app) {
     // app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAlle);
     // app.post('/testmail/:id', mail.emailRepoAktiv);
     app.post('/orga/:kennung', mail.emailPasswort);
+    // app.put('/orga', orga.skripte)
 
 
 };
