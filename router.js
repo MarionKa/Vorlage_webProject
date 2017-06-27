@@ -28,7 +28,9 @@ module.exports = function(app) {
     app.post('/repoErstellen', passport.authenticate('jwt', { session: false}),cont_repository.erstellenAlsUser);      //repo-beantragen
 
     app.put('/repo/:id', passport.authenticate('jwt', { session: false}),cont_repository.update);	//repo-editieren mit id speichern in repo-editieren
+    // _______________________________
     app.delete('/repo', passport.authenticate('jwt', { session: false}),cont_repository.loeschen); //alle gelöschen Repos entfernen
+    // _______________________________
     app.get('/repostatus', passport.authenticate('jwt', { session: false}),cont_repository.repostatus); //Dropdown für Repostatus
 
     app.get('/repoBenutzer/:id', passport.authenticate('jwt', { session: false}),cont_repository.benutzerDesRepos);
@@ -46,8 +48,9 @@ module.exports = function(app) {
     app.post('/authenticate', cont_passwort.finden);
     // app.get('/benutzer2',  passport.authenticate('jwt', { session: false}),cont_benutzer.ausgabeAlle);
     // app.post('/testmail/:id', mail.emailRepoAktiv);
+    // ____________________________
     app.post('/pwmail/:kennung', mail.emailPasswort);
-
+    // ____________________________
 
 };
 

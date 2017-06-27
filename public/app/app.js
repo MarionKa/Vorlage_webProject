@@ -94,6 +94,8 @@ function configFn($stateProvider, $urlRouterProvider) {
     .state('kennwort', {
         url: "/kennwort",
         templateUrl: "app/partials/KennwortVergessenTemplate.html"
+        controller: 'FormControllerPwVergessen',
+        controllerAs: 'formControllerPwVergessen'
     })
     .state('registrierung', {
         url: "/registrierung",
