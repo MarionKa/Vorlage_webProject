@@ -54,6 +54,13 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'ListControllerArt', 
         controllerAs: 'listControllerArt'
     })
+
+    .state('ausgeloggt', {
+        url: "/ausgeloggt",
+        abstract: true,
+        templateUrl: "app/partials/NavbarTemplate.html",
+    })
+
     .state('beantragung', {
         url: "/beantragung",
         templateUrl: "app/partials/BeantragungTemplate.html",
