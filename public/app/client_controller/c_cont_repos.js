@@ -4,11 +4,19 @@ angular.module('webTestDB')
     .controller('FormControllerRepoBenutzer', FormControllerRepoBenutzer)
     .controller('DeleteControllerRepos', DeleteControllerRepos);
 
-ListControllerRepos.$inject = ['dataFactoryRepos', 'AuthService'];
-function ListControllerRepos (dataFactoryRepos, AuthService) {
+ListControllerRepos.$inject = ['$state', 'dataFactoryRepos', 'dataFactoryRepo', 'dataFactoryOrga', 'AuthService'];
+function ListControllerRepos ($state, dataFactoryRepos, dataFactoryRepo, dataFactoryOrga, AuthService) {
     var name = AuthService.loadUserName();
     document.getElementById("gruss").innerHTML = name;
     this.daten = dataFactoryRepos.getAll();       //getAll() in model.js (client) festgelegt
+
+    this.generieren = function(){
+            dataFactoryOrga.update().$promise.then($state.go.bind($state, 'repoueber'));
+    }
+
+    this.loeschen = function(){
+            dataFactoryRepo.delete().$promise.then($state.go.bind($state, 'repoueber'));
+    } 
 }
 
 ListControllerReposUser.$inject = ['dataFactoryRepoUser', 'AuthService'];

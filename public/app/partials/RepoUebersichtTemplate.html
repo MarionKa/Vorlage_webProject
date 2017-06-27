@@ -78,14 +78,14 @@
 
 
 
-                    <button type="button" class="btn btn-success" aria-label="Left Align" onclick="generieren()">
+                    <button type="button" ng-click="listControllerRepos.generieren()" class="btn btn-success" aria-label="Left Align">
                         Skripte generieren
                         <span class="glyphicon glyphicon-flash" aria-hidden="true"> </span>
                     </button>
 
                     <!-- Lieber Michael, dieser Button ist der simplere der beiden. Wenn das mit dem modal (anderer button) nicht funktionieren sollte, musst du diesen nehmen. -->
                     <div class="pull-right">
-                        <button type="button" class="btn btn-danger" aria-label="Left Align" onclick="generieren()">
+                        <button type="button" ng-click="listControllerRepos.loeschen()" class="btn btn-danger" aria-label="Left Align">
                             Repositories aus DB löschen
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
                         </button> 
@@ -108,7 +108,10 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Daten Löschen</button>
+                                    <button type="button" ng-click="listControllerRepos.loeschen()" class="btn btn-danger" aria-label="Left Align">
+                                    Daten Löschen
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -135,8 +135,8 @@ dataFactoryOrga.$inject = ['$resource'];
 
 function dataFactoryOrga($resource) {
     return $resource(
-        '/art/:id',    //Arten- / Typen- Auswahl für Repositorys
-        {id: '@id'},
+        '/orga/:kennung',    //Arten- / Typen- Auswahl für Repositorys
+        {kennung: '@kennung'},
         {
             create: {method: 'POST'},
             update: {method: 'PUT'}
