@@ -102,10 +102,10 @@ let message = {
     subject: 'Passwort', //
 
     // plaintext body
-    text: 'Ihr passowrt ist '+ row[0].PASSWORT,
+    text: 'Ihr Passwort ist '+ row[0].PASSWORT,
 
     // HTML body
-    html: '<p> Ihr passowrt ist <b>' + row[0].PASSWORT + '</b></p>',
+    html: '<p> Ihr Passwort ist <b>' + row[0].PASSWORT + '</b></p>',
 
 };
 
