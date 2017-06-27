@@ -54,6 +54,13 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'ListControllerArt', 
         controllerAs: 'listControllerArt'
     })
+
+    .state('ausgeloggt', {
+        url: "/ausgeloggt",
+        abstract: true,
+        templateUrl: "app/partials/NavbarTemplate.html",
+    })
+
     .state('beantragung', {
         url: "/beantragung",
         templateUrl: "app/partials/BeantragungTemplate.html",
@@ -86,7 +93,9 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
     .state('kennwort', {
         url: "/kennwort",
-        templateUrl: "app/partials/KennwortVergessenTemplate.html"
+        templateUrl: "app/partials/KennwortVergessenTemplate.html",
+        controller: 'FormControllerPwVergessen',
+        controllerAs: 'formControllerPwVergessen'
     })
     .state('registrierung', {
         url: "/registrierung",
