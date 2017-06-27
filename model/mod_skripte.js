@@ -14,6 +14,7 @@ connection.connect(function(error){
 });
 
 
+
 function alleBenutzer(callback) {
     connection.query('SELECT * FROM BENUTZER', function (err, rows, fields) {
         if (err) {
