@@ -36,11 +36,11 @@ function FormControllerRepobeantragen ($state, $stateParams, dataFactoryRepoBean
         if ($stateParams.id) {
             console.log('save update');
             data.id = $stateParams.id;
-            dataFactoryRepoBeantragen.update(data).$promise.then($state.go.bind($state, 'ueberpers'));
+            dataFactoryRepoBeantragen.update(data).$promise.then($state.go.bind($state, 'benutzer.ueberpers'));
         } else {
             console.log('save create');
             alert("Ihr Repository wurde beantragt.");
-            dataFactoryRepoBeantragen.create(data).$promise.then($state.go.bind($state, 'ueberpers'));
+            dataFactoryRepoBeantragen.create(data).$promise.then($state.go.bind($state, 'benutzer.ueberpers'));
         }
     }.bind(this);
 }
@@ -95,11 +95,11 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
         if ($stateParams.id) {
             console.log('save update');
             data.id = $stateParams.id;
-            dataFactoryRepo.update(data).$promise.then($state.go.bind($state, 'repoueber'));
+            dataFactoryRepo.update(data).$promise.then($state.go.bind($state, 'admin.repoueber'));
             //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         } else {
             console.log('save create',data);
-            dataFactoryRepo.create(data).$promise.then($state.go.bind($state, 'repoueber'));
+            dataFactoryRepo.create(data).$promise.then($state.go.bind($state, 'admin.repoueber'));
             //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         }
     }.bind(this);
@@ -108,7 +108,7 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
 DeleteControllerRepo.$inject = ['$state', '$stateParams', 'dataFactoryRepo'];
 function DeleteControllerRepo ($state, $stateParams, dataFactoryRepo) {
     dataFactoryRepo.delete({id: $stateParams.id}).$promise.then(function() {
-        $state.go('repoueber');
+        $state.go('admin.repoueber');
     });
 }
 
@@ -121,6 +121,6 @@ function DeleteControllerRepoBenutzer ($state, $stateParams, dataFactoryRepoBenu
     console.log('c_cont_repository loeschen: ' + data.ID_REPO);
     dataFactoryRepoBenutzer.delete({ID_REPO: $stateParams.REPOSITORY_ID, id: $stateParams.id}).$promise.then(function() {
 
-        $state.go('repoueber');//benutzerentf({id: this.ID})
+        $state.go('admin.repoueber');//benutzerentf({id: this.ID})
     });
 }
