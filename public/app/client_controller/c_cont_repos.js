@@ -11,11 +11,11 @@ function ListControllerRepos ($state, dataFactoryRepos, dataFactoryRepo, dataFac
     this.daten = dataFactoryRepos.getAll();       //getAll() in model.js (client) festgelegt
 
     this.generieren = function(){
-            dataFactoryOrga.update().$promise.then($state.go.bind($state, 'repoueber',{}, {reload: true}));
+            dataFactoryOrga.update().$promise.then($state.go.bind($state, 'admin.repoueber',{}, {reload: true}));
     }
 
     this.loeschen = function(){
-            dataFactoryRepo.delete().$promise.then($state.go.bind($state, 'repoueber'));
+            dataFactoryRepo.delete().$promise.then($state.go.bind($state, 'admin.repoueber'));
     } 
 }
 
@@ -70,7 +70,7 @@ function FormControllerRepoBenutzer ($state, $stateParams, dataFactoryRepos) {
 
         };
             console.log('save create' + $stateParams.id);
-            dataFactoryRepos.create(data).$promise.then($state.go('repoedit', {id: $stateParams.id}));
+            dataFactoryRepos.create(data).$promise.then($state.go('admin.repoedit', {id: $stateParams.id}));
             //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         }.bind(this);
 }
@@ -78,7 +78,7 @@ function FormControllerRepoBenutzer ($state, $stateParams, dataFactoryRepos) {
 DeleteControllerRepos.$inject = ['$state', '$stateParams', 'dataFactoryRepos'];
 function DeleteControllerRepos ($state, $stateParams, dataFactoryRepos) {
     dataFactoryRepos.delete({id: $stateParams.id}).$promise.then(function() {
-        $state.go('repoedit', {id: $stateParams.id});
+        $state.go('admin.repoedit', {id: $stateParams.id});
     });
 }
 
