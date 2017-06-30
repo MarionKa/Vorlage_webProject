@@ -60,7 +60,6 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
         console.log('einstieg: ' + this.REPO_STATUS_ID)
 
         if($stateParams.id) {
-        // console.log('SHOW stateParams.id: ' + $stateParams.id);
 
         dataFactoryRepo.read({id: $stateParams.id}).$promise.then(function(daten) {
             console.log('stateParams IN FCT '+ daten[0].ID);
@@ -72,13 +71,10 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
             this.ALLE_BENUTZER = daten[0].ALLE_BENUTZER;
             this.GUELTIG_BIS = daten[0].GUELTIG_BIS;
             this.REPO_STATUS_ID = daten[0].REPO_STATUS_ID.toString();  //toString() is nötig für ng-reapeat und die Combobox / Dropdown
-
             this.ID = daten[0].ID;
 
         }.bind(this));
-        // console.log('AUSGABE IN FKT: ', this.ART_ID);
     }
-         // console.log('AUSGABE NACH FKT: ', this.ART_ID);
 
          this.save = function () {
             console.log('save repo: '+ this.AUTHNAME +' '+ this.REPONAME );
@@ -96,11 +92,9 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
             console.log('save update');
             data.id = $stateParams.id;
             dataFactoryRepo.update(data).$promise.then($state.go.bind($state, 'admin.repoueber'));
-            //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         } else {
             console.log('save create',data);
             dataFactoryRepo.create(data).$promise.then($state.go.bind($state, 'admin.repoueber'));
-            //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         }
     }.bind(this);
 }
