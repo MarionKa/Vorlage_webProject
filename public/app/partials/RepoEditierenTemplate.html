@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="line">
                             <div class="col-xs-2 form-group">
-                                <a ui-sref="benutzerentf({id: formControllerRepo.ID})">
+                                <a ui-sref="admin.benutzerentf({id: formControllerRepo.ID})">
                                     <button type="button" class="btn btn-primary" aria-label="Left Align">
                                         Benutzer löschen!
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
@@ -49,7 +49,7 @@
 
                         <div class="line">
                             <div class="col-xs-2 form-group">
-                            <a ui-sref="benutzerhinzu({id: formControllerRepo.ID})">
+                            <a ui-sref="admin.benutzerhinzu({id: formControllerRepo.ID})">
                                     <button type="button" class="btn btn-success" aria-label="Left Align">
                                         Benutzer hinzufügen!
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -98,7 +98,7 @@
                 </button>
             </a>
 
-            <a href="#/repoueber">
+            <a href="#/admin/repoueber">
                 <button type="button" class="btn btn-danger" aria-label="Left Align">
                     Abbrechen
                 </button>
@@ -108,30 +108,3 @@
     </div>
 </div>
 </form>
-
-<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a id="brand" class="navbar-brand" href="#/reh">
-                <img alt="Brand" src="img/4.png">
-            </a>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-            <div id="menu" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav" ng-controller="NavbarController">
-                <li ng-class="{ active: isActive('/repoueber')}"><a href="#/repoueber">Repositories</a></li>
-                <li ng-class="{ active: isActive('/benutzerueber')}"><a href="#/benutzerueber">Benutzer</a></li>
-                <li ng-class="{ active: isActive('/artueber')}"><a href="#/artueber">Art</a></li>
-            </ul>
-            <button type="button" ng-click="logout()" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>
-        </div>
-    </div>
-</nav>

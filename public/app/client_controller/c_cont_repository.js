@@ -36,11 +36,11 @@ function FormControllerRepobeantragen ($state, $stateParams, dataFactoryRepoBean
         if ($stateParams.id) {
             console.log('save update');
             data.id = $stateParams.id;
-            dataFactoryRepoBeantragen.update(data).$promise.then($state.go.bind($state, 'ueberpers'));
+            dataFactoryRepoBeantragen.update(data).$promise.then($state.go.bind($state, 'benutzer.ueberpers'));
         } else {
             console.log('save create');
             alert("Ihr Repository wurde beantragt.");
-            dataFactoryRepoBeantragen.create(data).$promise.then($state.go.bind($state, 'ueberpers'));
+            dataFactoryRepoBeantragen.create(data).$promise.then($state.go.bind($state, 'benutzer.ueberpers'));
         }
     }.bind(this);
 }
@@ -60,7 +60,6 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
         console.log('einstieg: ' + this.REPO_STATUS_ID)
 
         if($stateParams.id) {
-        // console.log('SHOW stateParams.id: ' + $stateParams.id);
 
         dataFactoryRepo.read({id: $stateParams.id}).$promise.then(function(daten) {
             console.log('stateParams IN FCT '+ daten[0].ID);
@@ -72,13 +71,10 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
             this.ALLE_BENUTZER = daten[0].ALLE_BENUTZER;
             this.GUELTIG_BIS = daten[0].GUELTIG_BIS;
             this.REPO_STATUS_ID = daten[0].REPO_STATUS_ID.toString();  //toString() is nötig für ng-reapeat und die Combobox / Dropdown
-
             this.ID = daten[0].ID;
 
         }.bind(this));
-        // console.log('AUSGABE IN FKT: ', this.ART_ID);
     }
-         // console.log('AUSGABE NACH FKT: ', this.ART_ID);
 
          this.save = function () {
             console.log('save repo: '+ this.AUTHNAME +' '+ this.REPONAME );
@@ -95,12 +91,10 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
         if ($stateParams.id) {
             console.log('save update');
             data.id = $stateParams.id;
-            dataFactoryRepo.update(data).$promise.then($state.go.bind($state, 'repoueber'));
-            //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
+            dataFactoryRepo.update(data).$promise.then($state.go.bind($state, 'admin.repoueber'));
         } else {
             console.log('save create',data);
-            dataFactoryRepo.create(data).$promise.then($state.go.bind($state, 'repoueber'));
-            //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
+            dataFactoryRepo.create(data).$promise.then($state.go.bind($state, 'admin.repoueber'));
         }
     }.bind(this);
 }
@@ -108,7 +102,7 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
 DeleteControllerRepo.$inject = ['$state', '$stateParams', 'dataFactoryRepo'];
 function DeleteControllerRepo ($state, $stateParams, dataFactoryRepo) {
     dataFactoryRepo.delete({id: $stateParams.id}).$promise.then(function() {
-        $state.go('repoueber');
+        $state.go('admin.repoueber');
     });
 }
 
@@ -121,6 +115,6 @@ function DeleteControllerRepoBenutzer ($state, $stateParams, dataFactoryRepoBenu
     console.log('c_cont_repository loeschen: ' + data.ID_REPO);
     dataFactoryRepoBenutzer.delete({ID_REPO: $stateParams.REPOSITORY_ID, id: $stateParams.id}).$promise.then(function() {
 
-        $state.go('repoueber');//benutzerentf({id: this.ID})
+        $state.go('admin.repoueber');//benutzerentf({id: this.ID})
     });
 }

@@ -42,17 +42,16 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
             BEZEICHNUNG: this.BEZEICHNUNG,
             ORDNERNAME: this.ORDNERNAME,
             EINTRAGEN_MGL: this.EINTRAGEN_MGL
-            // ID: this.ID,
-            // PASSWORT: 'daten'
+
 
         };
         if ($stateParams.id) {
             console.log('save update');
             data.id = $stateParams.id;
-            dataFactoryArt.update(data).$promise.then($state.go.bind($state, 'artueber'));
+            dataFactoryArt.update(data).$promise.then($state.go.bind($state, 'admin.artueber'));
         } else {
             console.log('save create');
-            dataFactoryArt.create(data).$promise.then($state.go.bind($state, 'artueber'));
+            dataFactoryArt.create(data).$promise.then($state.go.bind($state, 'admin.artueber'));
         }
     }.bind(this);
 }
@@ -61,7 +60,7 @@ DeleteControllerArt.$inject = ['$state', '$stateParams', 'dataFactoryArt'];
 function DeleteControllerArt ($state, $stateParams, dataFactoryArt) {
     dataFactoryArt.delete({id: $stateParams.id}).$promise.then(function(nachricht) {
         console.log(nachricht.meldung);
-        $state.go('artueber');
+        $state.go('admin.artueber');
     });
 }
 
