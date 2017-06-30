@@ -58,7 +58,6 @@ FormControllerRepoBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryRepo
 function FormControllerRepoBenutzer ($state, $stateParams, dataFactoryRepos) {
         this.EMAILKENNUNG = '';
         this.id = $stateParams.id;
-
         console.log('state repoBen: ' + $stateParams.id);
 
     this.save = function () {
@@ -66,12 +65,9 @@ function FormControllerRepoBenutzer ($state, $stateParams, dataFactoryRepos) {
         var data = {
             EMAILKENNUNG: this.EMAILKENNUNG,
             REPOSITORY_ID: $stateParams.id
-
-
         };
             console.log('save create' + $stateParams.id);
             dataFactoryRepos.create(data).$promise.then($state.go('admin.repoedit', {id: $stateParams.id}));
-            //'benutzerueber' mit 'list' austauschen, damit list.html wieder funktioniert
         }.bind(this);
 }
 

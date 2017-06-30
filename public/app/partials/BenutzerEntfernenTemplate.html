@@ -3,7 +3,6 @@
         <large>Benutzer löschen:</large>
     </h1>
 </div>
-
 <form name="Uebersicht">
     <div class="row">
         <div class="col-xs-12 form-group">
@@ -13,16 +12,13 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <!-- Repos für Vorlesungen -->
                     <table class="table table-hover">
                         <tr> <th>Vorname:</th><th>Nachname:</th> <th>E-Mail:</th>  <th></th><th></th></tr>
-
                         <tr ng-repeat="daten in listControllerRepoBenutzer.daten" > 
                             <td>{{daten.VORNAME}}</td>
                             <td>{{daten.NACHNAME}}</td>
                             <td>{{daten.EMAILKENNUNG}}</td>
                             <td><a ui-sref="deleteRepoBenutzer({id: daten.ID, REPOSITORY_ID: daten.REPOSITORY_ID })">
-
                                 <button type="button"  class="btn btn-default" aria-label="Left Align">
                                     Löschen
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>

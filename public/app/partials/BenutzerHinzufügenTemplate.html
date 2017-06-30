@@ -12,6 +12,8 @@
                     <label>Name:</label>
                     <input class="form-control"
                     type="text"
+                    name="Name"
+                    id="Name"
                     placeholder="MustermannMa12345"
                     ng-model="formControllerRepoBenutzer.EMAILKENNUNG"
                     value=""/>
@@ -19,12 +21,25 @@
             </div>
 
             <a> 
-                <button type="button" ng-click="formControllerRepoBenutzer.save()" class="btn btn-success" aria-label="Left Align">
+                <button type="button" ng-click="formControllerRepoBenutzer.save()" name="HinzuButton" id="HinzuButton" class="btn btn-success" aria-label="Left Align">
                     Hinzufügen
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
                 </button>
             </a> 
                 <input action="action"  type="button" onclick="window.history.go(-1); return false;" class="btn btn-danger" aria-label="Left Align" value="Abbrechen" />
+    <script>
+        var elem = document.getElementById('HinzuButton');
+        elem.addEventListener('click', checkFormular);
+
+        //Überprüfung der Formularfeldeingaben: 
+        function checkFormular(){
+            if (document.studentForm.Name.value == ""){
+                alert("Bitte geben Sie eine Email-Kennung eines Benutzers ein!");
+                document.studentForm.Name.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+        }
+    </script>
         </form>  
     </div>
 </div>
