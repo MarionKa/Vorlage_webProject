@@ -17,7 +17,7 @@ connection.connect(function(error){
 function ausgabeAlle_m(id) {
     return new Promise(function (resolve, reject) {
 
-        connection.query('SELECT r.ID,  concat(?, a.ORDNERNAME, "/", r.REPONAME) as REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, a.BEZEICHNUNG as ART, rs.BEZEICHNUNG as REPO_STATUS FROM REPOSITORY r LEFT JOIN  VERBINDEN v ON (r.ID = v.REPOSITORY_ID ) LEFT JOIN ART a ON (r.ART_ID = a.ID) LEFT JOIN REPO_STATUS rs ON (r.REPO_STATUS_ID = rs.ID) LEFT JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) group by v.REPOSITORY_ID',[variablen.git.Pfadanfang], function (err, rows, fields) {
+        connection.query('SELECT r.ID,  concat(?, a.ORDNERNAME, "/", r.REPONAME) as REPONAME, r.AUTHNAME, group_concat(b.VORNAME, " " ,b.NACHNAME separator "; ") as ALLE_BENUTZER, DATE_FORMAT(r.GUELTIG_BIS, "%d.%m.%Y") AS GUELTIG_BIS, a.BEZEICHNUNG as ART, rs.BEZEICHNUNG as REPO_STATUS FROM REPOSITORY r LEFT JOIN  VERBINDEN v ON (r.ID = v.REPOSITORY_ID ) LEFT JOIN ART a ON (r.ART_ID = a.ID) LEFT JOIN REPO_STATUS rs ON (r.REPO_STATUS_ID = rs.ID) LEFT JOIN BENUTZER b ON (v.BENUTZER_ID = b.ID) group by v.REPOSITORY_ID r.ID',[variablen.git.Pfadanfang], function (err, rows, fields) {
 
             if (err) {
                 reject(err);
