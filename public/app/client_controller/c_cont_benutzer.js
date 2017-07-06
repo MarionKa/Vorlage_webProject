@@ -1,7 +1,17 @@
 angular.module('webTestDB')
     .controller('ListControllerBenutzer', ListControllerBenutzer)
     .controller('FormControllerBenutzer', FormControllerBenutzer)
+    .controller('FormControllerPwVergessen', FormControllerPwVergessen)
     .controller('DeleteControllerBenutzer', DeleteControllerBenutzer);
+
+FormControllerPwVergessen.$inject = ['$state','dataFactoryOrga'];
+function FormControllerPwVergessen($state, dataFactoryOrga){
+    this.EMAILKENNUNG = '';
+
+    this.senden = function(){
+            dataFactoryOrga.create({kennung: this.EMAILKENNUNG}).$promise.then($state.go.bind($state, 'ausgeloggt.anmeldung'));
+    } 
+}
 
 ListControllerBenutzer.$inject = ['dataFactoryBenutzer', 'AuthService'];
 function ListControllerBenutzer (dataFactoryBenutzer, AuthService) {
@@ -48,10 +58,10 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
         if ($stateParams.id) {
             console.log('save update');
             data.id = $stateParams.id;
-            dataFactoryBenutzer.update(data).$promise.then($state.go.bind($state, 'benutzerueber'));
+            dataFactoryBenutzer.update(data).$promise.then($state.go.bind($state, 'admin.benutzerueber'));
         } else {
             console.log('save create');
-            dataFactoryBenutzer.create(data).$promise.then($state.go.bind($state, 'benutzerueber'));
+            dataFactoryBenutzer.create(data).$promise.then($state.go.bind($state, 'admin.benutzerueber'));
         }
     }.bind(this);
 }
@@ -59,7 +69,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
 DeleteControllerBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryBenutzer'];
 function DeleteControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
     dataFactoryBenutzer.delete({id: $stateParams.id}).$promise.then(function() {
-        $state.go('benutzerueber');
+        $state.go('admin.benutzerueber');
     });
 }
 

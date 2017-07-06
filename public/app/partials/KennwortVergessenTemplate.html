@@ -17,7 +17,11 @@
                 <div class="col-xs-6 form-group">
                     <label>E-Mail-Adresse:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="MustermannMa12345" aria-describedby="basic-addon2">
+                        <input type="text" 
+                        class="form-control" 
+                        placeholder="MustermannMa12345" 
+                        ng-model="formControllerPwVergessen.EMAILKENNUNG"
+                        aria-describedby="basic-addon2">
                         <span class="input-group-addon" id="basic-addon2">@th-nuernberg.de</span>
                     </div>
                 </div>
@@ -25,43 +29,12 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    <button type="button" class="btn btn-default" onclick="email()">Kennwort senden lassen!</button>
+                <button type="button" ng-click="formControllerPwVergessen.senden()" class="btn btn-success" aria-label="Left Align">
+                    Kennwort senden lassen!
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span>
+                     </button>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        function email() {
-            alert("Ihnen wurde Ihr Passwort per E-Mail zugesandt. Bitte überprüfen Sie Ihr Hochschul-E-Mail-Postfach");
-        }
-    </script>
 </form>
-
-
-
-<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a id="brand" class="navbar-brand" href="#/reh">
-                <img alt="Brand" src="img/4.png">
-            </a>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-            <div id="menu" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav" ng-controller="NavbarController">
-                <li ng-class="{ active: isActive('/anmeldung')}"><a href="#/anmeldung">Anmelden</a></li>
-                <li ng-class="{ active: isActive('/registrierung')}"><a href="#/registrierung">Registrieren</a></li>
-                <li ng-class="{ active: isActive('/kennwort')}"><a href="#/kennwort">Passwort vergessen</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>

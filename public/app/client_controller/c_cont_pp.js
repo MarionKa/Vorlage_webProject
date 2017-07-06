@@ -12,9 +12,9 @@ angular.module('webTestDB')
       var recht = AuthService.loadUserRecht();
       console.log('recht ='+ recht)
       if (recht == 2)
-        $state.go('ueberpers')
+        $state.go('benutzer.ueberpers')
       if (recht == 1)
-        $state.go('repoueber');
+        $state.go('admin.repoueber');
     }/*, function(errMsg) {
       var alertPopup = $ionicPopup.alert({
         title: 'Login failed!',
@@ -66,7 +66,7 @@ angular.module('webTestDB')
 .controller('AppCtrl', function($scope, $state, /*$ionicPopup,*/ AuthService, AUTH_EVENTS) {
   $scope.$on(AUTH_EVENTS.notAuthenticated, function(event) {
     /*AuthService.logout();*/
-    $state.go('anmeldung');
+    $state.go('ausgeloggt.anmeldung');
     /*var alertPopup = $ionicPopup.alert({
       title: 'Session Lost!',
       template: 'Sorry, You have to login again.'

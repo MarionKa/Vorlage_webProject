@@ -4,24 +4,22 @@
     </h1>
 </div>
 <form name="Repositoryeditieren">
-
     <div class="panel panel-info">
-        <div class="panel-heading"><h4>Erstellen Sie hier den Datensatz zu einem neuen Repository</h4> </div>
+        <div class="panel-heading"><h4>Erstellen Sie hier den Datensatz zu einem neuen Repository</h4> 
+        </div>
         <div class="panel-body">
-
             <div class="row">
                 <div class="line">
                     <div class="col-xs-6 form-group">
                         <label>Repositoryname:</label>
                         <input class="form-control" 
+                        name="RepoName"
+                        id="RepoName"
                         type="text" 
                         ng-model="formControllerRepo.REPONAME"
                         placeholder="Bitte legen Sie hier den Repositoryname fest.">
                     </div>
                 </div>
-
-
-
                 <div class="line">
                     <div class="col-xs-4 form-group">
                         <form action="#">
@@ -32,49 +30,46 @@
                         </form>
                     </div>
                 </div>
-                </div>
-
-
+            </div>
             <div class="panel panel-info">
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12 form-group">
                             <label>Zugriffsberechtigte:</label>
                             <div> <input class="form-control" 
-                            type="text" 
-                            ng-model="formControllerRepo.ALLE_BENUTZER" 
-                            readonly=""
-                            placeholder="Standartmäßig werden Sie hier eintragen.">
+                                type="text" 
+                                ng-model="formControllerRepo.ALLE_BENUTZER" 
+                                readonly=""
+                                placeholder="Standartmäßig werden Sie hier eintragen.">
                             </div> 
                         </div>
                     </div>
-
                     <p>Bitte legen Sie das Repository erst an und fügen dann per "Editieren" weitere Benutzer hinzu.</p>
                 </div>
             </div>
-
             <div class="row">            
                 <div class="line">
                     <div class="col-xs-4 form-group">
                         <label>Authname:</label>
                         <input class="form-control" 
                         type="text" 
+                        name="AuthName"
+                        id="AuthName"
                         ng-model="formControllerRepo.AUTHNAME"
                         placeholder="Bitte Authname hier eintragen.">
                     </div>
                 </div>
-
                 <div class="line">
                     <div class="col-xs-4 form-group">
                         <label>Gültigkeit:</label>
                         <input class="form-control"
                         type="text"
+                        name="Gueltigkeit"
+                        id="Gueltigkeit"
                         ng-model="formControllerRepo.GUELTIG_BIS"
                         placeholder="TT.MM.JJJJ">
                     </div>
                 </div>
-
-
                 <div class="line">
                     <div class="col-xs-4 form-group">
                         <form action="#">
@@ -86,49 +81,45 @@
                     </div>
                 </div>
             </div>
-
             <a>
-                <button type="button" ng-click="formControllerRepo.save()" class="btn btn-success" aria-label="Left Align">
+                <button type="button" ng-click="formControllerRepo.save()" name="RepoButton" id="RepoButton" class="btn btn-success" aria-label="Left Align">
                     Speichern
                     <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
                 </button>
             </a>
-
-            <a href="#/repoueber">
+            <a href="#/admin/repoueber">
                 <button type="button" class="btn btn-danger" aria-label="Left Align">
                     Abbrechen
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"> </span>
                 </button>
             </a>
         </div>
-
     </div>
-</div>
+    <script>
+        var elem = document.getElementById('RepoButton');
+        elem.addEventListener('click', checkFormular);
+
+        //Überprüfung der Formularfeldeingaben: 
+        function checkFormular(){
+            if (document.Repositoryeditieren.RepoName.value == ""){
+                alert("Bitte geben Sie einen Namen für das Repository ein!");
+                document.Repositoryeditieren.RepoName.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+            if (document.Repositoryeditieren.ART_ID.value == ""){
+                alert("Bitte wählen Sie eine Art aus!");
+                document.Repositoryeditieren.ART_ID.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+            if (document.Repositoryeditieren.AuthName.value == ""){
+                alert("Bitte geben Sie einen Authnamen ein!");
+                document.Repositoryeditieren.AuthName.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+            if (document.Repositoryeditieren.Gueltigkeit.value == ""){
+                alert("Bitte geben Sie ein Datum ein!");
+                document.Repositoryeditieren.Gueltigkeit.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+        }
+    </script>
 </form>
-
-<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a id="brand" class="navbar-brand" href="#/reh">
-                <img alt="Brand" src="img/4.png">
-            </a>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-            <div id="menu" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav" ng-controller="NavbarController">
-                <li ng-class="{ active: isActive('/repoueber')}"><a href="#/repoueber">Repositories</a></li>
-                <li ng-class="{ active: isActive('/benutzerueber')}"><a href="#/benutzerueber">Benutzer</a></li>
-                <li ng-class="{ active: isActive('/artueber')}"><a href="#/artueber">Art</a></li>
-            </ul>
-            <button type="button" ng-click="logout()" class="btn btn-default navbar-btn"><a href="#/abmeldung">Abmelden</a></button>
-        </div>
-    </div>
-</nav>

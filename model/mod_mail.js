@@ -1,5 +1,6 @@
 /* eslint no-console: 0 */
- 
+ var benutzer = require('../model/mod_benutzer');
+
     'use strict';
 
 const nodemailer = require('../lib/nodemailer');
@@ -80,7 +81,13 @@ transporter.sendMail(message, (error, info) => {
 }
 
 
-function emailRepoAktiv(req, res) {
+function emailPasswort(req, res) {
+
+benutzer.benutzerDaten(req.params.kennung).then(function success(row){
+
+console.log('\n\n\n\n\n\n\n');
+console.log(row);
+console.log('\n\n\n\n\n\n\n');
 
 console.log('SMTP Configured');
 
@@ -89,16 +96,16 @@ console.log('SMTP Configured');
 let message = {
 
     // Comma separated list of recipients
-    to: 'cmj@live.de; cmj2@live.de',
+    to: row[0].EMAILKENNUNG + '@th-nuernberg.de',
 
     // Subject of the message
-    subject: 'Das Repository wurde freigeschaltet', //
+    subject: 'Passwort', //
 
     // plaintext body
-    text: 'Das Repository wurde freigeschaltet und wir in kürze Funktionsfähig sein',
+    text: 'Ihr Passwort ist '+ row[0].PASSWORT,
 
     // HTML body
-    html: '<p><b>Diese</b> Das Repository wurde freigeschaltet und wir in kürze Funktionsfähig sein.' + req.params.id + 'HTML</p>',
+    html: '<p> Ihr Passwort ist <b>' + row[0].PASSWORT + '</b></p>',
 
 };
 
@@ -115,9 +122,15 @@ transporter.sendMail(message, (error, info) => {
     // transporter.close();
     res.send('Message sent successfully!');
 });
+
+},   
+function failure() { console.log('keine Berechtigung');res.send('schiefgelaufen')
+
+})
 }
 
 module.exports = {
     emailTest: emailTest,
-    emailRepoAktiv: emailRepoAktiv
+    // emailRepoAktiv: emailRepoAktiv,
+    emailPasswort: emailPasswort
 };

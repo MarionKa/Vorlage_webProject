@@ -4,7 +4,7 @@ var webTestDB = angular.module('webTestDB', ['ui.router', 'ngResource'])
 configFn.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 function configFn($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/anmeldung");
+    $urlRouterProvider.otherwise("ausgeloggt/anmeldung");
 
     $stateProvider
     .state('deleteBenutzer', {
@@ -23,105 +23,132 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
 
     .state('deleteRepoBenutzer', {
-        url: "/deleteRepoBenutzer/:id  /:REPOSITORY_ID",
+        url: "/deleteRepoBenutzer/:id/:REPOSITORY_ID",
         controller: 'DeleteControllerRepoBenutzer'
     })
 
-    .state('abmeldung', {
+        .state('ausgeloggt', {
+        url: "/ausgeloggt",
+        templateUrl: "app/partials/NavbarAusgeloggtTemplate.html",
+    })
+
+    .state('admin', {
+        url: "/admin",
+        templateUrl: "app/partials/NavbarAdminTemplate.html",
+    })
+
+    .state('benutzer', {
+        url: "/benutzer",
+        templateUrl: "app/partials/NavbarBenutzerTemplate.html",
+    })
+
+
+    .state('ausgeloggt.abmeldung', {
         url: "/abmeldung",
         templateUrl: "app/partials/AbmeldungTemplate.html"
     })
-    .state('anmeldung', {
+    .state('ausgeloggt.anmeldung', {
         url: "/anmeldung",
         templateUrl: "app/partials/AnmeldungTemplate.html",
         controller: 'LoginCtrl'
     })
-    .state('artedit', {
+    .state('admin.artedit', {
         url: "/artedit/:id",
         templateUrl: "app/partials/ArtEditierenTemplate.html",            
         controller: 'FormControllerArt', 
         controllerAs: 'formControllerArt'
     })
-    .state('arthinzu', {
+    .state('admin.arthinzu', {
         url: "/arthinzu",
         templateUrl: "app/partials/ArtHinzufügenTemplate.html",            
         controller: 'FormControllerArt', 
         controllerAs: 'formControllerArt'
     })
-    .state('artueber', {
+    .state('admin.artueber', {
         url: "/artueber",
         templateUrl: "app/partials/ArtUebersichtTemplate.html",
         controller: 'ListControllerArt', 
         controllerAs: 'listControllerArt'
     })
-    .state('beantragung', {
+
+    .state('benutzer.beantragung', {
         url: "/beantragung",
         templateUrl: "app/partials/BeantragungTemplate.html",
         controller: 'FormControllerRepobeantragen',
         controllerAs: 'formControllerRepobeantragen' 
     })
-    .state('benutzeredit/:id', {  //Hier was geändert
+    .state('admin.benutzeredit', {
         url: "/benutzeredit/:id",
         templateUrl: "app/partials/BenutzerEinzelansichtTemplate.html",
         controller: 'FormControllerBenutzer', 
         controllerAs: 'formControllerBenutzer'
     })
-    .state('benutzerentf', {
+    .state('admin.benutzerentf', {
         url: "/benutzerentf/:id",
         templateUrl: "app/partials/BenutzerEntfernenTemplate.html",
         controller: 'ListControllerRepoBenutzer', 
         controllerAs: 'listControllerRepoBenutzer'
     })
-    .state('benutzerhinzu', {
+    .state('admin.benutzerhinzu', {
         url: "/benutzerhinzu/:id",
         templateUrl: "app/partials/BenutzerHinzufügenTemplate.html",
         controller: 'FormControllerRepoBenutzer',
         controllerAs: 'formControllerRepoBenutzer'
     })
-    .state('benutzerueber', {
+    .state('admin.benutzerueber', {
         url: "/benutzerueber",
         templateUrl: "app/partials/BenutzerUebersichtTemplate.html",
         controller: 'ListControllerBenutzer', 
         controllerAs: 'listControllerBenutzer'
     })
-    .state('kennwort', {
+    .state('ausgeloggt.kennwort', {
         url: "/kennwort",
-        templateUrl: "app/partials/KennwortVergessenTemplate.html"
+        templateUrl: "app/partials/KennwortVergessenTemplate.html",
+        controller: 'FormControllerPwVergessen',
+        controllerAs: 'formControllerPwVergessen'
     })
-    .state('registrierung', {
+    .state('ausgeloggt.registrierung', {
         url: "/registrierung",
         templateUrl: "app/partials/RegistrierungTemplate.html",
         controller: 'FormControllerBenutzer',
         controllerAs: 'formControllerBenutzer'
     })
-    .state('reh', {
+    .state('ausgeloggt.reh', {
         url: "/reh",
         templateUrl: "app/partials/ErklaerungTemplate.html"
     })
-    .state('repoedit', {
+    .state('admin.reh', {
+        url: "/reh",
+        templateUrl: "app/partials/ErklaerungTemplate.html"
+    })
+    .state('benutzer.reh', {
+        url: "/reh",
+        templateUrl: "app/partials/ErklaerungTemplate.html"
+    })
+
+    .state('admin.repoedit', {
         url: "/repoedit/:id",
         templateUrl: "app/partials/RepoEditierenTemplate.html",
         controller: 'FormControllerRepo',
         controllerAs: 'formControllerRepo'
     })
-    .state('repoerstellen', {
+    .state('admin.repoerstellen', {
         url: "/repoerstellen",
         templateUrl: "app/partials/RepoHinzufügenTemplate.html",
         controller: 'FormControllerRepo',
         controllerAs: 'formControllerRepo'
     })
-    .state('repoueber', {
+    .state('admin.repoueber', {
         url: "/repoueber",
         templateUrl: "app/partials/RepoUebersichtTemplate.html",
         controller: 'ListControllerRepos',
         controllerAs: 'listControllerRepos'
     })
-    .state('ueberpers', {
+    .state('benutzer.ueberpers', {
         url: "/ueberpers",
         templateUrl: "app/partials/RepoPersUeTemplate.html",
         controller: 'ListControllerReposUser',
         controllerAs: 'listControllerReposUser'
-        
     });
 
 }
@@ -130,9 +157,9 @@ webTestDB.run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
   $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
     if (!AuthService.isAuthenticated()) {
       console.log(next.name + ' ohne Token');
-      if (next.name !== 'reh' && next.name !== 'anmeldung' && next.name !== 'abmeldung' && next.name !== 'registrierung' && next.name !== 'kennwort') {
+      if (next.name !== 'ausgeloggt.reh' && next.name !== 'ausgeloggt.anmeldung' && next.name !== 'ausgeloggt.abmeldung' && next.name !== 'ausgeloggt.registrierung' && next.name !== 'ausgeloggt.kennwort') {
         event.preventDefault();
-        $state.go('anmeldung');
+        $state.go('ausgeloggt.anmeldung');
       }
     }
   });

@@ -25,10 +25,6 @@
                     <input class="form-control" type="text" placeholder="Nachname" name="Nachname" id="Nachname" value="" ng-model="formControllerBenutzer.NACHNAME">
                 </div>
             </div>
-
-<!--                         ng-pattern="/[A-Z]{1}[a-z]{1,}[A-Z]{1}[a-z]{1}\d{5}$|[A-Z]{1}[a-z]{3,}\d{5}$|[a-z]{4,}\d{5}$/" 
- -->
-
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label>E-Mail-Adresse:</label>
@@ -133,29 +129,3 @@
         }
     </script>
 </form>
-
-<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////// NAVBAR /////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a id="brand" class="navbar-brand" href="#/reh">
-                <img alt="Brand" src="img/4.png">
-            </a>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-            <div id="menu" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav" ng-controller="NavbarController">
-                <li ng-class="{ active: isActive('/anmeldung')}"><a href="#/anmeldung">Anmelden</a></li>
-                <li ng-class="{ active: isActive('/registrierung')}"><a href="#/registrierung">Registrieren</a></li>
-                <li ng-class="{ active: isActive('/kennwort')}"><a href="#/kennwort">Passwort vergessen</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>

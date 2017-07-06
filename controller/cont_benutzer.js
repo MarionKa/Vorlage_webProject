@@ -38,7 +38,8 @@ res.send('keine Berechtigung')
 })
 }
 
-function eingabe(req, res) {        //Insert mit POST-Methode
+function anlegen(req, res) {  
+    benutzer.doppeltCheck(req.body.EMAILKENNUNG).then(function success(){
     console.log('cont_benutzer.anlegen '+ req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' RECHTE_ID is immer 2 und nicht '+ req.body.RECHTE_ID);
     var benutzerData = {
         NACHNAME: req.body.NACHNAME,
@@ -49,9 +50,13 @@ function eingabe(req, res) {        //Insert mit POST-Methode
     };
     console.log(benutzerData);
 
-    benutzer.eingabe_m(benutzerData).then(function(id) {
+    benutzer.anlegen_m(benutzerData).then(function(id) {
         res.send(JSON.stringify({id: id}));
     });
+},   
+    function failure() { console.log('doppelt');
+    res.send('doppelt')
+})
 }
 
 function update(req, res) {         //Update mit PUT-Methode
@@ -91,7 +96,7 @@ function loeschen(req, res) {           //DELETE mit DELETE-Methode
 module.exports = {
     ausgabeAlle: ausgabeAlle,
     ausgabeEin: ausgabeEin,
-    eingabe: eingabe,
+    anlegen: anlegen,
     update: update,
     loeschen: loeschen
 };
