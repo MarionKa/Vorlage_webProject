@@ -72,7 +72,7 @@ var schleifeArten = function (n,dataArten,streamGitConf){
     if (n < dataArten.length) {
 
         streamGitConf.write('########################################################\r\n');
-        streamGitConf.write( dataArten[n].BEZEICHNUNG +'\r\n' );
+        streamGitConf.write( '#'+dataArten[n].BEZEICHNUNG +'\r\n' );
         streamGitConf.write('########################################################\r\n' );
 
         alleRepositoriesDerArt (dataArten[n].ID,function(err,dataRepo){
