@@ -1,24 +1,18 @@
-﻿
-
-<div class="row">
+﻿<div class="row">
     <h1 class="col-xs-12 page-header">
         <large>Registrierung</large>
     </h1>
 </div>
-
 <form name="RegFormular">
     <div class="panel panel-info">
         <div class="panel-heading"><h4>Bitte Geben Sie Ihre Daten an, um sich zu registrieren.</h4> </div>
         <div class="panel-body">
-
-
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label style="line-height: 150%">Vorname:</label>
                     <input class="form-control" type="text" placeholder="Vorname" name="Vorname" id="Vorname" value="" ng-model="formControllerBenutzer.VORNAME">
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label style="line-height: 150%">Nachname:</label>
@@ -45,12 +39,10 @@
            Bitte geben Sie Ihre Hochschuladresse bis "@th-nuernberg.de" ein.
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label style="line-height: 150%">Passwort:</label>
                     <input class="form-control" 
-                    type="text" 
                     placeholder="Passwort" 
                     name="Passwort"
                     type="password" 
@@ -58,12 +50,10 @@
                     value="">
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label style="line-height: 150%">Passwort wiederholen:</label>
                     <input class="form-control" 
-                    type="text" 
                     placeholder="Passwort" 
                     name="Passwort1" 
                     type="password"
@@ -72,8 +62,6 @@
                     ng-model="formControllerBenutzer.PASSWORT">
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-xs-6 form-group">
                     <button type="button" class="btn btn-default" name="regButton" id="regButton" ng-click="formControllerBenutzer.save()">Registrieren</button>
@@ -81,11 +69,9 @@
             </div>
         </div>
     </div>
-
     <script>
     	var elem = document.getElementById('regButton');
     	elem.addEventListener('click', checkFormular);
-
         //Überprüfung der Formularfeldeingaben: 
         function checkFormular(){
             if (document.RegFormular.Vorname.value == ""){
@@ -108,13 +94,22 @@
                 document.RegFormular.focus(); //Positionierung auf fehlerhafte Formularfeldeingabe
                 return false;
             }
-            if (document.RegFormular.Passwort.value == ""){
+            if (document.RegFormular.Mail.value.indexOf(" ") != -1){
+                alert("Bitte geben Sie die korrekte E-Mail-Adresse ohne Leerzeichen an!");
+                document.RegFormular.focus(); //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+            if (document.RegFormular.Passwort.value.indexOf(" ") != -1){
+                alert("Bitte geben Sie ein Passwort ohne Leerzeichen ein!");
+                document.RegFormular.Passwort.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }if (document.RegFormular.Passwort.value == " "){
                 alert("Bitte geben Sie ein Passwort ein!");
                 document.RegFormular.Passwort.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
                 return false;
             }
             if (document.RegFormular.Passwort1.value == ""){
-                alert("Bitte geben Sie ein Passwort ein!");
+                alert("Bitte wiederholen Sie das Passwort!");
                 document.RegFormular.Passwort1.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
                 return false;
             }
@@ -123,7 +118,6 @@
                 document.RegFormular.Passwort1.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
                 return false;
             }
-        
         else 
             alert("Ihre Registrierung wurde beantragt. Sie erhalten in kürze eine E-Mail mit Ihren Zugangsdaten.");
         }
