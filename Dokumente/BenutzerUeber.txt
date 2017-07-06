@@ -1,6 +1,6 @@
 johnmi46673 test
 EMAILKENNUNG test
-email neu test
+emailneu test
 test test
 test2 test
 admin admin
