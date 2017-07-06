@@ -70,7 +70,6 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'ListControllerArt', 
         controllerAs: 'listControllerArt'
     })
-
     .state('benutzer.beantragung', {
         url: "/beantragung",
         templateUrl: "app/partials/BeantragungTemplate.html",
