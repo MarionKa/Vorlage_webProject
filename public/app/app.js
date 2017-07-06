@@ -60,7 +60,7 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'FormControllerRepobeantragen',
         controllerAs: 'formControllerRepobeantragen' 
     })
-    .state('benutzeredit', {
+    .state('benutzeredit/:id', {  //Hier was geändert
         url: "/benutzeredit/:id",
         templateUrl: "app/partials/BenutzerEinzelansichtTemplate.html",
         controller: 'FormControllerBenutzer', 
@@ -75,7 +75,8 @@ function configFn($stateProvider, $urlRouterProvider) {
     .state('benutzerhinzu', {
         url: "/benutzerhinzu/:id",
         templateUrl: "app/partials/BenutzerHinzufügenTemplate.html",
-        controller: 'FormControllerRepoBenutzer'
+        controller: 'FormControllerRepoBenutzer',
+        controllerAs: 'formControllerRepoBenutzer'
     })
     .state('benutzerueber', {
         url: "/benutzerueber",
