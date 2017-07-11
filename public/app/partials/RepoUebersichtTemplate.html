@@ -20,14 +20,7 @@
                                     <button ng-click="sortieren = '+ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
                                     <button ng-click="sortieren = '-ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                                 </div>
-
                             </th>
-                            <th>Authname: <br/>
-                                <div class="btn-group btn-xs" role="group">
-                                    <button ng-click="sortieren = '+AUTHNAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
-                                    <button ng-click="sortieren = '-AUTHNAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
-                                </div>
-                            </th> 
                             <th>Pfad: <br/>
                             <div class="btn-group btn-xs" role="group">
                                     <button ng-click="sortieren = '+REPONAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
@@ -52,7 +45,6 @@
                         </tr>
                         <tr ng-repeat="daten in listControllerRepos.daten | orderBy:sortieren">
                             <td>{{daten.ART}}</td>
-                            <td>{{daten.AUTHNAME}}</td>
                             <td nowrap> {{daten.REPONAME}}</td>
                             <td>{{daten.ALLE_BENUTZER}}</td>
                             <td>{{daten.GUELTIG_BIS}}</td>
@@ -74,14 +66,11 @@
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
                         </button>
                     </a>
-
                     <button type="button" ng-click="listControllerRepos.generieren()" class="btn btn-success" aria-label="Left Align">
                         Skripte generieren
                         <span class="glyphicon glyphicon-flash" aria-hidden="true"> </span>
                     </button>
-
                     <div class="pull-right">
-
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                         Repositories aus DB löschen
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>

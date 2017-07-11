@@ -60,7 +60,7 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
     .state('admin.arthinzu', {
         url: "/arthinzu",
-        templateUrl: "app/partials/ArtHinzufügenTemplate.html",            
+        templateUrl: "app/partials/ArtHinzufuegenTemplate.html",            
         controller: 'FormControllerArt', 
         controllerAs: 'formControllerArt'
     })
@@ -90,7 +90,7 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
     .state('admin.benutzerhinzu', {
         url: "/benutzerhinzu/:id",
-        templateUrl: "app/partials/BenutzerHinzufügenTemplate.html",
+        templateUrl: "app/partials/BenutzerHinzufuegenTemplate.html",
         controller: 'FormControllerRepoBenutzer',
         controllerAs: 'formControllerRepoBenutzer'
     })
@@ -133,7 +133,7 @@ function configFn($stateProvider, $urlRouterProvider) {
     })
     .state('admin.repoerstellen', {
         url: "/repoerstellen",
-        templateUrl: "app/partials/RepoHinzufügenTemplate.html",
+        templateUrl: "app/partials/RepoHinzufuegenTemplate.html",
         controller: 'FormControllerRepo',
         controllerAs: 'formControllerRepo'
     })
