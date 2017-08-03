@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var variablen = require('../config/variablen')
-var dbconfig = require('../../database');
+var dbconfig = require('../config/database');
 var connection = mysql.createConnection(
     dbconfig.connection
 );

@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var dbconfig = require('../../database');
+var dbconfig = require('../config/database');
 var connection = mysql.createConnection(
     dbconfig.connection
 );
@@ -70,7 +70,7 @@ function benutzerDesRepos_m(id){
 function erstellenAlsUser_m(data) {
      console.log('Eingabe model eingabe_m: ' + data.BENUTZER_ID /*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)
     return new Promise(function (resolve, reject) {
-        connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(R.ID)+1, B. EMAILKENNUNG, concat(B.VORNAME," ",B.NACHNAME), DATE_ADD( sysdate(), INTERVAL ? month), ?, ? from REPOSITORY R, BENUTZER B WHERE B.ID =?; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [ 6/*dauer Gültigkeit in Monaten*/ , data.ART_ID /*ART_ID*/, 1 /*STATUS_ID*/, data.BENUTZER_ID /*Benutzer ID*/, data.BENUTZER_ID /*Benutzer ID*/], function (err) {
+        connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(R.ID)+1, B. EMAILKENNUNG, concat("Repository von ", B.VORNAME," ",B.NACHNAME," (",A.BEZEICHNUNG,")"), DATE_ADD( sysdate(), INTERVAL ? month), ?, ? from REPOSITORY R, BENUTZER B, ART A WHERE B.ID =? AND A.ID = ?; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [ 6/*dauer Gültigkeit in Monaten*/ , data.ART_ID /*ART_ID*/, 1 /*STATUS_ID*/, data.BENUTZER_ID /*Benutzer ID*/, data.ART_ID /*ART_ID*/, data.BENUTZER_ID /*Benutzer ID*/], function (err) {
             if (err) {
                 reject(err);
             } else {
