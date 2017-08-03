@@ -1,7 +1,7 @@
 var jwt         = require('jwt-simple');
 
 var mysql = require('mysql');
-var dbconfig = require('../../database');
+var dbconfig = require('../config/database');
 var connection = mysql.createConnection(
     dbconfig.connection
 );

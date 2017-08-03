@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var dbconfig = require('../../database');
+var dbconfig = require('../config/database');
 var connection = mysql.createConnection(
     dbconfig.connection
 );
@@ -21,7 +21,7 @@ function ausgabeAlle_m(id) {
 
             if (err) {
                 reject(err);
-                console.log('ausgabeAlle_m(id)err ', rows );
+                console.log('ausgabeAlle_m(id)err ', err );
             } else {
                 console.log('ausgabeAlle_m mod Repos ', rows );
                 resolve(rows);
