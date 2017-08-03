@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var dbconfig = require('../config/database');
+var dbconfig = require('../../database');
 var connection = mysql.createConnection(
     dbconfig.connection
     );
@@ -14,7 +14,7 @@ connection.connect(function(error){
 });
 
 function alleRepositories(callback) {
-    connection.query('SELECT * FROM REPOSITORY WHERE REPO_STATUS_ID = 2', function (err, rows, fields) {
+    connection.query('SELECT * FROM REPOSITORY', function (err, rows, fields) {
         if (err) {
             callback(err, null);
         }else
@@ -45,7 +45,7 @@ function alleArten(callback) {
 
 function alleRepositoriesDerArt(id,callback) {
     console.log(id);
-    connection.query('SELECT * FROM REPOSITORY WHERE ART_ID = ? AND REPO_STATUS_ID = 2', [id], function (err, rows, fields) {
+    connection.query('SELECT * FROM REPOSITORY WHERE ART_ID = ?', [id], function (err, rows, fields) {
         if (err) {
             callback(err, null);
         }else
@@ -87,7 +87,7 @@ var schleifeArten = function (n,dataArten,streamGitConf){
                         streamGitConf.write('   AuthUserFile /var/git/config/passwd.git\r\n');
                         streamGitConf.write('   AuthUserFile /var/git/config/groups.git\r\n');
                         streamGitConf.write('   AuthName "'+ dataRepo[r].AUTHNAME +'"\r\n');
-                        streamGitConf.write('   Require group ID_'+dataRepo[r].ID +'\r\n');
+                        streamGitConf.write('   Require group '+dataRepo[r].REPONAME +'.git\r\n');
                         streamGitConf.write('</Location>\r\n');
                     }
                     streamGitConf.write('\r\n' ); 
@@ -106,15 +106,11 @@ var schleifeArten = function (n,dataArten,streamGitConf){
 }
 
 
-
-
-
-
 var schleifeGruppen = function (n,dataRepos,streamGruppen){
     if (n < dataRepos.length) {
-    console.log(dataRepos[n].ID +'Hier ist n'+n);
+    console.log(dataRepos[n].REPONAME +'Hier ist n'+n);
 
-        streamGruppen.write( 'ID_'+dataRepos[n].ID);
+        streamGruppen.write( dataRepos[n].REPONAME +'.git: ' );
 
         alleUserDieserGruppe (dataRepos[n].ID,function(err,dataUser){
             if (err) {
@@ -122,7 +118,7 @@ var schleifeGruppen = function (n,dataRepos,streamGruppen){
                         console.log("ERROR : ",err);            
                     } else {   console.log('else');
                     for (r = 0; r < dataUser.length; r++) { 
-                        streamGruppen.write(' '+ dataUser[r].EMAILKENNUNG );
+                        streamGruppen.write(dataUser[r].EMAILKENNUNG +' ');
 
                     }
                     streamGruppen.write('\r\n' ); 
@@ -141,17 +137,11 @@ var schleifeGruppen = function (n,dataRepos,streamGruppen){
 }
 
 
-
-
-
-
-
-
 function generieren(req, res) {
     console.log('generieren')
-    var streamBenutzerUeber = fs.createWriteStream("Dokumente/BenutzerUeber.txt");
 
-    streamBenutzerUeber.once('open', function(fd) {
+const execSync = require('child_process').execSync;
+execSync('htpasswd -b -c ./Dokumente/passwd.git ersterEintrag ersterEintrag')
 
         alleBenutzer (function(err,dataBenutzer){
             if (err) {
@@ -159,14 +149,11 @@ function generieren(req, res) {
             console.log("ERROR : ",err);            
         } else {   
             for (i = 0; i < dataBenutzer.length; i++) { 
-                streamBenutzerUeber.write( dataBenutzer[i].EMAILKENNUNG +' '+ dataBenutzer[i].PASSWORT +'\r\n' );
+                execSync('htpasswd -b ./Dokumente/passwd.git ' + dataBenutzer[i].EMAILKENNUNG + ' ' + dataBenutzer[i].PASSWORT)
             }
-            streamBenutzerUeber.end();
+        }       
+        });
 
-        }    
-
-    });
-    });
 
     var streamGitConf = fs.createWriteStream("Dokumente/git.conf");
     streamGitConf.once('open', function(fd) {
