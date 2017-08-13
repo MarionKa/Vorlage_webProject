@@ -13,7 +13,7 @@ connection.connect(function(error){
     }
 });
 
-function alleRepositories(callback) {
+function alleRepositories(callback) { //alle Aktiven Repositories
     connection.query('SELECT * FROM REPOSITORY WHERE REPO_STATUS_ID = 2', function (err, rows, fields) {
         if (err) {
             callback(err, null);
@@ -23,7 +23,7 @@ function alleRepositories(callback) {
     
 };
 
-function alleBenutzer(callback) {
+function alleBenutzer(callback) { //Ausgabe aller Benutzer die in der Datenbank stehen
     connection.query('SELECT * FROM BENUTZER', function (err, rows, fields) {
         if (err) {
             callback(err, null);
@@ -33,7 +33,7 @@ function alleBenutzer(callback) {
     
 };
 
-function alleArten(callback) {
+function alleArten(callback) { //Ausgabe aller Arten
     connection.query('SELECT * FROM ART', function (err, rows, fields) {
         if (err) {
             callback(err, null);

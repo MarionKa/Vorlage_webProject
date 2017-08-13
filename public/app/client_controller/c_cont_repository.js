@@ -62,8 +62,8 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
         if($stateParams.id) {
 
         dataFactoryRepo.read({id: $stateParams.id}).$promise.then(function(daten) {
-            console.log('stateParams IN FCT '+ daten[0].ID);
-            console.log('Format', typeof daten[0].REPO_STATUS_ID)
+           // console.log('stateParams IN FCT '+ daten[0].ID);
+            //console.log('Format', typeof daten[0].REPO_STATUS_ID)
             this.ART = daten[0].ART;
             this.ART_ID = daten[0].ART_ID;
             this.AUTHNAME = daten[0].AUTHNAME;
@@ -77,7 +77,7 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
     }
 
          this.save = function () {
-            console.log('save repo: '+ this.AUTHNAME +' '+ this.REPONAME );
+            //console.log('save repo: '+ this.AUTHNAME +' '+ this.REPONAME );
 
             var data = {
                 ART_ID: this.ART_ID,
@@ -89,11 +89,11 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
 
         };
         if ($stateParams.id) {
-            console.log('save update');
+           // console.log('save update');
             data.id = $stateParams.id;
             dataFactoryRepo.update(data).$promise.then($state.go.bind($state, 'admin.repoueber'));
         } else {
-            console.log('save create',data);
+            //console.log('save create',data);
             dataFactoryRepo.create(data).$promise.then($state.go.bind($state, 'admin.repoueber'));
         }
     }.bind(this);
@@ -108,11 +108,11 @@ function DeleteControllerRepo ($state, $stateParams, dataFactoryRepo) {
 
 DeleteControllerRepoBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryRepoBenutzer'];
 function DeleteControllerRepoBenutzer ($state, $stateParams, dataFactoryRepoBenutzer) {
-    console.log('c_cont_repository loeschen vor data: ' + $stateParams.REPOSITORY_ID + ' ' + $stateParams.id);
+   // console.log('c_cont_repository loeschen vor data: ' + $stateParams.REPOSITORY_ID + ' ' + $stateParams.id);
     var data = {
         ID_REPO: $stateParams.REPOSITORY_ID
     };
-    console.log('c_cont_repository loeschen: ' + data.ID_REPO);
+   // console.log('c_cont_repository loeschen: ' + data.ID_REPO);
     dataFactoryRepoBenutzer.delete({ID_REPO: $stateParams.REPOSITORY_ID, id: $stateParams.id}).$promise.then(function() {
 
         $state.go('admin.repoueber');//benutzerentf({id: this.ID})

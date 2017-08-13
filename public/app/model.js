@@ -135,7 +135,7 @@ dataFactoryOrga.$inject = ['$resource'];
 
 function dataFactoryOrga($resource) {
     return $resource(
-        '/orga/:kennung',    //Arten- / Typen- Auswahl für Repositorys
+        '/orga/:kennung',    //Email versand bei Passwort vergessen
         {kennung: '@kennung'},
         {
             create: {method: 'POST'},
