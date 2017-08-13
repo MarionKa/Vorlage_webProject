@@ -100,7 +100,7 @@ var schleifeArten = function (n,dataArten,streamGitConf){
 
     if(n == dataArten.length){
         console.log('ende schleifeArten'+n);
-        console.log('länge' + dataArten.length)
+       // console.log('länge' + dataArten.length)
         streamGitConf.end();
     }
 }
@@ -122,7 +122,7 @@ var schleifeGruppen = function (n,dataRepos,streamGruppen){
 
                     }
                     streamGruppen.write('\r\n' ); 
-                    console.log('nächste Gruppe 1+ '+ n);
+                    //console.log('nächste Gruppe 1+ '+ n);
                     schleifeGruppen(n+1,dataRepos,streamGruppen);
                 }                           
 
@@ -131,7 +131,7 @@ var schleifeGruppen = function (n,dataRepos,streamGruppen){
 
     if(n == dataRepos.length){
         console.log('ende schleifeGruppen'+n);
-        console.log('länge' + dataRepos.length)
+        //console.log('länge' + dataRepos.length)
         streamGruppen.end();
     }
 }

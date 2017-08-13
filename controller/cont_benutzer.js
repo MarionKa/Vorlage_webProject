@@ -5,12 +5,12 @@ var jwt         = require('jwt-simple');
 var bodyParser  = require('body-parser');
 
 
-function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
+function ausgabeAlle(req, res) {     //Ausgabe aller in der Tabelle vorhandenen Benutzer  
     pw.adminCheck(req.headers).then(function success(){
 
         benutzer.ausgabeAlle_m(req.params.id).then(function success(row) {
             res.send(row);
-            console.log('ausgabeAlle ',row);
+            //console.log('ausgabeAlle ',row);
         }, function failure(err) {
             res.send(err);
         })
@@ -23,12 +23,12 @@ function ausgabeAlle(req, res) {      //SELECT mit GET-Methode
 
 
 
-function ausgabeEin(req, res) {      //SELECT mit GET-Methode
+function ausgabeEin(req, res) {     //Ausgabe eines einzigen Benutzers auf Basis seiner ID
     pw.adminCheck(req.headers).then(function success(){
 
-    benutzer.ausgabeEin_m(req.params.id).then(function success(row) {   //req-Objekt stellt params-Objekt zur verfügung, das Variablen enthält
+    benutzer.ausgabeEin_m(req.params.id).then(function success(row) { 
         res.send(row);
-        console.log('fetch einen Benutzer ',row);
+    //    console.log('fetch einen Benutzer ',row);
     }, function failure(err) {
         res.send(err);
     })
@@ -38,9 +38,9 @@ res.send('keine Berechtigung')
 })
 }
 
-function anlegen(req, res) {  
+function anlegen(req, res) {   // Fügt einen Benutzer hinzu  //wenn er nocht nicht Vorhanden ist
     benutzer.doppeltCheck(req.body.EMAILKENNUNG).then(function success(){
-    console.log('cont_benutzer.anlegen '+ req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' RECHTE_ID is immer 2 und nicht '+ req.body.RECHTE_ID);
+    //console.log('cont_benutzer.anlegen '+ req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' RECHTE_ID is immer 2 und nicht '+ req.body.RECHTE_ID);
     var benutzerData = {
         NACHNAME: req.body.NACHNAME,
         VORNAME: req.body.VORNAME,
@@ -59,10 +59,10 @@ function anlegen(req, res) {
 })
 }
 
-function update(req, res) {         //Update mit PUT-Methode
+function update(req, res) {    //Aktualisierung eines Benutzers     
     pw.adminCheck(req.headers).then(function success(){
 
-        console.log('update server'+ ' ' + req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' '+ req.body.RECHTE_ID);
+        //console.log('update '+ ' ' + req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' '+ req.body.RECHTE_ID);
         var benutzerData = {
             NACHNAME: req.body.NACHNAME,
             VORNAME: req.body.VORNAME,
@@ -80,12 +80,12 @@ function update(req, res) {         //Update mit PUT-Methode
 })
 }
 
-function loeschen(req, res) {           //DELETE mit DELETE-Methode
+function loeschen(req, res) {
     pw.adminCheck(req.headers).then(function success(){
 
         benutzer.loeschen_m(req.params.id).then(function() {
             res.send(JSON.stringify(true));
-            console.log('Wir wollen loeschen: benutzer');
+         //   console.log('Benutzer löschen');
         });
     },   
     function failure() { console.log('keine Berechtigung');

@@ -17,7 +17,7 @@ ListControllerBenutzer.$inject = ['dataFactoryBenutzer', 'AuthService'];
 function ListControllerBenutzer (dataFactoryBenutzer, AuthService) {
     var name = AuthService.loadUserName();
     document.getElementById("gruss").innerHTML = name;
-    this.daten = dataFactoryBenutzer.getAll();       //getAll() in model.js (client) festgelegt
+    this.daten = dataFactoryBenutzer.getAll();    
 }
 
 FormControllerBenutzer.$inject = ['$state', '$stateParams', 'dataFactoryBenutzer'];
@@ -31,7 +31,7 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
     console.log('state FormControllerBenutzer');
 
     if($stateParams.id) {
-        console.log('state2 ' + $stateParams.id);
+        //console.log('state2 ' + $stateParams.id);
         dataFactoryBenutzer.read({id: $stateParams.id}).$promise.then(function(daten) {
             console.log('daten im read ', daten[0].RECHTE_ID );
             this.NACHNAME = daten[0].NACHNAME;
@@ -56,11 +56,11 @@ function FormControllerBenutzer ($state, $stateParams, dataFactoryBenutzer) {
 
         };
         if ($stateParams.id) {
-            console.log('save update');
+            //console.log('save update');
             data.id = $stateParams.id;
             dataFactoryBenutzer.update(data).$promise.then($state.go.bind($state, 'admin.benutzerueber'));
         } else {
-            console.log('save create');
+            //console.log('save create');
             dataFactoryBenutzer.create(data).$promise.then($state.go.bind($state, 'admin.benutzerueber'));
         }
     }.bind(this);

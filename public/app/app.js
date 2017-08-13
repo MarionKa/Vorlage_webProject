@@ -155,7 +155,7 @@ function configFn($stateProvider, $urlRouterProvider) {
 webTestDB.run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
   $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
     if (!AuthService.isAuthenticated()) {
-      console.log(next.name + ' ohne Token');
+     // console.log(next.name + ' ohne Token');
       if (next.name !== 'ausgeloggt.reh' && next.name !== 'ausgeloggt.anmeldung' && next.name !== 'ausgeloggt.abmeldung' && next.name !== 'ausgeloggt.registrierung' && next.name !== 'ausgeloggt.kennwort') {
         event.preventDefault();
         $state.go('ausgeloggt.anmeldung');
