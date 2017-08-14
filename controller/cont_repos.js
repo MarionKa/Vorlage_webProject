@@ -3,12 +3,12 @@ var repos = require('../model/mod_repos');
 var pw = require('../model/mod_passwort');
 
 
-function ausgabeAlle(req, res) {
+function ausgabeAlle(req, res) { //Ausgabe aller Repositories
     pw.adminCheck(req.headers).then(function success(){
 
         repos.ausgabeAlle_m(req.params.id).then(function success(row) {
             res.send(row);
-            console.log('fetch alle Repos ',row);
+            //console.log('fetch alle Repos ',row);
         }, function failure(err) {
             res.send(err);
         })
@@ -19,18 +19,18 @@ function ausgabeAlle(req, res) {
 }
 
 //Alle Repos eines Benutzers ausgeben
-function ausgabePersoenlich(req, res) {      
+function ausgabePersoenlich(req, res) {     //Ausgabe aller Repositories eines Nutzers  
     repos.ausgabePersoenlich_m(pw.getTokenID(req.headers)).then(function success(row) {
         res.send(row);
-        console.log('fetch von Repos ',row);
+      //  console.log('fetch von Repos ',row);
     }, function failure(err) {
         res.send(err);
     })
 }
 
-function hinzuf체genMitglied(req, res) {        //Mitglied zu Repository hinzuf체gen
+function hinzuf체genMitglied(req, res) { //Weiteren Zugriffberechtigen zu REpository hinzuf체gen
     pw.adminCheck(req.headers).then(function success(){
-        console.log('cont_repos.anlegen '+ req.body.EMAILKENNUNG + ' ' + req.body.REPOSITORY_ID /*+ req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' '+ req.body.RECHTE_ID*/);
+       // console.log('cont_repos.anlegen '+ req.body.EMAILKENNUNG + ' ' + req.body.REPOSITORY_ID /*+ req.body.NACHNAME + ' '+ req.body.VORNAME +' '+ req.body.EMAILKENNUNG +' '+ req.body.RECHTE_ID*/);
         var reposData = {
             EMAILKENNUNG: req.body.EMAILKENNUNG,
             REPOSITORY_ID: req.body.REPOSITORY_ID
@@ -46,14 +46,14 @@ function hinzuf체genMitglied(req, res) {        //Mitglied zu Repository hinzuf�
 })
 }
 
-//Einen Benutzer aus Repo entfernen
-function benutzerentfernen(req, res) {
+
+function benutzerentfernen(req, res) { //Einen Zugriffberechtigen von Repository entfernen
     pw.adminCheck(req.headers).then(function success(){
 
-        console.log('datenbody ', req.params.ID_REPO);
+       // console.log('datenbody ', req.params.ID_REPO);
         repos.benutzerentfernen_m(req.params.id,req.params.ID_REPO).then(function() {       
             res.send(JSON.stringify(true));
-            console.log('Einen Benutzer entfernen');
+        //    console.log('Einen Benutzer entfernen');
         });
     },   
     function failure() { console.log('keine Berechtigung');

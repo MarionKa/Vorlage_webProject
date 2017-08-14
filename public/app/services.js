@@ -37,8 +37,6 @@ angular.module('webTestDB')
   function useCredentials(token) {
     isAuthenticated = true;
     authToken = token;
- 
-    // Set the token as header for your requests!
     $http.defaults.headers.common.Authorization = authToken;
   }
  
@@ -52,20 +50,8 @@ angular.module('webTestDB')
 
   }
  
-  // var register = function(user) {
-  //   return $q(function(resolve, reject) {
-  //     $http.post(API_ENDPOINT.url + 'signup', user).then(function(result) {
-  //       if (result.data.success) {
-  //         resolve(result.data.msg);
-  //       } else {
-  //         reject(result.data.msg);
-  //       }
-  //     });
-  //   });
-  // };
- 
   var login = function(user) {
-    console.log('services.js LOGIN', user)
+  //  console.log('services.js LOGIN', user)
     return $q(function(resolve, reject) {
       $http.post(API_ENDPOINT.url + 'authenticate', user).then(function(result) {
         if (result.data.success) {

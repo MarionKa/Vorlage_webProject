@@ -2,11 +2,11 @@ var repo = require('../model/mod_repository');
 var pw = require('../model/mod_passwort');
 
 
-function ausgabeEin(req, res) {      //SELECT mit GET-Methode
+function ausgabeEin(req, res) {  //Ausgabe eines Repository auf Basis seiner ID 
     pw.adminCheck(req.headers).then(function success(){
         repo.ausgabeEin_m(req.params.id).then(function success(row) {
             res.send(row);
-            console.log('fetch von Repo ',row);
+        //    console.log('fetch von Repo ',row);
         }, function failure(err) {
             res.send(err);
         })
@@ -16,11 +16,11 @@ function ausgabeEin(req, res) {      //SELECT mit GET-Methode
 })
 }
 
-function repostatus(req, res) {      
+function repostatus(req, res) {      //Ausgabe aller bekannten Repo_Status 
     pw.adminCheck(req.headers).then(function success(){
         repo.repostatus_m().then(function success(row) {
             res.send(row);
-            console.log('alle RepoStatuse',row);
+         //   console.log('alle RepoStatuse',row);
         }, function failure(err) {
             res.send(err);
         })
@@ -31,11 +31,11 @@ function repostatus(req, res) {
 }
 
 
-function benutzerDesRepos(req, res) {      //SELECT mit GET-Methode
+function benutzerDesRepos(req, res) {   //Ausgabe aller Nutzer eines Repositoreis auf Basis der ID
     pw.adminCheck(req.headers).then(function success(){
         repo.benutzerDesRepos_m(req.params.id).then(function success(row) {
             res.send(row);
-            console.log('benutzerDesRepos ',row);
+         //   console.log('benutzerDesRepos ',row);
         }, function failure(err) {
             res.send(err);
         })
@@ -45,10 +45,10 @@ function benutzerDesRepos(req, res) {      //SELECT mit GET-Methode
 })
 }
 
-function erstellenAlsUser(req, res) {        //Persönliches Repository hinzufügen
+function erstellenAlsUser(req, res) { //Ein Repository erstellen (Als normaler User)
     var artId =req.body.ART_ID;
     var benutzerId =pw.getTokenID(req.headers);
-    console.log('\n\n\n\n\n\n\n\n\n\n'+ artId +' benutzerId'+ benutzerId +'\n\n\n\n\n\n\n\n\n\n')
+   // console.log('\n\n\n\n\n\n\n\n\n\n'+ artId +' benutzerId'+ benutzerId +'\n\n\n\n\n\n\n\n\n\n')
     repo.doppeltCheck(artId,benutzerId).then(function success(){
         console.log('cont_repo.erstellenUser '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
         var repoData = {
@@ -63,14 +63,14 @@ function erstellenAlsUser(req, res) {        //Persönliches Repository hinzufü
             res.send(JSON.stringify({id: id}));
         }); 
     },   
-    function failure() { console.log('gibts schon');
-    res.send('gibts schon')
+    function failure() { console.log('Diesen Email wird schon verwendet.');
+    res.send('Diesen Email wird schon verwendet.')
 }) 
 }
 
-function erstellenAlsAdmin(req, res) {        //Persönliches Repository hinzufügen
+function erstellenAlsAdmin(req, res) {//Ein Repository erstellen (als Administrator)
     pw.adminCheck(req.headers).then(function success(){
-        console.log('cont_repo.erstellenAdmin '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
+      //  console.log('cont_repo.erstellenAdmin '+ req.body.REPONAME + ' ' + req.body.AUTHNAME);
         var repoData = {
             REPONAME: req.body.REPONAME,
             AUTHNAME: req.body.AUTHNAME,
@@ -91,9 +91,9 @@ function erstellenAlsAdmin(req, res) {        //Persönliches Repository hinzuf�
 })
 }
 
-function update(req, res) {         //Update mit PUT-Methode
+function update(req, res) {  //Aktualisierung eines Repository-Datensatztes
     pw.adminCheck(req.headers).then(function success(){
-        console.log('update server'+ ' ' + req.body.REPONAME + ' '+ req.body.AUTHNAME +' '+ req.body.GUELTIG_BIS);
+       // console.log('update server'+ ' ' + req.body.REPONAME + ' '+ req.body.AUTHNAME +' '+ req.body.GUELTIG_BIS);
         var repoData = { 
             REPONAME: req.body.REPONAME,
             AUTHNAME: req.body.AUTHNAME,
@@ -114,9 +114,9 @@ function update(req, res) {         //Update mit PUT-Methode
 //Ein Repo und dessen Einträge in der Verbinden-Tabelle löschen
 function loeschen(req, res) {
     pw.adminCheck(req.headers).then(function success(){
-        repo.loeschen_m().then(function() {
+        repo.loeschen_m(id).then(function() {
         res.send(JSON.stringify(true)); //Konvertiert eine js-Wert in einen json-String
-        console.log('Wir wollen loeschen: repo');
+        //console.log('Repo löschen');
     });
     },   
     function failure() { console.log('keine Berechtigung');

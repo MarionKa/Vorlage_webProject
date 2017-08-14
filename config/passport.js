@@ -2,7 +2,7 @@ var JwtStrategy = require('passport-jwt').Strategy;
 
 
 var mysql = require('mysql');
-var dbconfig = require('../../database');
+var dbconfig = require('../config/database');
 var connection = mysql.createConnection(
     dbconfig.connection
 );
@@ -14,32 +14,26 @@ connection.connect(function(error){
         console.log('Connection sucessfull, passport!');
     }
 });
-// load up the user model
-// var User = require('../app/models/user');
-// var config = require('../config/database'); // get db config file
- 
 
 
-// HIER KANN MAN NOCH DES PW MIT VERGLEICHEN
 
 module.exports = function(passport) {
               // console.log('\n\n passport anfang\n \n\n ');
 
   var opts = {};
-  opts.secretOrKey = 'dasIstEinGeheimnis';   /*= config.secret;*/
+  opts.secretOrKey = 'dasIstEinGeheimnis'; 
   passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-      console.log('\n\n passport use\n \n\n ');
-
-    connection.query("SELECT ID, VORNAME, NACHNAME, EMAILKENNUNG, RECHTE_ID FROM BENUTZER  WHERE ID = ?",[jwt_payload[0].ID],function(err, rows) {  /*User.findOne({id: jwt_payload.id}, */
+// HIER KANN MAN NOCH DAS PW MIT VERGLEICHEN
+    connection.query("SELECT ID FROM BENUTZER  WHERE ID = ?",[jwt_payload[0].ID],function(err, rows) { 
           if (err) {
-            console.log('\n\n passport.js if err\n \n\n ');
+            // console.log('\n\n passport.js if err\n \n\n ');
                done(err, false);
           }
           if (rows) {
-              console.log('\n\npassport.js if rows \n \n\n');
+              // console.log('\n\npassport.js if rows \n \n\n');
               done(null, rows);
           } else {
-            console.log('\n\n passport.js if else\n \n\n ');
+            // console.log('\n\n passport.js if else\n \n\n ');
               done(null, false);
           }
       });

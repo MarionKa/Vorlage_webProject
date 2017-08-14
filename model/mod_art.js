@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var variablen = require('../config/variablen')
-var dbconfig = require('../../database');
+var dbconfig = require('../config/database');
 var connection = mysql.createConnection(
     dbconfig.connection
 );
@@ -13,13 +13,13 @@ connection.connect(function(error){
     }
 });
 
-function ausgabeAlle_m(){
+function ausgabeAlle_m(){ // Ausgabe aller eingetragenen Arten
     return new Promise(function (resolve, reject) {
         connection.query('SELECT * FROM ART', function(err, rows, fields){
             if (err) {
                 reject(err);
             } else {
-                console.log('ART.ausgabeAlle_m ',rows);
+               // console.log('ART.ausgabeAlle_m ',rows);
                 resolve(rows);
             }  
         });
@@ -27,26 +27,26 @@ function ausgabeAlle_m(){
 }
 
 
-function ausgabeEin_m(id) {
+function ausgabeEin_m(id) { //Ausgabe einer Art auf Basis der ID
     return new Promise(function (resolve, reject) {
         connection.query('SELECT * FROM ART WHERE id = ?', [id /*ID*/], function (err, rows, fields) {
             if (err) {
                 reject(err);
             } else {
-                console.log('ART.ausgabeEin_m', rows );
+                //console.log('ART.ausgabeEin_m', rows );
                 resolve(rows);
             }
         });
     });
 }
 
-function ausgabeAktiv_m() {
+function ausgabeAktiv_m() { //Ausgabe aller aktiven Arten
     return new Promise(function (resolve, reject) {
         connection.query('SELECT * FROM ART WHERE EINTRAGEN_MGL = 1', function (err, rows, fields) {
             if (err) {
                 reject(err);
             } else {
-                console.log('ART.ausgabeAktiv_m', rows );
+               // console.log('ART.ausgabeAktiv_m', rows );
                 resolve(rows);
             }
         });
@@ -54,9 +54,8 @@ function ausgabeAktiv_m() {
 }
 
 
-// //Neue Datensätze anlegen 
-function eingabe_m(data) {
-     console.log('im instert' +' ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME)
+function eingabe_m(data) { //Hinzufügen einer neuen Art
+     //console.log('art eingabe' +' ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME)
     return new Promise(function (resolve, reject) {
         connection.query('INSERT INTO ART (ID, BEZEICHNUNG, ORDNERNAME, EINTRAGEN_MGL) select MAX(ID)+1, ?, ?, ? from ART', [data.BEZEICHNUNG, data.ORDNERNAME, data.EINTRAGEN_MGL], function (err) {
             if (err) {
@@ -68,10 +67,10 @@ function eingabe_m(data) {
     });
 }
 
-function update_m(data, id) {
-    console.log('Kommt die ID? ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME + ' ' + id);
+function update_m(data, id) { //Ändern einer Art. Ändern des Ordnernamens nicht Möglich, da bereits Repositories auf dem Server sein können.
+   // console.log('art update ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME + ' ' + id);
     return new Promise(function (resolve, reject) {
-        connection.query('UPDATE ART SET BEZEICHNUNG = ?, ORDNERNAME = ?, EINTRAGEN_MGL = ? WHERE id = ?', [data.BEZEICHNUNG, data.ORDNERNAME, data.EINTRAGEN_MGL, id /*ID*/], function (err) {
+        connection.query('UPDATE ART SET BEZEICHNUNG = ?, EINTRAGEN_MGL = ? WHERE id = ?', [data.BEZEICHNUNG, data.EINTRAGEN_MGL, id /*ID*/], function (err) {
             if (err) {
                 reject(err);
             } else {
@@ -81,9 +80,9 @@ function update_m(data, id) {
     });
 }
 
-function loeschen_m(id) {
+function loeschen_m(id) { //Löschen einer Art
     return new Promise(function (resolve, reject) {
-        connection.query('SELECT * FROM repository WHERE ART_ID = 2', [ id ], function(err, rows, fields) {
+        connection.query('SELECT * FROM repository WHERE ART_ID = ?', [ id ], function(err, rows, fields) {
             if(rows[0].ART_ID == id ) {
                 var data = {
                     meldung: 'löschen nicht möglich'
@@ -92,7 +91,7 @@ function loeschen_m(id) {
                 //console.log('Ordner kann nicht gelöscht werden: ', data.meldung);
 
             }else {
-                console.log('Rows are empty, yeah',rows);
+               // console.log('Rows are empty, yeah',rows);
                 connection.query('DELETE FROM ART WHERE id = ?', [ id /*ID*/], function (err) {
                     if (err) {
                         reject(err);
