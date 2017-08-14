@@ -3,40 +3,36 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>WebTestDB</title>
+    <title>DBWebApp</title>
     <meta charset="utf-8">
-
+    <!-- Einbinden des Icons -->
     <link rel="icon" href="img/reh.ico">
+    <!-- Eigenes CSS File -->
     <link rel="stylesheet" href="css/mobile.css">
+    <!-- Einbinden von Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-
 <body ng-controller="BodyController" ng-app="webTestDB">
-
     <!-- Datumsanzeige rechts oben -->
     <div class="container">
         <div class="col-xs-12">
             <span class="pull-right" ng-bind="date">Datum</span>
         </div>
     </div>
-    <!-- <div ng-include="'app/partials/NavbarTemplate.html'"></div> -->
-
+    <!-- Container für weitere Templates der WebApp -->
     <div class="container">
         <div ng-view></div>
     </div>
-
     <div class="container">
         <div ui-view></div>
     </div>
-
-
+    <!-- Einbinden von JavaScript Dateien -->
     <script src="lib/es6-shim.min.js"></script>
     <script src="lib/jquery-1.12.0.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-route.min.js"></script> 
     <script src="lib/ui-bootstrap-1.2.1.min.js"></script>
-    <!-- <script src="lib/angular.js"></script> -->
     <script src="lib/angular-ui-router.js"></script>
     <script src="lib/angular-resource.js"></script>
     <script src="app/app.js"></script>
@@ -44,7 +40,6 @@
     <script src="app/constants.js"></script>
     <script src="app/client_controller/c_cont_pp.js"></script>
     <script src="app/services.js"></script>
-
     <!-- PASSPORT ZEUG -->
     <script src="app/client_controller/c_cont_art.js"></script>
     <script src="app/client_controller/c_cont_benutzer.js"></script>
@@ -54,7 +49,5 @@
     <script src="scripts/Datum.js"></script>
     <script src="controllers/BodyController.js"></script>
     <script src="controllers/NavbarController.js"></script>
-
-
 </body>    
 </html>

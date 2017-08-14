@@ -5,20 +5,37 @@
 </div>
 <form name="RegFormular">
     <div class="panel panel-info">
-        <div class="panel-heading"><h4>Bitte Geben Sie Ihre Daten an, um sich zu registrieren.</h4> </div>
+        <div class="panel-heading">
+        <!-- Überschrift in Panel -->
+        <h4>Bitte Geben Sie Ihre Daten an, um sich zu registrieren.</h4> </div>
         <div class="panel-body">
+        <!-- Eingabefeld für den Vornamen -->
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label style="line-height: 150%">Vorname:</label>
-                    <input class="form-control" type="text" placeholder="Vorname" name="Vorname" id="Vorname" value="" ng-model="formControllerBenutzer.VORNAME">
+                    <input class="form-control" 
+                    type="text" 
+                    placeholder="Vorname" 
+                    name="Vorname" 
+                    id="Vorname" 
+                    value="" 
+                    ng-model="formControllerBenutzer.VORNAME">
                 </div>
             </div>
+            <!-- Eingabefeld für den Nachnamen -->
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label style="line-height: 150%">Nachname:</label>
-                    <input class="form-control" type="text" placeholder="Nachname" name="Nachname" id="Nachname" value="" ng-model="formControllerBenutzer.NACHNAME">
+                    <input class="form-control" 
+                    type="text" 
+                    placeholder="Nachname" 
+                    name="Nachname" 
+                    id="Nachname" 
+                    value="" 
+                    ng-model="formControllerBenutzer.NACHNAME">
                 </div>
             </div>
+            <!-- Eingabefeld für Email -->
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label>E-Mail-Adresse:</label>
@@ -34,11 +51,13 @@
                         <span class="input-group-addon" id="basic-addon2">@th-nuernberg.de</span>
                     </div>
                 </div>
+                <!-- Checken der Email Adresse -->
                 <div class="col-xs-12 alert alert-warning"
                     ng-show="RegFormular.Mail.$invalid">
            Bitte geben Sie Ihre Hochschuladresse bis "@th-nuernberg.de" ein.
                 </div>
             </div>
+            <!-- Zwei Passwortfelder (eingabe zum Bestätigen) -->
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <label style="line-height: 150%">Passwort:</label>
@@ -62,13 +81,19 @@
                     ng-model="formControllerBenutzer.PASSWORT">
                 </div>
             </div>
+            <!-- Button für die Registrierung -->
             <div class="row">
                 <div class="col-xs-6 form-group">
-                    <button type="button" class="btn btn-default" name="regButton" id="regButton" ng-click="formControllerBenutzer.save()">Registrieren</button>
+                    <button type="button" 
+                    class="btn btn-default" 
+                    name="regButton" 
+                    id="regButton" 
+                    ng-click="formControllerBenutzer.save()">Registrieren</button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Prüfung, ob die Eingaben konform sind: -->
     <script>
     	var elem = document.getElementById('regButton');
     	elem.addEventListener('click', checkFormular);
@@ -119,7 +144,8 @@
                 return false;
             }
         else 
-            alert("Ihre Registrierung wurde beantragt. Sie erhalten in kürze eine E-Mail mit Ihren Zugangsdaten.");
+            // Feedback an Nutzer, bei erfolgreicher Registrierung
+            alert("Ihre Registrierung war erfolgreich. Bitte melden Sie sich jetzt an.");
         }
     </script>
 </form>

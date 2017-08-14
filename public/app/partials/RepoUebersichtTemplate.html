@@ -1,4 +1,4 @@
-﻿<div class="row">
+<div class="row">
     <h1 class="col-xs-12 page-header">
         <large>Herzlich Willkommen</large> <large id="gruss"></large><large>!</large>
     </h1>
@@ -13,88 +13,111 @@
                     </h3>
                 </div>
                 <div class="panel-body">
+                <!-- Beginn der Übersichtstabelle -->
                     <table class="table table-hover">
-                        <tr> 
-                            <th>Art: <br/>
+                        <tr> <!-- Erste Zeile der Tabelle -->
+                            <th>Art: <br/><!-- Bezeichnung -->
                                 <div class="btn-group btn-xs" role="group">
-                                    <button ng-click="sortieren = '+ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
-                                    <button ng-click="sortieren = '-ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
+                                <!-- Button für alphabetisches Sortieren: -->
+                                    <button ng-click="sortieren = '+ART'" type="button" class="btn btn-xs btn-default">
+                                        <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+                                    </button>
+                                    <!-- Button für umgekehrt alphabetisches Sortieren: -->
+                                    <button ng-click="sortieren = '-ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </th>
                             <th>Pfad: <br/>
-                            <div class="btn-group btn-xs" role="group">
-                                    <button ng-click="sortieren = '+REPONAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
-                                    <button ng-click="sortieren = '-REPONAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
+                                <div class="btn-group btn-xs" role="group">
+                                    <button ng-click="sortieren = '+REPONAME'" type="button" class="btn btn-xs btn-default">
+                                        <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+                                    </button>
+                                    <button ng-click="sortieren = '-REPONAME'" type="button" class="btn btn-xs btn-default">
+                                        <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </th> 
                             <th>Zugriffsberechtigte: <br/>
-                            <div class="btn-group btn-xs" role="group">
-                                    <button ng-click="sortieren = '+ALLE_BENUTZER'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
-                                    <button ng-click="sortieren = '-ALLE_BENUTZER'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
+                                <div class="btn-group btn-xs" role="group">
+                                    <button ng-click="sortieren = '+ALLE_BENUTZER'" type="button" class="btn btn-xs btn-default">
+                                        <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+                                    </button>
+                                    <button ng-click="sortieren = '-ALLE_BENUTZER'" type="button" class="btn btn-xs btn-default">
+                                        <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </th> 
                             <th>Gültigkeit bis:
                             </th>  
                             <th>Zustand: <br/>
-                            <div class="btn-group btn-xs" role="group">
-                                    <button ng-click="sortieren = '+REPO_STATUS'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
-                                    <button ng-click="sortieren = '-REPO_STATUS'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
+                                <div class="btn-group btn-xs" role="group">
+                                    <button ng-click="sortieren = '+REPO_STATUS'" type="button" class="btn btn-xs btn-default">
+                                        <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+                                    </button>
+                                    <button ng-click="sortieren = '-REPO_STATUS'" type="button" class="btn btn-xs btn-default">
+                                        <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </th> 
                             <th></th>
                         </tr>
+                        <!-- Weitere Zeilen der Tabelle befüllt mit Daten aus der Datenbank durch ng-repeat und sortiert über die Variable "sortieren" -->
                         <tr ng-repeat="daten in listControllerRepos.daten | orderBy:sortieren">
                             <td>{{daten.ART}}</td>
                             <td nowrap> {{daten.REPONAME}}</td>
                             <td>{{daten.ALLE_BENUTZER}}</td>
                             <td>{{daten.GUELTIG_BIS}}</td>
                             <td>{{daten.REPO_STATUS}}</td>
-                            <td> 
+                            <td> <!-- Button Editieren, der auf das RepoEditierenTemplate weiterleitet: -->
                                 <a ui-sref="admin.repoedit({id: daten.ID})">
                                     <button type="button" class="btn btn-primary" aria-label="Left Align">
                                         Editieren
-                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                     </button>
                                 </a>
                             </td>
                         </tr>
                     </table>
-
+                    <!-- Button, der auf das RepoHinzufügenTemplate weiterleitet -->
                     <a href="#/admin/repoerstellen">
                         <button type="button" class="btn btn-info" aria-label="Left Align">
                             Repository erstellen
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
                         </button>
                     </a>
+                    <!-- Button, der das JavaScript ausführt, welches die Skripte erstellt. -->
                     <button type="button" ng-click="listControllerRepos.generieren()" class="btn btn-success" aria-label="Left Align">
                         Skripte generieren
                         <span class="glyphicon glyphicon-flash" aria-hidden="true"> </span>
                     </button>
+                    <!-- Button, der das Modal zum löschen der Repositories öffnet: -->
                     <div class="pull-right">
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
-                        Repositories aus DB löschen
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                    </button>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Gelöschte Repos aus DB entfernen</h4>
-                                </div>
-                                <div class="modal-body">
-                                    Möchten sie alle Repositories, mit dem Status "gelöscht" endgültig aus der Datenbank entfernen?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
-                                    <button type="button" data-dismiss="modal" onClick="history.go(0)" ng-click="listControllerRepos.loeschen()" class="btn btn-danger"  aria-label="Left Align">
-                                    Daten entfernen
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                                    </button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                            Repositories aus DB löschen
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                        </button>
+                        <!-- Beginn des Modals: -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Gelöschte Repos aus DB entfernen</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        Möchten sie alle Repositories, mit dem Status "gelöscht" endgültig aus der Datenbank entfernen?
+                                    </div>
+                                    <div class="modal-footer">
+                                    <!-- Buttons zum Abbrechen oder endgültigen löschen: -->
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                                        <button type="button" data-dismiss="modal" onClick="history.go(0)" ng-click="listControllerRepos.loeschen()" class="btn btn-danger"  aria-label="Left Align">
+                                            Daten entfernen
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
