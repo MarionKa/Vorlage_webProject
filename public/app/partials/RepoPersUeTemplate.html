@@ -18,11 +18,14 @@
                 <div class="panel-heading">
                     <h3>Überblick über Ihre Repositorys:</h3>
                 </div>
+                <!-- Beginn der Übersichtstabelle -->
                 <table class="table table-hover">
-                    <tr> 
-                        <th>Art:<br/>
+                    <tr> <!-- Erste Zeile der Tabelle -->
+                        <th>Art:<br/><!-- Bezeichnung -->
                             <div class="btn-group btn-xs" role="group">
+                            <!-- Button für alphabetisches Sortieren: -->
                                 <button ng-click="sortieren = '+ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
+                                <!-- Button für umgekehrt alphabetisches Sortieren: -->
                                 <button ng-click="sortieren = '-ART'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                             </div>
                         </th> 
@@ -48,6 +51,7 @@
                         </th> 
                         <th></th>
                     </tr>
+                    <!-- Weitere Zeilen der Tabelle befüllt mit Daten aus der Datenbank durch ng-repeat und sortiert über die Variable "sortieren" -->
                     <tr ng-repeat="daten in listControllerReposUser.daten | orderBy:sortieren">
                         <td>{{daten.ART}}</td>
                         <td nowrap>{{daten.REPONAME}}</td>
@@ -59,6 +63,7 @@
             </div>
         </div>
     </div>
+    <!-- Button, der auf das AbmeldungTemplate weiterleitet -->
     <div class="row">
         <div class="col-xs-6 form-group">
             <a href="#/ausgeloggt/abmeldung">

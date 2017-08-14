@@ -9,6 +9,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
+            <!-- Eingabefeld für den Repositorynamen -->
                 <div class="line">
                     <div class="col-xs-6 form-group">
                         <label>Repositoryname:</label>
@@ -20,6 +21,7 @@
                         placeholder="Bitte legen Sie hier den Repositoryname fest.">
                     </div>
                 </div>
+                <!-- Eingabefeld für die Art -->
                 <div class="line">
                     <div class="col-xs-4 form-group">
                         <form action="#">
@@ -31,6 +33,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Hinzweis zu den Zugriffsberechtigten -->
             <div class="panel panel-info">
                 <div class="panel-body">
                     <div class="row">
@@ -47,7 +50,8 @@
                     <p>Bitte legen Sie das Repository erst an und fügen dann per "Editieren" weitere Benutzer hinzu.</p>
                 </div>
             </div>
-            <div class="row">            
+            <div class="row">   
+            <!-- Eingabefeld für die Beschreibung -->         
                 <div class="line">
                     <div class="col-xs-4 form-group">
                         <label>Beschreibung:</label>
@@ -59,6 +63,7 @@
                         placeholder="Bitte eine Beschreibung hier eintragen.">
                     </div>
                 </div>
+                <!-- Eingabefeld für die Gültigkeit -->
                 <div class="line">
                     <div class="col-xs-4 form-group">
                         <label>Gültigkeit bis:</label>
@@ -70,6 +75,7 @@
                         placeholder="TT.MM.JJJJ">
                     </div>
                 </div>
+                <!-- Eingabefeld für den Status -->
                 <div class="line">
                     <div class="col-xs-4 form-group">
                         <form action="#">
@@ -81,12 +87,14 @@
                     </div>
                 </div>
             </div>
+            <!-- Button, der die eingegebenen Daten speichert: -->
             <a>
                 <button type="button" ng-click="formControllerRepo.save()" name="RepoButton" id="RepoButton" class="btn btn-success" aria-label="Left Align">
                     Speichern
                     <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
                 </button>
             </a>
+            <!-- Button, der den Vorgang abbricht: -->
             <a href="#/admin/repoueber">
                 <button type="button" class="btn btn-danger" aria-label="Left Align">
                     Abbrechen
@@ -97,7 +105,6 @@
     <script>
         var elem = document.getElementById('RepoButton');
         elem.addEventListener('click', checkFormular);
-
         //Überprüfung der Formularfeldeingaben: 
         function checkFormular(){
             if (document.Repositoryeditieren.RepoName.value == ""){
@@ -118,6 +125,11 @@
             if (document.Repositoryeditieren.Gueltigkeit.value == ""){
                 alert("Bitte geben Sie ein Datum ein!");
                 document.Repositoryeditieren.Gueltigkeit.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
+                return false;
+            }
+            if (document.Repositoryeditieren.REPO_STATUS_ID.value == ""){
+                alert("Bitte wählen Sie einen Status aus!");
+                document.Repositoryeditieren.REPO_STATUS_ID.focus();  //Positionierung auf fehlerhafte Formularfeldeingabe
                 return false;
             }
         }

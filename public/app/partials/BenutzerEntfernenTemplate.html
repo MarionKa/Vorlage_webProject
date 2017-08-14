@@ -13,7 +13,9 @@
                 </div>
                 <div class="panel-body">
                     <table class="table table-hover">
+                    <!-- Erste Spalte der Tabelle: -->
                         <tr> <th>Vorname:</th><th>Nachname:</th> <th>E-Mail:</th>  <th></th><th></th></tr>
+                        <!-- Weitere Zeilen der Tabelle befüllt mit Daten aus der Datenbank durch ng-repeat: -->
                         <tr ng-repeat="daten in listControllerRepoBenutzer.daten" > 
                             <td>{{daten.VORNAME}}</td>
                             <td>{{daten.NACHNAME}}</td>
@@ -26,11 +28,9 @@
                             </a></td>
                         </tr>
                     </table>
-
+                    <!-- Button Abbrechen mit Verlinkung zum vorherigen Template: -->
                     <input action="action"  type="button" onclick="window.history.go(-1); return false;" class="btn btn-danger" aria-label="Left Align" value="Abbrechen" />
-
                 </div>
-
             </div>
         </div>
     </div>

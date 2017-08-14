@@ -7,46 +7,47 @@
     <div class="panel panel-info">
         <div class="panel-heading"><h4>Ändern Sie hier den ausgewählten Datensatz Repositoryart</h4> </div>
         <div class="panel-body">
+        <!-- Input-Feld zum Ändern der Bezeichnung: -->
             <div class="row">
-               <div class="col-xs-12 form-group">
-                <label>Bezeichnung:</label>
-                <input class="form-control"
-                type="text"
-                ng-model="formControllerArt.BEZEICHNUNG">
+                <div class="col-xs-12 form-group">
+                    <label>Bezeichnung:</label>
+                    <input class="form-control"
+                    type="text"
+                    ng-model="formControllerArt.BEZEICHNUNG">
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-           <div class="col-xs-12 form-group">
-            <label>Ordnername:</label>
-            <input class="form-control" type="text" ng-model="formControllerArt.ORDNERNAME" readonly="">
+            <!-- Input-Feld zum Ändern des Ordnernamens: -->
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <label>Ordnername:</label>
+                    <input class="form-control" type="text" ng-model="formControllerArt.ORDNERNAME" readonly="">
+                </div>
+            </div>
+            <!-- Input-Feld zum Ändern des Eintragen-Status: -->
+            <div class="row">
+                <div class="col-xs-4 form-group">
+                    <form action="#">
+                        <label for="sel1">Eintragen möglich Neuer Status:</label>
+                        <select ng-model="formControllerArt.EINTRAGEN_MGL" class="form-control" id="sel1" name="sel1">
+                            <option value="0">eintragen nicht möglich</option>
+                            <option value="1">eintragen möglich</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <!-- Button Speichern: -->
+            <a>
+                <button type="button" ng-click="formControllerArt.save()" class="btn btn-success" aria-label="Left Align">
+                    Speichern
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
+                </button>
+            </a>
+            <!-- Button Abbrechen und Verlinkung zm ArtUebersichtTemplate -->
+            <a href="#/admin/artueber">
+                <button type="button" class="btn btn-danger" aria-label="Left Align">
+                    Abbrechen
+                </button>
+            </a>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-xs-4 form-group">
-            <form action="#">
-                <label for="sel1">Eintragen möglich Neuer Status:</label>
-                <select ng-model="formControllerArt.EINTRAGEN_MGL" class="form-control" id="sel1" name="sel1">
-                    <option value="0">eintragen nicht möglich</option>
-                    <option value="1">eintragen möglich</option>
-                </select>
-            </form>
-        </div>
-    </div>
-
-    <a>
-        <button type="button" ng-click="formControllerArt.save()" class="btn btn-success" aria-label="Left Align">
-            Speichern
-            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
-        </button>
-    </a>
-
-    <a href="#/admin/artueber">
-        <button type="button" class="btn btn-danger" aria-label="Left Align">
-            Abbrechen
-        </button>
-    </a>
-</div>
-</div>
 </form>

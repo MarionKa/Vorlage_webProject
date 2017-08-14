@@ -2,9 +2,7 @@
     <h1 class="col-xs-12 page-header">
         <large>Herzlich Willkommen</large> <large id="gruss"></large><large>!</large>
     </h1>
-
 </div>
-
 <form name="Uebersicht">
     <div class="row">
         <div class="col-xs-12 form-group">
@@ -14,11 +12,14 @@
                     </h3>
                 </div>
                 <div class="panel-body">
+                <!-- Beginn der Tabelle: -->
                     <table class="table table-hover">
-                        <tr> 
-                        <th>Bezeichnung: <br/>
+                        <tr> <!-- Erste Zeile der Tabelle -->
+                        <th>Bezeichnung: <br/><!-- Bezeichnung -->
                         <div class="btn-group btn-xs" role="group">
+                        <!-- Button für alphabetisches Sortieren: -->
                                     <button ng-click="sortieren = '+BEZEICHNUNG'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
+                                    <!-- Button für umgekehrt alphabetisches Sortieren: -->
                                     <button ng-click="sortieren = '-BEZEICHNUNG'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                                 </div>
                         </th>
@@ -35,7 +36,7 @@
                                 </div>
                         </th>  
                         <th></th> <th></th></tr>
-
+                        <!-- Weitere Zeilen der Tabelle befüllt mit Daten aus der Datenbank durch ng-repeat und sortiert über die Variable "sortieren" -->
                         <tr ng-repeat="daten in listControllerArt.daten | orderBy:sortieren">
                             <td>{{daten.BEZEICHNUNG}}</td>
                             <td>{{daten.ORDNERNAME}}</td>
@@ -51,6 +52,7 @@
                                     </button>
                                 </a>
                             </td>
+                            <!-- Button, der die ausgewählte Art aus der Datenbank löscht: -->
                             <td> 
                                 <a ui-sref="deleteArt({id: daten.ID})">
                                     <button type="button" class="btn btn-default" aria-label="Left Align">
@@ -61,6 +63,7 @@
                             </td>
                         </tr>
                     </table>
+                    <!-- Button, der auf das ArtHinzufuegenTemplate weiterleitet -->
                     <a href="#/admin/arthinzu">
                     <button type="button" class="btn btn-info" aria-label="Left Align">
                     Neue Art hinzufügen
