@@ -3,7 +3,7 @@ module.exports = {
     'connection': {
         'host': 'localhost',
         'user': 'root',
-        'password': 'Root',
+        'password': 'mysql',
         'database': 'repoweb', 
         'multipleStatements': true
     },

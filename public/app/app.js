@@ -27,7 +27,6 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'DeleteControllerRepoBenutzer'
     })
 
-
 // Definition der Nested States
     .state('ausgeloggt', {
         url: "/ausgeloggt",
