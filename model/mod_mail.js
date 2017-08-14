@@ -45,49 +45,14 @@ let transporter = nodemailer.createTransport({
     }
 });
 */
-function emailTest(req, res) {
-
-console.log('SMTP Configured');
-// Message object:
-let message = {
-
-    // Comma separated list of recipients
-    to: 'cmj@live.de',
-
-    // Subject of the message
-    subject: 'VERSUCH für Repomanagement TH Nürnberg Medinf Efi', //
-
-    // plaintext body
-    text: 'Diese Mail wurde via Javascript über eine gefakte Hochschuladresse geschickt, direkt aus dem Docker Container.',
-
-    // HTML body
-    html: '<p><b>Diese</b> Mail wurde per Javascript mit einer gefakten Hochschuladresse geschickt, direkt aus einem Docker Container.</p>',
-
-};
-
-// Versenden der Mail mit Ausgabe von Stati auf der Kommandozeile:
-console.log('Sending Mail');
-transporter.sendMail(message, (error, info) => {
-    if (error) {
-        console.log('Error occurred');
-        console.log(error.message);
-        return;
-    }
-    console.log('Message sent successfully!');
-    console.log('Server responded with "%s"', info.response);
-    // transporter.close();
-    res.send('Message sent successfully!');
-});
-}
-
 
 function emailPasswort(req, res) {
 
 benutzer.benutzerDaten(req.params.kennung).then(function success(row){
 
-console.log('\n\n\n\n\n\n\n');
-console.log(row);
-console.log('\n\n\n\n\n\n\n');
+// console.log('\n\n\n\n\n\n\n');
+// console.log(row);
+// console.log('\n\n\n\n\n\n\n');
 
 console.log('SMTP Configured');
 
@@ -99,7 +64,7 @@ let message = {
     to: row[0].EMAILKENNUNG + '@th-nuernberg.de',
 
     // Subject of the message
-    subject: 'Passwort', //
+    subject: 'Passwort GIT-Repository', //
 
     // plaintext body
     text: 'Ihr Passwort ist '+ row[0].PASSWORT,
@@ -124,13 +89,11 @@ transporter.sendMail(message, (error, info) => {
 });
 
 },   
-function failure() { console.log('keine Berechtigung');res.send('schiefgelaufen')
+function failure() { console.log('Fehler beim Emailversand');res.send('Fehler beim Emailversand')
 
 })
 }
 
 module.exports = {
-    emailTest: emailTest,
-    // emailRepoAktiv: emailRepoAktiv,
     emailPasswort: emailPasswort
 };

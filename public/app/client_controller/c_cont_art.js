@@ -20,7 +20,7 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
     this.ID = '';
 
 
-    console.log('state FormControllerArt');
+    //console.log('state FormControllerArt');
 
     if($stateParams.id) {
         console.log('state2 ' + $stateParams.id);
@@ -46,11 +46,11 @@ function FormControllerArt ($state, $stateParams, dataFactoryArt) {
 
         };
         if ($stateParams.id) {
-            console.log('save update');
+            //console.log('save update');
             data.id = $stateParams.id;
             dataFactoryArt.update(data).$promise.then($state.go.bind($state, 'admin.artueber'));
         } else {
-            console.log('save create');
+            //console.log('save create');
             dataFactoryArt.create(data).$promise.then($state.go.bind($state, 'admin.artueber'));
         }
     }.bind(this);
