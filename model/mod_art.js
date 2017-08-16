@@ -55,20 +55,18 @@ function ausgabeAktiv_m() { //Ausgabe aller aktiven Arten
 
 
 function eingabe_m(data) { //Hinzufügen einer neuen Art
-     //console.log('art eingabe' +' ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME)
     return new Promise(function (resolve, reject) {
         connection.query('INSERT INTO ART (ID, BEZEICHNUNG, ORDNERNAME, EINTRAGEN_MGL) select MAX(ID)+1, ?, ?, ? from ART', [data.BEZEICHNUNG, data.ORDNERNAME, data.EINTRAGEN_MGL], function (err) {
             if (err) {
                 reject(err);
             } else {
-                resolve(this.lastID);
+                resolve();
             }
         });
     });
 }
 
 function update_m(data, id) { //Ändern einer Art. Ändern des Ordnernamens nicht Möglich, da bereits Repositories auf dem Server sein können.
-   // console.log('art update ' + data.BEZEICHNUNG +' ' + data.ORDNERNAME + ' ' + id);
     return new Promise(function (resolve, reject) {
         connection.query('UPDATE ART SET BEZEICHNUNG = ?, EINTRAGEN_MGL = ? WHERE id = ?', [data.BEZEICHNUNG, data.EINTRAGEN_MGL, id /*ID*/], function (err) {
             if (err) {

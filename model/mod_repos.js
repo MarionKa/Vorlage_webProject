@@ -45,7 +45,7 @@ function ausgabePersoenlich_m(id){ //Ausgabe aller Repositories eines Nutzers
 }
 
 function hinzufügenMitglied_m(data) { //Weiteren Zugriffberechtigen zu Repository hinzufügen
- console.log('Eingabe model: ' + data.EMAILKENNUNG + ' ' + data.REPOSITORY_ID)
+ //console.log('Eingabe model: ' + data.EMAILKENNUNG + ' ' + data.REPOSITORY_ID)
  return new Promise(function (resolve, reject) {
     connection.query('SELECT ID FROM BENUTZER WHERE EMAILKENNUNG = ? ', [ data.EMAILKENNUNG], function (err, rows) {
 
@@ -65,8 +65,8 @@ function hinzufügenMitglied_m(data) { //Weiteren Zugriffberechtigen zu Reposito
                 if (err) {
                     resolve(err);
                 } else {
-                    resolve(this.lastID);
-                    console.log('data in db');
+                    resolve();
+                    //console.log('Mitglied in Datenbank');
                 }
             });
         }

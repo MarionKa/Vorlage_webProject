@@ -49,8 +49,8 @@ function anlegen_m(data) { // Fügt einen Benutzer hinzu
             if (err) {
                 reject(err);
             } else {
-                resolve(this.lastID);
-                console.log('data in db');
+                resolve();
+               // console.log('data in db');
             }
         });
     });
@@ -76,7 +76,7 @@ function loeschen_m(id) {//Löschen eines einzigen Benutzers auf Basis seiner ID
                 reject(err);
             } else {
                 resolve();
-                console.log('Hier wird geloescht: benutzer');
+               // console.log('Benutzer gelöscht');
             }
         });
     });
