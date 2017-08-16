@@ -3,55 +3,65 @@
         <large>Herzlich Willkommen beim Repositorymanagement!</large>
     </h1>
 </div>
-
 <form name="Anmeldung">
     <div class="panel panel-info">
         <div class="panel-heading"><h4>Zum Anmelden geben Sie Bitte Ihre Hochschul-E-Mail-Adresse und Ihr Passwort ein.</h4> </div>
         <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-6 form-group">
-                        <label>E-Mail-Adresse:</label>
-                        <div class="input-group">
-                            <input type="text" ng-model="user.EMAILKENNUNG" class="form-control" placeholder="MustermannMa12345" aria-describedby="basic-addon2">
-                            <span class="input-group-addon" id="basic-addon2">@th-nuernberg.de</span>
-                        </div>
+        <!-- Input-Feld E-Mail-Adresse: -->
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label>E-Mail-Adresse:</label>
+                    <div class="input-group">
+                        <input type="text" 
+                        ng-model="user.EMAILKENNUNG" 
+                        class="form-control" 
+                        placeholder="MustermannMa12345" 
+                        aria-describedby="basic-addon2" 
+                        name="Mail"
+                        id="Mail">
+                        <span class="input-group-addon" id="basic-addon2">@th-nuernberg.de</span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6 form-group">
-                        <label>Passwort:</label>
-                        <input class="form-control"
-                        name="Passwort"
-                        id="Passwort"
-                        type="password"
-                        ng-model="user.PASSWORT" 
-                        placeholder="Ihr Passwort">
-                    </div>
+            </div>
+            <!-- Input-Feld Passwort(Anzeige als Punkte je char): -->
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label>Passwort:</label>
+                    <input class="form-control"
+                    name="Passwort"
+                    id="Passwort"
+                    type="password"
+                    ng-model="user.PASSWORT" 
+                    placeholder="Ihr Passwort">
                 </div>
+            </div>
+            <!-- Verlinkungen zu KennwortVergessenTemplate und RegistrierungTemplate: -->
             <div class="row">
                 <div class="col-xs-6 form-group">
                     <p style="line-height: 150%">
                         <a href="#/ausgeloggt/kennwort">Kennwort vergessen?</a> oder
-                        <a href="#/ausgeloggt/registrierung">Noch kein Konto?</a>
+                        <a href="#/ausgeloggt/registrierung">noch kein Konto?</a>
                     </p>
                 </div>
             </div>
+            <!-- Submitbutton Anmelden: -->
             <div class="row">
                 <div class="col-xs-6 form-group">
-                    <button type="submit" id="anmelden" ng-click="login()" class="btn btn-default" aria-label="Left Align">
+                    <button type="submit" id="anmelden" name="anmelden" ng-click="login()" class="btn btn-default" aria-label="Left Align">
                         Anmelden!
                         <span class="glyphicon glyphicon-log-in" aria-hidden="true"> </span>
                     </button>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 form-group">
-            <h4 style="line-height: 150%">Sie befinden sich auf der Seite des Repositorymanagements von <a href="https://www.th-nuernberg.de/person/hofmann-oliver/">Prof. Dr. Hofmann</a>.</h4>
-            <p>
-                <a href="data/Hilfe.pdf" download="Hilfe">Hier</a> können Sie das Hilfedokument herunterladen.
-            </p>
+            <!-- Verlinkung zur Hochschulseite von Prof. Dr. Hofmann und zum ErklaerungOeffentlichTemplate: -->
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <h4 style="line-height: 150%">Sie befinden sich auf der Seite des Repositorymanagements von <a href="https://www.th-nuernberg.de/person/hofmann-oliver/">Prof. Dr. Hofmann</a>.</h4>
+                    <p>
+                        <a href="#/ausgeloggt/reh">Hier</a> erhalten Sie Hilfe zu dieser WebApp.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </form>

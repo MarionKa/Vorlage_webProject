@@ -120,8 +120,9 @@ module.exports = {
     anlegen_m: anlegen_m,
     update_m: update_m,
     loeschen_m: loeschen_m,
-    doppeltCheck: doppeltCheck,
-    benutzerDaten: benutzerDaten
+    doppeltCheck: doppeltCheck
+    // ,
+    // benutzerDaten: benutzerDaten
 };
 
 

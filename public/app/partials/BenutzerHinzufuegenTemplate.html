@@ -5,7 +5,7 @@
 <div class="panel panel-info">
     <div class="panel-heading"><h4>Bitte geben Sie hier die Emailkennung von der Person ein, die eine Zugriffsberechtigung erhalten soll:</h4> </div>
     <div class="panel-body">
-
+    <!-- Input-Feld zur Eingabe der Emailkennung: -->
         <form name="studentForm">
             <div class="row">
                 <div class="col-xs-12 form-group">
@@ -19,18 +19,19 @@
                     value=""/>
                 </div>
             </div>
-
+            <!-- Button Hinzufügen: -->
             <a> 
                 <button type="button" ng-click="formControllerRepoBenutzer.save()" name="HinzuButton" id="HinzuButton" class="btn btn-success" aria-label="Left Align">
                     Hinzufügen
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
                 </button>
             </a> 
+            <!-- Button Abbrechen und Verlinkung zum vorherigen Template: -->
                 <input action="action"  type="button" onclick="window.history.go(-1); return false;" class="btn btn-danger" aria-label="Left Align" value="Abbrechen" />
+    <!-- Überprüfung der Eingaben nach Betätigen des Button Hinzufügen: -->
     <script>
         var elem = document.getElementById('HinzuButton');
         elem.addEventListener('click', checkFormular);
-
         //Überprüfung der Formularfeldeingaben: 
         function checkFormular(){
             if (document.studentForm.Name.value == ""){

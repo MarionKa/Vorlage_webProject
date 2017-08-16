@@ -7,6 +7,7 @@
     <div class="panel panel-info">
         <div class="panel-heading"><h4>Fügen Sie hier einen neuen Datensatz Repositoryart hinzu.</h4> </div>
         <div class="panel-body">
+        <!-- Input-Feld Bezeichnung: -->
             <div class="row">
                 <div class="col-xs-4 form-group">
                     <label>Bezeichnung:</label>
@@ -18,7 +19,7 @@
                     placeholder="Bitte eine Bezeichnung hier eintragen.">
                 </div>
             </div>
-
+            <!-- Input Feld Ordnername: -->
             <div class="row">
                 <div class="col-xs-4 form-group">
                     <label>Ordnername:</label>
@@ -30,11 +31,16 @@
                     placeholder="Bitte einen Ordnernamen hier eintragen.">
                 </div>
             </div>
-
+            <!-- Input-Feld Eintragen möglich: -->
             <div class="row">
                 <div class="col-xs-4 form-group">
                     <label for="sel1">Eintragen möglich Neuer Status:</label>
-                    <select class="form-control" name="status" id="status" type="text" ng-model="formControllerArt.EINTRAGEN_MGL" convert-to-number>
+                    <select class="form-control" 
+                    name="status" 
+                    id="status" 
+                    type="text" 
+                    ng-model="formControllerArt.EINTRAGEN_MGL" 
+                    convert-to-number>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <option value="0">möglich</option>
                             <option value="1">nicht möglich</option>
@@ -42,14 +48,19 @@
                     </select>
                 </div>
             </div>
-
+            <!-- Button Speichern: -->
             <a>
-            <button type="button" ng-click="formControllerArt.save()" name="ArtButton" id="ArtButton" class="btn btn-success" aria-label="Left Align">
+            <button type="button" 
+            ng-click="formControllerArt.save()" 
+            name="ArtButton" 
+            id="ArtButton" 
+            class="btn btn-success" 
+            aria-label="Left Align">
                     Speichern
                     <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>
                 </button>
             </a>
-
+            <!-- Button Abbrechen mit Verlinkunt zu ArtUebersichTemplate: -->
             <a href="#/admin/artueber">
                 <button type="button" class="btn btn-danger" aria-label="Left Align">
                     Abbrechen
@@ -57,10 +68,10 @@
             </a>
         </div>
     </div>
+    <!-- Überprüfung der Input-Felder bei Drücken des Button Speichern: -->
     <script>
         var elem = document.getElementById('ArtButton');
         elem.addEventListener('click', checkFormular);
-
         //Überprüfung der Formularfeldeingaben: 
         function checkFormular(){
             if (document.Arthinzufuegen.Bezeichnung.value == ""){

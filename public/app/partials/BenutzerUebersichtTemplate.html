@@ -2,9 +2,7 @@
     <h1 class="col-xs-12 page-header">
         <large>Herzlich Willkommen</large> <large id="gruss"></large><large>!</large>
     </h1>
-
 </div>
-
 <form name="Uebersicht">
     <div class="row">
         <div class="col-xs-12 form-group">
@@ -14,11 +12,14 @@
                     </h3>
                 </div>
                 <div class="panel-body">
+                <!-- Beginn der Übersichtstabelle -->
                     <table class="table table-hover">
-                        <tr> 
-                            <th>Vorname: <br/>
+                        <tr> <!-- Erste Zeile der Tabelle -->
+                            <th>Vorname: <br/><!-- Bezeichnung -->
                                 <div class="btn-group btn-xs" role="group">
+                                <!-- Button für alphabetisches Sortieren: -->
                                     <button ng-click="sortieren = '+NACHNAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"> </span></button>
+                                    <!-- Button für umgekehrt alphabetisches Sortieren: -->
                                     <button ng-click="sortieren = '-NACHNAME'" type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"> </span></button>
                                 </div>
                             </th>
@@ -43,12 +44,13 @@
                             <th></th>
                             <th></th>
                         </tr>
+                        <!-- Weitere Zeilen der Tabelle befüllt mit Daten aus der Datenbank durch ng-repeat und sortiert über die Variable "sortieren" -->
                         <tr ng-repeat="daten in listControllerBenutzer.daten | orderBy:sortieren">
                             <td>{{daten.NACHNAME}}</td>
                             <td>{{daten.VORNAME}}</td>
                             <td>{{daten.EMAILKENNUNG}}</td>
                             <td>{{daten.RECHTE}}</td>
-                            <td>
+                            <td><!-- Button Editieren, der auf das BenutzerEditierenTemplate weiterleitet: -->
                                 <a ui-sref="admin.benutzeredit({id: daten.ID})"> 
                                     <button type="button"  class="btn btn-primary" aria-label="Left Align">
                                         Editieren
@@ -56,7 +58,7 @@
                                     </button>
                                 </a>
                             </td>
-                            <td>
+                            <!-- <td> Button Löschen, der den Benutzer aus der Datenbank löscht: -->
                                 <a ui-sref="deleteBenutzer({id: daten.ID})">
                                     <button type="button"  class="btn btn-default" aria-label="Left Align">
                                         Löschen

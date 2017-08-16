@@ -27,7 +27,8 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'DeleteControllerRepoBenutzer'
     })
 
-        .state('ausgeloggt', {
+// Definition der Nested States
+    .state('ausgeloggt', {
         url: "/ausgeloggt",
         templateUrl: "app/partials/NavbarAusgeloggtTemplate.html",
     })
@@ -42,87 +43,89 @@ function configFn($stateProvider, $urlRouterProvider) {
         templateUrl: "app/partials/NavbarBenutzerTemplate.html",
     })
 
-
+// Einbinden der funktionalen Templates mit Nested States
     .state('ausgeloggt.abmeldung', {
         url: "/abmeldung",
         templateUrl: "app/partials/AbmeldungTemplate.html"
     })
+
     .state('ausgeloggt.anmeldung', {
         url: "/anmeldung",
         templateUrl: "app/partials/AnmeldungTemplate.html",
         controller: 'LoginCtrl'
     })
-    .state('admin.artedit', {
-        url: "/artedit/:id",
-        templateUrl: "app/partials/ArtEditierenTemplate.html",            
-        controller: 'FormControllerArt', 
-        controllerAs: 'formControllerArt'
-    })
-    .state('admin.arthinzu', {
-        url: "/arthinzu",
-        templateUrl: "app/partials/ArtHinzufuegenTemplate.html",            
-        controller: 'FormControllerArt', 
-        controllerAs: 'formControllerArt'
-    })
-    .state('admin.artueber', {
-        url: "/artueber",
-        templateUrl: "app/partials/ArtUebersichtTemplate.html",
-        controller: 'ListControllerArt', 
-        controllerAs: 'listControllerArt'
-    })
-    .state('benutzer.beantragung', {
-        url: "/beantragung",
-        templateUrl: "app/partials/BeantragungTemplate.html",
-        controller: 'FormControllerRepobeantragen',
-        controllerAs: 'formControllerRepobeantragen' 
-    })
-    .state('admin.benutzeredit', {
-        url: "/benutzeredit/:id",
-        templateUrl: "app/partials/BenutzerEinzelansichtTemplate.html",
-        controller: 'FormControllerBenutzer', 
-        controllerAs: 'formControllerBenutzer'
-    })
-    .state('admin.benutzerentf', {
-        url: "/benutzerentf/:id",
-        templateUrl: "app/partials/BenutzerEntfernenTemplate.html",
-        controller: 'ListControllerRepoBenutzer', 
-        controllerAs: 'listControllerRepoBenutzer'
-    })
-    .state('admin.benutzerhinzu', {
-        url: "/benutzerhinzu/:id",
-        templateUrl: "app/partials/BenutzerHinzufuegenTemplate.html",
-        controller: 'FormControllerRepoBenutzer',
-        controllerAs: 'formControllerRepoBenutzer'
-    })
-    .state('admin.benutzerueber', {
-        url: "/benutzerueber",
-        templateUrl: "app/partials/BenutzerUebersichtTemplate.html",
-        controller: 'ListControllerBenutzer', 
-        controllerAs: 'listControllerBenutzer'
-    })
+
     .state('ausgeloggt.kennwort', {
         url: "/kennwort",
         templateUrl: "app/partials/KennwortVergessenTemplate.html",
         controller: 'FormControllerPwVergessen',
         controllerAs: 'formControllerPwVergessen'
     })
+
     .state('ausgeloggt.registrierung', {
         url: "/registrierung",
         templateUrl: "app/partials/RegistrierungTemplate.html",
         controller: 'FormControllerBenutzer',
         controllerAs: 'formControllerBenutzer'
     })
+
     .state('ausgeloggt.reh', {
         url: "/reh",
-        templateUrl: "app/partials/ErklaerungTemplate.html"
+        templateUrl: "app/partials/ErklaerungOeffentlichTemplate.html"
     })
+
+    .state('admin.artedit', {
+        url: "/artedit/:id",
+        templateUrl: "app/partials/ArtEditierenTemplate.html",            
+        controller: 'FormControllerArt', 
+        controllerAs: 'formControllerArt'
+    })
+
+    .state('admin.arthinzu', {
+        url: "/arthinzu",
+        templateUrl: "app/partials/ArtHinzufuegenTemplate.html",            
+        controller: 'FormControllerArt', 
+        controllerAs: 'formControllerArt'
+    })
+
+    .state('admin.artueber', {
+        url: "/artueber",
+        templateUrl: "app/partials/ArtUebersichtTemplate.html",
+        controller: 'ListControllerArt', 
+        controllerAs: 'listControllerArt'
+    })
+
+    .state('admin.benutzeredit', {
+        url: "/benutzeredit/:id",
+        templateUrl: "app/partials/BenutzerEinzelansichtTemplate.html",
+        controller: 'FormControllerBenutzer', 
+        controllerAs: 'formControllerBenutzer'
+    })
+
+    .state('admin.benutzerentf', {
+        url: "/benutzerentf/:id",
+        templateUrl: "app/partials/BenutzerEntfernenTemplate.html",
+        controller: 'ListControllerRepoBenutzer', 
+        controllerAs: 'listControllerRepoBenutzer'
+    })
+
+    .state('admin.benutzerhinzu', {
+        url: "/benutzerhinzu/:id",
+        templateUrl: "app/partials/BenutzerHinzufuegenTemplate.html",
+        controller: 'FormControllerRepoBenutzer',
+        controllerAs: 'formControllerRepoBenutzer'
+    })
+
+    .state('admin.benutzerueber', {
+        url: "/benutzerueber",
+        templateUrl: "app/partials/BenutzerUebersichtTemplate.html",
+        controller: 'ListControllerBenutzer', 
+        controllerAs: 'listControllerBenutzer'
+    })
+    
     .state('admin.reh', {
         url: "/reh",
-        templateUrl: "app/partials/ErklaerungTemplate.html"
-    })
-    .state('benutzer.reh', {
-        url: "/reh",
-        templateUrl: "app/partials/ErklaerungTemplate.html"
+        templateUrl: "app/partials/ErklaerungAdminTemplate.html"
     })
 
     .state('admin.repoedit', {
@@ -131,18 +134,33 @@ function configFn($stateProvider, $urlRouterProvider) {
         controller: 'FormControllerRepo',
         controllerAs: 'formControllerRepo'
     })
+
     .state('admin.repoerstellen', {
         url: "/repoerstellen",
         templateUrl: "app/partials/RepoHinzufuegenTemplate.html",
         controller: 'FormControllerRepo',
         controllerAs: 'formControllerRepo'
     })
+
     .state('admin.repoueber', {
         url: "/repoueber",
         templateUrl: "app/partials/RepoUebersichtTemplate.html",
         controller: 'ListControllerRepos',
         controllerAs: 'listControllerRepos'
+    })  
+
+    .state('benutzer.beantragung', {
+        url: "/beantragung",
+        templateUrl: "app/partials/BeantragungTemplate.html",
+        controller: 'FormControllerRepobeantragen',
+        controllerAs: 'formControllerRepobeantragen' 
     })
+
+    .state('benutzer.reh', {
+        url: "/reh",
+        templateUrl: "app/partials/ErklaerungBenutzerTemplate.html"
+    })
+
     .state('benutzer.ueberpers', {
         url: "/ueberpers",
         templateUrl: "app/partials/RepoPersUeTemplate.html",
