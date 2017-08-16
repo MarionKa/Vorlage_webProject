@@ -68,14 +68,13 @@ function benutzerDesRepos_m(id){ //Ausgabe aller Nutzer eines Repositoreis auf B
 }
 
 function erstellenAlsUser_m(data) { //Ein Repository erstellen (als normaler User)
-     //console.log('Eingabe model eingabe_m: ' + data.BENUTZER_ID /*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)
     return new Promise(function (resolve, reject) {
         connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(R.ID)+1, concat(B.EMAILKENNUNG, "_",A.BEZEICHNUNG), concat("Repository von ", B.VORNAME," ",B.NACHNAME," (",A.BEZEICHNUNG,")"), DATE_ADD( sysdate(), INTERVAL ? month), ?, ? from REPOSITORY R, BENUTZER B, ART A WHERE B.ID =? AND A.ID = ?; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [ 6/*dauer Gültigkeit in Monaten*/ , data.ART_ID /*ART_ID*/, 1 /*STATUS_ID*/, data.BENUTZER_ID /*Benutzer ID*/, data.ART_ID /*ART_ID*/, data.BENUTZER_ID /*Benutzer ID*/], function (err) {
             if (err) {
                 reject(err);
             } else {
                 resolve(this.lastID);
-               // console.log('data in db');
+               // console.log('erstellenAlsUser_m Erfolgreich');
             }
         });
     });
@@ -83,14 +82,13 @@ function erstellenAlsUser_m(data) { //Ein Repository erstellen (als normaler Use
 
 
 function erstellenAlsAdmin_m(data) { //Ein Repository erstellen (als Administrator)
-     console.log('Eingabe model eingabe_m: ' + data.BENUTZER_ID /*+ data.NACHNAME +' ' + data.VORNAME+' ' + data.EMAILKENNUNG + '' + data.RECHTE_ID*/)
     return new Promise(function (resolve, reject) {
         connection.query('INSERT INTO REPOSITORY (ID, REPONAME, AUTHNAME, GUELTIG_BIS, ART_ID, REPO_STATUS_ID) select MAX(ID)+1, ?, ?, ?, ?, ? from REPOSITORY; INSERT INTO VERBINDEN(BENUTZER_ID, REPOSITORY_ID) select ?, MAX(ID) from REPOSITORY', [data.REPONAME, data.AUTHNAME, data.GUELTIG_BIS, data.ART_ID /*ART_ID*/, data.REPO_STATUS_ID, data.BENUTZER_ID /*Benutzer ID*/], function (err) {
             if (err) {
                 reject(err);
             } else {
                 resolve(this.lastID);
-                console.log('data in db');
+                //console.log('erstellenAlsAdmin_m Erfolgreich');
             }
         });
     });
@@ -100,7 +98,6 @@ function erstellenAlsAdmin_m(data) { //Ein Repository erstellen (als Administrat
 
 
 function update_m(data, id) { //Aktualisierung eines Repository-Datensatztes
-    console.log('Kommt die ID? ' + data.REPONAME +' '+ id);
     return new Promise(function (resolve, reject) {
         connection.query('UPDATE REPOSITORY SET REPONAME = ?, AUTHNAME = ?, GUELTIG_BIS = STR_TO_DATE(?,"%d.%m.%Y"), ART_ID = ?, REPO_STATUS_ID = ? WHERE ID = ?', [data.REPONAME, data.AUTHNAME, data.GUELTIG_BIS/*GUELTIG_BIS*/, data.ART_ID /*ART_ID*/,  data.REPO_STATUS_ID /*REPO_STATUS_ID*/, id/*REPOSITORY_ID*/], function (err) {
             if (err) {
@@ -120,7 +117,7 @@ function loeschen_m(id) { //Löschen eines Repositorys inkl. der einträge in de
                 reject(err);
             } else {
                 resolve();
-               // console.log('Hier wird geloescht: repo');
+               // console.log('Repository gelöscht');
             }
         });
     });
@@ -133,10 +130,10 @@ doppeltCheck = function (artId, benutzerId) { //kontrollieren ob der Benutzer be
     connection.query('SELECT v.BENUTZER_ID , r.ART_ID FROM VERBINDEN v JOIN REPOSITORY r ON (v.REPOSITORY_ID = r.ID) WHERE BENUTZER_ID = ? AND ART_ID = ?', [benutzerId, artId ], function(err, rows,  fields) {
         console.log('ergebnis:', rows);
         if (err) {reject();}
-        if (rows[0]){ //console.log(' da steht schon was');
+        if (rows[0]){ //console.log(' Der Nutzer hat bereits ein Repo dieser Art');
                     reject() ;
         }
-        else {  //console.log('bis jetzt nix '); 
+        else {  //console.log('Nutzer hat noch kein Repo dieser Art'); 
                  resolve() ;
         }
     });
