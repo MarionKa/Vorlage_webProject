@@ -57,7 +57,7 @@ function FormControllerRepo ($state, $stateParams, dataFactoryArt, dataFactoryRe
         this.GUELTIG_BIS = '';
         this.REPO_STATUS_ID = '1';
         this.ID = '';
-        console.log('einstieg: ' + this.REPO_STATUS_ID)
+        
 
         if($stateParams.id) {
 
